@@ -16,7 +16,6 @@ const nextConfig = {
     ],
   },
   // Optimize for Vercel
-  output: 'standalone',
   compress: true,
   poweredByHeader: false,
   
@@ -25,7 +24,6 @@ const nextConfig = {
   
   // Optimize bundles
   experimental: {
-    optimizeCss: true,
     gzipSize: true,
   },
   
