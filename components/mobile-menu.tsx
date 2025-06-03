@@ -28,7 +28,7 @@ export default function MobileMenu({ currentPath = "/" }: MobileMenuProps) {
       {/* Hamburger Button */}
       <button
         onClick={toggleMenu}
-        className="md:hidden relative z-50 w-10 h-10 flex items-center justify-center text-white hover:text-cyan-300 transition-colors duration-300"
+        className="md:hidden relative z-50 w-12 h-12 flex items-center justify-center text-white hover:text-cyan-300 transition-colors duration-300 rounded-lg hover:bg-white/10"
         aria-label="Toggle mobile menu"
         aria-expanded={isOpen}
       >
@@ -41,7 +41,7 @@ export default function MobileMenu({ currentPath = "/" }: MobileMenuProps) {
               exit={{ rotate: 90, opacity: 0 }}
               transition={{ duration: 0.2 }}
             >
-              <X className="h-6 w-6" />
+              <X className="h-7 w-7" />
             </motion.div>
           ) : (
             <motion.div
@@ -51,7 +51,7 @@ export default function MobileMenu({ currentPath = "/" }: MobileMenuProps) {
               exit={{ rotate: -90, opacity: 0 }}
               transition={{ duration: 0.2 }}
             >
-              <Menu className="h-6 w-6" />
+              <Menu className="h-7 w-7" />
             </motion.div>
           )}
         </AnimatePresence>
@@ -67,7 +67,7 @@ export default function MobileMenu({ currentPath = "/" }: MobileMenuProps) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden"
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
               onClick={closeMenu}
             />
 
@@ -77,23 +77,23 @@ export default function MobileMenu({ currentPath = "/" }: MobileMenuProps) {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-[#0a0a1a]/95 backdrop-blur-xl border-l border-blue-500/20 z-40 md:hidden"
+              className="fixed top-0 right-0 h-full w-[85vw] max-w-sm bg-[#0a0a1a]/95 backdrop-blur-xl border-l border-blue-500/20 z-40 md:hidden overflow-y-auto"
             >
               {/* Menu Header */}
-              <div className="flex items-center justify-between p-6 border-b border-blue-500/10">
+              <div className="flex items-center justify-between p-6 border-b border-blue-500/10 sticky top-0 bg-[#0a0a1a]/95 backdrop-blur-xl">
                 <span className="text-xl font-black text-white">Menu</span>
                 <button
                   onClick={closeMenu}
-                  className="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-white transition-colors duration-300"
+                  className="w-10 h-10 flex items-center justify-center text-gray-400 hover:text-white transition-colors duration-300 rounded-lg hover:bg-white/10"
                   aria-label="Close menu"
                 >
-                  <X className="h-5 w-5" />
+                  <X className="h-6 w-6" />
                 </button>
               </div>
 
               {/* Menu Items */}
               <nav className="p-6">
-                <ul className="space-y-4">
+                <ul className="space-y-3">
                   {menuItems.map((item, index) => {
                     const isActive = currentPath === item.href
                     return (
@@ -106,7 +106,7 @@ export default function MobileMenu({ currentPath = "/" }: MobileMenuProps) {
                         <Link
                           href={item.href}
                           onClick={closeMenu}
-                          className={`block py-3 px-4 rounded-xl font-black text-lg transition-all duration-300 ${
+                          className={`block py-4 px-6 rounded-xl font-bold text-lg transition-all duration-300 ${
                             isActive
                               ? "bg-gradient-to-r from-blue-500/20 to-cyan-400/20 text-cyan-300 border border-cyan-400/30"
                               : "text-gray-300 hover:text-white hover:bg-blue-900/20"
@@ -129,7 +129,7 @@ export default function MobileMenu({ currentPath = "/" }: MobileMenuProps) {
                   <Link
                     href="/contact"
                     onClick={closeMenu}
-                    className="block w-full bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white text-center py-3 px-6 rounded-xl font-black transition-all duration-300 shadow-lg shadow-blue-500/25"
+                    className="block w-full bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white text-center py-4 px-6 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg shadow-blue-500/25"
                   >
                     Get In Touch
                   </Link>
@@ -140,7 +140,7 @@ export default function MobileMenu({ currentPath = "/" }: MobileMenuProps) {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.0 }}
-                  className="mt-6 pt-6 border-t border-blue-500/10"
+                  className="mt-8 pt-6 border-t border-blue-500/10"
                 >
                   <p className="text-sm font-black text-gray-400 mb-4">FOLLOW US</p>
                   <div className="flex space-x-4">
@@ -153,7 +153,7 @@ export default function MobileMenu({ currentPath = "/" }: MobileMenuProps) {
                         href={social.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-gray-400 hover:text-cyan-300 transition-colors duration-300 font-semibold text-sm"
+                        className="flex-1 text-center py-3 px-4 text-gray-400 hover:text-cyan-300 transition-colors duration-300 font-semibold text-sm bg-gray-800/20 rounded-lg hover:bg-gray-700/30"
                       >
                         {social.name}
                       </a>

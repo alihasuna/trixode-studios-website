@@ -1,0 +1,38 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="hexGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="32" height="32" fill="#0a0a1a" />
+  
+  <!-- Hexagon outline -->
+  <polygon 
+    points="16,4 24.93,9.5 24.93,22.5 16,28 7.07,22.5 7.07,9.5" 
+    fill="none" 
+    stroke="url(#hexGradient)" 
+    stroke-width="2"
+  />
+  
+  <!-- Connected lines to center -->
+  <line x1="16" y1="16" x2="16" y2="4" stroke="#3b82f6" stroke-width="1" opacity="0.6" />
+  <line x1="16" y1="16" x2="24.93" y2="9.5" stroke="#3b82f6" stroke-width="1" opacity="0.6" />
+  <line x1="16" y1="16" x2="24.93" y2="22.5" stroke="#3b82f6" stroke-width="1" opacity="0.6" />
+  <line x1="16" y1="16" x2="16" y2="28" stroke="#3b82f6" stroke-width="1" opacity="0.6" />
+  <line x1="16" y1="16" x2="7.07" y2="22.5" stroke="#3b82f6" stroke-width="1" opacity="0.6" />
+  <line x1="16" y1="16" x2="7.07" y2="9.5" stroke="#3b82f6" stroke-width="1" opacity="0.6" />
+  
+  <!-- Vertex points -->
+  <circle cx="16" cy="4" r="1.5" fill="#06b6d4" />
+  <circle cx="24.93" cy="9.5" r="1.5" fill="#06b6d4" />
+  <circle cx="24.93" cy="22.5" r="1.5" fill="#06b6d4" />
+  <circle cx="16" cy="28" r="1.5" fill="#06b6d4" />
+  <circle cx="7.07" cy="22.5" r="1.5" fill="#06b6d4" />
+  <circle cx="7.07" cy="9.5" r="1.5" fill="#06b6d4" />
+  
+  <!-- Center point -->
+  <circle cx="16" cy="16" r="2" fill="#06b6d4" />
+</svg> 

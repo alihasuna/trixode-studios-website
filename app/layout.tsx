@@ -10,6 +10,13 @@ export const metadata: Metadata = {
   description: "High-tech software and AI studio crafting elegant tools for scientists, innovators, and creators. We specialize in AI-powered solutions, research tools and advanced software development.",
   keywords: "AI, software development, research tools, innovation, technology, quantum computing, machine learning, scientific tools, data science",
   authors: [{ name: "Trixode Studios" }],
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "32x32" }
+    ],
+    apple: "/favicon.svg",
+  },
   openGraph: {
     title: "Trixode Studios - Crafting the Future of Software",
     description: "High-tech software and AI studio crafting elegant tools for scientists, innovators, and creators.",
