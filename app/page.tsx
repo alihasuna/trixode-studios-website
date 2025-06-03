@@ -84,93 +84,137 @@ const ConnectedHexagonLogo = ({ size = 32, className = "" }: { size?: number; cl
 
 export default function HomePage() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [isMobile, setIsMobile] = useState(false)
+  const [isLowPowerMode, setIsLowPowerMode] = useState(false)
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
+    // Detect mobile devices
+    const checkMobile = () => {
+      const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+      setIsMobile(mobile)
+      
+      // Detect potential low-power scenarios
+      const lowPower = mobile || navigator.hardwareConcurrency <= 4
+      setIsLowPowerMode(lowPower)
     }
-    window.addEventListener("mousemove", handleMouseMove)
-    return () => window.removeEventListener("mousemove", handleMouseMove)
-  }, [])
+
+    checkMobile()
+    
+    // Only add mouse tracking on desktop
+    if (!isMobile) {
+      const handleMouseMove = (e: MouseEvent) => {
+        setMousePosition({ x: e.clientX, y: e.clientY })
+      }
+      window.addEventListener("mousemove", handleMouseMove)
+      return () => window.removeEventListener("mousemove", handleMouseMove)
+    }
+  }, [isMobile])
+
+  // Reduced animation variants for mobile
+  const mobileAnimationVariants = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.3 }
+  }
+
+  const desktopAnimationVariants = {
+    initial: { opacity: 0, y: 50 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.8 }
+  }
+
+  const animationVariants = isMobile ? mobileAnimationVariants : desktopAnimationVariants
 
   return (
     <div className="min-h-screen bg-[#0a0a1a] text-white overflow-hidden relative">
-      {/* Animated Background with flowing shapes */}
+      {/* Simplified Background for Mobile */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        {/* Main flowing shapes */}
-        <motion.div
-          className="absolute -top-1/2 -left-1/4 w-full h-full"
-          animate={{
-            rotate: [0, 360],
-            scale: [1, 1.1, 1],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Number.POSITIVE_INFINITY,
-            ease: "linear",
-          }}
-        >
-          <div className="w-96 h-96 bg-gradient-to-r from-blue-600/30 to-blue-400/20 rounded-full blur-3xl" />
-        </motion.div>
+        {!isLowPowerMode ? (
+          <>
+            {/* Main flowing shapes - Desktop only */}
+            <motion.div
+              className="absolute -top-1/2 -left-1/4 w-full h-full"
+              animate={{
+                rotate: [0, 360],
+                scale: [1, 1.1, 1],
+              }}
+              transition={{
+                duration: 20,
+                repeat: Number.POSITIVE_INFINITY,
+                ease: "linear",
+              }}
+            >
+              <div className="w-96 h-96 bg-gradient-to-r from-blue-600/30 to-blue-400/20 rounded-full blur-3xl" />
+            </motion.div>
 
-        <motion.div
-          className="absolute top-1/4 -right-1/4 w-full h-full"
-          animate={{
-            rotate: [360, 0],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Number.POSITIVE_INFINITY,
-            ease: "linear",
-          }}
-        >
-          <div className="w-80 h-80 bg-gradient-to-r from-pink-500/20 to-purple-500/15 rounded-full blur-3xl" />
-        </motion.div>
+            <motion.div
+              className="absolute top-1/4 -right-1/4 w-full h-full"
+              animate={{
+                rotate: [360, 0],
+                scale: [1, 1.2, 1],
+              }}
+              transition={{
+                duration: 25,
+                repeat: Number.POSITIVE_INFINITY,
+                ease: "linear",
+              }}
+            >
+              <div className="w-80 h-80 bg-gradient-to-r from-pink-500/20 to-purple-500/15 rounded-full blur-3xl" />
+            </motion.div>
 
-        {/* Flowing curved lines */}
-        <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.6" />
-              <stop offset="100%" stopColor="#1d4ed8" stopOpacity="0.2" />
-            </linearGradient>
-            <linearGradient id="pinkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#ec4899" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#be185d" stopOpacity="0.1" />
-            </linearGradient>
-          </defs>
+            {/* Flowing curved lines - Desktop only */}
+            <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.6" />
+                  <stop offset="100%" stopColor="#1d4ed8" stopOpacity="0.2" />
+                </linearGradient>
+                <linearGradient id="pinkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#ec4899" stopOpacity="0.4" />
+                  <stop offset="100%" stopColor="#be185d" stopOpacity="0.1" />
+                </linearGradient>
+              </defs>
 
-          <motion.path
-            d="M-100,200 Q200,100 400,300 T800,200 Q1000,400 1200,100"
-            stroke="url(#blueGradient)"
-            strokeWidth="3"
-            fill="none"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 3, ease: "easeInOut" }}
-          />
+              <motion.path
+                d="M-100,200 Q200,100 400,300 T800,200 Q1000,400 1200,100"
+                stroke="url(#blueGradient)"
+                strokeWidth="3"
+                fill="none"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 3, ease: "easeInOut" }}
+              />
 
-          <motion.path
-            d="M-50,400 Q300,200 600,500 T1000,300 Q1200,600 1400,200"
-            stroke="url(#pinkGradient)"
-            strokeWidth="2"
-            fill="none"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 4, delay: 1, ease: "easeInOut" }}
-          />
-        </svg>
+              <motion.path
+                d="M-50,400 Q300,200 600,500 T1000,300 Q1200,600 1400,200"
+                stroke="url(#pinkGradient)"
+                strokeWidth="2"
+                fill="none"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 4, delay: 1, ease: "easeInOut" }}
+              />
+            </svg>
 
-        {/* Interactive mouse effect */}
-        <motion.div
-          className="absolute w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"
-          style={{
-            left: mousePosition.x - 192,
-            top: mousePosition.y - 192,
-          }}
-          transition={{ type: "spring", damping: 30, stiffness: 200 }}
-        />
+            {/* Interactive mouse effect - Desktop only */}
+            {!isMobile && (
+              <motion.div
+                className="absolute w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"
+                style={{
+                  left: mousePosition.x - 192,
+                  top: mousePosition.y - 192,
+                }}
+                transition={{ type: "spring", damping: 30, stiffness: 200 }}
+              />
+            )}
+          </>
+        ) : (
+          /* Simple static background for mobile/low-power devices */
+          <div className="absolute inset-0">
+            <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-blue-600/20 to-blue-400/10 rounded-full blur-2xl" />
+            <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-gradient-to-r from-pink-500/15 to-purple-500/10 rounded-full blur-2xl" />
+          </div>
+        )}
       </div>
 
       {/* Navigation */}
@@ -207,9 +251,9 @@ export default function HomePage() {
           {/* Subtitle */}
           <motion.p
             className="text-lg md:text-xl text-gray-300 mb-6 font-medium"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            initial={animationVariants.initial}
+            animate={animationVariants.animate}
+            transition={{ ...animationVariants.transition, delay: 0.1 }}
           >
             Click #more below to explore our services & projects. Yeap, is like magic!
           </motion.p>
@@ -217,9 +261,9 @@ export default function HomePage() {
           {/* Main Title */}
           <motion.h1
             className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight text-white"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            initial={animationVariants.initial}
+            animate={animationVariants.animate}
+            transition={{ ...animationVariants.transition, delay: 0.2 }}
           >
             We build beautiful &<br />
             <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
@@ -230,9 +274,9 @@ export default function HomePage() {
           {/* Description */}
           <motion.p
             className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed font-medium"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
+            initial={animationVariants.initial}
+            animate={animationVariants.animate}
+            transition={{ ...animationVariants.transition, delay: 0.3 }}
           >
             Empowering scientists, innovators, and creators with AI-powered tools that bridge the gap between
             cutting-edge research and practical applications.
@@ -240,9 +284,9 @@ export default function HomePage() {
 
           <motion.div
             className="flex flex-col sm:flex-row gap-4 justify-center"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
+            initial={animationVariants.initial}
+            animate={animationVariants.animate}
+            transition={{ ...animationVariants.transition, delay: 0.4 }}
           >
             <Link href="/projects">
               <Button
@@ -271,9 +315,9 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             className="text-center mb-16"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={animationVariants.initial}
+            whileInView={animationVariants.animate}
+            transition={animationVariants.transition}
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-5xl font-black mb-6 text-white">CRAFTING THE FUTURE</h2>
@@ -307,11 +351,11 @@ export default function HomePage() {
               <motion.div
                 key={feature.title}
                 className="group p-8 rounded-2xl bg-gradient-to-br from-blue-900/20 to-purple-900/10 backdrop-blur-sm border border-blue-500/20 hover:border-blue-400/40 transition-all duration-500"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
+                initial={animationVariants.initial}
+                whileInView={animationVariants.animate}
+                transition={{ ...animationVariants.transition, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -5 }}
+                whileHover={!isMobile ? { y: -5 } : {}}
               >
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <feature.icon className="h-8 w-8 text-white" />
@@ -329,9 +373,9 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 to-purple-900/20" />
         <div className="max-w-4xl mx-auto text-center px-6 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={animationVariants.initial}
+            whileInView={animationVariants.animate}
+            transition={animationVariants.transition}
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-5xl font-black mb-8 text-white">READY TO BUILD THE FUTURE?</h2>
