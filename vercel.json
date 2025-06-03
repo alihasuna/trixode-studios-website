@@ -31,7 +31,16 @@
       ]
     },
     {
-      "source": "/(.*)\\.(?:jpg|jpeg|gif|png|svg|webp|ico|css|js)",
+      "source": "/static/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*\\.(jpg|jpeg|gif|png|svg|webp|ico|css|js))",
       "headers": [
         {
           "key": "Cache-Control",
