@@ -99,16 +99,23 @@ export default function ContactPage() {
     setSubmitStatus("idle")
 
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 2000))
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
 
-      // In a real app, you would send the data to your backend
-      console.log("Form submitted:", formData)
-
-      setSubmitStatus("success")
-      setFormData({ name: "", email: "", message: "" })
-      setErrors({})
+      if (response.ok) {
+        setSubmitStatus("success")
+        setFormData({ name: "", email: "", message: "" })
+        setErrors({})
+      } else {
+        setSubmitStatus("error")
+      }
     } catch (error) {
+      console.error('Contact form error:', error)
       setSubmitStatus("error")
     } finally {
       setIsSubmitting(false)
@@ -206,7 +213,7 @@ export default function ContactPage() {
                   <div className="mb-6 p-4 bg-green-500/10 border border-green-500/20 rounded-lg flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-400" />
                     <p className="text-green-300 font-semibold">
-                      Message sent successfully! We'll get back to you within 24 hours.
+                      Message sent successfully! Check your email for a confirmation from us. We'll get back to you within 24 hours.
                     </p>
                   </div>
                 )}
@@ -307,10 +314,10 @@ export default function ContactPage() {
                     <div>
                       <h3 className="font-black text-white mb-1">EMAIL</h3>
                       <a
-                        href="mailto:hello@trixodestudios.com"
+                        href="mailto:ceo@trixode-studios.com"
                         className="text-gray-300 font-semibold hover:text-cyan-300 transition-colors"
                       >
-                        hello@trixodestudios.com
+                        ceo@trixode-studios.com
                       </a>
                     </div>
                   </div>
@@ -320,8 +327,9 @@ export default function ContactPage() {
                       <MapPin className="h-5 w-5 text-blue-300" />
                     </div>
                     <div>
-                      <h3 className="font-black text-white mb-1">LOCATION</h3>
+                      <h3 className="font-black text-white mb-1">LOCATIONS</h3>
                       <p className="text-gray-300 font-semibold">Victoria, BC, Canada</p>
+                      <p className="text-gray-300 font-semibold">Quito, Ecuador</p>
                     </div>
                   </div>
 
@@ -342,7 +350,7 @@ export default function ContactPage() {
                 <h2 className="text-3xl font-black mb-6 text-white">FIND US</h2>
                 <div className="w-full h-64 rounded-xl overflow-hidden">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83326.84493156316!2d-123.42914!3d48.4284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x548f738bddb06171%3A0x384ea2ba9681b302!2sVictoria%2C%20BC%2C%20Canada!5e0!3m2!1sen!2sus!4v1703123456789!5m2!1sen!2sus"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2644.4268!2d-123.3703512!3d48.4285154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x548f738ad41f3453%3A0x1e3e5d4d5f5f5f5f!2s341%20Quebec%20St%2C%20Victoria%2C%20BC%20V8V%201W4%2C%20Canada!5e0!3m2!1sen!2sus!4v1703123456789!5m2!1sen!2sus"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
