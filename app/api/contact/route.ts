@@ -53,77 +53,63 @@ export async function POST(request: NextRequest) {
     const autoReplyEmail = await resend.emails.send({
       from: 'Trixode Studios <noreply@trixode-studios.com>',
       to: email,
-      subject: 'Thank you for contacting Trixode Studios',
+      subject: 'Message received - Trixode Studios',
       html: `
         <!DOCTYPE html>
         <html>
         <head>
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Thank you for contacting Trixode Studios</title>
+          <title>Message received - Trixode Studios</title>
         </head>
-        <body style="margin: 0; padding: 0; background-color: #0a0a1a; font-family: Arial, sans-serif;">
-          <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #0a0a1a;">
+        <body style="margin: 0; padding: 0; background-color: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+          <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f8fafc; padding: 40px 20px;">
             <tr>
-              <td align="center" style="padding: 40px 20px;">
-                <table width="600" cellpadding="0" cellspacing="0" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 51, 234, 0.1)); border-radius: 16px; overflow: hidden; border: 1px solid rgba(59, 130, 246, 0.2);">
+              <td align="center">
+                <table width="600" cellpadding="0" cellspacing="0" style="background: #ffffff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
                   
-                  <!-- Header with Hexagon Logo -->
+                  <!-- Header -->
                   <tr>
-                    <td style="padding: 40px 40px 20px; text-align: center; background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(147, 51, 234, 0.05));">
-                      <svg width="48" height="48" viewBox="0 0 48 48" style="margin-bottom: 16px;">
-                        <polygon points="24,8 36,16 36,32 24,40 12,32 12,16" fill="none" stroke="#3b82f6" stroke-width="2"/>
-                        <circle cx="24" cy="24" r="2" fill="#3b82f6"/>
-                        <line x1="24" y1="24" x2="24" y2="8" stroke="#60a5fa" stroke-width="1"/>
-                        <line x1="24" y1="24" x2="36" y2="16" stroke="#60a5fa" stroke-width="1"/>
-                        <line x1="24" y1="24" x2="36" y2="32" stroke="#60a5fa" stroke-width="1"/>
-                        <line x1="24" y1="24" x2="24" y2="40" stroke="#60a5fa" stroke-width="1"/>
-                        <line x1="24" y1="24" x2="12" y2="32" stroke="#60a5fa" stroke-width="1"/>
-                        <line x1="24" y1="24" x2="12" y2="16" stroke="#60a5fa" stroke-width="1"/>
-                      </svg>
-                      <h1 style="color: #ffffff; font-size: 32px; font-weight: 900; margin: 0; letter-spacing: -0.5px;">TRIXODE STUDIOS</h1>
-                      <p style="color: #60a5fa; font-size: 16px; margin: 8px 0 0; font-weight: 600;">Building the Future of Software</p>
+                    <td style="padding: 32px 32px 24px; text-align: center; border-bottom: 1px solid #e5e7eb;">
+                      <h1 style="color: #111827; font-size: 24px; font-weight: 600; margin: 0;">Trixode Studios</h1>
+                      <p style="color: #6b7280; font-size: 14px; margin: 8px 0 0;">Message Received</p>
                     </td>
                   </tr>
                   
-                  <!-- Main Content -->
+                  <!-- Content -->
                   <tr>
-                    <td style="padding: 40px;">
-                      <h2 style="color: #ffffff; font-size: 24px; font-weight: 900; margin: 0 0 20px;">Thank you for reaching out!</h2>
-                      
-                      <p style="color: #e5e7eb; font-size: 16px; line-height: 1.6; margin: 0 0 20px;">
-                        Hi <strong style="color: #ffffff;">${name}</strong>,
+                    <td style="padding: 32px;">
+                      <p style="color: #111827; font-size: 16px; line-height: 1.5; margin: 0 0 16px;">
+                        Hi ${name},
                       </p>
                       
-                      <p style="color: #e5e7eb; font-size: 16px; line-height: 1.6; margin: 0 0 20px;">
-                        We've successfully received your message and are excited to learn about your project! Our team will review your inquiry and get back to you within <strong style="color: #60a5fa;">24 hours</strong>.
+                      <p style="color: #374151; font-size: 16px; line-height: 1.5; margin: 0 0 24px;">
+                        Thank you for contacting us. We have received your message and will respond within 24 hours.
                       </p>
                       
-                      <div style="background: rgba(59, 130, 246, 0.1); border-left: 4px solid #3b82f6; padding: 20px; margin: 20px 0; border-radius: 0 8px 8px 0;">
-                        <p style="color: #e5e7eb; font-size: 14px; margin: 0 0 10px; font-weight: 600;">Your Message:</p>
-                        <p style="color: #d1d5db; font-size: 14px; margin: 0; line-height: 1.5;">${message}</p>
+                      <div style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 6px; padding: 16px; margin: 24px 0;">
+                        <p style="color: #6b7280; font-size: 14px; margin: 0 0 8px; font-weight: 500;">Your message:</p>
+                        <p style="color: #111827; font-size: 14px; margin: 0; line-height: 1.4;">${message}</p>
                       </div>
                       
-                      <p style="color: #e5e7eb; font-size: 16px; line-height: 1.6; margin: 20px 0;">
-                        In the meantime, feel free to explore our <a href="https://trixode-studios.com/projects" style="color: #60a5fa; text-decoration: none; font-weight: 600;">latest projects</a> or learn more <a href="https://trixode-studios.com/about" style="color: #60a5fa; text-decoration: none; font-weight: 600;">about our team</a>.
-                      </p>
-                      
-                      <p style="color: #e5e7eb; font-size: 16px; line-height: 1.6; margin: 20px 0 0;">
+                      <p style="color: #374151; font-size: 16px; line-height: 1.5; margin: 24px 0 0;">
                         Best regards,<br>
-                        <strong style="color: #ffffff;">The Trixode Studios Team</strong>
+                        <strong style="color: #111827;">Trixode Studios Team</strong>
                       </p>
                     </td>
                   </tr>
                   
                   <!-- Footer -->
                   <tr>
-                    <td style="padding: 30px 40px; text-align: center; background: rgba(59, 130, 246, 0.05); border-top: 1px solid rgba(59, 130, 246, 0.1);">
-                      <p style="color: #9ca3af; font-size: 14px; margin: 0 0 10px;">
-                        <strong>Trixode Studios</strong><br>
-                        Victoria, BC, Canada & Quito, Ecuador
+                    <td style="padding: 24px 32px; text-align: center; background: #f9fafb; border-top: 1px solid #e5e7eb;">
+                      <p style="color: #6b7280; font-size: 14px; margin: 0 0 8px;">
+                        <strong>Trixode Studios</strong>
                       </p>
-                      <p style="color: #6b7280; font-size: 12px; margin: 0;">
-                        This is an automated response. Please don't reply to this email.
+                      <p style="color: #9ca3af; font-size: 12px; margin: 0;">
+                        Victoria, BC, Canada • Quito, Ecuador
+                      </p>
+                      <p style="color: #9ca3af; font-size: 12px; margin: 8px 0 0;">
+                        This is an automated confirmation email.
                       </p>
                     </td>
                   </tr>
@@ -135,6 +121,11 @@ export async function POST(request: NextRequest) {
         </body>
         </html>
       `,
+      headers: {
+        'List-Unsubscribe': '<mailto:unsubscribe@trixode-studios.com>',
+        'X-Priority': '3',
+        'X-Mailer': 'Trixode Studios Contact Form',
+      },
     })
 
     console.log('Emails sent successfully:', { notificationEmail, autoReplyEmail })

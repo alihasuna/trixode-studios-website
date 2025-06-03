@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowLeft, ArrowRight, ExternalLink, Sparkles } from "lucide-react"
+import { ArrowLeft, ArrowRight, ExternalLink, Sparkles, Brain, Zap } from "lucide-react"
 import MobileMenu from "@/components/mobile-menu"
 
 // Connected Hexagon Logo Component
@@ -216,41 +216,105 @@ export default function ProjectsPage() {
               </div>
             </motion.div>
 
-            {/* Coming Soon Project */}
+            {/* AI Research Agent Project */}
             <motion.div
-              className="group bg-gradient-to-br from-gray-800/30 to-gray-900/30 backdrop-blur-sm border border-gray-600/30 rounded-3xl overflow-hidden"
+              className="group bg-gradient-to-br from-purple-900/20 to-pink-900/10 backdrop-blur-sm border border-purple-500/20 rounded-3xl overflow-hidden hover:border-purple-400/40 transition-all duration-500"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
+              whileHover={{ y: -5 }}
             >
               {/* Project Preview */}
-              <div className="h-64 bg-gradient-to-br from-gray-600 to-gray-800 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-500/20 to-gray-900/20"></div>
+              <div className="h-64 bg-gradient-to-br from-purple-600 to-pink-700 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-pink-900/20"></div>
 
                 <div className="relative z-10 h-full flex items-center justify-center">
                   <div className="text-center">
-                    <div className="w-20 h-20 bg-white/5 rounded-2xl flex items-center justify-center mx-auto mb-4 backdrop-blur-sm border border-white/10">
-                      <span className="text-2xl font-black text-white/60">?</span>
+                    <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4 backdrop-blur-sm">
+                      <Brain className="h-10 w-10 text-white" />
                     </div>
-                    <h3 className="text-2xl font-black text-white/60">COMING SOON</h3>
+                    <h3 className="text-3xl font-black text-white">RESEARCHER AI</h3>
+                    <div className="mt-2 flex items-center justify-center">
+                      <span className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-3 py-1 text-xs font-black rounded-full">
+                        COMING SOON
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
 
               {/* Project Content */}
               <div className="p-8">
-                <h2 className="text-3xl font-black text-white/60 mb-6">NEXT INNOVATION</h2>
-                <p className="text-lg text-gray-400 mb-8 leading-relaxed font-semibold">
-                  We're working on something extraordinary. Stay tuned for our next breakthrough in research and
-                  development tools that will reshape how innovation happens.
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-3xl font-black text-white">RESEARCHER AI</h2>
+                  <span className="bg-gradient-to-r from-purple-500 to-pink-600 text-white px-4 py-2 text-sm font-black rounded-full">
+                    AI AGENT
+                  </span>
+                </div>
+
+                <p className="text-lg text-gray-300 mb-6 leading-relaxed font-semibold">
+                  Your intelligent research companion that understands scientific literature, generates hypotheses, designs experiments, and accelerates discovery across all research domains.
                 </p>
 
+                {/* Features */}
+                <div className="mb-8">
+                  <h4 className="text-lg font-black mb-4 text-white">PLANNED FEATURES</h4>
+                  <ul className="space-y-2 text-gray-400">
+                    {[
+                      "Intelligent literature review & synthesis",
+                      "Automated hypothesis generation",
+                      "Experimental design optimization",
+                      "Real-time collaboration with researchers",
+                      "Cross-domain knowledge connection",
+                      "Publication-ready report generation",
+                    ].map((feature, index) => (
+                      <motion.li
+                        key={feature}
+                        className="flex items-center font-semibold"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.8 + index * 0.1 }}
+                      >
+                        <div className="w-2 h-2 bg-pink-400 rounded-full mr-3" />
+                        {feature}
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Tech Stack */}
+                <div className="mb-8">
+                  <h4 className="text-lg font-black mb-4 text-white">TECH STACK</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {["LLM", "RAG", "Vector DB", "NLP", "Python", "React", "GraphQL"].map((tech) => (
+                      <span
+                        key={tech}
+                        className="bg-purple-900/50 text-purple-300 px-3 py-1 text-sm font-black rounded-lg border border-purple-500/20"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Progress Indicator */}
+                <div className="mb-6">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-black text-white">DEVELOPMENT PROGRESS</span>
+                    <span className="text-sm font-black text-purple-400">35%</span>
+                  </div>
+                  <div className="w-full bg-gray-700 rounded-full h-2">
+                    <div className="bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full" style={{ width: '35%' }}></div>
+                  </div>
+                </div>
+
+                {/* CTA Button */}
                 <Button
-                  className="w-full bg-gray-600/50 text-white/60 border-0 rounded-xl cursor-not-allowed font-black"
+                  className="w-full bg-gradient-to-r from-purple-600/50 to-pink-600/50 text-white border border-purple-500/30 rounded-xl font-black hover:from-purple-600/70 hover:to-pink-600/70 transition-all duration-300"
                   size="lg"
-                  disabled
                 >
-                  Coming Soon
+                  <Zap className="mr-2 h-5 w-5" />
+                  Notify Me When Ready
                 </Button>
               </div>
             </motion.div>

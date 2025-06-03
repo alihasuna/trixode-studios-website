@@ -66,8 +66,8 @@ export default function Footer() {
             <div className="flex space-x-4">
               {[
                 { icon: Github, href: "https://github.com/trixodestudios", label: "GitHub" },
-                { icon: Linkedin, href: "https://linkedin.com/company/trixodestudios", label: "LinkedIn" },
-                { icon: Mail, href: "mailto:hello@trixodestudios.com", label: "Email" },
+                { icon: Linkedin, href: "https://linkedin.com/in/trixode-studios-054154311", label: "LinkedIn" },
+                { icon: Mail, href: "mailto:ceo@trixode-studios.com", label: "Email" },
               ].map((social) => (
                 <a
                   key={social.label}
@@ -131,7 +131,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-blue-500/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 font-medium">
-            © {new Date().getFullYear()} Trixode Studios. All rights reserved.
+            © 2025 Trixode-Studios S.A.S. B.I.C. | All rights reserved.
           </p>
           <p className="text-gray-500 font-medium mt-4 md:mt-0">Made with ❤️ in Victoria, BC</p>
         </div>

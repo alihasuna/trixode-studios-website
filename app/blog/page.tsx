@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import Link from "next/link"
 import { ArrowLeft, Calendar, ArrowRight } from "lucide-react"
 import MobileMenu from "@/components/mobile-menu"
+import { useState } from "react"
 
 // Connected Hexagon Logo Component
 const ConnectedHexagonLogo = ({ size = 32, className = "" }: { size?: number; className?: string }) => {
@@ -58,6 +59,7 @@ const blogPosts = [
       "Exploring how artificial intelligence is revolutionizing the way researchers approach complex problems and data analysis.",
     readTime: "5 min read",
     gradient: "from-blue-600 to-blue-800",
+    slug: "future-of-ai-research-tools",
   },
   {
     id: 2,
@@ -68,6 +70,7 @@ const blogPosts = [
       "A deep dive into the principles of creating maintainable, scalable, and beautiful code that stands the test of time.",
     readTime: "8 min read",
     gradient: "from-blue-600 to-purple-700",
+    slug: "building-elegant-software-architecture",
   },
   {
     id: 3,
@@ -77,6 +80,7 @@ const blogPosts = [
     excerpt: "How we're working to close the gap between cutting-edge research and practical, real-world applications.",
     readTime: "6 min read",
     gradient: "from-purple-700 to-pink-600",
+    slug: "bridging-academia-industry",
   },
   {
     id: 4,
@@ -86,6 +90,7 @@ const blogPosts = [
     excerpt: "Exploring the intersection of quantum computing principles and modern software architecture patterns.",
     readTime: "7 min read",
     gradient: "from-indigo-600 to-purple-700",
+    slug: "quantum-computing-software-design",
   },
   {
     id: 5,
@@ -96,6 +101,7 @@ const blogPosts = [
       "The importance of open-source software in advancing scientific research and fostering global collaboration.",
     readTime: "5 min read",
     gradient: "from-blue-600 to-blue-700",
+    slug: "open-source-research-collaboration",
   },
   {
     id: 6,
@@ -105,6 +111,7 @@ const blogPosts = [
     excerpt: "Technical strategies for building fast, responsive AI-powered applications that scale with user demand.",
     readTime: "10 min read",
     gradient: "from-blue-800 to-blue-600",
+    slug: "performance-optimization-ai-tools",
   },
 ]
 
@@ -119,6 +126,64 @@ const categories = [
 ]
 
 export default function BlogPage() {
+  const [selectedCategory, setSelectedCategory] = useState("All")
+  const [email, setEmail] = useState("")
+  const [isSubscribing, setIsSubscribing] = useState(false)
+  const [subscriptionStatus, setSubscriptionStatus] = useState<"idle" | "success" | "error">("idle")
+
+  // Filter posts based on selected category
+  const filteredPosts = selectedCategory === "All" 
+    ? blogPosts 
+    : blogPosts.filter(post => post.category === selectedCategory)
+
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategory(category)
+  }
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    
+    if (!email) return
+
+    setIsSubscribing(true)
+    setSubscriptionStatus("idle")
+
+    try {
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setSubscriptionStatus("success")
+        setEmail("")
+        
+        // Reset status after 5 seconds
+        setTimeout(() => {
+          setSubscriptionStatus("idle")
+        }, 5000)
+      } else {
+        setSubscriptionStatus("error")
+        setTimeout(() => {
+          setSubscriptionStatus("idle")
+        }, 5000)
+      }
+    } catch (error) {
+      console.error('Newsletter subscription error:', error)
+      setSubscriptionStatus("error")
+      setTimeout(() => {
+        setSubscriptionStatus("idle")
+      }, 5000)
+    } finally {
+      setIsSubscribing(false)
+    }
+  }
+
   return (
     <div className="min-h-screen bg-[#0a0a1a] text-white">
       {/* Background Effects */}
@@ -200,11 +265,12 @@ export default function BlogPage() {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <div className="flex flex-wrap gap-3">
-              {categories.map((category, index) => (
+              {categories.map((category) => (
                 <button
                   key={category}
+                  onClick={() => handleCategoryChange(category)}
                   className={`px-6 py-3 font-black text-sm rounded-xl transition-all duration-300 ${
-                    index === 0
+                    selectedCategory === category
                       ? "bg-gradient-to-r from-blue-500 to-cyan-400 text-white shadow-lg shadow-blue-500/25"
                       : "bg-blue-900/20 text-gray-300 border border-cyan-500/20 hover:bg-blue-800/30 hover:border-cyan-400/40 hover:text-white"
                   }`}
@@ -215,74 +281,109 @@ export default function BlogPage() {
             </div>
           </motion.div>
 
+          {/* Posts Count */}
+          <motion.div
+            className="mb-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <p className="text-gray-400 font-semibold">
+              Showing {filteredPosts.length} posts
+              {selectedCategory !== "All" && ` in "${selectedCategory}"`}
+            </p>
+          </motion.div>
+
           {/* Blog Posts Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post, index) => (
-              <motion.article
+            {filteredPosts.map((post, index) => (
+              <Link
                 key={post.id}
-                className="group bg-gradient-to-br from-blue-900/20 to-purple-900/10 backdrop-blur-sm border border-blue-500/20 rounded-2xl overflow-hidden hover:border-blue-400/40 transition-all duration-500 cursor-pointer"
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
-                whileHover={{ y: -5 }}
+                href={`/blog/${post.slug}`}
+                className="block"
               >
-                {/* Thumbnail */}
-                <div className={`h-48 bg-gradient-to-br ${post.gradient} relative overflow-hidden`}>
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
-                  <div className="relative z-10 h-full flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center mx-auto mb-2 backdrop-blur-sm">
-                        <span className="text-2xl font-black text-white">{post.id}</span>
+                <motion.article
+                  className="group bg-gradient-to-br from-blue-900/20 to-purple-900/10 backdrop-blur-sm border border-blue-500/20 rounded-2xl overflow-hidden hover:border-blue-400/40 transition-all duration-500 cursor-pointer h-full"
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
+                  whileHover={{ y: -5 }}
+                  layout
+                >
+                  {/* Thumbnail */}
+                  <div className={`h-48 bg-gradient-to-br ${post.gradient} relative overflow-hidden`}>
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                    <div className="relative z-10 h-full flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center mx-auto mb-2 backdrop-blur-sm">
+                          <span className="text-2xl font-black text-white">{post.id}</span>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Content */}
-                <div className="p-6">
-                  {/* Category & Date */}
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="bg-gradient-to-r from-blue-500 to-cyan-400 text-white px-3 py-1 text-xs font-black rounded-full">
-                      {post.category}
-                    </span>
-                    <div className="flex items-center text-gray-400 text-sm">
-                      <Calendar className="h-4 w-4 mr-1" />
-                      {new Date(post.date).toLocaleDateString()}
+                  {/* Content */}
+                  <div className="p-6">
+                    {/* Category & Date */}
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="bg-gradient-to-r from-blue-500 to-cyan-400 text-white px-3 py-1 text-xs font-black rounded-full">
+                        {post.category}
+                      </span>
+                      <div className="flex items-center text-gray-400 text-sm">
+                        <Calendar className="h-4 w-4 mr-1" />
+                        {new Date(post.date).toLocaleDateString()}
+                      </div>
+                    </div>
+
+                    {/* Title */}
+                    <h2 className="text-xl font-black mb-3 leading-tight text-white group-hover:text-cyan-300 transition-colors">
+                      {post.title}
+                    </h2>
+
+                    {/* Excerpt */}
+                    <p className="text-gray-400 mb-4 leading-relaxed font-semibold">{post.excerpt}</p>
+
+                    {/* Read More */}
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm text-gray-500 font-semibold">{post.readTime}</span>
+                      <div className="flex items-center text-cyan-300 font-black text-sm group-hover:text-cyan-200 transition-colors">
+                        Read More
+                        <ArrowRight className="ml-1 h-4 w-4" />
+                      </div>
                     </div>
                   </div>
-
-                  {/* Title */}
-                  <h2 className="text-xl font-black mb-3 leading-tight text-white group-hover:text-cyan-300 transition-colors">
-                    {post.title}
-                  </h2>
-
-                  {/* Excerpt */}
-                  <p className="text-gray-400 mb-4 leading-relaxed font-semibold">{post.excerpt}</p>
-
-                  {/* Read More */}
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-500 font-semibold">{post.readTime}</span>
-                    <div className="flex items-center text-cyan-300 font-black text-sm group-hover:text-cyan-200 transition-colors">
-                      Read More
-                      <ArrowRight className="ml-1 h-4 w-4" />
-                    </div>
-                  </div>
-                </div>
-              </motion.article>
+                </motion.article>
+              </Link>
             ))}
           </div>
 
+          {/* No Posts Message */}
+          {filteredPosts.length === 0 && (
+            <motion.div
+              className="text-center py-16"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              <p className="text-xl text-gray-400 font-semibold">
+                No posts found in "{selectedCategory}" category.
+              </p>
+            </motion.div>
+          )}
+
           {/* Load More */}
-          <motion.div
-            className="text-center mt-16"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.0 }}
-          >
-            <button className="bg-gradient-to-br from-blue-900/20 to-purple-900/10 backdrop-blur-sm border border-blue-500/20 text-white font-black px-12 py-4 rounded-xl hover:border-blue-400/40 hover:bg-blue-800/30 transition-all duration-300">
-              Load More Posts
-            </button>
-          </motion.div>
+          {filteredPosts.length > 0 && (
+            <motion.div
+              className="text-center mt-16"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.0 }}
+            >
+              <button className="bg-gradient-to-br from-blue-900/20 to-purple-900/10 backdrop-blur-sm border border-blue-500/20 text-white font-black px-12 py-4 rounded-xl hover:border-blue-400/40 hover:bg-blue-800/30 transition-all duration-300">
+                Load More Posts
+              </button>
+            </motion.div>
+          )}
 
           {/* Newsletter Signup */}
           <motion.section
@@ -297,16 +398,49 @@ export default function BlogPage() {
                 <p className="text-xl text-gray-300 mb-8 font-semibold">
                   Get the latest insights on AI, software development, and research impact delivered to your inbox.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4">
+                
+                {subscriptionStatus === "success" && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mb-6 p-4 bg-green-900/20 border border-green-500/30 rounded-xl"
+                  >
+                    <p className="text-green-400 font-semibold">
+                      🎉 Successfully subscribed! Check your email for confirmation.
+                    </p>
+                  </motion.div>
+                )}
+
+                {subscriptionStatus === "error" && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mb-6 p-4 bg-red-900/20 border border-red-500/30 rounded-xl"
+                  >
+                    <p className="text-red-400 font-semibold">
+                      ❌ Something went wrong. Please try again.
+                    </p>
+                  </motion.div>
+                )}
+
+                <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-4">
                   <input
                     type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     placeholder="your@email.com"
                     className="flex-1 px-6 py-4 bg-blue-900/20 border border-cyan-500/30 text-white placeholder-gray-400 rounded-xl focus:border-cyan-400 focus:outline-none transition-all duration-300 font-semibold"
+                    required
+                    disabled={isSubscribing}
                   />
-                  <button className="bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white font-black px-8 py-4 rounded-xl transition-all duration-300">
-                    Subscribe
+                  <button 
+                    type="submit"
+                    disabled={isSubscribing || !email}
+                    className="bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white font-black px-8 py-4 rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isSubscribing ? "Subscribing..." : "Subscribe"}
                   </button>
-                </div>
+                </form>
               </div>
             </div>
           </motion.section>
