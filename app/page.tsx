@@ -88,33 +88,75 @@ export default function HomePage() {
   const [isLowPowerMode, setIsLowPowerMode] = useState(false)
 
   useEffect(() => {
-    // Detect mobile devices
+    // Detect mobile devices and tablets (including iPads)
     const checkMobile = () => {
-      const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+      const userAgent = navigator.userAgent
+      
+      // Enhanced mobile detection including tablets
+      const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent) ||
+                    // Detect iPad specifically (including newer iPads that identify as Mac)
+                    /iPad/i.test(userAgent) ||
+                    // Detect iPad Pro and newer iPads that show as Mac
+                    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1) ||
+                    // Detect other tablets
+                    /Tablet|PlayBook|Silk/i.test(userAgent) ||
+                    // Screen size based detection for tablets
+                    (window.innerWidth <= 1024 && 'ontouchstart' in window)
+      
       setIsMobile(mobile)
       
-      // Detect potential low-power scenarios
-      const lowPower = mobile || navigator.hardwareConcurrency <= 4
+      // Enhanced low-power detection for tablets and older devices
+      const lowPower = mobile || 
+                      navigator.hardwareConcurrency <= 4 ||
+                      /iPad|Android.*(?:Tablet|Tab)/i.test(userAgent) ||
+                      // Performance-based detection
+                      (window.devicePixelRatio > 2 && window.innerWidth <= 1024)
+      
       setIsLowPowerMode(lowPower)
     }
 
     checkMobile()
     
-    // Only add mouse tracking on desktop
-    if (!isMobile) {
+    // Also check on resize for orientation changes
+    const handleResize = () => {
+      const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+                    /iPad/i.test(navigator.userAgent) ||
+                    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1) ||
+                    /Tablet|PlayBook|Silk/i.test(navigator.userAgent) ||
+                    (window.innerWidth <= 1024 && 'ontouchstart' in window)
+      setIsMobile(mobile)
+    }
+    
+    window.addEventListener('resize', handleResize)
+    
+    // Only add mouse tracking on desktop (non-touch devices)
+    if (!isMobile && !('ontouchstart' in window)) {
       const handleMouseMove = (e: MouseEvent) => {
         setMousePosition({ x: e.clientX, y: e.clientY })
       }
       window.addEventListener("mousemove", handleMouseMove)
-      return () => window.removeEventListener("mousemove", handleMouseMove)
+      return () => {
+        window.removeEventListener("mousemove", handleMouseMove)
+        window.removeEventListener('resize', handleResize)
+      }
+    }
+    
+    return () => {
+      window.removeEventListener('resize', handleResize)
     }
   }, [isMobile])
 
-  // Reduced animation variants for mobile
+  // Reduced animation variants for mobile and tablets
   const mobileAnimationVariants = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
     transition: { duration: 0.3 }
+  }
+
+  const tabletAnimationVariants = {
+    initial: { opacity: 0, y: 15 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.4 }
   }
 
   const desktopAnimationVariants = {
@@ -123,7 +165,11 @@ export default function HomePage() {
     transition: { duration: 0.8 }
   }
 
-  const animationVariants = isMobile ? mobileAnimationVariants : desktopAnimationVariants
+  // Detect tablet size for different animation speeds
+  const isTablet = window.innerWidth >= 768 && window.innerWidth <= 1024 && isMobile
+  const animationVariants = isMobile ? 
+    (isTablet ? tabletAnimationVariants : mobileAnimationVariants) : 
+    desktopAnimationVariants
 
   return (
     <div className="min-h-screen bg-[#0a0a1a] text-white overflow-hidden relative">
