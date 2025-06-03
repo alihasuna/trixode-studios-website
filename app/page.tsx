@@ -86,10 +86,16 @@ export default function HomePage() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isMobile, setIsMobile] = useState(false)
   const [isLowPowerMode, setIsLowPowerMode] = useState(false)
+  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
+    // Set client-side flag
+    setIsClient(true)
+    
     // Detect mobile devices and tablets (including iPads)
     const checkMobile = () => {
+      if (typeof window === 'undefined') return false
+      
       const userAgent = navigator.userAgent
       
       // Enhanced mobile detection including tablets
@@ -119,6 +125,8 @@ export default function HomePage() {
     
     // Also check on resize for orientation changes
     const handleResize = () => {
+      if (typeof window === 'undefined') return
+      
       const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
                     /iPad/i.test(navigator.userAgent) ||
                     (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1) ||
@@ -165,11 +173,60 @@ export default function HomePage() {
     transition: { duration: 0.8 }
   }
 
-  // Detect tablet size for different animation speeds
-  const isTablet = window.innerWidth >= 768 && window.innerWidth <= 1024 && isMobile
+  // Detect tablet size for different animation speeds (only on client)
+  const isTablet = isClient && typeof window !== 'undefined' ? 
+    (window.innerWidth >= 768 && window.innerWidth <= 1024 && isMobile) : false
   const animationVariants = isMobile ? 
     (isTablet ? tabletAnimationVariants : mobileAnimationVariants) : 
     desktopAnimationVariants
+
+  // Don't render complex animations on server
+  if (!isClient) {
+    return (
+      <div className="min-h-screen bg-[#0a0a1a] text-white">
+        <nav className="fixed top-0 w-full z-50 bg-[#0a0a1a]/80 backdrop-blur-xl border-b border-blue-500/10">
+          <div className="max-w-7xl mx-auto px-6 py-4">
+            <div className="flex items-center justify-between">
+              <Link href="/" className="flex items-center space-x-3">
+                <ConnectedHexagonLogo size={32} />
+                <span className="text-xl font-black text-white">Trixode Studios</span>
+              </Link>
+              <div className="hidden md:flex items-center space-x-8">
+                {["People", "About", "Projects", "Blog", "Contact"].map((item) => (
+                  <Link
+                    key={item}
+                    href={`/${item.toLowerCase()}`}
+                    className="text-gray-300 hover:text-white transition-colors duration-300 font-semibold"
+                  >
+                    {item}
+                  </Link>
+                ))}
+              </div>
+              <MobileMenu currentPath="/" />
+            </div>
+          </div>
+        </nav>
+        <section className="relative min-h-screen flex items-center justify-center">
+          <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
+            <p className="text-lg md:text-xl text-gray-300 mb-6 font-medium">
+              Click #more below to explore our services & projects. Yeap, is like magic!
+            </p>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight text-white">
+              We build beautiful &<br />
+              <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+                elegant software
+              </span>
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed font-medium">
+              Empowering scientists, innovators, and creators with AI-powered tools that bridge the gap between
+              cutting-edge research and practical applications.
+            </p>
+          </div>
+        </section>
+        <Footer />
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen bg-[#0a0a1a] text-white overflow-hidden relative">
