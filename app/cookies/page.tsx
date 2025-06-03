@@ -5,6 +5,7 @@ import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import Footer from "@/components/footer"
 import MobileMenu from "@/components/mobile-menu"
+import CursorEffect from "@/components/cursor-effect"
 
 // Connected Hexagon Logo Component
 const ConnectedHexagonLogo = ({ size = 32, className = "" }: { size?: number; className?: string }) => {
@@ -52,6 +53,9 @@ const ConnectedHexagonLogo = ({ size = 32, className = "" }: { size?: number; cl
 export default function CookiesPage() {
   return (
     <div className="min-h-screen bg-[#0a0a1a] text-white">
+      {/* Cursor Effect */}
+      <CursorEffect />
+      
       {/* Background Effects */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-600/20 to-blue-400/10 rounded-full blur-3xl" />

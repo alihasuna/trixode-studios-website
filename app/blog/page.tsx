@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import Link from "next/link"
 import { ArrowLeft, Calendar, ArrowRight } from "lucide-react"
 import MobileMenu from "@/components/mobile-menu"
+import CursorEffect from "@/components/cursor-effect"
 import { useState } from "react"
 
 // Connected Hexagon Logo Component
@@ -186,6 +187,9 @@ export default function BlogPage() {
 
   return (
     <div className="min-h-screen bg-[#0a0a1a] text-white">
+      {/* Cursor Effect */}
+      <CursorEffect />
+      
       {/* Background Effects */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-600/20 to-blue-400/10 rounded-full blur-3xl" />
@@ -368,20 +372,6 @@ export default function BlogPage() {
               <p className="text-xl text-gray-400 font-semibold">
                 No posts found in "{selectedCategory}" category.
               </p>
-            </motion.div>
-          )}
-
-          {/* Load More */}
-          {filteredPosts.length > 0 && (
-            <motion.div
-              className="text-center mt-16"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.0 }}
-            >
-              <button className="bg-gradient-to-br from-blue-900/20 to-purple-900/10 backdrop-blur-sm border border-blue-500/20 text-white font-black px-12 py-4 rounded-xl hover:border-blue-400/40 hover:bg-blue-800/30 transition-all duration-300">
-                Load More Posts
-              </button>
             </motion.div>
           )}
 
