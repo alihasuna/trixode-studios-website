@@ -127,128 +127,27 @@ export default function PeoplePage() {
             <div className="flex flex-col lg:flex-row items-start gap-12">
               {/* Avatar */}
               <div className="flex-shrink-0">
-                <div className="relative">
-                  {/* Tech Digital Avatar */}
-                  <div className="w-72 h-72 bg-gradient-to-br from-indigo-600 via-purple-500 to-pink-600 rounded-3xl p-2 shadow-2xl shadow-purple-500/25">
-                    <div className="w-full h-full bg-gradient-to-br from-gray-900/90 to-black/80 rounded-3xl flex items-center justify-center relative overflow-hidden backdrop-blur-sm">
-                      {/* Digital Tech Avatar */}
-                      <div className="relative z-10">
-                        <svg width="220" height="220" viewBox="0 0 140 140" className="text-cyan-400">
-                          <defs>
-                            <linearGradient id="circuitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                              <stop offset="0%" style={{ stopColor: '#06b6d4', stopOpacity: 1 }} />
-                              <stop offset="50%" style={{ stopColor: '#8b5cf6', stopOpacity: 1 }} />
-                              <stop offset="100%" style={{ stopColor: '#ec4899', stopOpacity: 1 }} />
-                            </linearGradient>
-                            <linearGradient id="headGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                              <stop offset="0%" style={{ stopColor: '#1e293b', stopOpacity: 1 }} />
-                              <stop offset="100%" style={{ stopColor: '#0f172a', stopOpacity: 1 }} />
-                            </linearGradient>
-                          </defs>
-                          
-                          {/* Circuit Board Background */}
-                          <rect x="20" y="20" width="100" height="100" fill="#111827" rx="10" opacity="0.8" />
-                          
-                          {/* Circuit Lines */}
-                          <g stroke="url(#circuitGrad)" strokeWidth="1.5" fill="none">
-                            <line x1="25" y1="40" x2="45" y2="40" />
-                            <line x1="45" y1="40" x2="45" y2="30" />
-                            <line x1="45" y1="30" x2="60" y2="30" />
-                            
-                            <line x1="25" y1="60" x2="35" y2="60" />
-                            <line x1="35" y1="60" x2="35" y2="50" />
-                            
-                            <line x1="95" y1="45" x2="115" y2="45" />
-                            <line x1="105" y1="35" x2="105" y2="55" />
-                            
-                            <line x1="85" y1="80" x2="105" y2="80" />
-                            <line x1="95" y1="70" x2="95" y2="90" />
-                            
-                            <line x1="30" y1="100" x2="50" y2="100" />
-                            <line x1="40" y1="90" x2="40" y2="110" />
-                          </g>
-                          
-                          {/* Circuit Nodes */}
-                          <circle cx="45" cy="40" r="2" fill="#06b6d4" />
-                          <circle cx="35" cy="60" r="2" fill="#8b5cf6" />
-                          <circle cx="105" cy="45" r="2" fill="#ec4899" />
-                          <circle cx="95" cy="80" r="2" fill="#06b6d4" />
-                          <circle cx="40" cy="100" r="2" fill="#8b5cf6" />
-                          
-                          {/* Main Avatar Container - Hexagonal */}
-                          <polygon
-                            points="70,25 95,35 95,75 70,85 45,75 45,35"
-                            fill="url(#headGrad)"
-                            stroke="url(#circuitGrad)"
-                            strokeWidth="2"
-                          />
-                          
-                          {/* Digital Face Grid */}
-                          <g stroke="#06b6d4" strokeWidth="0.5" opacity="0.3">
-                            <line x1="50" y1="45" x2="90" y2="45" />
-                            <line x1="50" y1="55" x2="90" y2="55" />
-                            <line x1="50" y1="65" x2="90" y2="65" />
-                            <line x1="60" y1="35" x2="60" y2="75" />
-                            <line x1="70" y1="35" x2="70" y2="75" />
-                            <line x1="80" y1="35" x2="80" y2="75" />
-                          </g>
-                          
-                          {/* Digital Eyes */}
-                          <rect x="58" y="48" width="6" height="4" fill="#06b6d4" rx="1" />
-                          <rect x="76" y="48" width="6" height="4" fill="#06b6d4" rx="1" />
-                          <rect x="59" y="49" width="4" height="2" fill="#ffffff" rx="0.5" />
-                          <rect x="77" y="49" width="4" height="2" fill="#ffffff" rx="0.5" />
-                          
-                          {/* Digital Mouth */}
-                          <rect x="65" y="62" width="10" height="2" fill="#ec4899" rx="1" />
-                          <rect x="67" y="63" width="6" height="1" fill="#ffffff" rx="0.5" opacity="0.8" />
-                          
-                          {/* Tech Pattern on Face */}
-                          <g stroke="#8b5cf6" strokeWidth="0.8" fill="none" opacity="0.6">
-                            <path d="M 55 40 L 60 45 L 55 50" />
-                            <path d="M 85 40 L 80 45 L 85 50" />
-                          </g>
-                          
-                          {/* Digital "Hair" - Circuit Pattern */}
-                          <g stroke="url(#circuitGrad)" strokeWidth="1" fill="none">
-                            <path d="M 50 35 Q 60 28 70 32 Q 80 28 90 35" />
-                            <circle cx="55" cy="32" r="1" fill="#06b6d4" />
-                            <circle cx="70" cy="30" r="1" fill="#8b5cf6" />
-                            <circle cx="85" cy="32" r="1" fill="#ec4899" />
-                          </g>
-                          
-                          {/* Status Indicators */}
-                          <circle cx="92" cy="38" r="2" fill="#10b981" opacity="0.8" />
-                          <circle cx="48" cy="38" r="2" fill="#f59e0b" opacity="0.8" />
-                          
-                          {/* Digital Body */}
-                          <rect x="60" y="85" width="20" height="25" fill="#1f2937" rx="2" />
-                          <rect x="63" y="88" width="14" height="19" fill="#374151" rx="1" />
-                          
-                          {/* Tech Lines on Body */}
-                          <g stroke="#06b6d4" strokeWidth="0.5" opacity="0.7">
-                            <line x1="65" y1="90" x2="75" y2="90" />
-                            <line x1="65" y1="95" x2="75" y2="95" />
-                            <line x1="65" y1="100" x2="75" y2="100" />
-                          </g>
-                          
-                          {/* Power Button */}
-                          <circle cx="70" cy="102" r="3" fill="#ec4899" opacity="0.8" />
-                          <circle cx="70" cy="102" r="1.5" fill="#ffffff" />
-                        </svg>
-                      </div>
-                      
-                      {/* Digital Glow Effects */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 to-purple-600/10 rounded-3xl"></div>
-                      <div className="absolute top-1/4 left-1/4 w-12 h-12 bg-cyan-400/20 rounded-full blur-lg animate-pulse"></div>
-                      <div className="absolute bottom-1/3 right-1/4 w-8 h-8 bg-purple-500/20 rounded-full blur-lg animate-pulse delay-150"></div>
-                    </div>
+                <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72">
+                  {/* Simple frame with glow */}
+                  <div className="relative w-full h-full rounded-2xl overflow-hidden border border-blue-400/30 shadow-xl shadow-blue-500/20">
+                    {/* CEO Photo */}
+                    <img
+                      src="https://res.cloudinary.com/dmkfxjv0s/image/upload/w_400,h_400,c_fill,g_face,f_auto,q_auto/v1749088385/ceo_photo.png"
+                      alt="Hussien Ballouk - CEO of Trixode Studios"
+                      className="w-full h-full object-cover object-center"
+                      loading="lazy"
+                    />
+                    
+                    {/* Subtle overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-blue-900/10 to-transparent"></div>
                   </div>
                   
-                  {/* Tech Accent Elements */}
-                  <div className="absolute -top-2 -right-2 w-4 h-4 bg-green-400 rounded-sm shadow-lg"></div>
-                  <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-orange-400 rounded-sm shadow-lg"></div>
-                  <div className="absolute top-3 -left-3 w-3 h-3 bg-cyan-400 rounded-full shadow-lg"></div>
+                  {/* Corner lights */}
+                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-cyan-400 rounded-full shadow-lg shadow-cyan-400/50 animate-pulse"></div>
+                  <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-blue-500 rounded-full shadow-lg shadow-blue-500/50"></div>
+                  
+                  {/* Glow effect */}
+                  <div className="absolute inset-0 rounded-2xl ring-1 ring-blue-400/20 shadow-2xl shadow-blue-500/10"></div>
                 </div>
               </div>
 
