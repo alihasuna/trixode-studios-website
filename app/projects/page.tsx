@@ -209,13 +209,13 @@ export default function ProjectsPage() {
 
                 {/* CTA Button */}
                 <Link href="https://v0-saas-image-generation-software.vercel.app/" target="_blank" rel="noopener noreferrer">
-                  <Button
-                    className="w-full bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white border-0 rounded-xl shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all duration-300 font-black"
-                    size="lg"
-                  >
+                <Button
+                  className="w-full bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white border-0 rounded-xl shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all duration-300 font-black"
+                  size="lg"
+                >
                     View Live Demo
-                    <ExternalLink className="ml-2 h-5 w-5" />
-                  </Button>
+                  <ExternalLink className="ml-2 h-5 w-5" />
+                </Button>
                 </Link>
               </div>
             </motion.div>

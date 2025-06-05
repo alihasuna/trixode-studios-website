@@ -184,7 +184,7 @@ export default function HomePage() {
   if (!isClient) {
     return (
       <div className="min-h-screen bg-[#0a0a1a] text-white">
-        <nav className="fixed top-0 w-full z-50 bg-[#0a0a1a]/80 backdrop-blur-xl border-b border-blue-500/10">
+        <nav className="fixed top-0 w-full z-40 bg-[#0a0a1a]/80 backdrop-blur-xl border-b border-blue-500/10">
           <div className="max-w-7xl mx-auto px-6 py-4">
             <div className="flex items-center justify-between">
               <Link href="/" className="flex items-center space-x-3">
@@ -202,22 +202,21 @@ export default function HomePage() {
                   </Link>
                 ))}
               </div>
-              <MobileMenu currentPath="/" />
             </div>
           </div>
         </nav>
         <section className="relative min-h-screen flex items-center justify-center">
           <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
-            <p className="text-lg md:text-xl text-gray-300 mb-6 font-medium">
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-4 sm:mb-6 font-medium px-4">
               Click #more below to explore our services & projects. Yeap, is like magic!
             </p>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight text-white">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-black mb-4 sm:mb-6 leading-tight text-white px-4">
               We build beautiful &<br />
               <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
                 elegant software
               </span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed font-medium">
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed font-medium px-4">
               Empowering scientists, innovators, and creators with AI-powered tools that bridge the gap between
               cutting-edge research and practical applications.
             </p>
@@ -321,7 +320,7 @@ export default function HomePage() {
       </div>
 
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-[#0a0a1a]/80 backdrop-blur-xl border-b border-blue-500/10">
+      <nav className="fixed top-0 w-full z-40 bg-[#0a0a1a]/80 backdrop-blur-xl border-b border-blue-500/10">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-3">
@@ -353,7 +352,7 @@ export default function HomePage() {
         <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
           {/* Subtitle */}
           <motion.p
-            className="text-lg md:text-xl text-gray-300 mb-6 font-medium"
+            className="text-base sm:text-lg md:text-xl text-gray-300 mb-4 sm:mb-6 font-medium px-4"
             initial={animationVariants.initial}
             animate={animationVariants.animate}
             transition={{ ...animationVariants.transition, delay: 0.1 }}
@@ -363,7 +362,7 @@ export default function HomePage() {
 
           {/* Main Title */}
           <motion.h1
-            className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight text-white"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-black mb-4 sm:mb-6 leading-tight text-white px-4"
             initial={animationVariants.initial}
             animate={animationVariants.animate}
             transition={{ ...animationVariants.transition, delay: 0.2 }}
@@ -376,7 +375,7 @@ export default function HomePage() {
 
           {/* Description */}
           <motion.p
-            className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed font-medium"
+            className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed font-medium px-4"
             initial={animationVariants.initial}
             animate={animationVariants.animate}
             transition={{ ...animationVariants.transition, delay: 0.3 }}
@@ -386,25 +385,27 @@ export default function HomePage() {
           </motion.p>
 
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col sm:flex-row gap-4 justify-center px-4"
             initial={animationVariants.initial}
             animate={animationVariants.animate}
             transition={{ ...animationVariants.transition, delay: 0.4 }}
           >
-            <Link href="/projects">
+            <Link href="/projects" className="w-full sm:w-auto">
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white border-0 px-8 py-6 text-lg font-black rounded-lg shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all duration-300"
+                className="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white border-0 px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-black rounded-lg shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all duration-300 touch-manipulation"
+                style={{ WebkitTapHighlightColor: 'transparent' }}
               >
                 Explore Our Work
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
             </Link>
-            <Link href="/about">
+            <Link href="/about" className="w-full sm:w-auto">
               <Button
                 variant="outline"
                 size="lg"
-                className="border-cyan-400/50 text-cyan-300 hover:bg-cyan-500/10 hover:border-cyan-400 px-8 py-6 text-lg font-black rounded-lg backdrop-blur-sm transition-all duration-300"
+                className="w-full sm:w-auto border-cyan-400/50 text-cyan-300 hover:bg-cyan-500/10 hover:border-cyan-400 px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-black rounded-lg backdrop-blur-sm transition-all duration-300 touch-manipulation"
+                style={{ WebkitTapHighlightColor: 'transparent' }}
               >
                 Learn More
               </Button>
@@ -417,14 +418,14 @@ export default function HomePage() {
       <section className="py-24 relative">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-12 sm:mb-16 px-4"
             initial={animationVariants.initial}
             whileInView={animationVariants.animate}
             transition={animationVariants.transition}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-black mb-6 text-white">CRAFTING THE FUTURE</h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto font-medium">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 sm:mb-6 text-white">CRAFTING THE FUTURE</h2>
+            <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto font-medium">
               We combine cutting-edge technology with elegant design to create tools that transform how research and
               innovation happen.
             </p>
@@ -453,18 +454,18 @@ export default function HomePage() {
             ].map((feature, index) => (
               <motion.div
                 key={feature.title}
-                className="group p-8 rounded-2xl bg-gradient-to-br from-blue-900/20 to-purple-900/10 backdrop-blur-sm border border-blue-500/20 hover:border-blue-400/40 transition-all duration-500"
+                className="group p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-blue-900/20 to-purple-900/10 backdrop-blur-sm border border-blue-500/20 hover:border-blue-400/40 transition-all duration-500"
                 initial={animationVariants.initial}
                 whileInView={animationVariants.animate}
                 transition={{ ...animationVariants.transition, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={!isMobile ? { y: -5 } : {}}
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <feature.icon className="h-8 w-8 text-white" />
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <feature.icon className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-black mb-4 text-white">{feature.title}</h3>
-                <p className="text-gray-400 leading-relaxed font-medium">{feature.description}</p>
+                <h3 className="text-xl sm:text-2xl font-black mb-3 sm:mb-4 text-white">{feature.title}</h3>
+                <p className="text-sm sm:text-base text-gray-400 leading-relaxed font-medium">{feature.description}</p>
               </motion.div>
             ))}
           </div>
@@ -481,19 +482,22 @@ export default function HomePage() {
             transition={animationVariants.transition}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-black mb-8 text-white">READY TO BUILD THE FUTURE?</h2>
-            <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto font-medium">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-6 sm:mb-8 text-white px-4">READY TO BUILD THE FUTURE?</h2>
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-8 sm:mb-12 max-w-2xl mx-auto font-medium px-4">
               Let's collaborate to create something extraordinary that pushes the boundaries of what's possible.
             </p>
-            <Link href="/contact">
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white border-0 px-12 py-6 text-xl font-black rounded-lg shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all duration-300"
-              >
-                Get In Touch
-                <ArrowRight className="ml-2 h-6 w-6" />
-              </Button>
-            </Link>
+            <div className="px-4">
+              <Link href="/contact">
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white border-0 px-8 sm:px-12 py-4 sm:py-6 text-lg sm:text-xl font-black rounded-lg shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all duration-300 touch-manipulation"
+                  style={{ WebkitTapHighlightColor: 'transparent' }}
+                >
+                  Get In Touch
+                  <ArrowRight className="ml-2 h-5 w-5 sm:h-6 sm:w-6" />
+                </Button>
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>

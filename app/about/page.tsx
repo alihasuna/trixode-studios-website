@@ -62,7 +62,7 @@ export default function AboutPage() {
       </div>
 
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-[#0a0a1a]/80 backdrop-blur-xl border-b border-blue-500/10">
+      <nav className="fixed top-0 w-full z-40 bg-[#0a0a1a]/80 backdrop-blur-xl border-b border-blue-500/10">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-3">
@@ -116,7 +116,7 @@ export default function AboutPage() {
 
           {/* Page Title */}
           <motion.h1
-            className="text-6xl md:text-8xl font-black mb-16 text-white"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black mb-12 sm:mb-16 text-white px-4"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}

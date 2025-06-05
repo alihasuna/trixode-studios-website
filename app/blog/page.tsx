@@ -308,71 +308,71 @@ export default function BlogPage() {
               >
                 <motion.article
                   className="group bg-gradient-to-br from-blue-900/20 to-purple-900/10 backdrop-blur-sm border border-blue-500/20 rounded-2xl overflow-hidden hover:border-blue-400/40 transition-all duration-500 cursor-pointer h-full"
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
-                  whileHover={{ y: -5 }}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
+                whileHover={{ y: -5 }}
                   layout
-                >
-                  {/* Thumbnail */}
-                  <div className={`h-48 bg-gradient-to-br ${post.gradient} relative overflow-hidden`}>
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
-                    <div className="relative z-10 h-full flex items-center justify-center">
-                      <div className="text-center">
-                        <div className="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center mx-auto mb-2 backdrop-blur-sm">
-                          <span className="text-2xl font-black text-white">{post.id}</span>
-                        </div>
+              >
+                {/* Thumbnail */}
+                <div className={`h-48 bg-gradient-to-br ${post.gradient} relative overflow-hidden`}>
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                  <div className="relative z-10 h-full flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center mx-auto mb-2 backdrop-blur-sm">
+                        <span className="text-2xl font-black text-white">{post.id}</span>
                       </div>
                     </div>
                   </div>
+                </div>
 
-                  {/* Content */}
-                  <div className="p-6">
-                    {/* Category & Date */}
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="bg-gradient-to-r from-blue-500 to-cyan-400 text-white px-3 py-1 text-xs font-black rounded-full">
-                        {post.category}
-                      </span>
-                      <div className="flex items-center text-gray-400 text-sm">
-                        <Calendar className="h-4 w-4 mr-1" />
-                        {new Date(post.date).toLocaleDateString()}
-                      </div>
-                    </div>
-
-                    {/* Title */}
-                    <h2 className="text-xl font-black mb-3 leading-tight text-white group-hover:text-cyan-300 transition-colors">
-                      {post.title}
-                    </h2>
-
-                    {/* Excerpt */}
-                    <p className="text-gray-400 mb-4 leading-relaxed font-semibold">{post.excerpt}</p>
-
-                    {/* Read More */}
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm text-gray-500 font-semibold">{post.readTime}</span>
-                      <div className="flex items-center text-cyan-300 font-black text-sm group-hover:text-cyan-200 transition-colors">
-                        Read More
-                        <ArrowRight className="ml-1 h-4 w-4" />
-                      </div>
+                {/* Content */}
+                <div className="p-6">
+                  {/* Category & Date */}
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="bg-gradient-to-r from-blue-500 to-cyan-400 text-white px-3 py-1 text-xs font-black rounded-full">
+                      {post.category}
+                    </span>
+                    <div className="flex items-center text-gray-400 text-sm">
+                      <Calendar className="h-4 w-4 mr-1" />
+                      {new Date(post.date).toLocaleDateString()}
                     </div>
                   </div>
-                </motion.article>
+
+                  {/* Title */}
+                  <h2 className="text-xl font-black mb-3 leading-tight text-white group-hover:text-cyan-300 transition-colors">
+                    {post.title}
+                  </h2>
+
+                  {/* Excerpt */}
+                  <p className="text-gray-400 mb-4 leading-relaxed font-semibold">{post.excerpt}</p>
+
+                  {/* Read More */}
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-gray-500 font-semibold">{post.readTime}</span>
+                    <div className="flex items-center text-cyan-300 font-black text-sm group-hover:text-cyan-200 transition-colors">
+                      Read More
+                      <ArrowRight className="ml-1 h-4 w-4" />
+                    </div>
+                  </div>
+                </div>
+              </motion.article>
               </Link>
             ))}
           </div>
 
           {/* No Posts Message */}
           {filteredPosts.length === 0 && (
-            <motion.div
+          <motion.div
               className="text-center py-16"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
-            >
+          >
               <p className="text-xl text-gray-400 font-semibold">
                 No posts found in "{selectedCategory}" category.
               </p>
-            </motion.div>
+          </motion.div>
           )}
 
           {/* Newsletter Signup */}

@@ -109,9 +109,9 @@ export default function ContactPage() {
       })
 
       if (response.ok) {
-        setSubmitStatus("success")
-        setFormData({ name: "", email: "", message: "" })
-        setErrors({})
+      setSubmitStatus("success")
+      setFormData({ name: "", email: "", message: "" })
+      setErrors({})
       } else {
         setSubmitStatus("error")
       }
@@ -373,7 +373,7 @@ export default function ContactPage() {
                 <div className="flex space-x-4">
                   {[
                     { icon: Github, href: "https://github.com/trixodestudios", label: "GitHub" },
-                    { icon: Linkedin, href: "https://linkedin.com/company/trixodestudios", label: "LinkedIn" },
+                    { icon: Linkedin, href: "https://www.linkedin.com/in/trixode-studios-054154311/", label: "LinkedIn" },
                   ].map((social) => (
                     <motion.a
                       key={social.label}
