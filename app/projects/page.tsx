@@ -249,7 +249,7 @@ export default function ProjectsPage() {
                 </div>
 
                 {/* CTA Button */}
-                <Link href="https://v0-saas-image-generation-software.vercel.app/" target="_blank" rel="noopener noreferrer">
+                <Link href="https://morphika.ai" target="_blank" rel="noopener noreferrer">
                 <Button
                   className="w-full bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white border-0 rounded-xl shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all duration-300 font-black"
                   size="lg"

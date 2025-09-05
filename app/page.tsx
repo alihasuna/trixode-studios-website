@@ -208,17 +208,17 @@ export default function HomePage() {
         <section className="relative min-h-screen flex items-center justify-center">
           <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
             <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-4 sm:mb-6 font-medium px-4">
-              Click #more below to explore our services & projects. Yeap, is like magic!
+              Transform Your Business Operations With Intelligent Automation
             </p>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-black mb-4 sm:mb-6 leading-tight text-white px-4">
-              We build beautiful &<br />
+              Scale with AI.<br />
               <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
-                elegant software
+                Automate Everything.
               </span>
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed font-medium px-4">
-              Empowering scientists, innovators, and creators with AI-powered tools that bridge the gap between
-              cutting-edge research and practical applications.
+              We help e-commerce and international businesses deploy AI solutions that reduce costs by 40%
+              and accelerate growth through intelligent automation.
             </p>
           </div>
         </section>
@@ -357,7 +357,7 @@ export default function HomePage() {
             animate={animationVariants.animate}
             transition={{ ...animationVariants.transition, delay: 0.1 }}
           >
-            Click #more below to explore our services & projects. Yeap, is like magic!
+            Transform Your Business Operations With Intelligent Automation
           </motion.p>
 
           {/* Main Title */}
@@ -367,9 +367,9 @@ export default function HomePage() {
             animate={animationVariants.animate}
             transition={{ ...animationVariants.transition, delay: 0.2 }}
           >
-            We build beautiful &<br />
+            Scale with AI.<br />
             <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
-              elegant software
+              Automate Everything.
             </span>
           </motion.h1>
 
@@ -380,8 +380,8 @@ export default function HomePage() {
             animate={animationVariants.animate}
             transition={{ ...animationVariants.transition, delay: 0.3 }}
           >
-            Empowering scientists, innovators, and creators with AI-powered tools that bridge the gap between
-            cutting-edge research and practical applications.
+            We help e-commerce and international businesses deploy AI solutions that reduce costs by 40%
+            and accelerate growth through intelligent automation.
           </motion.p>
 
           <motion.div
@@ -390,31 +390,31 @@ export default function HomePage() {
             animate={animationVariants.animate}
             transition={{ ...animationVariants.transition, delay: 0.4 }}
           >
-            <Link href="/projects" className="w-full sm:w-auto">
+            <Link href="/contact" className="w-full sm:w-auto">
               <Button
                 size="lg"
                 className="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white border-0 px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-black rounded-lg shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all duration-300 touch-manipulation"
                 style={{ WebkitTapHighlightColor: 'transparent' }}
               >
-                Explore Our Work
+                Book a Free AI Strategy Call
                 <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
             </Link>
-            <Link href="/about" className="w-full sm:w-auto">
+            <Link href="/projects" className="w-full sm:w-auto">
               <Button
                 variant="outline"
                 size="lg"
                 className="w-full sm:w-auto border-cyan-400/50 text-cyan-300 hover:bg-cyan-500/10 hover:border-cyan-400 px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-black rounded-lg backdrop-blur-sm transition-all duration-300 touch-manipulation"
                 style={{ WebkitTapHighlightColor: 'transparent' }}
               >
-                Learn More
+                View Case Studies
               </Button>
             </Link>
           </motion.div>
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Services Section */}
       <section className="py-24 relative">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
@@ -424,36 +424,36 @@ export default function HomePage() {
             transition={animationVariants.transition}
             viewport={{ once: true }}
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 sm:mb-6 text-white">CRAFTING THE FUTURE</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 sm:mb-6 text-white">AI SOLUTIONS THAT DELIVER</h2>
             <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto font-medium">
-              We combine cutting-edge technology with elegant design to create tools that transform how research and
-              innovation happen.
+              Our three core AI services help businesses automate operations, deploy intelligent systems,
+              and scale content creation for maximum ROI.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                icon: Code,
-                title: "ELEGANT CODE",
+                icon: Zap,
+                title: "AI Workflow Automation",
                 description:
-                  "Clean, maintainable code built with modern frameworks and best practices for scalability and performance.",
+                  "Transform manual processes into intelligent workflows. Reduce operational costs by 40% while increasing accuracy and speed. Perfect for e-commerce, logistics, and customer service automation.",
               },
               {
-                icon: Zap,
-                title: "AI POWERED",
+                icon: Code,
+                title: "On-Premise AI Deployment",
                 description:
-                  "Advanced machine learning and artificial intelligence seamlessly integrated into intuitive user experiences.",
+                  "Deploy powerful AI models directly in your infrastructure. Maintain complete data control while accessing enterprise-grade AI capabilities. Ideal for companies with strict privacy requirements.",
               },
               {
                 icon: Users,
-                title: "HUMAN FOCUSED",
+                title: "AI Brand Content (Morphika)",
                 description:
-                  "Technology that amplifies human creativity and intelligence, designed for researchers and innovators.",
+                  "Generate thousands of brand-consistent assets instantly. Our proprietary Morphika platform creates marketing materials, product descriptions, and visual content at scale while maintaining your brand voice.",
               },
-            ].map((feature, index) => (
+            ].map((service, index) => (
               <motion.div
-                key={feature.title}
+                key={service.title}
                 className="group p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-blue-900/20 to-purple-900/10 backdrop-blur-sm border border-blue-500/20 hover:border-blue-400/40 transition-all duration-500"
                 initial={animationVariants.initial}
                 whileInView={animationVariants.animate}
@@ -462,10 +462,62 @@ export default function HomePage() {
                 whileHover={!isMobile ? { y: -5 } : {}}
               >
                 <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <feature.icon className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+                  <service.icon className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                 </div>
-                <h3 className="text-xl sm:text-2xl font-black mb-3 sm:mb-4 text-white">{feature.title}</h3>
-                <p className="text-sm sm:text-base text-gray-400 leading-relaxed font-medium">{feature.description}</p>
+                <h3 className="text-xl sm:text-2xl font-black mb-3 sm:mb-4 text-white">{service.title}</h3>
+                <p className="text-sm sm:text-base text-gray-400 leading-relaxed font-medium">{service.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Credibility Section */}
+      <section className="py-24 relative">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div
+            className="text-center mb-12 sm:mb-16 px-4"
+            initial={animationVariants.initial}
+            whileInView={animationVariants.animate}
+            transition={animationVariants.transition}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 sm:mb-6 text-white">WHY GLOBAL COMPANIES TRUST US</h2>
+            <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-4xl mx-auto font-medium">
+              Led by a proven SaaS founder with deep AI expertise, we've helped international businesses 
+              across e-commerce, fintech, and innovation-driven industries deploy AI solutions that scale.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Proven AI Expertise",
+                description:
+                  "Our team combines years of machine learning research with real-world implementation experience. We don't just build AI—we make it work in production environments.",
+              },
+              {
+                title: "SaaS Founder Leadership",
+                description:
+                  "Founded and scaled multiple SaaS companies. We understand the challenges of growth, customer acquisition, and building sustainable business models with AI at the core.",
+              },
+              {
+                title: "Global Reach & Scale",
+                description:
+                  "Serving clients across North America, Europe, and Asia. Our solutions are built for international markets with multi-language support and compliance-ready infrastructure.",
+              },
+            ].map((credential, index) => (
+              <motion.div
+                key={credential.title}
+                className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-gray-900/40 to-gray-800/20 backdrop-blur-sm border border-gray-600/20 hover:border-blue-400/30 transition-all duration-500"
+                initial={animationVariants.initial}
+                whileInView={animationVariants.animate}
+                transition={{ ...animationVariants.transition, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={!isMobile ? { y: -5 } : {}}
+              >
+                <h3 className="text-xl sm:text-2xl font-black mb-3 sm:mb-4 text-white">{credential.title}</h3>
+                <p className="text-sm sm:text-base text-gray-400 leading-relaxed font-medium">{credential.description}</p>
               </motion.div>
             ))}
           </div>
@@ -482,9 +534,10 @@ export default function HomePage() {
             transition={animationVariants.transition}
             viewport={{ once: true }}
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-6 sm:mb-8 text-white px-4">READY TO BUILD THE FUTURE?</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-6 sm:mb-8 text-white px-4">READY TO ACCELERATE GROWTH WITH AI?</h2>
             <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-8 sm:mb-12 max-w-2xl mx-auto font-medium px-4">
-              Let's collaborate to create something extraordinary that pushes the boundaries of what's possible.
+              Join innovative companies using AI to cut costs, boost efficiency, and scale faster. 
+              Let's discuss how AI can transform your business in a free 30-minute strategy session.
             </p>
             <div className="px-4">
               <Link href="/contact">
@@ -493,7 +546,7 @@ export default function HomePage() {
                   className="bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white border-0 px-8 sm:px-12 py-4 sm:py-6 text-lg sm:text-xl font-black rounded-lg shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all duration-300 touch-manipulation"
                   style={{ WebkitTapHighlightColor: 'transparent' }}
                 >
-                  Get In Touch
+                  Book a Free AI Strategy Call
                   <ArrowRight className="ml-2 h-5 w-5 sm:h-6 sm:w-6" />
                 </Button>
               </Link>

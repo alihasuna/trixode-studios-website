@@ -142,15 +142,14 @@ export default function AboutPage() {
               <h3 className="text-2xl font-black mb-6 text-white">ORIGIN OF THE STUDIO</h3>
               <div className="space-y-6 text-gray-300 leading-relaxed">
                 <p className="text-lg font-semibold">
-                  Trixode Studios was born from a simple observation: the gap between cutting-edge research and
-                  practical, accessible tools was growing wider every day. Founded by Hussien Ballouk, our studio
-                  emerged from years of working with researchers, scientists, and creators who needed powerful software
-                  solutions but found existing tools either too complex or too limited.
+                  Trixode Studios was born from watching businesses struggle with AI adoption. Founded by Hussien Ballouk, our studio
+                  emerged from years of seeing companies miss massive opportunities because AI felt too complex, too risky, or too
+                  expensive. We saw businesses drowning in manual processes while AI solutions sat unused on the shelf.
                 </p>
                 <p className="text-lg font-semibold">
-                  We believe that the future belongs to those who can bridge the worlds of advanced technology and human
-                  creativity. Every project we undertake is designed to eliminate barriers and unlock new possibilities
-                  for innovation, making sophisticated tools as intuitive as they are powerful.
+                  We believe that AI should solve real business problems—not create new ones. Every solution we build is designed to
+                  eliminate operational friction, reduce costs, and accelerate growth. We turn AI from a technical challenge into a
+                  competitive advantage that any business can understand and implement with confidence.
                 </p>
               </div>
             </div>
@@ -171,9 +170,8 @@ export default function AboutPage() {
               </div>
               <div className="bg-gradient-to-br from-blue-900/30 to-blue-800/20 backdrop-blur-sm border border-blue-400/30 rounded-2xl p-8">
                 <blockquote className="text-xl md:text-2xl font-black leading-relaxed text-gray-200">
-                  "TO DESIGN ELEGANT SOFTWARE TOOLS AND DIGITAL SERVICES THAT UNLOCK OPPORTUNITIES FOR RESEARCHERS,
-                  SCIENTISTS, AND STUDENTS—OFFERING FINANCIAL SUPPORT AND REAL-WORLD EXPOSURE THROUGH PURPOSEFUL
-                  INNOVATION."
+                  "TO BUILD AI-POWERED AUTOMATION TOOLS THAT SAVE TIME, CUT COSTS, AND SCALE GROWTH FOR BUSINESSES
+                  AND INNOVATORS—MAKING ADVANCED TECHNOLOGY ACCESSIBLE TO EVERY COMPANY READY TO TRANSFORM THEIR OPERATIONS."
                 </blockquote>
               </div>
             </motion.section>
@@ -191,8 +189,8 @@ export default function AboutPage() {
               </div>
               <div className="bg-gradient-to-br from-pink-900/30 to-purple-800/20 backdrop-blur-sm border border-pink-400/30 rounded-2xl p-8">
                 <blockquote className="text-xl md:text-2xl font-black leading-relaxed text-gray-200">
-                  "A FUTURE WHERE RESEARCH AND TECHNOLOGY ARE SEAMLESSLY INTEGRATED THROUGH BEAUTIFULLY CRAFTED TOOLS
-                  THAT AMPLIFY HUMAN POTENTIAL."
+                  "A FUTURE WHERE EVERY COMPANY—FROM STARTUPS TO ENTERPRISES—CAN HARNESS AI AUTOMATION
+                  SECURELY AND EFFECTIVELY TO DRIVE INNOVATION AND COMPETITIVE ADVANTAGE."
                 </blockquote>
               </div>
             </motion.section>
@@ -210,34 +208,34 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
                 {
-                  title: "ELEGANCE",
+                  title: "CLARITY",
                   description:
-                    "Every line of code, every interface element, every user interaction should be beautiful and purposeful.",
+                    "We cut through AI complexity to deliver clear, actionable solutions that business leaders can understand and implement confidently.",
                 },
                 {
                   title: "IMPACT",
                   description:
-                    "We measure success by the real-world problems we solve and the opportunities we create.",
+                    "We measure success by tangible business results: time saved, costs reduced, and revenue growth accelerated through AI automation.",
                 },
                 {
-                  title: "ACCESSIBILITY",
+                  title: "TRUST",
                   description:
-                    "Powerful tools should be available to everyone, regardless of technical background or resources.",
+                    "We build secure, transparent AI solutions that protect your data and reputation while delivering measurable value to your business.",
                 },
                 {
                   title: "INNOVATION",
                   description:
-                    "We push boundaries and explore new possibilities at the intersection of technology and creativity.",
+                    "We combine proven AI technologies with creative problem-solving to unlock new efficiencies and competitive advantages.",
                 },
                 {
                   title: "COLLABORATION",
                   description:
-                    "The best solutions emerge from diverse perspectives and interdisciplinary partnerships.",
+                    "We partner closely with your team to ensure AI adoption enhances human capabilities rather than replacing them.",
                 },
                 {
                   title: "SUSTAINABILITY",
                   description:
-                    "We build for the long term, creating solutions that grow and adapt with changing needs.",
+                    "We design AI systems that scale with your business growth and adapt to evolving market demands for long-term success.",
                 },
               ].map((value, index) => (
                 <motion.div
