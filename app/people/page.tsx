@@ -43,7 +43,7 @@ const ConnectedHexagonLogo = ({ size = 32, className = "" }: { size?: number; cl
             <circle cx={point.x} cy={point.y} r="2" fill="currentColor" className="text-blue-400" />
           </g>
         ))}
-        <circle cx={center} cy={center} r="2" fill="currentColor" className="text-blue-400" />
+        <circle cx={center} cy={center} r="2" fill="currentColor" className="text-blue-400" /> 
       </svg>
     </div>
   )
@@ -117,67 +117,122 @@ export default function PeoplePage() {
             PEOPLE
           </motion.h1>
 
-          {/* Founder Section */}
+          {/* People Grid */}
           <motion.div
-            className="bg-gradient-to-br from-blue-900/20 to-purple-900/10 backdrop-blur-sm border border-blue-500/20 rounded-3xl p-12 shadow-2xl"
+            className="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-16"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <div className="flex flex-col lg:flex-row items-start gap-12">
-              {/* Avatar */}
-              <div className="flex-shrink-0">
-                <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72">
-                  {/* Simple frame with glow */}
-                  <div className="relative w-full h-full rounded-2xl overflow-hidden border border-blue-400/30 shadow-xl shadow-blue-500/20">
-                    {/* CEO Photo */}
-                    <img
-                      src="https://res.cloudinary.com/dmkfxjv0s/image/upload/w_400,h_400,c_fill,g_face,f_auto,q_auto/v1749088385/ceo_photo.png"
-                      alt="Hussien Ballouk - CEO of Trixode Studios"
-                      className="w-full h-full object-cover object-center"
-                      loading="lazy"
-                    />
+            {/* Hussien Ballouk */}
+            <div className="bg-gradient-to-br from-blue-900/20 to-purple-900/10 backdrop-blur-sm border border-blue-500/20 rounded-3xl p-10 shadow-2xl">
+              <div className="flex flex-col items-start gap-8">
+                {/* Avatar */}
+                <div className="flex-shrink-0 mx-auto">
+                  <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64">
+                    <div className="relative w-full h-full rounded-2xl overflow-hidden border border-blue-400/30 shadow-xl shadow-blue-500/20">
+                      <img
+                        src="https://res.cloudinary.com/dmkfxjv0s/image/upload/w_400,h_400,c_fill,g_face,f_auto,q_auto/v1749088385/ceo_photo.png"
+                        alt="Hussien Ballouk - CEO of Trixode Studios"
+                        className="w-full h-full object-cover object-center"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-blue-900/10 to-transparent"></div>
+                    </div>
                     
-                    {/* Subtle overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-blue-900/10 to-transparent"></div>
+                    {/* Corner lights */}
+                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-cyan-400 rounded-full shadow-lg shadow-cyan-400/50 animate-pulse"></div>
+                    <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-blue-500 rounded-full shadow-lg shadow-blue-500/50"></div>
+                    
+                    {/* Glow effect */}
+                    <div className="absolute inset-0 rounded-2xl ring-1 ring-blue-400/20 shadow-2xl shadow-blue-500/10"></div>
                   </div>
-                  
-                  {/* Corner lights */}
-                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-cyan-400 rounded-full shadow-lg shadow-cyan-400/50 animate-pulse"></div>
-                  <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-blue-500 rounded-full shadow-lg shadow-blue-500/50"></div>
-                  
-                  {/* Glow effect */}
-                  <div className="absolute inset-0 rounded-2xl ring-1 ring-blue-400/20 shadow-2xl shadow-blue-500/10"></div>
+                </div>
+
+                {/* Content */}
+                <div className="text-center">
+                  <h2 className="text-3xl md:text-4xl font-black mb-2 text-white">HUSSIEN BALLOUK</h2>
+                  <div className="w-20 h-1 bg-gradient-to-r from-blue-400 to-blue-600 mb-6 mx-auto"></div>
+                  <p className="text-lg text-blue-300 mb-6 font-black">FOUNDER & CEO OF TRIXODE STUDIOS</p>
+
+                  <blockquote className="text-xl md:text-2xl font-black text-gray-300 mb-8 leading-relaxed">
+                    "I BUILD ELEGANT, HIGH-IMPACT SOFTWARE THAT EMPOWERS RESEARCHERS, SCIENTISTS, AND CREATORS."
+                  </blockquote>
+
+                  {/* Social Links */}
+                  <div className="flex space-x-4 justify-center">
+                    {[
+                      { icon: Github, href: "#" },
+                      { icon: Linkedin, href: "#" },
+                      { icon: Mail, href: "#" },
+                    ].map((social, index) => (
+                      <motion.a
+                        key={index}
+                        href={social.href}
+                        className="w-12 h-12 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 border border-cyan-400/30 rounded-xl flex items-center justify-center hover:from-cyan-500/30 hover:to-blue-600/30 hover:border-cyan-400/50 transition-all duration-300"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <social.icon className="h-5 w-5 text-blue-300" />
+                      </motion.a>
+                    ))}
+                  </div>
                 </div>
               </div>
+            </div>
 
-              {/* Content */}
-              <div className="flex-1">
-                <h2 className="text-4xl md:text-5xl font-black mb-2 text-white">HUSSIEN BALLOUK</h2>
-                <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-blue-600 mb-6"></div>
-                <p className="text-xl text-blue-300 mb-8 font-black">FOUNDER & CEO OF TRIXODE STUDIOS</p>
+            {/* Daniel Rodriguez */}
+            <div className="bg-gradient-to-br from-green-900/20 to-blue-900/10 backdrop-blur-sm border border-green-500/20 rounded-3xl p-10 shadow-2xl">
+              <div className="flex flex-col items-start gap-8">
+                {/* Avatar */}
+                <div className="flex-shrink-0 mx-auto">
+                  <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64">
+                    <div className="relative w-full h-full rounded-2xl overflow-hidden border border-green-400/30 shadow-xl shadow-green-500/20">
+                      <img
+                        src="https://res.cloudinary.com/dmkfxjv0s/image/upload/v1757032876/ChatGPT_Image_Sep_4_2025_05_32_39_PM_vz2i1e.png"
+                        alt="Daniel Rodriguez - Sales & Communication Lead"
+                        className="w-full h-full object-cover object-center"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-green-900/10 to-transparent"></div>
+                    </div>
+                    
+                    {/* Corner lights */}
+                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full shadow-lg shadow-green-400/50 animate-pulse"></div>
+                    <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-emerald-500 rounded-full shadow-lg shadow-emerald-500/50"></div>
+                    
+                    {/* Glow effect */}
+                    <div className="absolute inset-0 rounded-2xl ring-1 ring-green-400/20 shadow-2xl shadow-green-500/10"></div>
+                  </div>
+                </div>
 
-                <blockquote className="text-2xl md:text-3xl font-black text-gray-300 mb-8 leading-relaxed">
-                  "I BUILD ELEGANT, HIGH-IMPACT SOFTWARE THAT EMPOWERS RESEARCHERS, SCIENTISTS, AND CREATORS."
-                </blockquote>
+                {/* Content */}
+                <div className="text-center">
+                  <h2 className="text-3xl md:text-4xl font-black mb-2 text-white">DANIEL RODRIGUEZ</h2>
+                  <div className="w-20 h-1 bg-gradient-to-r from-green-400 to-emerald-600 mb-6 mx-auto"></div>
+                  <p className="text-lg text-green-300 mb-6 font-black">SALES & COMMUNICATION LEAD</p>
 
-                {/* Social Links */}
-                <div className="flex space-x-4">
-                  {[
-                    { icon: Github, href: "#" },
-                    { icon: Linkedin, href: "#" },
-                    { icon: Mail, href: "#" },
-                  ].map((social, index) => (
-                    <motion.a
-                      key={index}
-                      href={social.href}
-                      className="w-12 h-12 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 border border-cyan-400/30 rounded-xl flex items-center justify-center hover:from-cyan-500/30 hover:to-blue-600/30 hover:border-cyan-400/50 transition-all duration-300"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <social.icon className="h-5 w-5 text-blue-300" />
-                    </motion.a>
-                  ))}
+                  <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed font-semibold">
+                    Daniel combines five years of digital marketing and international sales expertise with a strong academic background in physics. He drives growth across Europe and Latin America while bridging advanced AI solutions with practical business needs, ensuring partnerships built on trust and measurable results.
+                  </p>
+
+                  {/* Social Links */}
+                  <div className="flex space-x-4 justify-center">
+                    {[
+                      { icon: Linkedin, href: "https://www.linkedin.com/in/daniel-rodriguez-a650a9209/" },
+                      { icon: Mail, href: "mailto:daniel@trixode-studios.com" },
+                    ].map((social, index) => (
+                      <motion.a
+                        key={index}
+                        href={social.href}
+                        className="w-12 h-12 bg-gradient-to-br from-green-500/20 to-emerald-600/20 border border-green-400/30 rounded-xl flex items-center justify-center hover:from-green-500/30 hover:to-emerald-600/30 hover:border-green-400/50 transition-all duration-300"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <social.icon className="h-5 w-5 text-green-300" />
+                      </motion.a>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

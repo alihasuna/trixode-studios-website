@@ -4,6 +4,7 @@ import type React from "react"
 
 import { motion } from "framer-motion"
 import Link from "next/link"
+import LiquidGlass from 'liquid-glass-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -134,15 +135,14 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a1a] text-white">
+    <div
+      className="min-h-screen text-white bg-cover bg-center"
+      style={{ backgroundImage: "url('https://source.unsplash.com/random/1920x1080?abstract,vibrant')" }}
+    >
       {/* Cursor Effect */}
       <CursorEffect />
       
-      {/* Background Effects */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-600/20 to-blue-400/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-pink-500/15 to-purple-500/10 rounded-full blur-3xl" />
-      </div>
+      {/* Background effects were here, removed for testing glass effect */}
 
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-[#0a0a1a]/80 backdrop-blur-xl border-b border-blue-500/10">
@@ -367,7 +367,16 @@ export default function ContactPage() {
               </div>
 
               {/* Social Links */}
-              <div className="bg-gradient-to-br from-pink-900/20 to-purple-900/20 backdrop-blur-sm border border-pink-400/20 rounded-2xl p-8">
+                              <LiquidGlass
+                  displacementScale={180}
+                  blurAmount={0.02}
+                  saturation={140}
+                  aberrationIntensity={4}
+                  elasticity={0.2}
+                  cornerRadius={16}
+                  mode="shader"
+                  className="bg-gradient-to-br from-pink-900/20 to-purple-900/20 backdrop-blur-sm border border-pink-400/20 rounded-2xl p-8"
+                >
                 <h2 className="text-3xl font-black mb-8 text-white">FOLLOW US</h2>
 
                 <div className="flex space-x-4">
@@ -388,7 +397,7 @@ export default function ContactPage() {
                     </motion.a>
                   ))}
                 </div>
-              </div>
+              </LiquidGlass>
             </motion.div>
           </div>
         </div>

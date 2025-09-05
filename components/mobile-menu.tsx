@@ -37,7 +37,6 @@ export default function MobileMenu({ currentPath = "/" }: MobileMenuProps) {
             className="fixed inset-0 bg-black/70 backdrop-blur-sm z-40 md:hidden"
             onClick={() => setIsOpen(false)}
           />
-          
           {/* Menu Panel */}
           <div className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-[#0a0a1a]/95 backdrop-blur-xl border-l border-blue-500/20 z-40 md:hidden shadow-xl">
             <div className="flex flex-col h-full">
@@ -75,25 +74,9 @@ export default function MobileMenu({ currentPath = "/" }: MobileMenuProps) {
 
               {/* Footer */}
               <div className="p-6 border-t border-blue-500/20 bg-[#0a0a1a]/95 backdrop-blur-xl">
-                <p className="text-sm text-gray-400 mb-4">Connect with us</p>
-                <div className="flex space-x-4">
-                  <a
-                    href="https://github.com/trixodestudios"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 text-center px-4 py-2 bg-blue-500/10 hover:bg-blue-500/20 text-gray-300 hover:text-white rounded-lg transition-all duration-300 border border-blue-500/20 hover:border-blue-400/40"
-                  >
-                    GitHub
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/in/trixode-studios-054154311/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 text-center px-4 py-2 bg-blue-500/10 hover:bg-blue-500/20 text-gray-300 hover:text-white rounded-lg transition-all duration-300 border border-blue-500/20 hover:border-blue-400/40"
-                  >
-                    LinkedIn
-                  </a>
-                </div>
+                <p className="text-gray-500 text-sm">
+                  © {new Date().getFullYear()} Trixode Studios. All rights reserved.
+                </p>
               </div>
             </div>
           </div>
