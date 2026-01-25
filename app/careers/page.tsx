@@ -825,8 +825,8 @@ export default function CareersPage() {
                         key={opt.value}
                         type="button"
                         onClick={() => {
-                          setFormData((prev) => ({ ...prev, challengeType: opt.value }))
-                          if (errors.challengeType) setErrors((prev) => ({ ...prev, challengeType: "" }))
+                          setFormData((prev) => ({ ...prev, challengeType: opt.value, challengeContent: "" }))
+                          if (errors.challengeType) setErrors((prev) => ({ ...prev, challengeType: "", challengeContent: "" }))
                         }}
                         className={`p-6 border-2 text-left transition-all rounded-xl ${formData.challengeType === opt.value
                           ? "bg-gradient-to-r from-blue-500 to-cyan-400 border-cyan-400 text-white"
