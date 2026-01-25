@@ -17,6 +17,7 @@ export default function MobileMenu({ currentPath = "/" }: MobileMenuProps) {
     { name: "Projects", href: "/projects" },
     { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/contact" },
+    { name: "Careers", href: "/careers" },
   ]
 
   return (
@@ -59,11 +60,10 @@ export default function MobileMenu({ currentPath = "/" }: MobileMenuProps) {
                       <Link
                         href={item.href}
                         onClick={() => setIsOpen(false)}
-                        className={`block px-4 py-3 rounded-lg text-base font-semibold transition-all duration-300 ${
-                          currentPath === item.href
+                        className={`block px-4 py-3 rounded-lg text-base font-semibold transition-all duration-300 ${currentPath === item.href
                             ? "bg-blue-500/20 text-blue-400 border border-blue-500/30"
                             : "text-gray-300 hover:text-white hover:bg-white/5"
-                        }`}
+                          }`}
                       >
                         {item.name}
                       </Link>

@@ -43,7 +43,7 @@ const ConnectedHexagonLogo = ({ size = 32, className = "" }: { size?: number; cl
             <circle cx={point.x} cy={point.y} r="2" fill="currentColor" className="text-blue-400" />
           </g>
         ))}
-        <circle cx={center} cy={center} r="2" fill="currentColor" className="text-blue-400" /> 
+        <circle cx={center} cy={center} r="2" fill="currentColor" className="text-blue-400" />
       </svg>
     </div>
   )
@@ -54,7 +54,7 @@ export default function PeoplePage() {
     <div className="min-h-screen bg-[#0a0a1a] text-white">
       {/* Cursor Effect */}
       <CursorEffect />
-      
+
       {/* Background Effects */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-600/20 to-blue-400/10 rounded-full blur-3xl" />
@@ -139,11 +139,11 @@ export default function PeoplePage() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-blue-900/10 to-transparent"></div>
                     </div>
-                    
+
                     {/* Corner lights */}
                     <div className="absolute -top-1 -right-1 w-3 h-3 bg-cyan-400 rounded-full shadow-lg shadow-cyan-400/50 animate-pulse"></div>
                     <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-blue-500 rounded-full shadow-lg shadow-blue-500/50"></div>
-                    
+
                     {/* Glow effect */}
                     <div className="absolute inset-0 rounded-2xl ring-1 ring-blue-400/20 shadow-2xl shadow-blue-500/10"></div>
                   </div>
@@ -174,63 +174,6 @@ export default function PeoplePage() {
                         whileTap={{ scale: 0.95 }}
                       >
                         <social.icon className="h-5 w-5 text-blue-300" />
-                      </motion.a>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Daniel Rodriguez */}
-            <div className="bg-gradient-to-br from-pink-900/20 to-purple-900/10 backdrop-blur-sm border border-pink-500/20 rounded-3xl p-10 shadow-2xl">
-              <div className="flex flex-col items-start gap-8">
-                {/* Avatar */}
-                <div className="flex-shrink-0 mx-auto">
-                  <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64">
-                    <div className="relative w-full h-full rounded-2xl overflow-hidden border border-pink-400/30 shadow-xl shadow-pink-500/20">
-                      <img
-                        src="https://res.cloudinary.com/dmkfxjv0s/image/upload/v1757032876/ChatGPT_Image_Sep_4_2025_05_32_39_PM_vz2i1e.png"
-                        alt="Daniel Rodriguez - Sales & Communication Lead"
-                        className="w-full h-full object-cover object-center"
-                        loading="lazy"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-pink-900/10 to-transparent"></div>
-                    </div>
-                    
-                    {/* Corner lights */}
-                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-pink-400 rounded-full shadow-lg shadow-pink-400/50 animate-pulse"></div>
-                    <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-purple-500 rounded-full shadow-lg shadow-purple-500/50"></div>
-                    
-                    {/* Glow effect */}
-                    <div className="absolute inset-0 rounded-2xl ring-1 ring-pink-400/20 shadow-2xl shadow-pink-500/10"></div>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="text-center">
-                  <h2 className="text-3xl md:text-4xl font-black mb-2 text-white">DANIEL RODRIGUEZ</h2>
-                  <div className="w-20 h-1 bg-gradient-to-r from-pink-400 to-purple-600 mb-6 mx-auto"></div>
-                  <p className="text-lg text-pink-300 mb-6 font-black">SALES & COMMUNICATION LEAD</p>
-
-                  <blockquote className="text-xl md:text-2xl font-black text-gray-300 mb-8 leading-relaxed">
-                    "I BRIDGE ADVANCED AI SOLUTIONS WITH PRACTICAL BUSINESS NEEDS, DRIVING GROWTH ACROSS EUROPE AND LATIN AMERICA THROUGH TRUST AND MEASURABLE RESULTS."
-                  </blockquote>
-
-                  {/* Social Links */}
-                  <div className="flex space-x-4 justify-center">
-                    {[
-                      { icon: Github, href: "#" },
-                      { icon: Linkedin, href: "https://www.linkedin.com/in/daniel-rodriguez-a650a9209/" },
-                      { icon: Mail, href: "mailto:daniel@trixode-studios.com" },
-                    ].map((social, index) => (
-                      <motion.a
-                        key={index}
-                        href={social.href}
-                        className="w-12 h-12 bg-gradient-to-br from-pink-500/20 to-purple-600/20 border border-pink-400/30 rounded-xl flex items-center justify-center hover:from-pink-500/30 hover:to-purple-600/30 hover:border-pink-400/50 transition-all duration-300"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <social.icon className="h-5 w-5 text-pink-300" />
                       </motion.a>
                     ))}
                   </div>

@@ -91,52 +91,52 @@ export default function HomePage() {
   useEffect(() => {
     // Set client-side flag
     setIsClient(true)
-    
+
     // Detect mobile devices and tablets (including iPads)
     const checkMobile = () => {
       if (typeof window === 'undefined') return false
-      
+
       const userAgent = navigator.userAgent
-      
+
       // Enhanced mobile detection including tablets
       const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent) ||
-                    // Detect iPad specifically (including newer iPads that identify as Mac)
-                    /iPad/i.test(userAgent) ||
-                    // Detect iPad Pro and newer iPads that show as Mac
-                    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1) ||
-                    // Detect other tablets
-                    /Tablet|PlayBook|Silk/i.test(userAgent) ||
-                    // Screen size based detection for tablets
-                    (window.innerWidth <= 1024 && 'ontouchstart' in window)
-      
+        // Detect iPad specifically (including newer iPads that identify as Mac)
+        /iPad/i.test(userAgent) ||
+        // Detect iPad Pro and newer iPads that show as Mac
+        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1) ||
+        // Detect other tablets
+        /Tablet|PlayBook|Silk/i.test(userAgent) ||
+        // Screen size based detection for tablets
+        (window.innerWidth <= 1024 && 'ontouchstart' in window)
+
       setIsMobile(mobile)
-      
+
       // Enhanced low-power detection for tablets and older devices
-      const lowPower = mobile || 
-                      navigator.hardwareConcurrency <= 4 ||
-                      /iPad|Android.*(?:Tablet|Tab)/i.test(userAgent) ||
-                      // Performance-based detection
-                      (window.devicePixelRatio > 2 && window.innerWidth <= 1024)
-      
+      const lowPower = mobile ||
+        navigator.hardwareConcurrency <= 4 ||
+        /iPad|Android.*(?:Tablet|Tab)/i.test(userAgent) ||
+        // Performance-based detection
+        (window.devicePixelRatio > 2 && window.innerWidth <= 1024)
+
       setIsLowPowerMode(lowPower)
     }
 
     checkMobile()
-    
+
     // Also check on resize for orientation changes
     const handleResize = () => {
       if (typeof window === 'undefined') return
-      
+
       const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
-                    /iPad/i.test(navigator.userAgent) ||
-                    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1) ||
-                    /Tablet|PlayBook|Silk/i.test(navigator.userAgent) ||
-                    (window.innerWidth <= 1024 && 'ontouchstart' in window)
+        /iPad/i.test(navigator.userAgent) ||
+        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1) ||
+        /Tablet|PlayBook|Silk/i.test(navigator.userAgent) ||
+        (window.innerWidth <= 1024 && 'ontouchstart' in window)
       setIsMobile(mobile)
     }
-    
+
     window.addEventListener('resize', handleResize)
-    
+
     // Only add mouse tracking on desktop (non-touch devices)
     if (!isMobile && !('ontouchstart' in window)) {
       const handleMouseMove = (e: MouseEvent) => {
@@ -148,7 +148,7 @@ export default function HomePage() {
         window.removeEventListener('resize', handleResize)
       }
     }
-    
+
     return () => {
       window.removeEventListener('resize', handleResize)
     }
@@ -174,10 +174,10 @@ export default function HomePage() {
   }
 
   // Detect tablet size for different animation speeds (only on client)
-  const isTablet = isClient && typeof window !== 'undefined' ? 
+  const isTablet = isClient && typeof window !== 'undefined' ?
     (window.innerWidth >= 768 && window.innerWidth <= 1024 && isMobile) : false
-  const animationVariants = isMobile ? 
-    (isTablet ? tabletAnimationVariants : mobileAnimationVariants) : 
+  const animationVariants = isMobile ?
+    (isTablet ? tabletAnimationVariants : mobileAnimationVariants) :
     desktopAnimationVariants
 
   // Don't render complex animations on server
@@ -330,7 +330,7 @@ export default function HomePage() {
 
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-8">
-              {["People", "About", "Projects", "Blog", "Contact"].map((item) => (
+              {["People", "About", "Projects", "Blog", "Contact", "Careers"].map((item) => (
                 <Link
                   key={item}
                   href={`/${item.toLowerCase()}`}
@@ -484,7 +484,7 @@ export default function HomePage() {
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 sm:mb-6 text-white">WHY GLOBAL COMPANIES TRUST US</h2>
             <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-4xl mx-auto font-medium">
-              Led by a proven SaaS founder with deep AI expertise, we've helped international businesses 
+              Led by a proven SaaS founder with deep AI expertise, we've helped international businesses
               across e-commerce, fintech, and innovation-driven industries deploy AI solutions that scale.
             </p>
           </motion.div>
@@ -536,7 +536,7 @@ export default function HomePage() {
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-6 sm:mb-8 text-white px-4">READY TO ACCELERATE GROWTH WITH AI?</h2>
             <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-8 sm:mb-12 max-w-2xl mx-auto font-medium px-4">
-              Join innovative companies using AI to cut costs, boost efficiency, and scale faster. 
+              Join innovative companies using AI to cut costs, boost efficiency, and scale faster.
               Let's discuss how AI can transform your business in a free 30-minute strategy session.
             </p>
             <div className="px-4">
