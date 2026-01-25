@@ -215,7 +215,7 @@ export default function CareersPage() {
 
       if (response.ok) {
         setSubmitStatus("success")
-        setStep(5)
+        setStep(6)
       } else {
         setSubmitStatus("error")
       }
