@@ -5,51 +5,10 @@ import Link from "next/link"
 import { ArrowLeft, Calendar, Clock, User, ArrowRight } from "lucide-react"
 import { notFound } from "next/navigation"
 import Footer from "@/components/footer"
-import MobileMenu from "@/components/mobile-menu"
+import CustomCursor from "@/components/ui/CustomCursor"
+import FloatingNav from "@/components/layout/FloatingNav"
+import { useMagneticEffect } from "@/hooks/useMagneticEffect"
 import { use } from "react"
-
-// Connected Hexagon Logo Component
-const ConnectedHexagonLogo = ({ size = 32, className = "" }: { size?: number; className?: string }) => {
-  const hexagonPoints = []
-  const center = size / 2
-  const radius = size * 0.35
-
-  for (let i = 0; i < 6; i++) {
-    const angle = (i * Math.PI) / 3
-    const x = center + radius * Math.cos(angle)
-    const y = center + radius * Math.sin(angle)
-    hexagonPoints.push({ x, y })
-  }
-
-  return (
-    <div className={`relative ${className}`} style={{ width: size, height: size }}>
-      <svg width={size} height={size} className="absolute inset-0">
-        <polygon
-          points={hexagonPoints.map((p) => `${p.x},${p.y}`).join(" ")}
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          className="text-blue-400"
-        />
-        {hexagonPoints.map((point, i) => (
-          <g key={i}>
-            <line
-              x1={center}
-              y1={center}
-              x2={point.x}
-              y2={point.y}
-              stroke="currentColor"
-              strokeWidth="1"
-              className="text-blue-400/60"
-            />
-            <circle cx={point.x} cy={point.y} r="2" fill="currentColor" className="text-blue-400" />
-          </g>
-        ))}
-        <circle cx={center} cy={center} r="2" fill="currentColor" className="text-blue-400" />
-      </svg>
-    </div>
-  )
-}
 
 // Blog posts data
 const blogPosts = {
@@ -805,51 +764,77 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
     notFound()
   }
 
+  useMagneticEffect()
+
   return (
-    <div className="min-h-screen bg-[#0a0a1a] text-white">
-      {/* Background Effects */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-600/20 to-blue-400/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-pink-500/15 to-purple-500/10 rounded-full blur-3xl" />
+    <div className="min-h-screen bg-[#030303] text-white overflow-hidden">
+      {/* Custom Cursor */}
+      <CustomCursor />
+
+      {/* Floating Navigation */}
+      <FloatingNav />
+
+      {/* Background Aurora Effects */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <motion.div
+          className="absolute w-[600px] h-[600px] -top-20 -left-20 rounded-full blur-[100px] opacity-30"
+          style={{
+            background: "radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, transparent 70%)",
+          }}
+          animate={{
+            x: [0, 30, 0],
+            y: [0, 50, 0],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute w-[500px] h-[500px] top-1/3 -right-10 rounded-full blur-[100px] opacity-30"
+          style={{
+            background: "radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%)",
+          }}
+          animate={{
+            x: [0, -20, 0],
+            y: [0, 30, 0],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute w-[400px] h-[400px] bottom-0 left-1/3 rounded-full blur-[100px] opacity-30"
+          style={{
+            background: "radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, transparent 70%)",
+          }}
+          animate={{
+            x: [0, 40, 0],
+            y: [0, -30, 0],
+          }}
+          transition={{
+            duration: 18,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
       </div>
 
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-[#0a0a1a]/80 backdrop-blur-xl border-b border-blue-500/10">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-3">
-              <ConnectedHexagonLogo size={32} />
-              <span className="text-xl font-black text-white">Trixode Studios</span>
-            </Link>
-            <div className="hidden md:flex items-center space-x-8">
-              {["People", "About", "Projects"].map((item) => (
-                <Link
-                  key={item}
-                  href={`/${item.toLowerCase()}`}
-                  className="text-gray-300 hover:text-white transition-colors duration-300 font-semibold"
-                >
-                  {item}
-                </Link>
-              ))}
-              <Link href="/blog" className="text-cyan-400 font-black">
-                Blog
-              </Link>
-              <Link
-                href="/contact"
-                className="text-gray-300 hover:text-white transition-colors duration-300 font-semibold"
-              >
-                Contact
-              </Link>
-            </div>
+      {/* Grid Overlay */}
+      <div
+        className="fixed inset-0 pointer-events-none z-0"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px)",
+          backgroundSize: "100px 100px",
+        }}
+      />
 
-            {/* Mobile Menu */}
-            <MobileMenu currentPath="/blog" />
-          </div>
-        </div>
-      </nav>
-
-      <div className="pt-24 pb-16 relative z-10">
-        <div className="max-w-4xl mx-auto px-6">
+      <div className="pt-32 pb-20 relative z-10">
+        <div className="max-w-5xl mx-auto px-6">
           {/* Back Button */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -859,7 +844,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
           >
             <Link
               href="/blog"
-              className="inline-flex items-center text-gray-300 hover:text-white transition-colors duration-300 font-semibold"
+              className="magnetic inline-flex items-center text-white/50 hover:text-white transition-colors duration-300 font-medium group"
             >
               <ArrowLeft className="mr-2 h-5 w-5" />
               Back to Blog
@@ -874,14 +859,16 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div className="mb-6">
-              <span className="bg-gradient-to-r from-blue-500 to-cyan-400 text-white px-4 py-2 text-sm font-black rounded-full">
+              <span className="text-[#3b82f6] text-xs font-medium uppercase tracking-widest border border-[#3b82f6]/20 bg-[#3b82f6]/5 px-3 py-1 rounded-full">
                 {post.category}
               </span>
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-black mb-6 text-white leading-tight">{post.title}</h1>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-light mb-6 text-white leading-tight font-['Space_Grotesk',sans-serif]">
+              {post.title}
+            </h1>
 
-            <div className="flex flex-wrap items-center gap-6 text-gray-400 font-semibold">
+            <div className="flex flex-wrap items-center gap-6 text-white/40 font-light">
               <div className="flex items-center space-x-2">
                 <User className="h-4 w-4" />
                 <span>{post.author}</span>

@@ -2,108 +2,85 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
 import { ArrowLeft, ArrowRight, ExternalLink, Sparkles, Brain, Zap, Search, Target, Lightbulb, TrendingUp, Users, CheckCircle } from "lucide-react"
-import MobileMenu from "@/components/mobile-menu"
-import CursorEffect from "@/components/cursor-effect"
+import CustomCursor from "@/components/ui/CustomCursor"
+import FloatingNav from "@/components/layout/FloatingNav"
+import Footer from "@/components/footer"
+import { useMagneticEffect } from "@/hooks/useMagneticEffect"
 import { useState } from "react"
-
-// Connected Hexagon Logo Component
-const ConnectedHexagonLogo = ({ size = 32, className = "" }: { size?: number; className?: string }) => {
-  const hexagonPoints = []
-  const center = size / 2
-  const radius = size * 0.35
-
-  for (let i = 0; i < 6; i++) {
-    const angle = (i * Math.PI) / 3
-    const x = center + radius * Math.cos(angle)
-    const y = center + radius * Math.sin(angle)
-    hexagonPoints.push({ x, y })
-  }
-
-  return (
-    <div className={`relative ${className}`} style={{ width: size, height: size }}>
-      <svg width={size} height={size} className="absolute inset-0">
-        <polygon
-          points={hexagonPoints.map((p) => `${p.x},${p.y}`).join(" ")}
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          className="text-blue-400"
-        />
-        {hexagonPoints.map((point, i) => (
-          <g key={i}>
-            <line
-              x1={center}
-              y1={center}
-              x2={point.x}
-              y2={point.y}
-              stroke="currentColor"
-              strokeWidth="1"
-              className="text-blue-400/60"
-            />
-            <circle cx={point.x} cy={point.y} r="2" fill="currentColor" className="text-blue-400" />
-          </g>
-        ))}
-        <circle cx={center} cy={center} r="2" fill="currentColor" className="text-blue-400" />
-      </svg>
-    </div>
-  )
-}
 
 export default function ProjectsPage() {
   const [activeTab, setActiveTab] = useState("current")
+  useMagneticEffect()
 
   return (
-    <div className="min-h-screen bg-[#0a0a1a] text-white">
-      {/* Cursor Effect */}
-      <CursorEffect />
-      
-      {/* Background Effects */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-600/20 to-blue-400/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-pink-500/15 to-purple-500/10 rounded-full blur-3xl" />
+    <div className="min-h-screen bg-[#030303] text-white overflow-hidden">
+      {/* Custom Cursor */}
+      <CustomCursor />
+
+      {/* Floating Navigation */}
+      <FloatingNav />
+
+      {/* Background Aurora Effects */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <motion.div
+          className="absolute w-[600px] h-[600px] -top-20 -left-20 rounded-full blur-[100px] opacity-30"
+          style={{
+            background: "radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, transparent 70%)",
+          }}
+          animate={{
+            x: [0, 30, 0],
+            y: [0, 50, 0],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute w-[500px] h-[500px] top-1/3 -right-10 rounded-full blur-[100px] opacity-30"
+          style={{
+            background: "radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%)",
+          }}
+          animate={{
+            x: [0, -20, 0],
+            y: [0, 30, 0],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute w-[400px] h-[400px] bottom-0 left-1/3 rounded-full blur-[100px] opacity-30"
+          style={{
+            background: "radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, transparent 70%)",
+          }}
+          animate={{
+            x: [0, 40, 0],
+            y: [0, -30, 0],
+          }}
+          transition={{
+            duration: 18,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
       </div>
 
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-[#0a0a1a]/80 backdrop-blur-xl border-b border-blue-500/10">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-3">
-              <ConnectedHexagonLogo size={32} />
-              <span className="text-xl font-black text-white">Trixode Studios</span>
-            </Link>
-            <div className="hidden md:flex items-center space-x-8">
-              {["People", "About"].map((item) => (
-                <Link
-                  key={item}
-                  href={`/${item.toLowerCase()}`}
-                  className="text-gray-300 hover:text-white transition-colors duration-300 font-semibold"
-                >
-                  {item}
-                </Link>
-              ))}
-              <Link href="/projects" className="text-cyan-400 font-black">
-                Projects
-              </Link>
-              {["Blog", "Contact"].map((item) => (
-                <Link
-                  key={item}
-                  href={`/${item.toLowerCase()}`}
-                  className="text-gray-300 hover:text-white transition-colors duration-300 font-semibold"
-                >
-                  {item}
-                </Link>
-              ))}
-            </div>
+      {/* Grid Overlay */}
+      <div
+        className="fixed inset-0 pointer-events-none z-0"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px)",
+          backgroundSize: "100px 100px",
+        }}
+      />
 
-            {/* Mobile Menu */}
-            <MobileMenu currentPath="/projects" />
-          </div>
-        </div>
-      </nav>
-
-      <div className="pt-24 pb-16 relative z-10">
+      <div className="pt-32 pb-20 relative z-10">
         <div className="max-w-6xl mx-auto px-6">
           {/* Back Button */}
           <motion.div
@@ -114,23 +91,23 @@ export default function ProjectsPage() {
           >
             <Link
               href="/"
-              className="inline-flex items-center text-gray-300 hover:text-white transition-colors duration-300 font-semibold"
+              className="magnetic inline-flex items-center text-white/50 hover:text-white transition-colors duration-300 font-medium group"
             >
-              <ArrowLeft className="mr-2 h-5 w-5" />
+              <ArrowLeft className="mr-2 h-5 w-5 group-hover:-translate-x-1 transition-transform" />
               Back to Home
             </Link>
           </motion.div>
 
           {/* Page Title */}
           <motion.h1
-            className="text-6xl md:text-8xl font-black mb-8 text-white"
+            className="text-5xl md:text-7xl lg:text-8xl font-light mb-12 text-white font-['Space_Grotesk',sans-serif] leading-[0.9]"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            PROJECTS &
+            Projects &
             <br />
-            SERVICES
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50">Services</span>
           </motion.h1>
 
           {/* Tab Navigation */}
@@ -140,24 +117,22 @@ export default function ProjectsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <div className="flex flex-col sm:flex-row gap-4 max-w-md">
               <button
                 onClick={() => setActiveTab("current")}
-                className={`px-8 py-4 rounded-2xl font-black text-lg transition-all duration-300 ${
-                  activeTab === "current"
-                    ? "bg-gradient-to-r from-blue-500 to-cyan-400 text-white shadow-lg shadow-blue-500/25"
-                    : "bg-gray-800/50 text-gray-300 hover:bg-gray-700/50 hover:text-white border border-gray-600/30"
-                }`}
+                className={`magnetic px-8 py-4 rounded-full font-medium text-lg transition-all duration-300 border ${activeTab === "current"
+                  ? "bg-white text-black border-white"
+                  : "glass text-white/70 border-white/10 hover:text-white hover:border-white/30"
+                  }`}
               >
                 Current Projects
               </button>
               <button
                 onClick={() => setActiveTab("consulting")}
-                className={`px-8 py-4 rounded-2xl font-black text-lg transition-all duration-300 ${
-                  activeTab === "consulting"
-                    ? "bg-gradient-to-r from-emerald-500 to-teal-400 text-white shadow-lg shadow-emerald-500/25"
-                    : "bg-gray-800/50 text-gray-300 hover:bg-gray-700/50 hover:text-white border border-gray-600/30"
-                }`}
+                className={`magnetic px-8 py-4 rounded-full font-medium text-lg transition-all duration-300 border ${activeTab === "consulting"
+                  ? "bg-white text-black border-white"
+                  : "glass text-white/70 border-white/10 hover:text-white hover:border-white/30"
+                  }`}
               >
                 AI Consulting
               </button>
@@ -172,197 +147,191 @@ export default function ProjectsPage() {
               transition={{ duration: 0.6 }}
             >
               {/* Projects Grid */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Morphika Project */}
-            <motion.div
-              className="group bg-gradient-to-br from-blue-900/20 to-purple-900/10 backdrop-blur-sm border border-blue-500/20 rounded-3xl overflow-hidden hover:border-blue-400/40 transition-all duration-500"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              whileHover={{ y: -5 }}
-            >
-              {/* Project Preview */}
-              <div className="h-64 bg-gradient-to-br from-blue-600 to-blue-800 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-blue-900/20"></div>
-
-                <div className="relative z-10 h-full flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4 backdrop-blur-sm">
-                      <Sparkles className="h-10 w-10 text-white" />
-                    </div>
-                    <h3 className="text-3xl font-black text-white">MORPHIKA</h3>
-                  </div>
-                </div>
-              </div>
-
-              {/* Project Content */}
-              <div className="p-8">
-                <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-3xl font-black text-white">MORPHIKA</h2>
-                  <span className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-2 text-sm font-black rounded-full">
-                    AI TOOL
-                  </span>
-                </div>
-
-                <p className="text-lg text-gray-300 mb-6 leading-relaxed font-semibold">
-                  AI-powered image generator for eCommerce. Create hyper-realistic product visuals that elevate your
-                  brand instantly with cutting-edge machine learning technology.
-                </p>
-
-                {/* Features */}
-                <div className="mb-8">
-                  <h4 className="text-lg font-black mb-4 text-white">KEY FEATURES</h4>
-                  <ul className="space-y-2 text-gray-400">
-                    {[
-                      "Hyper-realistic product visualization",
-                      "Brand-consistent styling",
-                      "Instant generation & export",
-                      "Multiple format support",
-                    ].map((feature, index) => (
-                      <motion.li
-                        key={feature}
-                        className="flex items-center font-semibold"
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.6 + index * 0.1 }}
-                      >
-                        <div className="w-2 h-2 bg-cyan-400 rounded-full mr-3" />
-                        {feature}
-                      </motion.li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Tech Stack */}
-                <div className="mb-8">
-                  <h4 className="text-lg font-black mb-4 text-white">TECH STACK</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {["AI/ML", "Python", "React", "API"].map((tech) => (
-                      <span
-                        key={tech}
-                        className="bg-blue-900/50 text-blue-300 px-3 py-1 text-sm font-black rounded-lg border border-blue-500/20"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* CTA Button */}
-                <Link href="https://morphika.ai" target="_blank" rel="noopener noreferrer">
-                <Button
-                  className="w-full bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white border-0 rounded-xl shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all duration-300 font-black"
-                  size="lg"
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {/* Morphika Project */}
+                <motion.div
+                  className="group glass rounded-3xl overflow-hidden hover:bg-white/[0.06] transition-all duration-500 border border-white/5 hover:border-white/10"
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  whileHover={{ y: -5 }}
                 >
-                    View Live Demo
-                  <ExternalLink className="ml-2 h-5 w-5" />
-                </Button>
-                </Link>
-              </div>
-            </motion.div>
-
-            {/* AI Research Agent Project */}
-            <motion.div
-              className="group bg-gradient-to-br from-purple-900/20 to-pink-900/10 backdrop-blur-sm border border-purple-500/20 rounded-3xl overflow-hidden hover:border-purple-400/40 transition-all duration-500"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              whileHover={{ y: -5 }}
-            >
-              {/* Project Preview */}
-              <div className="h-64 bg-gradient-to-br from-purple-600 to-pink-700 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-pink-900/20"></div>
-
-                <div className="relative z-10 h-full flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4 backdrop-blur-sm">
-                      <Brain className="h-10 w-10 text-white" />
-                    </div>
-                    <h3 className="text-3xl font-black text-white">RESEARCHER AI</h3>
-                    <div className="mt-2 flex items-center justify-center">
-                      <span className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-3 py-1 text-xs font-black rounded-full">
-                        COMING SOON
-                      </span>
+                  {/* Project Preview */}
+                  <div className="h-64 bg-gradient-to-br from-blue-600/20 to-blue-800/20 relative overflow-hidden group-hover:scale-105 transition-transform duration-700">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-blue-900/10"></div>
+                    <div className="relative z-10 h-full flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="w-20 h-20 glass rounded-2xl flex items-center justify-center mx-auto mb-4">
+                          <Sparkles className="h-10 w-10 text-[#3b82f6]" />
+                        </div>
+                        <h3 className="text-2xl font-light text-white font-['Space_Grotesk',sans-serif]">MORPHIKA</h3>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
 
-              {/* Project Content */}
-              <div className="p-8">
-                <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-3xl font-black text-white">RESEARCHER AI</h2>
-                  <span className="bg-gradient-to-r from-purple-500 to-pink-600 text-white px-4 py-2 text-sm font-black rounded-full">
-                    AI AGENT
-                  </span>
-                </div>
-
-                <p className="text-lg text-gray-300 mb-6 leading-relaxed font-semibold">
-                  Your intelligent research companion that understands scientific literature, generates hypotheses, designs experiments, and accelerates discovery across all research domains.
-                </p>
-
-                {/* Features */}
-                <div className="mb-8">
-                  <h4 className="text-lg font-black mb-4 text-white">PLANNED FEATURES</h4>
-                  <ul className="space-y-2 text-gray-400">
-                    {[
-                      "Intelligent literature review & synthesis",
-                      "Automated hypothesis generation",
-                      "Experimental design optimization",
-                      "Real-time collaboration with researchers",
-                      "Cross-domain knowledge connection",
-                      "Publication-ready report generation",
-                    ].map((feature, index) => (
-                      <motion.li
-                        key={feature}
-                        className="flex items-center font-semibold"
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.8 + index * 0.1 }}
-                      >
-                        <div className="w-2 h-2 bg-pink-400 rounded-full mr-3" />
-                        {feature}
-                      </motion.li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Tech Stack */}
-                <div className="mb-8">
-                  <h4 className="text-lg font-black mb-4 text-white">TECH STACK</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {["LLM", "RAG", "Vector DB", "NLP", "Python", "React", "GraphQL"].map((tech) => (
-                      <span
-                        key={tech}
-                        className="bg-purple-900/50 text-purple-300 px-3 py-1 text-sm font-black rounded-lg border border-purple-500/20"
-                      >
-                        {tech}
+                  {/* Project Content */}
+                  <div className="p-8">
+                    <div className="flex items-center justify-between mb-6">
+                      <h2 className="text-2xl font-medium text-white font-['Space_Grotesk',sans-serif]">MORPHIKA</h2>
+                      <span className="bg-[#3b82f6]/10 text-[#3b82f6] border border-[#3b82f6]/20 px-4 py-1 text-xs font-medium uppercase tracking-widest rounded-full">
+                        AI TOOL
                       </span>
-                    ))}
-                  </div>
-                </div>
+                    </div>
 
-                {/* Progress Indicator */}
-                <div className="mb-6">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-black text-white">DEVELOPMENT PROGRESS</span>
-                    <span className="text-sm font-black text-purple-400">35%</span>
-                  </div>
-                  <div className="w-full bg-gray-700 rounded-full h-2">
-                    <div className="bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full" style={{ width: '35%' }}></div>
-                  </div>
-                </div>
+                    <p className="text-lg text-white/60 mb-8 leading-relaxed font-light">
+                      AI-powered image generator for eCommerce. Create hyper-realistic product visuals that elevate your
+                      brand instantly with cutting-edge machine learning technology.
+                    </p>
 
-                {/* CTA Button */}
-                <Button
-                  className="w-full bg-gradient-to-r from-purple-600/50 to-pink-600/50 text-white border border-purple-500/30 rounded-xl font-black hover:from-purple-600/70 hover:to-pink-600/70 transition-all duration-300"
-                  size="lg"
+                    {/* Features */}
+                    <div className="mb-8">
+                      <h4 className="text-sm font-medium mb-4 text-white uppercase tracking-widest">Key Features</h4>
+                      <ul className="space-y-3 text-white/50">
+                        {[
+                          "Hyper-realistic product visualization",
+                          "Brand-consistent styling",
+                          "Instant generation & export",
+                          "Multiple format support",
+                        ].map((feature, index) => (
+                          <motion.li
+                            key={feature}
+                            className="flex items-center font-light text-sm"
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.6 + index * 0.1 }}
+                          >
+                            <div className="w-1.5 h-1.5 bg-[#3b82f6] rounded-full mr-3" />
+                            {feature}
+                          </motion.li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Tech Stack */}
+                    <div className="mb-8">
+                      <h4 className="text-sm font-medium mb-4 text-white uppercase tracking-widest">Tech Stack</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {["AI/ML", "Python", "React", "API"].map((tech) => (
+                          <span
+                            key={tech}
+                            className="bg-white/5 text-white/70 px-3 py-1 text-xs font-medium rounded border border-white/10"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* CTA Button */}
+                    <Link href="https://morphika.ai" target="_blank" rel="noopener noreferrer">
+                      <button className="magnetic w-full py-4 border border-white/10 text-sm uppercase tracking-widest relative overflow-hidden group hover:border-[#3b82f6] transition-all duration-400 bg-white/[0.02]">
+                        <span className="relative z-10 flex items-center justify-center gap-2">
+                          View Live Demo <ExternalLink className="h-4 w-4" />
+                        </span>
+                        <div className="absolute inset-0 bg-[#3b82f6] scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-400 opacity-20" />
+                      </button>
+                    </Link>
+                  </div>
+                </motion.div>
+
+                {/* Researcher AI Project */}
+                <motion.div
+                  className="group glass rounded-3xl overflow-hidden hover:bg-white/[0.06] transition-all duration-500 border border-white/5 hover:border-white/10"
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.6 }}
+                  whileHover={{ y: -5 }}
                 >
-                  <Zap className="mr-2 h-5 w-5" />
-                  Notify Me When Ready
-                </Button>
-              </div>
-            </motion.div>
+                  {/* Project Preview */}
+                  <div className="h-64 bg-gradient-to-br from-purple-600/20 to-pink-800/20 relative overflow-hidden group-hover:scale-105 transition-transform duration-700">
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-900/10"></div>
+                    <div className="relative z-10 h-full flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="w-20 h-20 glass rounded-2xl flex items-center justify-center mx-auto mb-4">
+                          <Brain className="h-10 w-10 text-[#8b5cf6]" />
+                        </div>
+                        <h3 className="text-2xl font-light text-white font-['Space_Grotesk',sans-serif]">RESEARCHER AI</h3>
+                        <div className="mt-2 flex items-center justify-center">
+                          <span className="bg-white/10 text-white/80 px-3 py-1 text-[10px] font-medium tracking-widest uppercase rounded-full border border-white/10">
+                            Coming Soon
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Project Content */}
+                  <div className="p-8">
+                    <div className="flex items-center justify-between mb-6">
+                      <h2 className="text-2xl font-medium text-white font-['Space_Grotesk',sans-serif]">RESEARCHER AI</h2>
+                      <span className="bg-[#8b5cf6]/10 text-[#8b5cf6] border border-[#8b5cf6]/20 px-4 py-1 text-xs font-medium uppercase tracking-widest rounded-full">
+                        AI Agent
+                      </span>
+                    </div>
+
+                    <p className="text-lg text-white/60 mb-8 leading-relaxed font-light">
+                      Your intelligent research companion that understands scientific literature, generates hypotheses, designs experiments, and accelerates discovery across all research domains.
+                    </p>
+
+                    {/* Features */}
+                    <div className="mb-8">
+                      <h4 className="text-sm font-medium mb-4 text-white uppercase tracking-widest">Planned Features</h4>
+                      <ul className="space-y-3 text-white/50">
+                        {[
+                          "Intelligent literature review & synthesis",
+                          "Automated hypothesis generation",
+                          "Experimental design optimization",
+                          "Real-time collaboration",
+                        ].map((feature, index) => (
+                          <motion.li
+                            key={feature}
+                            className="flex items-center font-light text-sm"
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.8 + index * 0.1 }}
+                          >
+                            <div className="w-1.5 h-1.5 bg-[#8b5cf6] rounded-full mr-3" />
+                            {feature}
+                          </motion.li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Tech Stack */}
+                    <div className="mb-8">
+                      <h4 className="text-sm font-medium mb-4 text-white uppercase tracking-widest">Tech Stack</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {["LLM", "RAG", "Vector DB", "NLP"].map((tech) => (
+                          <span
+                            key={tech}
+                            className="bg-white/5 text-white/70 px-3 py-1 text-xs font-medium rounded border border-white/10"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Progress Indicator */}
+                    <div className="mb-8">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-xs uppercase tracking-widest text-white/40">Development Progress</span>
+                        <span className="text-xs font-medium text-[#8b5cf6]">35%</span>
+                      </div>
+                      <div className="w-full bg-white/5 rounded-full h-1">
+                        <div className="bg-gradient-to-r from-[#8b5cf6] to-pink-500 h-1 rounded-full" style={{ width: '35%' }}></div>
+                      </div>
+                    </div>
+
+                    {/* CTA Button */}
+                    <button className="magnetic w-full py-4 border border-white/10 text-sm uppercase tracking-widest relative overflow-hidden group hover:border-[#8b5cf6] transition-all duration-400 bg-white/[0.02]">
+                      <span className="relative z-10 flex items-center justify-center gap-2">
+                        Notify Me <Zap className="h-4 w-4" />
+                      </span>
+                      <div className="absolute inset-0 bg-[#8b5cf6] scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-400 opacity-20" />
+                    </button>
+                  </div>
+                </motion.div>
               </div>
 
               {/* Call to Action for Current Projects */}
@@ -372,20 +341,17 @@ export default function ProjectsPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
               >
-                <div className="bg-gradient-to-br from-blue-900/20 to-purple-900/10 backdrop-blur-sm border border-blue-500/20 rounded-3xl p-12">
-                  <h2 className="text-4xl md:text-5xl font-black mb-6 text-white">HAVE A PROJECT IN MIND?</h2>
-                  <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed font-semibold">
+                <div className="glass p-16 rounded-3xl border border-white/5 relative overflow-hidden group">
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#3b82f6]/5 to-[#8b5cf6]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  <h2 className="text-4xl md:text-5xl font-light mb-6 text-white font-['Space_Grotesk',sans-serif]">Have a Project in Mind?</h2>
+                  <p className="text-xl text-white/60 mb-10 max-w-2xl mx-auto leading-relaxed font-light">
                     Let's collaborate to build something extraordinary that pushes the boundaries of what's possible in
                     research and innovation.
                   </p>
                   <Link href="/contact">
-                    <Button
-                      size="lg"
-                      className="bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white border-0 px-12 py-6 text-xl font-black rounded-xl shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all duration-300"
-                    >
+                    <button className="magnetic px-10 py-5 bg-white text-black text-sm uppercase tracking-widest font-medium rounded-full hover:bg-white/90 transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)]">
                       Start a Project
-                      <ArrowRight className="ml-2 h-6 w-6" />
-                    </Button>
+                    </button>
                   </Link>
                 </div>
               </motion.section>
@@ -400,145 +366,143 @@ export default function ProjectsPage() {
               transition={{ duration: 0.6 }}
             >
               {/* Hero Section for AI Consulting */}
-              <div className="text-center mb-16">
+              <div className="text-center mb-24">
                 <motion.div
-                  className="inline-flex items-center bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/20 rounded-full px-6 py-3 mb-8"
+                  className="inline-flex items-center bg-[#10b981]/10 border border-[#10b981]/20 rounded-full px-6 py-2 mb-8"
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
                 >
-                  <Brain className="h-5 w-5 text-emerald-400 mr-2" />
-                  <span className="text-emerald-400 font-black text-sm">AI TRANSFORMATION SPECIALISTS</span>
+                  <Brain className="h-4 w-4 text-[#10b981] mr-2" />
+                  <span className="text-[#10b981] text-xs font-medium uppercase tracking-widest">AI Transformation Specialists</span>
                 </motion.div>
-                
+
                 <motion.h2
-                  className="text-4xl md:text-6xl font-black mb-6 text-white"
+                  className="text-4xl md:text-6xl font-light mb-8 text-white font-['Space_Grotesk',sans-serif] leading-tight"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.3 }}
                 >
-                  AI ADOPTION
+                  AI Adoption
                   <br />
-                  <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
-                    CONSULTING
-                  </span>
+                  <span className="text-[#10b981]">Consulting</span>
                 </motion.h2>
-                
+
                 <motion.p
-                  className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-semibold"
+                  className="text-xl text-white/60 max-w-3xl mx-auto leading-relaxed font-light"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
                 >
-                  We help businesses identify pain points and implement tailored AI solutions that drive real value. 
+                  We help businesses identify pain points and implement tailored AI solutions that drive real value.
                   From strategy to deployment, we're your partners in AI transformation.
                 </motion.p>
               </div>
 
               {/* Our Approach */}
-              <div className="mb-20">
+              <div className="mb-24">
                 <motion.h3
-                  className="text-3xl md:text-4xl font-black mb-12 text-center text-white"
+                  className="text-2xl font-light mb-12 text-center text-white font-['Space_Grotesk',sans-serif]"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.5 }}
                 >
-                  OUR APPROACH
+                  Our Approach
                 </motion.h3>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                   {[
                     {
                       icon: Search,
-                      title: "DISCOVERY",
-                      description: "Deep dive into your business processes to identify AI opportunities and pain points",
-                      color: "from-blue-500 to-blue-600"
+                      title: "Discovery",
+                      description: "Deep dive into your business processes to identify AI opportunities.",
+                      color: "text-blue-400"
                     },
                     {
                       icon: Target,
-                      title: "STRATEGY",
-                      description: "Develop a comprehensive AI roadmap aligned with your business objectives",
-                      color: "from-emerald-500 to-emerald-600"
+                      title: "Strategy",
+                      description: "Develop a comprehensive AI roadmap aligned with business objectives.",
+                      color: "text-emerald-400"
                     },
                     {
                       icon: Lightbulb,
-                      title: "SOLUTION",
-                      description: "Design and prototype custom AI solutions tailored to your specific needs",
-                      color: "from-purple-500 to-purple-600"
+                      title: "Solution",
+                      description: "Design and prototype custom AI solutions tailored to your needs.",
+                      color: "text-purple-400"
                     },
                     {
                       icon: TrendingUp,
-                      title: "IMPLEMENTATION",
-                      description: "Deploy, train, and optimize AI systems for maximum business impact",
-                      color: "from-orange-500 to-orange-600"
+                      title: "Implementation",
+                      description: "Deploy, train, and optimize AI systems for maximum impact.",
+                      color: "text-orange-400"
                     }
                   ].map((step, index) => (
                     <motion.div
                       key={step.title}
-                      className="bg-gradient-to-br from-gray-900/50 to-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-emerald-500/30 transition-all duration-300"
+                      className="glass p-8 rounded-2xl hover:bg-white/[0.08] transition-all duration-300 group"
                       initial={{ opacity: 0, y: 50 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
                       whileHover={{ y: -5 }}
                     >
-                      <div className={`w-16 h-16 bg-gradient-to-r ${step.color} rounded-xl flex items-center justify-center mb-4 mx-auto`}>
-                        <step.icon className="h-8 w-8 text-white" />
+                      <div className={`w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center mb-6 mx-auto group-hover:bg-white/10 transition-colors`}>
+                        <step.icon className={`h-6 w-6 ${step.color}`} />
                       </div>
-                      <h4 className="text-xl font-black text-white mb-3 text-center">{step.title}</h4>
-                      <p className="text-gray-300 text-center font-semibold leading-relaxed">{step.description}</p>
+                      <h4 className="text-lg font-medium text-white mb-3 text-center">{step.title}</h4>
+                      <p className="text-white/50 text-center text-sm leading-relaxed font-light">{step.description}</p>
                     </motion.div>
                   ))}
                 </div>
               </div>
 
               {/* Services */}
-              <div className="mb-20">
+              <div className="mb-24">
                 <motion.h3
-                  className="text-3xl md:text-4xl font-black mb-12 text-center text-white"
+                  className="text-2xl font-light mb-12 text-center text-white font-['Space_Grotesk',sans-serif]"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.8 }}
                 >
-                  WHAT WE DELIVER
+                  What We Deliver
                 </motion.h3>
-                
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   {[
                     {
-                      title: "AI STRATEGY & ROADMAP",
+                      title: "AI Strategy & Roadmap",
                       description: "Comprehensive assessment and strategic planning for AI integration across your organization.",
                       features: ["Business process analysis", "ROI projections", "Implementation timeline", "Risk assessment"]
                     },
                     {
-                      title: "CUSTOM AI SOLUTIONS",
+                      title: "Custom AI Solutions",
                       description: "Bespoke AI systems designed specifically for your industry challenges and requirements.",
                       features: ["Machine learning models", "Natural language processing", "Computer vision", "Predictive analytics"]
                     },
                     {
-                      title: "AUTOMATION & OPTIMIZATION",
+                      title: "Automation & Optimization",
                       description: "Streamline operations and reduce costs through intelligent process automation.",
                       features: ["Workflow automation", "Decision support systems", "Performance optimization", "Cost reduction analysis"]
                     },
                     {
-                      title: "TRAINING & SUPPORT",
+                      title: "Training & Support",
                       description: "Comprehensive team training and ongoing support to maximize your AI investment.",
                       features: ["Staff training programs", "Technical documentation", "Ongoing maintenance", "Performance monitoring"]
                     }
                   ].map((service, index) => (
                     <motion.div
                       key={service.title}
-                      className="bg-gradient-to-br from-emerald-900/20 to-teal-900/10 backdrop-blur-sm border border-emerald-500/20 rounded-3xl p-8 hover:border-emerald-400/40 transition-all duration-500"
+                      className="glass p-10 rounded-3xl hover:bg-white/[0.06] transition-all duration-500 border border-white/5"
                       initial={{ opacity: 0, y: 50 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.9 + index * 0.1 }}
                       whileHover={{ y: -5 }}
                     >
-                      <h4 className="text-2xl font-black text-white mb-4">{service.title}</h4>
-                      <p className="text-gray-300 mb-6 font-semibold leading-relaxed">{service.description}</p>
-                      <ul className="space-y-2">
+                      <h4 className="text-xl font-medium text-white mb-4 font-['Space_Grotesk',sans-serif]">{service.title}</h4>
+                      <p className="text-white/60 mb-8 font-light leading-relaxed">{service.description}</p>
+                      <ul className="space-y-3">
                         {service.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-center text-gray-400 font-semibold">
-                            <CheckCircle className="h-5 w-5 text-emerald-400 mr-3 flex-shrink-0" />
+                          <li key={idx} className="flex items-center text-white/50 text-sm font-light">
+                            <CheckCircle className="h-4 w-4 text-[#10b981] mr-3 flex-shrink-0" />
                             {feature}
                           </li>
                         ))}
@@ -555,23 +519,20 @@ export default function ProjectsPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 1.2 }}
               >
-                <div className="bg-gradient-to-br from-emerald-900/20 to-teal-900/10 backdrop-blur-sm border border-emerald-500/20 rounded-3xl p-12">
+                <div className="glass p-16 rounded-3xl border border-white/5 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#10b981]/5 to-[#059669]/5 opacity-30" />
                   <div className="flex items-center justify-center mb-6">
-                    <Users className="h-12 w-12 text-emerald-400 mr-4" />
-                    <h2 className="text-4xl md:text-5xl font-black text-white">READY TO TRANSFORM?</h2>
+                    <Users className="h-10 w-10 text-[#10b981] mr-4" />
+                    <h2 className="text-4xl md:text-5xl font-light text-white font-['Space_Grotesk',sans-serif]">Ready to Transform?</h2>
                   </div>
-                  <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed font-semibold">
+                  <p className="text-xl text-white/60 mb-10 max-w-2xl mx-auto leading-relaxed font-light">
                     Let's discuss how AI can solve your business challenges and unlock new opportunities for growth.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Link href="/contact">
-                      <Button
-                        size="lg"
-                        className="bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-600 hover:to-teal-500 text-white border-0 px-12 py-6 text-xl font-black rounded-xl shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 transition-all duration-300"
-                      >
+                      <button className="magnetic px-10 py-5 bg-[#10b981] text-white text-sm uppercase tracking-widest font-medium rounded-full hover:bg-[#059669] transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)]">
                         Schedule Consultation
-                        <ArrowRight className="ml-2 h-6 w-6" />
-                      </Button>
+                      </button>
                     </Link>
                   </div>
                 </div>
@@ -580,6 +541,7 @@ export default function ProjectsPage() {
           )}
         </div>
       </div>
+      <Footer />
     </div>
   )
 }

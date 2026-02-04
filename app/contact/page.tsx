@@ -1,63 +1,20 @@
 "use client"
 
-import type React from "react"
-
 import { motion } from "framer-motion"
 import Link from "next/link"
-import LiquidGlass from 'liquid-glass-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { ArrowLeft, Send, Github, Linkedin, Mail, MapPin, Clock, CheckCircle, AlertCircle } from "lucide-react"
 import { useState } from "react"
 import Footer from "@/components/footer"
-import MobileMenu from "@/components/mobile-menu"
-import CursorEffect from "@/components/cursor-effect"
-
-// Connected Hexagon Logo Component
-const ConnectedHexagonLogo = ({ size = 32, className = "" }: { size?: number; className?: string }) => {
-  const hexagonPoints = []
-  const center = size / 2
-  const radius = size * 0.35
-
-  for (let i = 0; i < 6; i++) {
-    const angle = (i * Math.PI) / 3
-    const x = center + radius * Math.cos(angle)
-    const y = center + radius * Math.sin(angle)
-    hexagonPoints.push({ x, y })
-  }
-
-  return (
-    <div className={`relative ${className}`} style={{ width: size, height: size }}>
-      <svg width={size} height={size} className="absolute inset-0">
-        <polygon
-          points={hexagonPoints.map((p) => `${p.x},${p.y}`).join(" ")}
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          className="text-blue-400"
-        />
-        {hexagonPoints.map((point, i) => (
-          <g key={i}>
-            <line
-              x1={center}
-              y1={center}
-              x2={point.x}
-              y2={point.y}
-              stroke="currentColor"
-              strokeWidth="1"
-              className="text-blue-400/60"
-            />
-            <circle cx={point.x} cy={point.y} r="2" fill="currentColor" className="text-blue-400" />
-          </g>
-        ))}
-        <circle cx={center} cy={center} r="2" fill="currentColor" className="text-blue-400" />
-      </svg>
-    </div>
-  )
-}
+import CustomCursor from "@/components/ui/CustomCursor"
+import FloatingNav from "@/components/layout/FloatingNav"
+import { useMagneticEffect } from "@/hooks/useMagneticEffect"
 
 export default function ContactPage() {
+  useMagneticEffect()
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -110,9 +67,9 @@ export default function ContactPage() {
       })
 
       if (response.ok) {
-      setSubmitStatus("success")
-      setFormData({ name: "", email: "", message: "" })
-      setErrors({})
+        setSubmitStatus("success")
+        setFormData({ name: "", email: "", message: "" })
+        setErrors({})
       } else {
         setSubmitStatus("error")
       }
@@ -135,45 +92,73 @@ export default function ContactPage() {
   }
 
   return (
-    <div
-      className="min-h-screen text-white bg-cover bg-center"
-      style={{ backgroundImage: "url('https://source.unsplash.com/random/1920x1080?abstract,vibrant')" }}
-    >
-      {/* Cursor Effect */}
-      <CursorEffect />
-      
-      {/* Background effects were here, removed for testing glass effect */}
+    <div className="min-h-screen bg-[#030303] text-white overflow-hidden">
+      {/* Custom Cursor */}
+      <CustomCursor />
 
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-[#0a0a1a]/80 backdrop-blur-xl border-b border-blue-500/10">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-3">
-              <ConnectedHexagonLogo size={32} />
-              <span className="text-xl font-black text-white">Trixode Studios</span>
-            </Link>
-            <div className="hidden md:flex items-center space-x-8">
-              {["People", "About", "Projects", "Blog"].map((item) => (
-                <Link
-                  key={item}
-                  href={`/${item.toLowerCase()}`}
-                  className="text-gray-300 hover:text-white transition-colors duration-300 font-semibold"
-                >
-                  {item}
-                </Link>
-              ))}
-              <Link href="/contact" className="text-cyan-400 font-black">
-                Contact
-              </Link>
-            </div>
+      {/* Floating Navigation */}
+      <FloatingNav />
 
-            {/* Mobile Menu */}
-            <MobileMenu currentPath="/contact" />
-          </div>
-        </div>
-      </nav>
+      {/* Background Aurora Effects */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <motion.div
+          className="absolute w-[600px] h-[600px] -top-20 -left-20 rounded-full blur-[100px] opacity-30"
+          style={{
+            background: "radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, transparent 70%)",
+          }}
+          animate={{
+            x: [0, 30, 0],
+            y: [0, 50, 0],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute w-[500px] h-[500px] top-1/3 -right-10 rounded-full blur-[100px] opacity-30"
+          style={{
+            background: "radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%)",
+          }}
+          animate={{
+            x: [0, -20, 0],
+            y: [0, 30, 0],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute w-[400px] h-[400px] bottom-0 left-1/3 rounded-full blur-[100px] opacity-30"
+          style={{
+            background: "radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, transparent 70%)",
+          }}
+          animate={{
+            x: [0, 40, 0],
+            y: [0, -30, 0],
+          }}
+          transition={{
+            duration: 18,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      </div>
 
-      <div className="pt-24 pb-16 relative z-10">
+      {/* Grid Overlay */}
+      <div
+        className="fixed inset-0 pointer-events-none z-0"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px)",
+          backgroundSize: "100px 100px",
+        }}
+      />
+
+      <div className="pt-32 pb-20 relative z-10">
         <div className="max-w-6xl mx-auto px-6">
           {/* Back Button */}
           <motion.div
@@ -184,23 +169,23 @@ export default function ContactPage() {
           >
             <Link
               href="/"
-              className="inline-flex items-center text-gray-300 hover:text-white transition-colors duration-300 font-semibold"
+              className="magnetic inline-flex items-center text-white/50 hover:text-white transition-colors duration-300 font-medium group"
             >
-              <ArrowLeft className="mr-2 h-5 w-5" />
+              <ArrowLeft className="mr-2 h-5 w-5 group-hover:-translate-x-1 transition-transform" />
               Back to Home
             </Link>
           </motion.div>
 
           {/* Page Title */}
           <motion.h1
-            className="text-6xl md:text-8xl font-black mb-16 text-white"
+            className="text-6xl md:text-8xl font-light mb-16 text-white font-['Space_Grotesk',sans-serif]"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            GET IN
+            Get in
             <br />
-            TOUCH
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50">Touch</span>
           </motion.h1>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -210,14 +195,15 @@ export default function ContactPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <div className="bg-gradient-to-br from-blue-900/20 to-purple-900/10 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-8">
-                <h2 className="text-3xl font-black mb-8 text-white">SEND MESSAGE</h2>
+              <div className="glass p-10 rounded-3xl border border-white/5 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#3b82f6]/5 to-transparent rounded-full blur-3xl -z-10" />
+                <h2 className="text-3xl font-light mb-8 text-white font-['Space_Grotesk',sans-serif]">Send Message</h2>
 
                 {submitStatus === "success" && (
                   <div className="mb-6 p-4 bg-green-500/10 border border-green-500/20 rounded-lg flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-400" />
-                    <p className="text-green-300 font-semibold">
-                      Message sent successfully! Check your email for a confirmation from us. We'll get back to you within 24 hours.
+                    <p className="text-green-300 font-medium text-sm">
+                      Message sent successfully! We'll get back to you within 24 hours.
                     </p>
                   </div>
                 )}
@@ -225,7 +211,7 @@ export default function ContactPage() {
                 {submitStatus === "error" && (
                   <div className="mb-6 p-4 bg-red-500/10 border border-red-500/20 rounded-lg flex items-center space-x-3">
                     <AlertCircle className="h-5 w-5 text-red-400" />
-                    <p className="text-red-300 font-semibold">
+                    <p className="text-red-300 font-medium text-sm">
                       Failed to send message. Please try again or email us directly.
                     </p>
                   </div>
@@ -233,68 +219,81 @@ export default function ContactPage() {
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <label className="block text-sm font-black text-gray-300 mb-2">NAME</label>
-                    <Input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      className={`w-full bg-blue-900/20 border text-white placeholder-gray-400 rounded-xl focus:ring-cyan-400/20 transition-all duration-300 font-semibold ${
-                        errors.name
-                          ? "border-red-500/50 focus:border-red-400"
-                          : "border-cyan-500/30 focus:border-cyan-400"
-                      }`}
-                      placeholder="Your name"
-                      required
-                    />
-                    {errors.name && <p className="mt-1 text-sm text-red-400 font-medium">{errors.name}</p>}
+                    <div className="relative">
+                      <input
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        placeholder=" "
+                        className={`peer w-full bg-transparent border-b border-white/10 py-4 text-white outline-none transition-colors ${errors.name ? "border-red-500/50" : "focus:border-[#3b82f6]"
+                          }`}
+                        required
+                      />
+                      <label
+                        className={`absolute left-0 top-4 text-white/50 transition-all peer-focus:text-[#3b82f6] peer-focus:text-xs peer-focus:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-top-4 pointer-events-none ${errors.name ? "text-red-400" : ""
+                          }`}
+                      >
+                        Your Name
+                      </label>
+                    </div>
+                    {errors.name && <p className="mt-1 text-xs text-red-400">{errors.name}</p>}
                   </div>
 
                   <div>
-                    <label className="block text-sm font-black text-gray-300 mb-2">EMAIL</label>
-                    <Input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      className={`w-full bg-blue-900/20 border text-white placeholder-gray-400 rounded-xl focus:ring-cyan-400/20 transition-all duration-300 font-semibold ${
-                        errors.email
-                          ? "border-red-500/50 focus:border-red-400"
-                          : "border-cyan-500/30 focus:border-cyan-400"
-                      }`}
-                      placeholder="your@email.com"
-                      required
-                    />
-                    {errors.email && <p className="mt-1 text-sm text-red-400 font-medium">{errors.email}</p>}
+                    <div className="relative">
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder=" "
+                        className={`peer w-full bg-transparent border-b border-white/10 py-4 text-white outline-none transition-colors ${errors.email ? "border-red-500/50" : "focus:border-[#3b82f6]"
+                          }`}
+                        required
+                      />
+                      <label
+                        className={`absolute left-0 top-4 text-white/50 transition-all peer-focus:text-[#3b82f6] peer-focus:text-xs peer-focus:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-top-4 pointer-events-none ${errors.email ? "text-red-400" : ""
+                          }`}
+                      >
+                        Email Address
+                      </label>
+                    </div>
+                    {errors.email && <p className="mt-1 text-xs text-red-400">{errors.email}</p>}
                   </div>
 
                   <div>
-                    <label className="block text-sm font-black text-gray-300 mb-2">MESSAGE</label>
-                    <Textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      rows={6}
-                      className={`w-full bg-blue-900/20 border text-white placeholder-gray-400 rounded-xl focus:ring-blue-400/20 transition-all duration-300 resize-none font-semibold ${
-                        errors.message
-                          ? "border-red-500/50 focus:border-red-400"
-                          : "border-blue-500/30 focus:border-blue-400"
-                      }`}
-                      placeholder="Tell us about your project..."
-                      required
-                    />
-                    {errors.message && <p className="mt-1 text-sm text-red-400 font-medium">{errors.message}</p>}
+                    <div className="relative">
+                      <textarea
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        placeholder=" "
+                        rows={6}
+                        className={`peer w-full bg-transparent border-b border-white/10 py-4 text-white outline-none transition-colors resize-none ${errors.message ? "border-red-500/50" : "focus:border-[#3b82f6]"
+                          }`}
+                        required
+                      />
+                      <label
+                        className={`absolute left-0 top-4 text-white/50 transition-all peer-focus:text-[#3b82f6] peer-focus:text-xs peer-focus:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-top-4 pointer-events-none ${errors.message ? "text-red-400" : ""
+                          }`}
+                      >
+                        Tell us about your project...
+                      </label>
+                    </div>
+                    {errors.message && <p className="mt-1 text-xs text-red-400">{errors.message}</p>}
                   </div>
 
-                  <Button
+                  <button
                     type="submit"
-                    size="lg"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white border-0 rounded-xl shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all duration-300 font-black disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="magnetic w-full py-5 border border-white/10 text-sm uppercase tracking-widest relative overflow-hidden group hover:border-[#3b82f6] transition-all duration-400 bg-white/[0.02] disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    {isSubmitting ? "Sending..." : "Send Message"}
-                    <Send className="ml-2 h-5 w-5" />
-                  </Button>
+                    <span className="relative z-10 flex items-center justify-center gap-2">
+                      {isSubmitting ? "Sending..." : "Send Message"} <Send className="h-4 w-4" />
+                    </span>
+                    <div className="absolute inset-0 bg-[#3b82f6] scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-400 opacity-20" />
+                  </button>
                 </form>
               </div>
             </motion.div>
@@ -307,77 +306,65 @@ export default function ContactPage() {
               className="space-y-8"
             >
               {/* Contact Details */}
-              <div className="bg-gradient-to-br from-blue-900/20 to-purple-900/10 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-8">
-                <h2 className="text-3xl font-black mb-8 text-white">CONTACT INFO</h2>
+              <div className="glass p-10 rounded-3xl border border-white/5 relative overflow-hidden">
+                <h2 className="text-3xl font-light mb-8 text-white font-['Space_Grotesk',sans-serif]">Contact Info</h2>
 
-                <div className="space-y-6">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 border border-cyan-400/30 rounded-xl flex items-center justify-center">
-                      <Mail className="h-5 w-5 text-cyan-300" />
+                <div className="space-y-8">
+                  <div className="flex items-start space-x-6 group">
+                    <div className="w-12 h-12 border border-white/10 rounded-full flex items-center justify-center group-hover:border-[#3b82f6] group-hover:text-[#3b82f6] transition-all duration-300">
+                      <Mail className="h-5 w-5 hover:text-[#3b82f6]" />
                     </div>
                     <div>
-                      <h3 className="font-black text-white mb-1">EMAIL</h3>
+                      <h3 className="text-sm font-medium text-white/50 uppercase tracking-widest mb-1 font-['Space_Grotesk',sans-serif]">Email</h3>
                       <a
                         href="mailto:ceo@trixode-studios.com"
-                        className="text-gray-300 font-semibold hover:text-cyan-300 transition-colors"
+                        className="text-lg text-white hover:text-[#3b82f6] transition-colors font-light"
                       >
                         ceo@trixode-studios.com
                       </a>
                     </div>
                   </div>
 
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500/20 to-blue-600/20 border border-blue-400/30 rounded-xl flex items-center justify-center">
-                      <MapPin className="h-5 w-5 text-blue-300" />
+                  <div className="flex items-start space-x-6 group">
+                    <div className="w-12 h-12 border border-white/10 rounded-full flex items-center justify-center group-hover:border-[#3b82f6] group-hover:text-[#3b82f6] transition-all duration-300">
+                      <MapPin className="h-5 w-5" />
                     </div>
                     <div>
-                      <h3 className="font-black text-white mb-1">LOCATIONS</h3>
-                      <p className="text-gray-300 font-semibold">Victoria, BC, Canada</p>
-                      <p className="text-gray-300 font-semibold">Quito, Ecuador</p>
+                      <h3 className="text-sm font-medium text-white/50 uppercase tracking-widest mb-1 font-['Space_Grotesk',sans-serif]">Locations</h3>
+                      <p className="text-lg text-white font-light">Victoria, BC, Canada</p>
+                      <p className="text-lg text-white font-light">Quito, Ecuador</p>
                     </div>
                   </div>
 
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500/20 to-blue-600/20 border border-blue-400/30 rounded-xl flex items-center justify-center">
-                      <Clock className="h-5 w-5 text-blue-300" />
+                  <div className="flex items-start space-x-6 group">
+                    <div className="w-12 h-12 border border-white/10 rounded-full flex items-center justify-center group-hover:border-[#3b82f6] group-hover:text-[#3b82f6] transition-all duration-300">
+                      <Clock className="h-5 w-5" />
                     </div>
                     <div>
-                      <h3 className="font-black text-white mb-1">RESPONSE TIME</h3>
-                      <p className="text-gray-300 font-semibold">Within 24 hours</p>
+                      <h3 className="text-sm font-medium text-white/50 uppercase tracking-widest mb-1 font-['Space_Grotesk',sans-serif]">Response Time</h3>
+                      <p className="text-lg text-white font-light">Within 24 hours</p>
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Map */}
-              <div className="bg-gradient-to-br from-blue-900/20 to-purple-900/10 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-8">
-                <h2 className="text-3xl font-black mb-6 text-white">FIND US</h2>
-                <div className="w-full h-64 rounded-xl overflow-hidden">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2644.4268!2d-123.3703512!3d48.4285154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x548f738ad41f3453%3A0x1e3e5d4d5f5f5f5f!2s341%20Quebec%20St%2C%20Victoria%2C%20BC%20V8V%201W4%2C%20Canada!5e0!3m2!1sen!2sus!4v1703123456789!5m2!1sen!2sus"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    className="rounded-lg"
-                  />
-                </div>
+              <div className="glass p-2 rounded-3xl border border-white/5 overflow-hidden h-64 relative">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2644.4268!2d-123.3703512!3d48.4285154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x548f738ad41f3453%3A0x1e3e5d4d5f5f5f5f!2s341%20Quebec%20St%2C%20Victoria%2C%20BC%20V8V%201W4%2C%20Canada!5e0!3m2!1sen!2sus!4v1703123456789!5m2!1sen!2sus"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, filter: "grayscale(1) invert(1) contrast(1.2) brightness(0.8)" }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="rounded-2xl opacity-70 hover:opacity-100 transition-opacity duration-500"
+                />
               </div>
 
               {/* Social Links */}
-                              <LiquidGlass
-                  displacementScale={180}
-                  blurAmount={0.02}
-                  saturation={140}
-                  aberrationIntensity={4}
-                  elasticity={0.2}
-                  cornerRadius={16}
-                  mode="shader"
-                  className="bg-gradient-to-br from-pink-900/20 to-purple-900/20 backdrop-blur-sm border border-pink-400/20 rounded-2xl p-8"
-                >
-                <h2 className="text-3xl font-black mb-8 text-white">FOLLOW US</h2>
+              <div className="glass p-10 rounded-3xl border border-white/5">
+                <h2 className="text-xl font-light mb-8 text-white font-['Space_Grotesk',sans-serif]">Follow Us</h2>
 
                 <div className="flex space-x-4">
                   {[
@@ -389,15 +376,15 @@ export default function ContactPage() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-16 h-16 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 border border-cyan-400/30 rounded-xl flex items-center justify-center hover:from-cyan-500/30 hover:to-blue-600/30 hover:border-cyan-400/50 transition-all duration-300"
+                      className="magnetic w-14 h-14 border border-white/10 rounded-full flex items-center justify-center hover:bg-white text-white hover:text-black transition-all duration-300"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      <social.icon className="h-6 w-6 text-blue-300" />
+                      <social.icon className="h-5 w-5" />
                     </motion.a>
                   ))}
                 </div>
-              </LiquidGlass>
+              </div>
             </motion.div>
           </div>
         </div>

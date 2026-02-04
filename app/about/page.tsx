@@ -3,100 +3,82 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { ArrowLeft, Target, Eye, Lightbulb } from "lucide-react"
-import MobileMenu from "@/components/mobile-menu"
-import CursorEffect from "@/components/cursor-effect"
-
-// Connected Hexagon Logo Component
-const ConnectedHexagonLogo = ({ size = 32, className = "" }: { size?: number; className?: string }) => {
-  const hexagonPoints = []
-  const center = size / 2
-  const radius = size * 0.35
-
-  for (let i = 0; i < 6; i++) {
-    const angle = (i * Math.PI) / 3
-    const x = center + radius * Math.cos(angle)
-    const y = center + radius * Math.sin(angle)
-    hexagonPoints.push({ x, y })
-  }
-
-  return (
-    <div className={`relative ${className}`} style={{ width: size, height: size }}>
-      <svg width={size} height={size} className="absolute inset-0">
-        <polygon
-          points={hexagonPoints.map((p) => `${p.x},${p.y}`).join(" ")}
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          className="text-blue-400"
-        />
-        {hexagonPoints.map((point, i) => (
-          <g key={i}>
-            <line
-              x1={center}
-              y1={center}
-              x2={point.x}
-              y2={point.y}
-              stroke="currentColor"
-              strokeWidth="1"
-              className="text-blue-400/60"
-            />
-            <circle cx={point.x} cy={point.y} r="2" fill="currentColor" className="text-blue-400" />
-          </g>
-        ))}
-        <circle cx={center} cy={center} r="2" fill="currentColor" className="text-blue-400" />
-      </svg>
-    </div>
-  )
-}
+import CustomCursor from "@/components/ui/CustomCursor"
+import FloatingNav from "@/components/layout/FloatingNav"
+import Footer from "@/components/footer"
+import { useMagneticEffect } from "@/hooks/useMagneticEffect"
 
 export default function AboutPage() {
+  useMagneticEffect()
+
   return (
-    <div className="min-h-screen bg-[#0a0a1a] text-white">
-      {/* Cursor Effect */}
-      <CursorEffect />
-      
-      {/* Background Effects */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-600/20 to-blue-400/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-pink-500/15 to-purple-500/10 rounded-full blur-3xl" />
+    <div className="min-h-screen bg-[#030303] text-white overflow-hidden">
+      {/* Custom Cursor */}
+      <CustomCursor />
+
+      {/* Floating Navigation */}
+      <FloatingNav />
+
+      {/* Background Aurora Effects */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <motion.div
+          className="absolute w-[600px] h-[600px] -top-20 -left-20 rounded-full blur-[100px] opacity-30"
+          style={{
+            background: "radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, transparent 70%)",
+          }}
+          animate={{
+            x: [0, 30, 0],
+            y: [0, 50, 0],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute w-[500px] h-[500px] top-1/3 -right-10 rounded-full blur-[100px] opacity-30"
+          style={{
+            background: "radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%)",
+          }}
+          animate={{
+            x: [0, -20, 0],
+            y: [0, 30, 0],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute w-[400px] h-[400px] bottom-0 left-1/3 rounded-full blur-[100px] opacity-30"
+          style={{
+            background: "radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, transparent 70%)",
+          }}
+          animate={{
+            x: [0, 40, 0],
+            y: [0, -30, 0],
+          }}
+          transition={{
+            duration: 18,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
       </div>
 
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-40 bg-[#0a0a1a]/80 backdrop-blur-xl border-b border-blue-500/10">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-3">
-              <ConnectedHexagonLogo size={32} />
-              <span className="text-xl font-black text-white">Trixode Studios</span>
-            </Link>
-            <div className="hidden md:flex items-center space-x-8">
-              <Link
-                href="/people"
-                className="text-gray-300 hover:text-white transition-colors duration-300 font-semibold"
-              >
-                People
-              </Link>
-              <Link href="/about" className="text-cyan-400 font-black">
-                About
-              </Link>
-              {["Projects", "Blog", "Contact"].map((item) => (
-                <Link
-                  key={item}
-                  href={`/${item.toLowerCase()}`}
-                  className="text-gray-300 hover:text-white transition-colors duration-300 font-semibold"
-                >
-                  {item}
-                </Link>
-              ))}
-            </div>
+      {/* Grid Overlay */}
+      <div
+        className="fixed inset-0 pointer-events-none z-0"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px)",
+          backgroundSize: "100px 100px",
+        }}
+      />
 
-            {/* Mobile Menu */}
-            <MobileMenu currentPath="/about" />
-          </div>
-        </div>
-      </nav>
-
-      <div className="pt-24 pb-16 relative z-10">
+      <div className="pt-32 pb-20 relative z-10">
         <div className="max-w-6xl mx-auto px-6">
           {/* Back Button */}
           <motion.div
@@ -107,46 +89,46 @@ export default function AboutPage() {
           >
             <Link
               href="/"
-              className="inline-flex items-center text-gray-300 hover:text-white transition-colors duration-300 font-semibold"
+              className="magnetic inline-flex items-center text-white/50 hover:text-white transition-colors duration-300 font-medium group"
             >
-              <ArrowLeft className="mr-2 h-5 w-5" />
+              <ArrowLeft className="mr-2 h-5 w-5 group-hover:-translate-x-1 transition-transform" />
               Back to Home
             </Link>
           </motion.div>
 
           {/* Page Title */}
           <motion.h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black mb-12 sm:mb-16 text-white px-4"
+            className="text-6xl md:text-8xl font-light mb-16 text-white font-['Space_Grotesk',sans-serif]"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            ABOUT
+            About
           </motion.h1>
 
           {/* Story Section */}
           <motion.section
-            className="mb-20"
+            className="mb-24"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <div className="flex items-center mb-8">
-              <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center mr-4">
-                <Lightbulb className="h-6 w-6 text-white" />
-              </div>
-              <h2 className="text-4xl md:text-5xl font-black text-white">STORY</h2>
+            <div className="flex items-center gap-4 mb-8">
+              <span className="text-sm text-[#3b82f6] font-medium font-['Space_Grotesk',sans-serif]">01</span>
+              <h2 className="text-3xl md:text-4xl font-light text-white font-['Space_Grotesk',sans-serif]">The Story</h2>
             </div>
-            <div className="w-full h-1 bg-gradient-to-r from-cyan-400 to-transparent mb-8"></div>
-            <div className="bg-gradient-to-br from-blue-900/20 to-purple-900/10 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-12">
-              <h3 className="text-2xl font-black mb-6 text-white">ORIGIN OF THE STUDIO</h3>
-              <div className="space-y-6 text-gray-300 leading-relaxed">
-                <p className="text-lg font-semibold">
+
+            <div className="glass p-12 rounded-3xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#3b82f6]/10 to-transparent rounded-full blur-3xl -z-10" />
+
+              <h3 className="text-2xl font-medium mb-6 text-white font-['Space_Grotesk',sans-serif]">Origin of the Studio</h3>
+              <div className="space-y-6 text-white/70 leading-relaxed text-lg font-light">
+                <p>
                   Trixode Studios was born from watching businesses struggle with AI adoption. Founded by Hussien Ballouk, our studio
                   emerged from years of seeing companies miss massive opportunities because AI felt too complex, too risky, or too
                   expensive. We saw businesses drowning in manual processes while AI solutions sat unused on the shelf.
                 </p>
-                <p className="text-lg font-semibold">
+                <p>
                   We believe that AI should solve real business problems—not create new ones. Every solution we build is designed to
                   eliminate operational friction, reduce costs, and accelerate growth. We turn AI from a technical challenge into a
                   competitive advantage that any business can understand and implement with confidence.
@@ -156,22 +138,22 @@ export default function AboutPage() {
           </motion.section>
 
           {/* Mission & Vision */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-24">
             <motion.section
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              <div className="flex items-center mb-8">
-                <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center mr-4">
-                  <Target className="h-6 w-6 text-white" />
-                </div>
-                <h2 className="text-3xl md:text-4xl font-black text-white">MISSION</h2>
+              <div className="flex items-center gap-4 mb-8">
+                <span className="text-sm text-[#3b82f6] font-medium font-['Space_Grotesk',sans-serif]">02</span>
+                <h2 className="text-3xl md:text-4xl font-light text-white font-['Space_Grotesk',sans-serif]">Mission</h2>
               </div>
-              <div className="bg-gradient-to-br from-blue-900/30 to-blue-800/20 backdrop-blur-sm border border-blue-400/30 rounded-2xl p-8">
-                <blockquote className="text-xl md:text-2xl font-black leading-relaxed text-gray-200">
-                  "TO BUILD AI-POWERED AUTOMATION TOOLS THAT SAVE TIME, CUT COSTS, AND SCALE GROWTH FOR BUSINESSES
-                  AND INNOVATORS—MAKING ADVANCED TECHNOLOGY ACCESSIBLE TO EVERY COMPANY READY TO TRANSFORM THEIR OPERATIONS."
+              <div className="glass p-10 rounded-3xl h-full flex flex-col justify-center relative overflow-hidden group hover:bg-white/[0.06] transition-colors duration-500">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#3b82f6]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <Target className="h-10 w-10 text-[#3b82f6] mb-6" />
+                <blockquote className="text-xl md:text-2xl font-light leading-relaxed text-white font-['Space_Grotesk',sans-serif]">
+                  "To build AI-powered automation tools that save time, cut costs, and scale growth for businesses
+                  and innovators—making advanced technology accessible to every company ready to transform their operations."
                 </blockquote>
               </div>
             </motion.section>
@@ -181,16 +163,16 @@ export default function AboutPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
-              <div className="flex items-center mb-8">
-                <div className="w-12 h-12 bg-gradient-to-br from-pink-500 to-pink-600 rounded-xl flex items-center justify-center mr-4">
-                  <Eye className="h-6 w-6 text-white" />
-                </div>
-                <h2 className="text-3xl md:text-4xl font-black text-white">VISION</h2>
+              <div className="flex items-center gap-4 mb-8">
+                <span className="text-sm text-[#3b82f6] font-medium font-['Space_Grotesk',sans-serif]">03</span>
+                <h2 className="text-3xl md:text-4xl font-light text-white font-['Space_Grotesk',sans-serif]">Vision</h2>
               </div>
-              <div className="bg-gradient-to-br from-pink-900/30 to-purple-800/20 backdrop-blur-sm border border-pink-400/30 rounded-2xl p-8">
-                <blockquote className="text-xl md:text-2xl font-black leading-relaxed text-gray-200">
-                  "A FUTURE WHERE EVERY COMPANY—FROM STARTUPS TO ENTERPRISES—CAN HARNESS AI AUTOMATION
-                  SECURELY AND EFFECTIVELY TO DRIVE INNOVATION AND COMPETITIVE ADVANTAGE."
+              <div className="glass p-10 rounded-3xl h-full flex flex-col justify-center relative overflow-hidden group hover:bg-white/[0.06] transition-colors duration-500">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#8b5cf6]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <Eye className="h-10 w-10 text-[#8b5cf6] mb-6" />
+                <blockquote className="text-xl md:text-2xl font-light leading-relaxed text-white font-['Space_Grotesk',sans-serif]">
+                  "A future where every company—from startups to enterprises—can harness AI automation
+                  securely and effectively to drive innovation and competitive advantage."
                 </blockquote>
               </div>
             </motion.section>
@@ -202,8 +184,10 @@ export default function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.0 }}
           >
-            <h2 className="text-4xl md:text-5xl font-black mb-8 text-white">VALUES</h2>
-            <div className="w-full h-1 bg-gradient-to-r from-cyan-400 to-transparent mb-12"></div>
+            <div className="flex items-center gap-4 mb-12">
+              <span className="text-sm text-[#3b82f6] font-medium font-['Space_Grotesk',sans-serif]">04</span>
+              <h2 className="text-4xl md:text-5xl font-light text-white font-['Space_Grotesk',sans-serif]">Core Values</h2>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
@@ -240,22 +224,23 @@ export default function AboutPage() {
               ].map((value, index) => (
                 <motion.div
                   key={value.title}
-                  className="group bg-gradient-to-br from-blue-900/20 to-purple-900/10 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-6 hover:border-blue-400/40 transition-all duration-500"
+                  className="group glass p-8 rounded-2xl hover:bg-white/[0.08] transition-all duration-500 cursor-default"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.2 + index * 0.1 }}
                   whileHover={{ y: -5 }}
                 >
-                  <h3 className="text-xl font-black mb-4 text-white group-hover:text-cyan-300 transition-colors">
+                  <h3 className="text-lg font-medium mb-4 text-white group-hover:text-[#3b82f6] transition-colors font-['Space_Grotesk',sans-serif] tracking-wide">
                     {value.title}
                   </h3>
-                  <p className="text-gray-400 leading-relaxed font-semibold">{value.description}</p>
+                  <p className="text-white/60 leading-relaxed text-sm font-light">{value.description}</p>
                 </motion.div>
               ))}
             </div>
           </motion.section>
         </div>
       </div>
+      <Footer />
     </div>
   )
 }

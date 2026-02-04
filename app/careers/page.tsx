@@ -6,50 +6,9 @@ import Link from "next/link"
 import { useState } from "react"
 import { ArrowLeft, ArrowRight, Check, Send, Code, Brain, Users, Zap } from "lucide-react"
 import Footer from "@/components/footer"
-import MobileMenu from "@/components/mobile-menu"
-
-// Connected Hexagon Logo Component
-const ConnectedHexagonLogo = ({ size = 32, className = "" }: { size?: number; className?: string }) => {
-  const hexagonPoints = []
-  const center = size / 2
-  const radius = size * 0.35
-
-  for (let i = 0; i < 6; i++) {
-    const angle = (i * Math.PI) / 3
-    const x = center + radius * Math.cos(angle)
-    const y = center + radius * Math.sin(angle)
-    hexagonPoints.push({ x, y })
-  }
-
-  return (
-    <div className={`relative ${className}`} style={{ width: size, height: size }}>
-      <svg width={size} height={size} className="absolute inset-0">
-        <polygon
-          points={hexagonPoints.map((p) => `${p.x},${p.y}`).join(" ")}
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          className="text-blue-400"
-        />
-        {hexagonPoints.map((point, i) => (
-          <g key={i}>
-            <line
-              x1={center}
-              y1={center}
-              x2={point.x}
-              y2={point.y}
-              stroke="currentColor"
-              strokeWidth="1"
-              className="text-blue-400/60"
-            />
-            <circle cx={point.x} cy={point.y} r="2" fill="currentColor" className="text-blue-400" />
-          </g>
-        ))}
-        <circle cx={center} cy={center} r="2" fill="currentColor" className="text-blue-400" />
-      </svg>
-    </div>
-  )
-}
+import CustomCursor from "@/components/ui/CustomCursor"
+import FloatingNav from "@/components/layout/FloatingNav"
+import { useMagneticEffect } from "@/hooks/useMagneticEffect"
 
 // Types
 interface FormData {
@@ -226,37 +185,77 @@ export default function CareersPage() {
     }
   }
 
-  return (
-    <div className="min-h-screen bg-[#0a0a1a] text-white">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-[#0a0a1a]/95 backdrop-blur-xl border-b border-cyan-500/20">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-3">
-              <ConnectedHexagonLogo size={32} />
-              <span className="text-xl font-black text-white">Trixode Studios</span>
-            </Link>
-            <div className="hidden md:flex items-center space-x-8">
-              {["People", "About", "Projects", "Blog", "Contact"].map((item) => (
-                <Link
-                  key={item}
-                  href={`/${item.toLowerCase()}`}
-                  className="text-gray-300 hover:text-white transition-colors duration-300 font-bold uppercase tracking-wide"
-                >
-                  {item}
-                </Link>
-              ))}
-              <Link href="/careers" className="text-cyan-400 font-black uppercase tracking-wide">
-                Careers
-              </Link>
-            </div>
-            <MobileMenu currentPath="/careers" />
-          </div>
-        </div>
-      </nav>
+  useMagneticEffect()
 
-      <div className="pt-24 pb-16">
-        <div className="max-w-4xl mx-auto px-6">
+  return (
+    <div className="min-h-screen bg-[#030303] text-white overflow-hidden">
+      {/* Custom Cursor */}
+      <CustomCursor />
+
+      {/* Floating Navigation */}
+      <FloatingNav />
+
+      {/* Background Aurora Effects */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <motion.div
+          className="absolute w-[600px] h-[600px] -top-20 -left-20 rounded-full blur-[100px] opacity-30"
+          style={{
+            background: "radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, transparent 70%)",
+          }}
+          animate={{
+            x: [0, 30, 0],
+            y: [0, 50, 0],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute w-[500px] h-[500px] top-1/3 -right-10 rounded-full blur-[100px] opacity-30"
+          style={{
+            background: "radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%)",
+          }}
+          animate={{
+            x: [0, -20, 0],
+            y: [0, 30, 0],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute w-[400px] h-[400px] bottom-0 left-1/3 rounded-full blur-[100px] opacity-30"
+          style={{
+            background: "radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, transparent 70%)",
+          }}
+          animate={{
+            x: [0, 40, 0],
+            y: [0, -30, 0],
+          }}
+          transition={{
+            duration: 18,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      </div>
+
+      {/* Grid Overlay */}
+      <div
+        className="fixed inset-0 pointer-events-none z-0"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px)",
+          backgroundSize: "100px 100px",
+        }}
+      />
+
+      <div className="pt-32 pb-20 relative z-10">
+        <div className="max-w-5xl mx-auto px-6">
           {/* Back Button */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -265,7 +264,7 @@ export default function CareersPage() {
           >
             <Link
               href="/"
-              className="inline-flex items-center text-gray-400 hover:text-white transition-colors font-bold uppercase tracking-wide"
+              className="magnetic inline-flex items-center text-white/50 hover:text-white transition-colors duration-300 font-medium group"
             >
               <ArrowLeft className="mr-2 h-5 w-5" />
               Back
