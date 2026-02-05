@@ -6,6 +6,26 @@ import "../styles/globals.css"
 
 const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800", "900"], variable: "--font-inter" })
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], weight: ["300", "400", "500", "600", "700"], variable: "--font-space-grotesk" })
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  process.env.NEXT_PUBLIC_BASE_URL ||
+  "https://www.trixode-studios.com"
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Trixode Studios",
+  url: siteUrl,
+  logo: new URL("/logo.png", siteUrl).toString(),
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "sales",
+    email: "hello@trixode.com",
+  },
+  sameAs: [
+    "https://github.com/trixodestudios",
+    "https://linkedin.com/in/trixode-studios-054154311",
+  ],
+}
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -13,10 +33,14 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Trixode Studios - Crafting the Future of Software",
   description: "High-tech software and AI studio crafting elegant tools for scientists, innovators, and creators. We specialize in AI-powered solutions, research tools and advanced software development.",
   keywords: "AI, software development, research tools, innovation, technology, quantum computing, machine learning, scientific tools, data science",
   authors: [{ name: "Trixode Studios" }],
+  alternates: {
+    canonical: "/",
+  },
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
@@ -29,11 +53,12 @@ export const metadata: Metadata = {
     description: "High-tech software and AI studio crafting elegant tools for scientists, innovators, and creators.",
     type: "website",
     locale: "en_US",
+    url: siteUrl,
     images: [
       {
-        url: "/images/og-image.jpg",
-        width: 1200,
-        height: 630,
+        url: "/logo.png",
+        width: 610,
+        height: 172,
         alt: "Trixode Studios"
       }
     ],
@@ -42,7 +67,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Trixode Studios - Crafting the Future of Software",
     description: "High-tech software and AI studio crafting elegant tools for scientists, innovators, and creators.",
-    images: ["/images/og-image.jpg"],
+    images: ["/logo.png"],
   },
   robots: {
     index: true,
@@ -59,6 +84,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${spaceGrotesk.variable} ${inter.className}`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
         {children}
         <SpeedInsights />
       </body>

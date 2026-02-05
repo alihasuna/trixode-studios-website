@@ -1,0 +1,21 @@
+# Trixode Studios
+
+## Summary
+Trixode Studios is a software and AI studio building advanced infrastructure, research tools, and custom systems for science-driven teams. We focus on AI systems, scientific computing, data architecture, and cloud platforms.
+
+## Services
+- AI systems and agentic workflows
+- Scientific computing and research tooling
+- Data architecture and visualization
+- Web and product development
+
+## Key pages
+- https://www.trixode-studios.com/
+- https://www.trixode-studios.com/about
+- https://www.trixode-studios.com/services
+- https://www.trixode-studios.com/projects
+- https://www.trixode-studios.com/people
+- https://www.trixode-studios.com/contact
+
+## Contact
+- hello@trixode.com

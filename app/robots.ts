@@ -1,5 +1,10 @@
 import { MetadataRoute } from 'next'
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  process.env.NEXT_PUBLIC_BASE_URL ||
+  'https://www.trixode-studios.com'
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
@@ -7,6 +12,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/private/', '/admin/'],
     },
-    sitemap: 'https://trixodestudios.com/sitemap.xml',
+    sitemap: new URL('/sitemap.xml', siteUrl).toString(),
   }
-} 
+}
