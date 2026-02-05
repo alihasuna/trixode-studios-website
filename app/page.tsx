@@ -606,12 +606,20 @@ export default function HomePage() {
                             </h2>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                             {[
-                                { initials: "JD", name: "Dr. Jane Doe", role: "Chief Scientist" },
-                                { initials: "MS", name: "Mark Smith", role: "Lead Engineer" },
-                                { initials: "EC", name: "Elena Chen", role: "Creative Director" },
-                                { initials: "AK", name: "Alex Kim", role: "Product Lead" },
+                                {
+                                    name: "Hussien Ballouk",
+                                    role: "Founder & CEO",
+                                    image: "https://res.cloudinary.com/dmkfxjv0s/image/upload/w_200,h_200,c_fill,g_face,f_auto,q_auto/v1749088385/ceo_photo.png",
+                                    color: "#3b82f6"
+                                },
+                                {
+                                    name: "Amir Ahmadian",
+                                    role: "Chief Scientific Officer",
+                                    image: "https://res.cloudinary.com/dnsl6kst1/image/upload/w_200,h_200,c_fill,g_face,f_auto,q_auto/v1770191425/ChatGPT_Image_Feb_3_2026_11_47_46_PM_sasgnj.png",
+                                    color: "#8b5cf6"
+                                },
                             ].map((member, index) => (
                                 <motion.div
                                     key={member.name}
@@ -621,10 +629,15 @@ export default function HomePage() {
                                     transition={{ delay: index * 0.1 }}
                                     className="glass p-12 rounded-3xl text-center cursor-pointer group hover:-translate-y-2 transition-all duration-400"
                                 >
-                                    <div className="w-24 h-24 mx-auto mb-8 rounded-full bg-gradient-to-br from-[#3b82f6]/20 to-[#8b5cf6]/20 border border-white/10 flex items-center justify-center text-2xl font-light font-['Space_Grotesk',sans-serif] group-hover:border-[#3b82f6] group-hover:scale-110 transition-all duration-400">
-                                        {member.initials}
+                                    <div className="w-28 h-28 mx-auto mb-8 rounded-full overflow-hidden border-2 border-white/10 group-hover:border-[#3b82f6] group-hover:scale-110 transition-all duration-400">
+                                        <img
+                                            src={member.image}
+                                            alt={member.name}
+                                            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                                            loading="lazy"
+                                        />
                                     </div>
-                                    <h3 className="text-xl mb-2 font-normal">{member.name}</h3>
+                                    <h3 className="text-xl mb-2 font-normal uppercase font-['Space_Grotesk',sans-serif]">{member.name}</h3>
                                     <div className="text-sm uppercase tracking-widest text-white/50 group-hover:text-[#3b82f6] transition-colors">
                                         {member.role}
                                     </div>
