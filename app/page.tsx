@@ -1,18 +1,68 @@
 "use client"
 
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { ArrowRight, Code2, Sparkles, Users, Mail } from "lucide-react"
+import { useState, useEffect, useRef } from "react"
+import dynamic from "next/dynamic"
+import { motion, useReducedMotion } from "framer-motion"
+import { ArrowRight } from "lucide-react"
 import WelcomeLoader from "@/components/ui/WelcomeLoader"
 import CustomCursor from "@/components/ui/CustomCursor"
 import FloatingNav from "@/components/layout/FloatingNav"
 import Footer from "@/components/footer"
-import NeonBlob from "@/components/hero/NeonBlob"
 import { useMagneticEffect } from "@/hooks/useMagneticEffect"
 import ServicesSection from "@/components/home/ServicesSection"
+import { useMediaQuery } from "@/hooks/useMediaQuery"
+
+const NeonBlob = dynamic(() => import("@/components/hero/NeonBlob"), { ssr: false })
 
 export default function HomePage() {
     const [isLoading, setIsLoading] = useState(true)
+    const [animationProgress, setAnimationProgress] = useState(0)
+    const isDesktop = useMediaQuery("(min-width: 1024px)")
+    const [showHeroBlob, setShowHeroBlob] = useState(false)
+    const prefersReducedMotion = useReducedMotion()
+    const enableMotion = !prefersReducedMotion
+    const enableHeavyEffects = enableMotion && isDesktop
+    const htmlOverflowRef = useRef<string | null>(null)
+    const bodyOverflowRef = useRef<string | null>(null)
+
+    useEffect(() => {
+        if (!enableHeavyEffects) {
+            setShowHeroBlob(false)
+            return
+        }
+
+        if (typeof window === "undefined") return
+
+        const schedule = window.setTimeout(() => setShowHeroBlob(true), 800)
+
+        return () => {
+            window.clearTimeout(schedule)
+        }
+    }, [enableHeavyEffects])
+
+    useEffect(() => {
+        if (typeof window === "undefined") return
+
+        const html = document.documentElement
+        const body = document.body
+
+        if (isLoading) {
+            if (htmlOverflowRef.current === null) htmlOverflowRef.current = html.style.overflow
+            if (bodyOverflowRef.current === null) bodyOverflowRef.current = body.style.overflow
+            html.style.overflow = "hidden"
+            body.style.overflow = "hidden"
+            return
+        }
+
+        html.style.overflow = htmlOverflowRef.current ?? ""
+        body.style.overflow = bodyOverflowRef.current ?? ""
+        window.scrollTo({ top: 0, left: 0, behavior: "auto" })
+
+        return () => {
+            html.style.overflow = htmlOverflowRef.current ?? ""
+            body.style.overflow = bodyOverflowRef.current ?? ""
+        }
+    }, [isLoading])
 
     // Enable magnetic effect for all .magnetic elements
     useMagneticEffect()
@@ -20,10 +70,13 @@ export default function HomePage() {
     return (
         <>
             {/* Welcome Loader Animation */}
-            <WelcomeLoader onLoadingComplete={() => setIsLoading(false)} />
+            <WelcomeLoader
+                onLoadingComplete={() => setIsLoading(false)}
+                onAnimationProgress={(progress) => setAnimationProgress(progress)}
+            />
 
-            {/* Custom Cursor */}
-            <CustomCursor />
+            {/* Custom Cursor - Only on Desktop */}
+            {enableHeavyEffects && <CustomCursor />}
 
             {/* Floating Navigation */}
             <FloatingNav />
@@ -31,65 +84,92 @@ export default function HomePage() {
             {/* Main Page Content */}
             <motion.div
                 className="min-h-screen bg-[#030303] text-white overflow-hidden origin-top"
-                initial={{ scale: 1.1, filter: "blur(10px)" }}
-                animate={{
-                    scale: isLoading ? 1.1 : 1,
-                    filter: isLoading ? "blur(10px)" : "blur(0px)"
-                }}
-                transition={{
-                    duration: 1.2,
+                initial={enableMotion ? { scale: 1.05, filter: "blur(8px)" } : false}
+                animate={enableMotion ? {
+                    scale: animationProgress > 90 ? 1 : 1.05,
+                    filter: animationProgress > 90 ? "blur(0px)" : "blur(8px)"
+                } : {}}
+                transition={enableMotion ? {
+                    duration: 0.8,
                     ease: [0.76, 0, 0.24, 1],
-                    delay: 0.2
-                }}
+                } : { duration: 0 }}
             >
 
-                {/* Background Aurora Effects */}
+                {/* Background Aurora Effects - Optimized */}
                 <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-                    <motion.div
-                        className="absolute w-[600px] h-[600px] -top-20 -left-20 rounded-full blur-[100px] opacity-40"
-                        style={{
-                            background: "radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, transparent 70%)",
-                        }}
-                        animate={{
-                            x: [0, 30, 0],
-                            y: [0, 50, 0],
-                        }}
-                        transition={{
-                            duration: 20,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                        }}
-                    />
-                    <motion.div
-                        className="absolute w-[500px] h-[500px] top-1/3 -right-10 rounded-full blur-[100px] opacity-40"
-                        style={{
-                            background: "radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%)",
-                        }}
-                        animate={{
-                            x: [0, -20, 0],
-                            y: [0, 30, 0],
-                        }}
-                        transition={{
-                            duration: 15,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                        }}
-                    />
-                    <motion.div
-                        className="absolute w-[400px] h-[400px] bottom-0 left-1/3 rounded-full blur-[100px] opacity-40"
-                        style={{
-                            background: "radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, transparent 70%)",
-                        }}
-                        animate={{
-                            x: [0, 40, 0],
-                            y: [0, -30, 0],
-                        }}
-                        transition={{
-                            duration: 18,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                        }}
-                    />
+                    {enableHeavyEffects ? (
+                        <>
+                            <motion.div
+                                className="absolute w-[500px] h-[500px] -top-20 -left-20 rounded-full blur-[60px] opacity-35"
+                                style={{
+                                    background: "radial-gradient(circle, rgba(59, 130, 246, 0.35) 0%, transparent 70%)",
+                                    willChange: "transform",
+                                }}
+                                animate={{
+                                    x: [0, 30, 0],
+                                    y: [0, 50, 0],
+                                }}
+                                transition={{
+                                    duration: 20,
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                }}
+                            />
+                            <motion.div
+                                className="absolute w-[400px] h-[400px] top-1/3 -right-10 rounded-full blur-[60px] opacity-35"
+                                style={{
+                                    background: "radial-gradient(circle, rgba(139, 92, 246, 0.25) 0%, transparent 70%)",
+                                    willChange: "transform",
+                                }}
+                                animate={{
+                                    x: [0, -20, 0],
+                                    y: [0, 30, 0],
+                                }}
+                                transition={{
+                                    duration: 15,
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                }}
+                            />
+                            <motion.div
+                                className="absolute w-[350px] h-[350px] bottom-0 left-1/3 rounded-full blur-[60px] opacity-35"
+                                style={{
+                                    background: "radial-gradient(circle, rgba(6, 182, 212, 0.25) 0%, transparent 70%)",
+                                    willChange: "transform",
+                                }}
+                                animate={{
+                                    x: [0, 40, 0],
+                                    y: [0, -30, 0],
+                                }}
+                                transition={{
+                                    duration: 18,
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                }}
+                            />
+                        </>
+                    ) : (
+                        <>
+                            <div
+                                className="absolute w-[500px] h-[500px] -top-20 -left-20 rounded-full blur-[60px] opacity-25"
+                                style={{
+                                    background: "radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%)",
+                                }}
+                            />
+                            <div
+                                className="absolute w-[400px] h-[400px] top-1/3 -right-10 rounded-full blur-[60px] opacity-25"
+                                style={{
+                                    background: "radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 70%)",
+                                }}
+                            />
+                            <div
+                                className="absolute w-[350px] h-[350px] bottom-0 left-1/3 rounded-full blur-[60px] opacity-25"
+                                style={{
+                                    background: "radial-gradient(circle, rgba(6, 182, 212, 0.2) 0%, transparent 70%)",
+                                }}
+                            />
+                        </>
+                    )}
                 </div>
 
                 {/* Grid Overlay */}
@@ -120,41 +200,33 @@ export default function HomePage() {
                             </motion.div>
 
                             <motion.h1
-                                className="text-6xl md:text-7xl lg:text-8xl font-light mb-8 leading-[0.95] tracking-tight"
+                                className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-light mb-8 leading-none tracking-tight"
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 3.4 }}
                             >
-                                <motion.div
-                                    className="overflow-hidden"
-                                    initial={{ height: 0 }}
-                                    animate={{ height: "auto" }}
-                                    transition={{ duration: 1, delay: 3.5, ease: [0.16, 1, 0.3, 1] }}
-                                >
+                                <span className="block overflow-hidden pb-[0.12em]">
                                     <motion.span
                                         className="block font-['Space_Grotesk',sans-serif]"
-                                        initial={{ y: "100%" }}
+                                        initial={{ y: "110%" }}
                                         animate={{ y: 0 }}
-                                        transition={{ duration: 1, delay: 3.5, ease: [0.16, 1, 0.3, 1] }}
+                                        transition={{ duration: 0.9, delay: 3.5, ease: [0.16, 1, 0.3, 1] }}
+                                        style={{ willChange: "transform" }}
                                     >
                                         Crafting
                                     </motion.span>
-                                </motion.div>
-                                <motion.div
-                                    className="overflow-hidden"
-                                    initial={{ height: 0 }}
-                                    animate={{ height: "auto" }}
-                                    transition={{ duration: 1, delay: 3.7, ease: [0.16, 1, 0.3, 1] }}
-                                >
+                                </span>
+                                <span className="block overflow-hidden pb-[0.12em]">
                                     <motion.span
                                         className="block bg-gradient-to-r from-white to-[#3b82f6] bg-clip-text text-transparent font-['Space_Grotesk',sans-serif]"
-                                        initial={{ y: "100%" }}
+                                        initial={{ y: "110%" }}
                                         animate={{ y: 0 }}
-                                        transition={{ duration: 1, delay: 3.7, ease: [0.16, 1, 0.3, 1] }}
+                                        transition={{ duration: 0.9, delay: 3.7, ease: [0.16, 1, 0.3, 1] }}
+                                        style={{ willChange: "transform" }}
                                     >
                                         Intelligence
                                     </motion.span>
-                                </motion.div>
+                                </span>
                             </motion.h1>
 
                             <motion.p
@@ -180,127 +252,229 @@ export default function HomePage() {
                             </motion.a>
                         </div>
 
-                        {/* Hero Visual - Floating Cards */}
-                        <div className="relative h-[600px] hidden lg:block">
-                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none">
-                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px]">
-                                    <div className="w-full h-full">
-                                        <NeonBlob />
-                                    </div>
+                        {/* Hero Visual - Floating Cards (Desktop) / Stats Grid (Mobile) */}
+                        <div className="relative lg:h-[620px]">
+                            {/* Blob positioned as orbital center for cards */}
+                            <motion.div
+                                className="absolute inset-0 flex items-center justify-end pointer-events-none z-0 hidden lg:flex"
+                                style={{ paddingRight: "8%" }}
+                                initial={{ scale: 0.35, opacity: 0 }}
+                                animate={{
+                                    scale: animationProgress > 50 ? 1 : 0.35,
+                                    opacity: animationProgress > 50 ? 0.85 : 0,
+                                }}
+                                transition={{
+                                    duration: 1.6,
+                                    ease: [0.16, 1, 0.3, 1],
+                                }}
+                            >
+                                <div className="w-[520px] h-[520px]">
+                                    {showHeroBlob && <NeonBlob />}
                                 </div>
-                                {/* Card 1 */}
-                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                            </motion.div>
+
+                            {/* Mobile Stats Grid */}
+                            <div className="grid grid-cols-3 gap-4 lg:hidden mt-12">
+                                {[
+                                    { value: "99.9%", label: "Uptime" },
+                                    { value: "50+", label: "Labs" },
+                                    { value: "10x", label: "Faster" }
+                                ].map((stat, i) => (
                                     <motion.div
-                                        className="w-[340px] pointer-events-auto cursor-pointer"
-                                        initial={{ opacity: 0, scale: 0 }}
-                                        animate={{
+                                        key={stat.label}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 4.0 + i * 0.1 }}
+                                        className="glass p-4 rounded-2xl text-center"
+                                    >
+                                        <div
+                                            className="text-2xl sm:text-3xl font-light text-[#3b82f6] font-['Space_Grotesk',sans-serif]"
+                                            style={{ textShadow: "0 0 15px rgba(59, 130, 246, 0.3)" }}
+                                        >
+                                            {stat.value}
+                                        </div>
+                                        <div className="text-[10px] sm:text-xs uppercase tracking-widest text-white/50 mt-1">
+                                            {stat.label}
+                                        </div>
+                                    </motion.div>
+                                ))}
+                            </div>
+
+                            {/* Desktop Floating Cards - Orbit around the blob on right side */}
+                            <div className="absolute inset-0 flex items-center justify-end pointer-events-none hidden lg:flex" style={{ paddingRight: "8%" }}>
+                                <div className="relative w-[560px] h-[560px] pointer-events-none">
+
+                                    {/* Card 1 - Top orbit position */}
+                                    <motion.div
+                                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] pointer-events-auto cursor-pointer"
+                                        initial={{
+                                            opacity: 0,
+                                            y: 300,
+                                            scale: 0.8,
+                                            rotateX: 45,
+                                        }}
+                                        animate={animationProgress > 60 ? {
                                             opacity: 1,
-                                            x: [380, 0, -380, 0, 380],
-                                            y: [0, 120, 0, -120, 0],
-                                            scale: [1, 1.1, 1, 0.8, 1],
-                                            zIndex: [10, 20, 10, 1, 10]
+                                            y: -120,
+                                            x: 10,
+                                            scale: 1,
+                                            rotateX: 0,
+                                        } : {
+                                            opacity: 0,
+                                            y: 300,
+                                            scale: 0.8,
+                                            rotateX: 45,
                                         }}
                                         transition={{
-                                            opacity: { duration: 0.8, delay: 0.2 },
-                                            default: {
-                                                duration: 40,
-                                                repeat: Infinity,
-                                                ease: "linear",
-                                                delay: -13.3 // Start at 1/3 orbit
-                                            }
+                                            opacity: { duration: 1.2 },
+                                            y: { duration: 1.6, ease: [0.16, 1, 0.3, 1] },
+                                            x: { duration: 1.6, ease: [0.16, 1, 0.3, 1] },
+                                            scale: { duration: 1.6, ease: [0.16, 1, 0.3, 1] },
+                                            rotateX: { duration: 1.2 },
                                         }}
                                         style={{ perspective: 1000 }}
                                     >
+                                        {/* Circular orbit around blob */}
                                         <motion.div
-                                            whileHover={{ scale: 1.05, y: -10 }}
-                                            className="glass p-8 rounded-3xl w-full h-full"
+                                            animate={animationProgress >= 100 ? {
+                                                x: [10, 100, 120, 100, 10, -70, -90, -70],
+                                                y: [-120, -100, -30, 30, 90, 110, 30, -30],
+                                            } : {}}
+                                            transition={{
+                                                duration: 60,
+                                                repeat: Infinity,
+                                                ease: "linear",
+                                            }}
                                         >
-                                            <div
-                                                className="text-5xl font-light text-[#3b82f6] mb-2 font-['Space_Grotesk',sans-serif]"
-                                                style={{ textShadow: "0 0 20px rgba(59, 130, 246, 0.4)" }}
+                                            <motion.div
+                                                whileHover={{ scale: 1.05, y: -10 }}
+                                                className="glass p-8 rounded-3xl w-full h-full"
                                             >
-                                                99.9%
-                                            </div>
-                                            <div className="text-xs uppercase tracking-widest text-white/50 mb-1">Uptime SLA</div>
-                                            <div className="text-lg text-white">Enterprise Ready</div>
+                                                <div
+                                                    className="text-5xl font-light text-[#3b82f6] mb-2 font-['Space_Grotesk',sans-serif]"
+                                                    style={{ textShadow: "0 0 20px rgba(59, 130, 246, 0.4)" }}
+                                                >
+                                                    99.9%
+                                                </div>
+                                                <div className="text-xs uppercase tracking-widest text-white/50 mb-1">Uptime SLA</div>
+                                                <div className="text-lg text-white">Enterprise Ready</div>
+                                            </motion.div>
                                         </motion.div>
                                     </motion.div>
-                                </div>
 
-                                {/* Card 2 */}
-                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                                    {/* Card 2 - Left orbit position */}
                                     <motion.div
-                                        className="w-[320px] pointer-events-auto cursor-pointer"
-                                        initial={{ opacity: 0, scale: 0 }}
-                                        animate={{
+                                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] pointer-events-auto cursor-pointer"
+                                        initial={{
+                                            opacity: 0,
+                                            y: 350,
+                                            scale: 0.8,
+                                            rotateX: 45,
+                                        }}
+                                        animate={animationProgress > 65 ? {
                                             opacity: 1,
-                                            x: [380, 0, -380, 0, 380],
-                                            y: [0, 120, 0, -120, 0],
-                                            scale: [1, 1.1, 1, 0.8, 1],
-                                            zIndex: [10, 20, 10, 1, 10]
+                                            y: -20,
+                                            x: -140,
+                                            scale: 1,
+                                            rotateX: 0,
+                                        } : {
+                                            opacity: 0,
+                                            y: 350,
+                                            scale: 0.8,
+                                            rotateX: 45,
                                         }}
                                         transition={{
-                                            opacity: { duration: 0.8, delay: 0.3 },
-                                            default: {
-                                                duration: 40,
-                                                repeat: Infinity,
-                                                ease: "linear",
-                                                delay: -26.6 // Start at 2/3 orbit
-                                            }
+                                            opacity: { duration: 1.2 },
+                                            y: { duration: 1.8, ease: [0.16, 1, 0.3, 1] },
+                                            x: { duration: 1.8, ease: [0.16, 1, 0.3, 1] },
+                                            scale: { duration: 1.8, ease: [0.16, 1, 0.3, 1] },
+                                            rotateX: { duration: 1.2 },
                                         }}
                                         style={{ perspective: 1000 }}
                                     >
+                                        {/* Circular orbit around blob */}
                                         <motion.div
-                                            whileHover={{ scale: 1.05, y: -10 }}
-                                            className="glass p-8 rounded-3xl w-full h-full"
+                                            animate={animationProgress >= 100 ? {
+                                                x: [-140, -120, -70, -20, 30, 70, 90, 70, 30, -20, -70, -120],
+                                                y: [-20, 40, 90, 120, 120, 90, 40, -20, -60, -90, -100, -60],
+                                            } : {}}
+                                            transition={{
+                                                duration: 65,
+                                                repeat: Infinity,
+                                                ease: "linear",
+                                            }}
                                         >
-                                            <div
-                                                className="text-5xl font-light text-[#3b82f6] mb-2 font-['Space_Grotesk',sans-serif]"
-                                                style={{ textShadow: "0 0 20px rgba(59, 130, 246, 0.4)" }}
+                                            <motion.div
+                                                whileHover={{ scale: 1.05, y: -10 }}
+                                                className="glass p-8 rounded-3xl w-full h-full"
                                             >
-                                                50+
-                                            </div>
-                                            <div className="text-xs uppercase tracking-widest text-white/50 mb-1">Research Labs</div>
-                                            <div className="text-lg text-white">Global Partners</div>
+                                                <div
+                                                    className="text-5xl font-light text-[#3b82f6] mb-2 font-['Space_Grotesk',sans-serif]"
+                                                    style={{ textShadow: "0 0 20px rgba(59, 130, 246, 0.4)" }}
+                                                >
+                                                    50+
+                                                </div>
+                                                <div className="text-xs uppercase tracking-widest text-white/50 mb-1">Research Labs</div>
+                                                <div className="text-lg text-white">Global Partners</div>
+                                            </motion.div>
                                         </motion.div>
                                     </motion.div>
-                                </div>
 
-                                {/* Card 3 */}
-                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                                    {/* Card 3 - Bottom orbit position */}
                                     <motion.div
-                                        className="w-[300px] pointer-events-auto cursor-pointer"
-                                        initial={{ opacity: 0, scale: 0 }}
-                                        animate={{
+                                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] pointer-events-auto cursor-pointer"
+                                        initial={{
+                                            opacity: 0,
+                                            y: 320,
+                                            scale: 0.8,
+                                            rotateX: 45,
+                                        }}
+                                        animate={animationProgress > 70 ? {
                                             opacity: 1,
-                                            x: [380, 0, -380, 0, 380],
-                                            y: [0, 120, 0, -120, 0],
-                                            scale: [1, 1.1, 1, 0.8, 1],
-                                            zIndex: [10, 20, 10, 1, 10]
+                                            y: 120,
+                                            x: -30,
+                                            scale: 1,
+                                            rotateX: 0,
+                                        } : {
+                                            opacity: 0,
+                                            y: 320,
+                                            scale: 0.8,
+                                            rotateX: 45,
                                         }}
                                         transition={{
-                                            opacity: { duration: 0.8, delay: 0.4 },
-                                            default: {
-                                                duration: 40,
-                                                repeat: Infinity,
-                                                ease: "linear",
-                                                delay: 0 // Start at 0/3 orbit
-                                            }
+                                            opacity: { duration: 1.2 },
+                                            y: { duration: 1.7, ease: [0.16, 1, 0.3, 1] },
+                                            x: { duration: 1.7, ease: [0.16, 1, 0.3, 1] },
+                                            scale: { duration: 1.7, ease: [0.16, 1, 0.3, 1] },
+                                            rotateX: { duration: 1.2 },
                                         }}
                                         style={{ perspective: 1000 }}
                                     >
+                                        {/* Circular orbit around blob */}
                                         <motion.div
-                                            whileHover={{ scale: 1.05, y: -10 }}
-                                            className="glass p-8 rounded-3xl w-full h-full"
+                                            animate={animationProgress >= 100 ? {
+                                                x: [-30, 20, 70, 110, 120, 100, 60, 10, -30, -70, -90, -90, -70],
+                                                y: [120, 140, 130, 100, 50, 10, -30, -70, -100, -110, -90, -30, 20],
+                                            } : {}}
+                                            transition={{
+                                                duration: 70,
+                                                repeat: Infinity,
+                                                ease: "linear",
+                                            }}
                                         >
-                                            <div
-                                                className="text-5xl font-light text-[#3b82f6] mb-2 font-['Space_Grotesk',sans-serif]"
-                                                style={{ textShadow: "0 0 20px rgba(59, 130, 246, 0.4)" }}
+                                            <motion.div
+                                                whileHover={{ scale: 1.05, y: -10 }}
+                                                className="glass p-8 rounded-3xl w-full h-full"
                                             >
-                                                10x
-                                            </div>
-                                            <div className="text-xs uppercase tracking-widest text-white/50 mb-1">Performance</div>
-                                            <div className="text-lg text-white">vs Traditional</div>
+                                                <div
+                                                    className="text-5xl font-light text-[#3b82f6] mb-2 font-['Space_Grotesk',sans-serif]"
+                                                    style={{ textShadow: "0 0 20px rgba(59, 130, 246, 0.4)" }}
+                                                >
+                                                    10x
+                                                </div>
+                                                <div className="text-xs uppercase tracking-widest text-white/50 mb-1">Performance</div>
+                                                <div className="text-lg text-white">vs Traditional</div>
+                                            </motion.div>
                                         </motion.div>
                                     </motion.div>
                                 </div>
@@ -314,7 +488,7 @@ export default function HomePage() {
                 {/* Expertise Section */}
                 <section id="expertise" className="relative px-6 md:px-16 py-40">
                     <div className="max-w-7xl mx-auto">
-                        <div className="flex justify-between items-end mb-24 pb-8 border-b border-white/10">
+                        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between mb-24 pb-8 border-b border-white/10">
                             <span className="text-sm text-[#3b82f6] font-medium font-['Space_Grotesk',sans-serif]">01</span>
                             <h2 className="text-5xl md:text-7xl font-light max-w-[600px] leading-tight font-['Space_Grotesk',sans-serif]">
                                 Core Systems
@@ -379,7 +553,7 @@ export default function HomePage() {
                 {/* Projects Section */}
                 <section id="projects" className="relative px-6 md:px-16 py-40">
                     <div className="max-w-7xl mx-auto">
-                        <div className="flex justify-between items-end mb-24 pb-8 border-b border-white/10">
+                        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between mb-24 pb-8 border-b border-white/10">
                             <span className="text-sm text-[#3b82f6] font-medium font-['Space_Grotesk',sans-serif]">02</span>
                             <h2 className="text-5xl md:text-7xl font-light max-w-[600px] leading-tight font-['Space_Grotesk',sans-serif]">
                                 Selected Work
@@ -425,7 +599,7 @@ export default function HomePage() {
                 {/* Team Section */}
                 <section id="team" className="relative px-6 md:px-16 py-40">
                     <div className="max-w-7xl mx-auto">
-                        <div className="flex justify-between items-end mb-24 pb-8 border-b border-white/10">
+                        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between mb-24 pb-8 border-b border-white/10">
                             <span className="text-sm text-[#3b82f6] font-medium font-['Space_Grotesk',sans-serif]">03</span>
                             <h2 className="text-5xl md:text-7xl font-light max-w-[600px] leading-tight font-['Space_Grotesk',sans-serif]">
                                 Leadership

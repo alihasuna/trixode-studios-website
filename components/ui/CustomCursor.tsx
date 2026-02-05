@@ -1,75 +1,104 @@
 "use client"
 
-import { useEffect, useState, useCallback } from "react"
+import { useEffect, useRef, useState } from "react"
 
 export default function CustomCursor() {
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-    const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
-    const [followerPosition, setFollowerPosition] = useState({ x: 0, y: 0 })
     const [isHovering, setIsHovering] = useState(false)
     const [isMobile, setIsMobile] = useState(false)
+    const cursorRef = useRef<HTMLDivElement | null>(null)
+    const followerRef = useRef<HTMLDivElement | null>(null)
+    const mouseRef = useRef({ x: 0, y: 0 })
+    const cursorRefPos = useRef({ x: 0, y: 0 })
+    const followerRefPos = useRef({ x: 0, y: 0 })
 
     // Detect mobile devices
     useEffect(() => {
         const checkMobile = () => {
-            setIsMobile(window.innerWidth < 1024 || 'ontouchstart' in window)
+            setIsMobile(window.innerWidth < 1024 || "ontouchstart" in window)
         }
         checkMobile()
-        window.addEventListener('resize', checkMobile)
-        return () => window.removeEventListener('resize', checkMobile)
+        window.addEventListener("resize", checkMobile)
+        return () => window.removeEventListener("resize", checkMobile)
     }, [])
 
     // Track mouse position
     useEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {
-            setMousePosition({ x: e.clientX, y: e.clientY })
+            mouseRef.current = { x: e.clientX, y: e.clientY }
         }
 
-        document.addEventListener('mousemove', handleMouseMove)
-        return () => document.removeEventListener('mousemove', handleMouseMove)
+        document.addEventListener("mousemove", handleMouseMove)
+        return () => document.removeEventListener("mousemove", handleMouseMove)
     }, [])
 
     // Animate cursor and follower
     useEffect(() => {
+        if (isMobile) return
         let animationFrame: number
 
         const animate = () => {
-            setCursorPosition((prev) => ({
-                x: prev.x + (mousePosition.x - prev.x) * 0.2,
-                y: prev.y + (mousePosition.y - prev.y) * 0.2,
-            }))
+            const cursorEl = cursorRef.current
+            const followerEl = followerRef.current
+            if (!cursorEl || !followerEl) {
+                animationFrame = requestAnimationFrame(animate)
+                return
+            }
 
-            setFollowerPosition((prev) => ({
-                x: prev.x + (mousePosition.x - prev.x) * 0.1,
-                y: prev.y + (mousePosition.y - prev.y) * 0.1,
-            }))
+            cursorRefPos.current = {
+                x: mouseRef.current.x,
+                y: mouseRef.current.y,
+            }
+
+            followerRefPos.current = {
+                x: followerRefPos.current.x + (mouseRef.current.x - followerRefPos.current.x) * 0.25,
+                y: followerRefPos.current.y + (mouseRef.current.y - followerRefPos.current.y) * 0.25,
+            }
+
+            cursorEl.style.transform = `translate3d(${cursorRefPos.current.x}px, ${cursorRefPos.current.y}px, 0) translate(-50%, -50%)`
+            followerEl.style.transform = `translate3d(${followerRefPos.current.x}px, ${followerRefPos.current.y}px, 0) translate(-50%, -50%)`
 
             animationFrame = requestAnimationFrame(animate)
         }
 
         animationFrame = requestAnimationFrame(animate)
         return () => cancelAnimationFrame(animationFrame)
-    }, [mousePosition])
+    }, [isMobile])
 
     // Handle hover state
     useEffect(() => {
-        const handleMouseEnter = () => setIsHovering(true)
-        const handleMouseLeave = () => setIsHovering(false)
-
-        const interactiveElements = document.querySelectorAll('a, button, .magnetic')
-
-        interactiveElements.forEach((el) => {
-            el.addEventListener('mouseenter', handleMouseEnter)
-            el.addEventListener('mouseleave', handleMouseLeave)
-        })
-
-        return () => {
-            interactiveElements.forEach((el) => {
-                el.removeEventListener('mouseenter', handleMouseEnter)
-                el.removeEventListener('mouseleave', handleMouseLeave)
-            })
+        if (isMobile) return
+        const isInteractive = (target: EventTarget | null) => {
+            if (!(target instanceof Element)) return false
+            return Boolean(
+                target.closest(
+                    "a, button, .magnetic, [role='button'], input, textarea, select, label"
+                )
+            )
         }
-    }, [])
+        const handlePointerOver = (event: PointerEvent) => {
+            setIsHovering(isInteractive(event.target))
+        }
+        const handlePointerOut = (event: PointerEvent) => {
+            if (!isInteractive(event.relatedTarget)) {
+                setIsHovering(false)
+            }
+        }
+
+        document.addEventListener("pointerover", handlePointerOver)
+        document.addEventListener("pointerout", handlePointerOut)
+        return () => {
+            document.removeEventListener("pointerover", handlePointerOver)
+            document.removeEventListener("pointerout", handlePointerOut)
+        }
+    }, [isMobile])
+
+    useEffect(() => {
+        if (isMobile) return
+        document.body.classList.add("has-custom-cursor")
+        return () => {
+            document.body.classList.remove("has-custom-cursor")
+        }
+    }, [isMobile])
 
     if (isMobile) return null
 
@@ -77,24 +106,31 @@ export default function CustomCursor() {
         <>
             {/* Main cursor ring */}
             <div
-                className={`fixed pointer-events-none z-[9999] border border-[#3b82f6] rounded-full transition-all duration-300 ${isHovering ? 'w-[50px] h-[50px] border-white/50 bg-white/10' : 'w-[20px] h-[20px]'
-                    }`}
+                ref={cursorRef}
+                className={`fixed pointer-events-none z-[9999] rounded-full border border-[rgba(255,255,255,0.55)] transition-[width,height,background-color,border-color] duration-150 ease-out ${
+                    isHovering
+                        ? "w-[42px] h-[42px] border-white/70 bg-white/15"
+                        : "w-[14px] h-[14px] bg-transparent"
+                }`}
                 style={{
-                    left: `${cursorPosition.x}px`,
-                    top: `${cursorPosition.y}px`,
-                    transform: 'translate(-50%, -50%)',
-                    mixBlendMode: 'difference',
+                    left: 0,
+                    top: 0,
+                    transform: "translate3d(0, 0, 0) translate(-50%, -50%)",
+                    mixBlendMode: "normal",
+                    willChange: "transform",
                 }}
             />
 
             {/* Cursor follower blob */}
             <div
-                className="fixed pointer-events-none z-[9998] w-[40px] h-[40px] rounded-full transition-transform duration-150"
+                ref={followerRef}
+                className="fixed pointer-events-none z-[9998] w-[26px] h-[26px] rounded-full"
                 style={{
-                    left: `${followerPosition.x}px`,
-                    top: `${followerPosition.y}px`,
-                    transform: 'translate(-50%, -50%)',
-                    background: 'radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%)',
+                    left: 0,
+                    top: 0,
+                    transform: "translate3d(0, 0, 0) translate(-50%, -50%)",
+                    background: "radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, transparent 70%)",
+                    willChange: "transform",
                 }}
             />
         </>

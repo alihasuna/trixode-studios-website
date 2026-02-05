@@ -1,124 +1,251 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { useEffect, useState, useRef } from "react"
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
 
 interface WelcomeLoaderProps {
     onLoadingComplete?: () => void
+    onAnimationProgress?: (progress: number) => void
 }
 
-export default function WelcomeLoader({ onLoadingComplete }: WelcomeLoaderProps) {
+export default function WelcomeLoader({ onLoadingComplete, onAnimationProgress }: WelcomeLoaderProps) {
+    const prefersReducedMotion = useReducedMotion()
     const [isVisible, setIsVisible] = useState(true)
-    const [dimension, setDimension] = useState({ width: 0, height: 0 })
+    const [isMounted, setIsMounted] = useState(false)
+    const [showCurtainAnimation, setShowCurtainAnimation] = useState(false)
+    const [showLogoExit, setShowLogoExit] = useState(false)
 
+    // Use refs to store callbacks to avoid dependency issues
+    const onProgressRef = useRef(onAnimationProgress)
+    const onCompleteRef = useRef(onLoadingComplete)
+
+    // Keep refs updated
     useEffect(() => {
-        setDimension({ width: window.innerWidth, height: window.innerHeight })
+        onProgressRef.current = onAnimationProgress
+        onCompleteRef.current = onLoadingComplete
+    })
 
-        const handleResize = () => {
-            setDimension({ width: window.innerWidth, height: window.innerHeight })
+    // Handle client-side mounting
+    useEffect(() => {
+        setIsMounted(true)
+    }, [])
+
+    // Main animation effect - only runs once on mount
+    useEffect(() => {
+        if (!isMounted) return
+
+        if (prefersReducedMotion) {
+            setIsVisible(false)
+            onProgressRef.current?.(100)
+            onCompleteRef.current?.()
+            return
         }
 
-        window.addEventListener("resize", handleResize)
+        // Simple, reliable timeline with direct callback calls
+        const timers: ReturnType<typeof setTimeout>[] = []
 
-        // Hide loader after animation completes
-        const timer = setTimeout(() => {
+        // Start - report initial progress
+        onProgressRef.current?.(10)
+
+        // 300ms - letters animating
+        timers.push(setTimeout(() => onProgressRef.current?.(20), 300))
+
+        // 800ms - more letters
+        timers.push(setTimeout(() => onProgressRef.current?.(30), 800))
+
+        // 1200ms - underline drawing
+        timers.push(setTimeout(() => onProgressRef.current?.(40), 1200))
+
+        // 1600ms - Start curtain animation
+        timers.push(setTimeout(() => {
+            onProgressRef.current?.(50)
+            setShowLogoExit(true)
+            setShowCurtainAnimation(true)
+        }, 1600))
+
+        // 1900ms - curtain lifting
+        timers.push(setTimeout(() => onProgressRef.current?.(65), 1900))
+
+        // 2200ms - curtain mid-way
+        timers.push(setTimeout(() => onProgressRef.current?.(80), 2200))
+
+        // 2500ms - curtain almost done
+        timers.push(setTimeout(() => onProgressRef.current?.(92), 2500))
+
+        // 2800ms - curtain complete
+        timers.push(setTimeout(() => onProgressRef.current?.(100), 2800))
+
+        // 3000ms - Complete and hide
+        timers.push(setTimeout(() => {
             setIsVisible(false)
-            if (onLoadingComplete) onLoadingComplete()
-        }, 3000)
+            onCompleteRef.current?.()
+        }, 3000))
 
         return () => {
-            clearTimeout(timer)
-            window.removeEventListener("resize", handleResize)
+            timers.forEach(clearTimeout)
         }
-    }, [onLoadingComplete])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isMounted, prefersReducedMotion])
 
-    const initialPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width / 2} ${dimension.height} 0 ${dimension.height}  L0 0`
+    // Multi-layer curtain configuration
+    const curtainLayers = [
+        { delay: 0, duration: 1.2, color: '#030303', zIndex: 30 },
+        { delay: 0.06, duration: 1.15, color: '#080810', zIndex: 25 },
+        { delay: 0.12, duration: 1.1, color: '#101018', zIndex: 20 },
+    ]
 
-    // The "smile" curve: control point is significantly lower than the sides to create the heavy drape look
-    // Then it flattens out as it goes up
-    const targetPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width / 2} ${dimension.height} 0 ${dimension.height} L0 0`
-
-    const exitPath = `M0 0 L${dimension.width} 0 L${dimension.width} 0 Q${dimension.width / 2} ${dimension.height * 0.4} 0 0 L0 0`
+    // Don't render on server or before mount
+    if (!isMounted) {
+        return (
+            <div className="fixed inset-0 z-[9999] bg-[#030303] flex items-center justify-center">
+                <div className="text-white/20 text-sm">Loading...</div>
+            </div>
+        )
+    }
 
     return (
-        <AnimatePresence>
-            {isVisible && dimension.width > 0 && (
+        <AnimatePresence mode="wait">
+            {isVisible && (
                 <motion.div
-                    className="fixed inset-0 z-[9999] flex items-center justify-center flex-col text-white"
+                    key="welcome-loader"
+                    className="fixed inset-0 z-[9999] flex items-center justify-center flex-col"
+                    initial={{ opacity: 1 }}
+                    exit={{
+                        opacity: 0,
+                        transition: { duration: 0.4, ease: [0.76, 0, 0.24, 1] }
+                    }}
                 >
-                    {/* SVG Curtain */}
-                    <div className="absolute inset-0 w-full h-full pointer-events-none">
-                        <svg className="w-full h-full">
-                            <motion.path
-                                fill="#030303"
-                                initial={{ d: initialPath }}
-                                exit={{
-                                    d: exitPath,
-                                    transition: {
-                                        duration: 1.2,
-                                        ease: [0.76, 0, 0.24, 1],
-                                        delay: 0.2
-                                    }
-                                }}
-                            />
-                        </svg>
-                    </div>
+                    {/* Multi-layer GPU-accelerated curtain */}
+                    {curtainLayers.map((layer, index) => (
+                        <motion.div
+                            key={`curtain-${index}`}
+                            className="absolute inset-0 origin-top"
+                            style={{
+                                backgroundColor: layer.color,
+                                zIndex: layer.zIndex,
+                                willChange: 'transform',
+                                backfaceVisibility: 'hidden',
+                                transform: 'translateZ(0)',
+                            }}
+                            initial={{ scaleY: 1 }}
+                            animate={showCurtainAnimation ? {
+                                scaleY: 0,
+                            } : {
+                                scaleY: 1,
+                            }}
+                            transition={{
+                                duration: layer.duration,
+                                delay: layer.delay,
+                                ease: [0.76, 0, 0.24, 1],
+                            }}
+                        />
+                    ))}
 
-                    {/* Logo Wrapper with higher z-index */}
+                    {/* Curtain edge glow line */}
                     <motion.div
-                        className="relative z-10 flex flex-col items-center"
-                        exit={{
+                        className="absolute left-0 right-0 h-[3px] origin-top pointer-events-none"
+                        style={{
+                            top: 0,
+                            background: 'linear-gradient(90deg, transparent 10%, rgba(59, 130, 246, 0.5) 50%, transparent 90%)',
+                            boxShadow: '0 2px 30px rgba(59, 130, 246, 0.6), 0 0 60px rgba(59, 130, 246, 0.3)',
+                            zIndex: 35,
+                            willChange: 'transform',
+                        }}
+                        initial={{ y: 0 }}
+                        animate={showCurtainAnimation ? {
+                            y: '100vh',
+                        } : {
+                            y: 0,
+                        }}
+                        transition={{
+                            duration: 1.2,
+                            ease: [0.76, 0, 0.24, 1],
+                        }}
+                    />
+
+                    {/* Logo Wrapper */}
+                    <motion.div
+                        className="relative z-40 flex flex-col items-center"
+                        initial={{ opacity: 1, y: 0, scale: 1 }}
+                        animate={showLogoExit ? {
                             opacity: 0,
-                            y: -100,
-                            transition: { duration: 0.5, ease: [0.76, 0, 0.24, 1], delay: 0.2 }
+                            y: -60,
+                            scale: 0.9,
+                        } : {
+                            opacity: 1,
+                            y: 0,
+                            scale: 1,
+                        }}
+                        transition={{
+                            duration: 0.5,
+                            ease: [0.76, 0, 0.24, 1],
                         }}
                     >
-                        {/* Logo Letters */}
-                        <div className="flex text-[2rem] md:text-[2.5rem] font-light tracking-[0.3em] md:tracking-[0.5em] font-['Space_Grotesk',sans-serif] overflow-hidden">
+                        {/* Logo Letters with 3D flip effect */}
+                        <div
+                            className="flex text-[1.8rem] sm:text-[2rem] md:text-[2.5rem] font-light tracking-[0.2em] sm:tracking-[0.3em] md:tracking-[0.5em] font-['Space_Grotesk',sans-serif] overflow-hidden text-white"
+                            style={{ perspective: '1000px' }}
+                        >
                             {"Trixode-Studios".split("").map((letter, index) => (
                                 <motion.span
                                     key={index}
-                                    initial={{ opacity: 0, y: "100%", rotateX: 90 }}
-                                    animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                                    initial={{
+                                        opacity: 0,
+                                        y: '100%',
+                                        rotateX: 90,
+                                    }}
+                                    animate={{
+                                        opacity: 1,
+                                        y: 0,
+                                        rotateX: 0,
+                                    }}
                                     transition={{
-                                        duration: 0.8,
-                                        delay: 0.2 + index * 0.05,
+                                        duration: 0.6,
+                                        delay: 0.1 + index * 0.035,
                                         ease: [0.16, 1, 0.3, 1],
                                     }}
                                     className="inline-block"
+                                    style={{
+                                        transformStyle: 'preserve-3d',
+                                        willChange: 'transform, opacity',
+                                    }}
                                 >
-                                    {letter === " " ? "\u00A0" : letter}
+                                    {letter === "-" ? (
+                                        <span className="opacity-40 mx-1">·</span>
+                                    ) : letter}
                                 </motion.span>
                             ))}
                         </div>
 
-                        {/* Animated Line */}
-                        <div className="w-[200px] h-[1px] bg-white/10 mt-12 relative overflow-hidden">
+                        {/* Animated underline with glow pulse */}
+                        <div className="relative w-[180px] sm:w-[200px] h-[1px] bg-white/10 mt-8 sm:mt-12 overflow-hidden">
                             <motion.div
-                                initial={{ width: 0 }}
-                                animate={{ width: "100%" }}
+                                initial={{ scaleX: 0 }}
+                                animate={{ scaleX: 1 }}
                                 transition={{
-                                    duration: 1.2,
-                                    delay: 0.5,
+                                    duration: 0.8,
+                                    delay: 0.7,
                                     ease: [0.16, 1, 0.3, 1],
                                 }}
-                                className="absolute left-0 top-0 h-full bg-gradient-to-r from-transparent via-[#3b82f6] to-transparent"
-                                style={{
-                                    boxShadow: "0 0 10px rgba(59, 130, 246, 0.4)",
-                                }}
+                                className="absolute left-0 top-0 w-full h-full origin-left"
+                                style={{ willChange: 'transform' }}
                             >
-                                <motion.div
-                                    animate={{ opacity: [0.3, 1, 0.3] }}
-                                    transition={{
-                                        duration: 2,
-                                        delay: 1.5,
-                                        repeat: Infinity,
-                                        ease: "linear",
-                                    }}
-                                    className="w-full h-full"
+                                <div
+                                    className="w-full h-full bg-gradient-to-r from-transparent via-[#3b82f6] to-transparent"
+                                    style={{ boxShadow: '0 0 15px rgba(59, 130, 246, 0.5)' }}
                                 />
                             </motion.div>
                         </div>
+
+                        {/* Subtle tagline */}
+                        <motion.p
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 0.4, y: 0 }}
+                            transition={{ duration: 0.5, delay: 1.0 }}
+                            className="mt-6 text-[10px] sm:text-xs uppercase tracking-[0.3em] text-white/40 font-['Space_Grotesk',sans-serif]"
+                        >
+                            Crafting Intelligence
+                        </motion.p>
                     </motion.div>
                 </motion.div>
             )}

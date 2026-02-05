@@ -1,109 +1,186 @@
 "use client"
 
-import { useMemo, useRef } from "react"
-import { Canvas, useFrame } from "@react-three/fiber"
-import { EffectComposer, Bloom, ChromaticAberration } from "@react-three/postprocessing"
-import { BlendFunction } from "postprocessing"
-import * as THREE from "three"
+import { memo } from "react"
 
-const vertexShader = `
-    varying vec3 vNormal;
-    varying vec3 vWorldPos;
-    uniform float uTime;
-
-    void main() {
-        vNormal = normalize(normalMatrix * normal);
-        vec3 pos = position;
-        float wobble = sin(uTime + pos.y * 4.0) * 0.06 + sin(uTime * 1.7 + pos.x * 5.0) * 0.04;
-        pos += normal * wobble;
-        vec4 worldPosition = modelMatrix * vec4(pos, 1.0);
-        vWorldPos = worldPosition.xyz;
-        gl_Position = projectionMatrix * viewMatrix * worldPosition;
-    }
-`
-
-const fragmentShader = `
-    varying vec3 vNormal;
-    varying vec3 vWorldPos;
-    uniform float uTime;
-    uniform vec3 uColorA;
-    uniform vec3 uColorB;
-    uniform vec3 uColorC;
-    uniform float uFresnelPower;
-
-    void main() {
-        vec3 viewDir = normalize(cameraPosition - vWorldPos);
-        float fresnel = pow(1.0 - max(dot(normalize(vNormal), viewDir), 0.0), uFresnelPower);
-        float shift = sin(uTime * 0.8 + vWorldPos.y * 2.0 + vWorldPos.x * 1.5) * 0.5 + 0.5;
-        vec3 base = mix(uColorA, uColorB, shift);
-        base = mix(base, uColorC, pow(fresnel, 1.2));
-        vec3 color = base + fresnel * 0.85;
-        gl_FragColor = vec4(color, 1.0);
-    }
-`
-
-function BlobMesh() {
-    const meshRef = useRef<THREE.Mesh>(null)
-    const materialRef = useRef<THREE.ShaderMaterial>(null)
-    const material = useMemo(
-        () =>
-            new THREE.ShaderMaterial({
-                uniforms: {
-                    uTime: { value: 0 },
-                    uColorA: { value: new THREE.Color("#5ad1ff") },
-                    uColorB: { value: new THREE.Color("#7c3aed") },
-                    uColorC: { value: new THREE.Color("#22d3ee") },
-                    uFresnelPower: { value: 2.4 },
-                },
-                vertexShader,
-                fragmentShader,
-            }),
-        []
-    )
-
-    useFrame(({ clock }) => {
-        const time = clock.getElapsedTime()
-        if (materialRef.current) {
-            materialRef.current.uniforms.uTime.value = time
-        }
-        if (!meshRef.current) return
-        meshRef.current.rotation.x = time * 0.2
-        meshRef.current.rotation.y = time * 0.35
-        const pulse = 1 + Math.sin(time * 1.2) * 0.05
-        meshRef.current.scale.set(pulse, pulse, pulse)
-    })
-
+/**
+ * NeonBlob - Liquid Metal morphing blob animation
+ * Creates a chrome/mercury-like fluid effect with metallic gradients
+ * Uses CSS @keyframes with transform for GPU-accelerated performance.
+ */
+const NeonBlob = memo(function NeonBlob() {
     return (
-        <mesh ref={meshRef}>
-            <icosahedronGeometry args={[1.2, 5]} />
-            <primitive object={material} attach="material" ref={materialRef} />
-        </mesh>
-    )
-}
+        <div className="liquid-metal-container">
+            {/* Base metallic blob */}
+            <div className="liquid-metal liquid-metal-base" />
+            {/* Highlight reflection */}
+            <div className="liquid-metal liquid-metal-highlight" />
+            {/* Secondary flow */}
+            <div className="liquid-metal liquid-metal-flow" />
+            {/* Inner glow */}
+            <div className="liquid-metal liquid-metal-core" />
 
-export default function NeonBlob() {
-    return (
-        <Canvas
-            dpr={[1, 2]}
-            gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
-            camera={{ position: [0, 0, 4], fov: 45 }}
-            onCreated={({ gl }) => {
-                gl.setClearColor(0x000000, 0)
-            }}
-            className="w-full h-full"
-            style={{
-                background: "transparent",
-            }}
-        >
-            <ambientLight intensity={0.4} />
-            <pointLight position={[3, 3, 3]} intensity={2.2} color="#7cf5ff" />
-            <pointLight position={[-3, -2, -3]} intensity={1.6} color="#8b5cf6" />
-            <directionalLight position={[0, 5, 2]} intensity={1.1} color="#ffffff" />
-            <BlobMesh />
-            <EffectComposer frameBufferType={THREE.HalfFloatType}>
-                <Bloom intensity={1.35} luminanceThreshold={0.1} luminanceSmoothing={0.9} />
-                <ChromaticAberration blendFunction={BlendFunction.SCREEN} offset={[0.0008, 0.0008]} />
-            </EffectComposer>
-        </Canvas>
+            <style jsx>{`
+                .liquid-metal-container {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    filter: drop-shadow(0 0 40px rgba(59, 130, 246, 0.18));
+                }
+
+                .liquid-metal {
+                    position: absolute;
+                    border-radius: 50%;
+                    will-change: transform, border-radius;
+                    transform: translateZ(0);
+                    backface-visibility: hidden;
+                }
+
+                /* Base metallic chrome blob */
+                .liquid-metal-base {
+                    width: 420px;
+                    height: 420px;
+                    background: 
+                        radial-gradient(ellipse at 28% 20%, rgba(255, 255, 255, 0.32) 0%, transparent 42%),
+                        radial-gradient(ellipse at 72% 82%, rgba(120, 135, 160, 0.22) 0%, transparent 55%),
+                        linear-gradient(
+                            135deg,
+                            #1a1a2e 0%,
+                            #3d4f6f 20%,
+                            #a8b5c9 40%,
+                            #e8eef5 50%,
+                            #a8b5c9 60%,
+                            #3d4f6f 80%,
+                            #1a1a2e 100%
+                        );
+                    filter: blur(12px) saturate(1.05);
+                    box-shadow: 
+                        0 0 50px rgba(168, 181, 201, 0.28),
+                        0 0 90px rgba(59, 130, 246, 0.18),
+                        inset 0 0 80px rgba(0, 0, 0, 0.3);
+                    animation: morph-metal 8s ease-in-out infinite;
+                }
+
+                /* Bright highlight reflection */
+                .liquid-metal-highlight {
+                    width: 220px;
+                    height: 140px;
+                    background: radial-gradient(
+                        ellipse at 50% 30%,
+                        rgba(255, 255, 255, 0.8) 0%,
+                        rgba(255, 255, 255, 0.3) 30%,
+                        transparent 70%
+                    );
+                    filter: blur(10px);
+                    animation: morph-highlight 8s ease-in-out infinite;
+                    animation-delay: -0.5s;
+                    mix-blend-mode: overlay;
+                }
+
+                /* Secondary flowing element */
+                .liquid-metal-flow {
+                    width: 300px;
+                    height: 300px;
+                    background: 
+                        radial-gradient(ellipse at 60% 30%, rgba(200, 215, 235, 0.4) 0%, transparent 55%),
+                        linear-gradient(
+                            225deg,
+                            rgba(61, 79, 111, 0.6) 0%,
+                            rgba(168, 181, 201, 0.4) 50%,
+                            rgba(61, 79, 111, 0.6) 100%
+                        );
+                    filter: blur(16px);
+                    animation: morph-flow 12s ease-in-out infinite;
+                    animation-delay: -3s;
+                }
+
+                /* Inner glowing core */
+                .liquid-metal-core {
+                    width: 160px;
+                    height: 160px;
+                    background: radial-gradient(
+                        circle,
+                        rgba(59, 130, 246, 0.5) 0%,
+                        rgba(139, 92, 246, 0.3) 40%,
+                        transparent 70%
+                    );
+                    filter: blur(26px);
+                    animation: pulse-core 4s ease-in-out infinite;
+                }
+
+                @keyframes morph-metal {
+                    0%, 100% {
+                        border-radius: 55% 45% 42% 58% / 55% 45% 55% 45%;
+                        transform: translate(0, 0) rotate(0deg) scale(1);
+                    }
+                    25% {
+                        border-radius: 48% 52% 58% 42% / 50% 50% 45% 55%;
+                        transform: translate(18px, -10px) rotate(18deg) scale(1.01);
+                    }
+                    50% {
+                        border-radius: 52% 48% 40% 60% / 45% 55% 50% 50%;
+                        transform: translate(-10px, 14px) rotate(36deg) scale(0.99);
+                    }
+                    75% {
+                        border-radius: 46% 54% 55% 45% / 55% 45% 50% 50%;
+                        transform: translate(8px, -8px) rotate(54deg) scale(1);
+                    }
+                }
+
+                @keyframes morph-highlight {
+                    0%, 100% {
+                        border-radius: 62% 38% 42% 58% / 55% 45% 55% 45%;
+                        transform: translate(-50px, -70px) rotate(0deg) scale(1);
+                        opacity: 0.9;
+                    }
+                    33% {
+                        border-radius: 50% 50% 60% 40% / 50% 50% 50% 50%;
+                        transform: translate(-35px, -60px) rotate(12deg) scale(1.06);
+                        opacity: 1;
+                    }
+                    66% {
+                        border-radius: 55% 45% 45% 55% / 45% 55% 45% 55%;
+                        transform: translate(-60px, -80px) rotate(-8deg) scale(0.97);
+                        opacity: 0.8;
+                    }
+                }
+
+                @keyframes morph-flow {
+                    0%, 100% {
+                        border-radius: 48% 52% 52% 48% / 50% 50% 50% 50%;
+                        transform: translate(22px, 14px) rotate(0deg) scale(1);
+                    }
+                    33% {
+                        border-radius: 56% 44% 40% 60% / 45% 55% 45% 55%;
+                        transform: translate(-14px, -8px) rotate(-18deg) scale(1.04);
+                    }
+                    66% {
+                        border-radius: 44% 56% 50% 50% / 55% 45% 55% 45%;
+                        transform: translate(10px, -16px) rotate(14deg) scale(0.98);
+                    }
+                }
+
+                @keyframes pulse-core {
+                    0%, 100% {
+                        transform: scale(1);
+                        opacity: 0.6;
+                    }
+                    50% {
+                        transform: scale(1.12);
+                        opacity: 0.9;
+                    }
+                }
+
+                @media (prefers-reduced-motion: reduce) {
+                    .liquid-metal {
+                        animation: none;
+                    }
+                }
+            `}</style>
+        </div>
     )
-}
+})
+
+export default NeonBlob

@@ -1,9 +1,10 @@
 "use client"
 
 import { useRef } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
+import { useIsMobile } from "@/hooks/use-mobile"
 
 const services = [
     {
@@ -31,21 +32,24 @@ const services = [
 
 export default function ServicesSection() {
     const containerRef = useRef<HTMLDivElement>(null)
+    const prefersReducedMotion = useReducedMotion()
+    const isMobile = useIsMobile()
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start end", "end start"]
     })
 
-    const y1 = useTransform(scrollYProgress, [0, 1], [100, -100])
-    const y2 = useTransform(scrollYProgress, [0, 1], [200, -200])
-    const y3 = useTransform(scrollYProgress, [0, 1], [150, -150])
+    const shouldReduce = prefersReducedMotion || isMobile
+    const y1 = useTransform(scrollYProgress, [0, 1], shouldReduce ? [0, 0] : [100, -100])
+    const y2 = useTransform(scrollYProgress, [0, 1], shouldReduce ? [0, 0] : [200, -200])
+    const y3 = useTransform(scrollYProgress, [0, 1], shouldReduce ? [0, 0] : [150, -150])
 
     const yTransforms = [y1, y2, y3]
 
     return (
         <section ref={containerRef} id="services" className="relative px-6 md:px-16 py-40 overflow-hidden">
             <div className="max-w-7xl mx-auto relative z-10">
-                <div className="flex justify-between items-end mb-24 pb-8 border-b border-white/10">
+                <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between mb-24 pb-8 border-b border-white/10">
                     <span className="text-sm text-[#3b82f6] font-medium font-['Space_Grotesk',sans-serif]">02</span>
                     <motion.h2
                         initial={{ opacity: 0, y: 30 }}
@@ -62,7 +66,7 @@ export default function ServicesSection() {
                         <motion.div
                             key={service.title}
                             style={{ y: yTransforms[index] }}
-                            className="magnetic glass p-8 md:p-10 rounded-[2rem] flex flex-col justify-between h-[500px] relative group border border-white/10 hover:border-white/20 transition-all duration-500 will-change-transform"
+                            className="magnetic glass p-8 md:p-10 rounded-[2rem] flex flex-col justify-between min-h-[420px] md:min-h-[500px] relative group border border-white/10 hover:border-white/20 transition-all duration-500 will-change-transform"
                         >
                             {/* Hover Gradient */}
                             <div className="absolute inset-0 bg-gradient-to-br from-[#3b82f6]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[2rem]" />

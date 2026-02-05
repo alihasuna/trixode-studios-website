@@ -1,8 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -18,15 +15,18 @@ const nextConfig = {
   // Optimize for Vercel
   compress: true,
   poweredByHeader: false,
-  
+
   // Enable static optimization
   trailingSlash: false,
-  
+
   // Optimize bundles
   experimental: {
     gzipSize: true,
   },
-  
+  turbopack: {
+    root: process.cwd(),
+  },
+
   // Headers for better caching
   async headers() {
     return [
