@@ -14,7 +14,9 @@ export default function CustomCursor() {
     // Detect mobile devices
     useEffect(() => {
         const checkMobile = () => {
-            setIsMobile(window.innerWidth < 1024 || "ontouchstart" in window)
+            setIsMobile(
+                !window.matchMedia("(min-width: 1024px) and (hover: hover) and (pointer: fine)").matches
+            )
         }
         checkMobile()
         window.addEventListener("resize", checkMobile)

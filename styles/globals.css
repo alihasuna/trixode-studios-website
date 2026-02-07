@@ -54,21 +54,24 @@ body {
   font-family: var(--font-inter), "Inter", sans-serif;
   background-color: var(--bg);
   color: var(--text-primary);
-  user-select: none;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
     color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-::selection {
-  background: transparent;
-  color: inherit;
-}
-
-::-moz-selection {
-  background: transparent;
-  color: inherit;
+@media (hover: hover) and (pointer: fine) {
+  body {
+    user-select: none;
+  }
+  ::selection {
+    background: transparent;
+    color: inherit;
+  }
+  ::-moz-selection {
+    background: transparent;
+    color: inherit;
+  }
 }
 
 .home2-root {
@@ -116,7 +119,7 @@ body {
 }
 
 /* Hide default cursor only when custom cursor mounts */
-@media (min-width: 1024px) {
+@media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
   body.has-custom-cursor {
     cursor: none;
   }

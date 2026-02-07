@@ -304,7 +304,7 @@ const gradientSubtractShader = `
 
 export default function FluidBackground() {
     const canvasRef = useRef<HTMLCanvasElement>(null)
-    const isDesktop = useMediaQuery("(min-width: 1024px)")
+    const isDesktop = useMediaQuery("(min-width: 1024px) and (hover: hover) and (pointer: fine)")
     const prefersReducedMotion = useReducedMotion()
     const animationRef = useRef<number>(0)
     const glRef = useRef<WebGLRenderingContext | null>(null)

@@ -18,7 +18,7 @@ const NeonBlob = dynamic(() => import("@/components/hero/NeonBlob"), { ssr: fals
 export default function HomePage() {
     const [isLoading, setIsLoading] = useState(true)
     const [animationProgress, setAnimationProgress] = useState(0)
-    const isDesktop = useMediaQuery("(min-width: 1024px)")
+    const isDesktop = useMediaQuery("(min-width: 1024px) and (hover: hover) and (pointer: fine)")
     const [showHeroBlob, setShowHeroBlob] = useState(false)
     const prefersReducedMotion = useReducedMotion()
     const enableMotion = !prefersReducedMotion
