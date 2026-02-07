@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import dynamic from "next/dynamic"
+import Image from "next/image"
 import { motion, useReducedMotion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
 import WelcomeLoader from "@/components/ui/WelcomeLoader"
@@ -83,7 +84,7 @@ export default function HomePage() {
 
             {/* Main Page Content */}
             <motion.div
-                className="min-h-screen bg-[#030303] text-white overflow-hidden origin-top"
+                className="min-h-screen bg-transparent text-black dark:text-white overflow-hidden origin-top"
                 initial={enableMotion ? { scale: 1.05, filter: "blur(8px)" } : false}
                 animate={enableMotion ? {
                     scale: animationProgress > 90 ? 1 : 1.05,
@@ -177,7 +178,7 @@ export default function HomePage() {
                     className="fixed inset-0 pointer-events-none z-0"
                     style={{
                         backgroundImage:
-                            "linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px)",
+                            "linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px)",
                         backgroundSize: "100px 100px",
                     }}
                 />
@@ -193,8 +194,8 @@ export default function HomePage() {
                                 transition={{ duration: 0.8, delay: 3.2 }}
                                 className="flex items-center gap-4 mb-8"
                             >
-                                <div className="w-10 h-[1px] bg-[#3b82f6]" style={{ boxShadow: "0 0 10px rgba(59, 130, 246, 0.4)" }} />
-                                <span className="text-xs uppercase tracking-[0.2em] text-white/50 font-['Space_Grotesk',sans-serif]">
+                                <div className="w-10 h-[1px] bg-brand-blue" style={{ boxShadow: "0 0 10px rgba(59, 130, 246, 0.4)" }} />
+                                <span className="text-xs uppercase tracking-[0.2em] text-black/50 dark:text-white/50 font-grotesk">
                                     Victoria, BC / Software Studio
                                 </span>
                             </motion.div>
@@ -207,7 +208,7 @@ export default function HomePage() {
                             >
                                 <span className="block overflow-hidden pb-[0.12em]">
                                     <motion.span
-                                        className="block font-['Space_Grotesk',sans-serif]"
+                                        className="block font-grotesk"
                                         initial={{ y: "110%" }}
                                         animate={{ y: 0 }}
                                         transition={{ duration: 0.9, delay: 3.5, ease: [0.16, 1, 0.3, 1] }}
@@ -218,7 +219,7 @@ export default function HomePage() {
                                 </span>
                                 <span className="block overflow-hidden pb-[0.12em]">
                                     <motion.span
-                                        className="block bg-gradient-to-r from-white to-[#3b82f6] bg-clip-text text-transparent font-['Space_Grotesk',sans-serif]"
+                                        className="block bg-gradient-to-r from-slate-800 to-brand-blue dark:from-white dark:to-brand-blue bg-clip-text text-transparent font-grotesk"
                                         initial={{ y: "110%" }}
                                         animate={{ y: 0 }}
                                         transition={{ duration: 0.9, delay: 3.7, ease: [0.16, 1, 0.3, 1] }}
@@ -233,7 +234,7 @@ export default function HomePage() {
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.8, delay: 3.9 }}
-                                className="text-lg text-white/50 mb-12 max-w-[500px] leading-relaxed font-light"
+                                className="text-lg text-black/50 dark:text-white/50 mb-12 max-w-[500px] leading-relaxed font-light"
                             >
                                 Advanced software infrastructure for AI research and scientific computing. We build elegant systems that
                                 empower innovators.
@@ -244,11 +245,11 @@ export default function HomePage() {
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.8, delay: 4.1 }}
-                                className="magnetic inline-flex items-center gap-4 px-8 py-4 border border-white/10 text-sm uppercase tracking-widest relative overflow-hidden group"
+                                className="magnetic inline-flex items-center gap-4 px-8 py-4 border border-black/10 dark:border-white/10 text-sm uppercase tracking-widest relative overflow-hidden group"
                             >
                                 <span className="relative z-10">Start a Project</span>
                                 <ArrowRight className="w-4 h-4 relative z-10" />
-                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/5 dark:via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
                             </motion.a>
                         </div>
 
@@ -256,12 +257,12 @@ export default function HomePage() {
                         <div className="relative lg:h-[620px]">
                             {/* Blob positioned as orbital center for cards */}
                             <motion.div
-                                className="absolute inset-0 flex items-center justify-end pointer-events-none z-0 hidden lg:flex"
+                                className="absolute inset-0 items-center justify-end pointer-events-none z-0 hidden lg:flex"
                                 style={{ paddingRight: "8%" }}
                                 initial={{ scale: 0.35, opacity: 0 }}
                                 animate={{
                                     scale: animationProgress > 50 ? 1 : 0.35,
-                                    opacity: animationProgress > 50 ? 0.85 : 0,
+                                    opacity: animationProgress > 50 ? 0.95 : 0,
                                 }}
                                 transition={{
                                     duration: 1.6,
@@ -288,12 +289,12 @@ export default function HomePage() {
                                         className="glass p-4 rounded-2xl text-center"
                                     >
                                         <div
-                                            className="text-2xl sm:text-3xl font-light text-[#3b82f6] font-['Space_Grotesk',sans-serif]"
+                                            className="text-2xl sm:text-3xl font-light text-brand-blue font-grotesk"
                                             style={{ textShadow: "0 0 15px rgba(59, 130, 246, 0.3)" }}
                                         >
                                             {stat.value}
                                         </div>
-                                        <div className="text-[10px] sm:text-xs uppercase tracking-widest text-white/50 mt-1">
+                                        <div className="text-[10px] sm:text-xs uppercase tracking-widest text-black/50 dark:text-white/50 mt-1">
                                             {stat.label}
                                         </div>
                                     </motion.div>
@@ -336,9 +337,9 @@ export default function HomePage() {
                                     >
                                         {/* Circular orbit around blob */}
                                         <motion.div
-                                            animate={animationProgress >= 100 ? {
-                                                x: [10, 100, 120, 100, 10, -70, -90, -70],
-                                                y: [-120, -100, -30, 30, 90, 110, 30, -30],
+                                            animate={animationProgress >= 100 && enableMotion ? {
+                                                x: [10, 50, 60, 50, 10, -30, -40, -30],
+                                                y: [-120, -105, -60, -20, 20, 40, -20, -60],
                                             } : {}}
                                             transition={{
                                                 duration: 60,
@@ -351,13 +352,13 @@ export default function HomePage() {
                                                 className="glass p-8 rounded-3xl w-full h-full"
                                             >
                                                 <div
-                                                    className="text-5xl font-light text-[#3b82f6] mb-2 font-['Space_Grotesk',sans-serif]"
+                                                    className="text-5xl font-light text-brand-blue mb-2 font-grotesk"
                                                     style={{ textShadow: "0 0 20px rgba(59, 130, 246, 0.4)" }}
                                                 >
                                                     99.9%
                                                 </div>
-                                                <div className="text-xs uppercase tracking-widest text-white/50 mb-1">Uptime SLA</div>
-                                                <div className="text-lg text-white">Enterprise Ready</div>
+                                                <div className="text-xs uppercase tracking-widest text-black/50 dark:text-white/50 mb-1">Uptime SLA</div>
+                                                <div className="text-lg text-black dark:text-white">Enterprise Ready</div>
                                             </motion.div>
                                         </motion.div>
                                     </motion.div>
@@ -394,9 +395,9 @@ export default function HomePage() {
                                     >
                                         {/* Circular orbit around blob */}
                                         <motion.div
-                                            animate={animationProgress >= 100 ? {
-                                                x: [-140, -120, -70, -20, 30, 70, 90, 70, 30, -20, -70, -120],
-                                                y: [-20, 40, 90, 120, 120, 90, 40, -20, -60, -90, -100, -60],
+                                            animate={animationProgress >= 100 && enableMotion ? {
+                                                x: [-140, -125, -90, -60, -30, -10, 10, -10, -30, -60, -90, -125],
+                                                y: [-20, 15, 45, 60, 60, 45, 15, -20, -45, -55, -50, -35],
                                             } : {}}
                                             transition={{
                                                 duration: 65,
@@ -409,13 +410,13 @@ export default function HomePage() {
                                                 className="glass p-8 rounded-3xl w-full h-full"
                                             >
                                                 <div
-                                                    className="text-5xl font-light text-[#3b82f6] mb-2 font-['Space_Grotesk',sans-serif]"
+                                                    className="text-5xl font-light text-brand-blue mb-2 font-grotesk"
                                                     style={{ textShadow: "0 0 20px rgba(59, 130, 246, 0.4)" }}
                                                 >
                                                     50+
                                                 </div>
-                                                <div className="text-xs uppercase tracking-widest text-white/50 mb-1">Research Labs</div>
-                                                <div className="text-lg text-white">Global Partners</div>
+                                                <div className="text-xs uppercase tracking-widest text-black/50 dark:text-white/50 mb-1">Research Labs</div>
+                                                <div className="text-lg text-black dark:text-white">Global Partners</div>
                                             </motion.div>
                                         </motion.div>
                                     </motion.div>
@@ -452,9 +453,9 @@ export default function HomePage() {
                                     >
                                         {/* Circular orbit around blob */}
                                         <motion.div
-                                            animate={animationProgress >= 100 ? {
-                                                x: [-30, 20, 70, 110, 120, 100, 60, 10, -30, -70, -90, -90, -70],
-                                                y: [120, 140, 130, 100, 50, 10, -30, -70, -100, -110, -90, -30, 20],
+                                            animate={animationProgress >= 100 && enableMotion ? {
+                                                x: [-30, 0, 30, 50, 55, 45, 25, 0, -30, -45, -50, -45, -35],
+                                                y: [120, 130, 125, 110, 85, 65, 50, 45, 50, 65, 80, 95, 110],
                                             } : {}}
                                             transition={{
                                                 duration: 70,
@@ -467,13 +468,13 @@ export default function HomePage() {
                                                 className="glass p-8 rounded-3xl w-full h-full"
                                             >
                                                 <div
-                                                    className="text-5xl font-light text-[#3b82f6] mb-2 font-['Space_Grotesk',sans-serif]"
+                                                    className="text-5xl font-light text-brand-blue mb-2 font-grotesk"
                                                     style={{ textShadow: "0 0 20px rgba(59, 130, 246, 0.4)" }}
                                                 >
                                                     10x
                                                 </div>
-                                                <div className="text-xs uppercase tracking-widest text-white/50 mb-1">Performance</div>
-                                                <div className="text-lg text-white">vs Traditional</div>
+                                                <div className="text-xs uppercase tracking-widest text-black/50 dark:text-white/50 mb-1">Performance</div>
+                                                <div className="text-lg text-black dark:text-white">vs Traditional</div>
                                             </motion.div>
                                         </motion.div>
                                     </motion.div>
@@ -488,14 +489,14 @@ export default function HomePage() {
                 {/* Expertise Section */}
                 <section id="expertise" className="relative px-6 md:px-16 py-40">
                     <div className="max-w-7xl mx-auto">
-                        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between mb-24 pb-8 border-b border-white/10">
-                            <span className="text-sm text-[#3b82f6] font-medium font-['Space_Grotesk',sans-serif]">01</span>
-                            <h2 className="text-5xl md:text-7xl font-light max-w-[600px] leading-tight font-['Space_Grotesk',sans-serif]">
+                        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between mb-24 pb-8 border-b border-black/10 dark:border-white/10">
+                            <span className="text-sm text-brand-blue font-medium font-grotesk">02</span>
+                            <h2 className="text-5xl md:text-7xl font-light max-w-[600px] leading-tight font-grotesk">
                                 Core Systems
                             </h2>
                         </div>
 
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-white/[0.08]">
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-black/[0.08] dark:bg-white/[0.08]">
                             {[
                                 {
                                     num: "01",
@@ -530,17 +531,17 @@ export default function HomePage() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: index * 0.1 }}
-                                    className="group bg-[rgba(255,255,255,0.02)] p-12 relative overflow-hidden cursor-pointer hover:bg-white/[0.06] transition-all duration-400"
+                                    className="group bg-[rgba(0,0,0,0.02)] dark:bg-[rgba(255,255,255,0.02)] p-12 relative overflow-hidden cursor-pointer hover:bg-black/[0.06] dark:hover:bg-white/[0.06] transition-all duration-400"
                                 >
-                                    <div className="absolute inset-0 bg-gradient-to-br from-[#3b82f6]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+                                    <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
                                     <div className="relative z-10">
-                                        <div className="text-xs text-[#3b82f6] mb-8 font-medium font-['Space_Grotesk',sans-serif] group-hover:translate-x-2 transition-transform duration-300">
+                                        <div className="text-xs text-brand-blue mb-8 font-medium font-grotesk group-hover:translate-x-2 transition-transform duration-300">
                                             {item.num}
                                         </div>
                                         <h3 className="text-2xl mb-4 font-normal group-hover:translate-x-2 transition-transform duration-300">
                                             {item.title}
                                         </h3>
-                                        <p className="text-white/50 leading-relaxed group-hover:translate-x-2 transition-transform duration-300">
+                                        <p className="text-black/50 dark:text-white/50 leading-relaxed group-hover:translate-x-2 transition-transform duration-300">
                                             {item.desc}
                                         </p>
                                     </div>
@@ -553,9 +554,9 @@ export default function HomePage() {
                 {/* Projects Section */}
                 <section id="projects" className="relative px-6 md:px-16 py-40">
                     <div className="max-w-7xl mx-auto">
-                        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between mb-24 pb-8 border-b border-white/10">
-                            <span className="text-sm text-[#3b82f6] font-medium font-['Space_Grotesk',sans-serif]">02</span>
-                            <h2 className="text-5xl md:text-7xl font-light max-w-[600px] leading-tight font-['Space_Grotesk',sans-serif]">
+                        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between mb-24 pb-8 border-b border-black/10 dark:border-white/10">
+                            <span className="text-sm text-brand-blue font-medium font-grotesk">03</span>
+                            <h2 className="text-5xl md:text-7xl font-light max-w-[600px] leading-tight font-grotesk">
                                 Selected Work
                             </h2>
                         </div>
@@ -574,20 +575,20 @@ export default function HomePage() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: index * 0.1 }}
-                                    className="magnetic group grid grid-cols-1 md:grid-cols-[100px_1fr_200px_auto] gap-8 p-12 border border-white/[0.08] items-center relative overflow-hidden hover:border-white/20 hover:translate-x-5 transition-all duration-400"
+                                    className="magnetic group grid grid-cols-1 md:grid-cols-[100px_1fr_200px_auto] gap-8 p-12 border border-black/[0.08] dark:border-white/[0.08] items-center relative overflow-hidden hover:border-black/20 dark:hover:border-white/20 hover:translate-x-5 transition-all duration-400"
                                 >
-                                    <div className="absolute inset-0 bg-gradient-to-r from-[#3b82f6]/5 to-transparent -translate-x-full group-hover:translate-x-0 transition-transform duration-700" />
-                                    <span className="text-sm text-white/25 font-['Space_Grotesk',sans-serif] group-hover:text-[#3b82f6] transition-colors">
+                                    <div className="absolute inset-0 bg-gradient-to-r from-brand-blue/5 to-transparent -translate-x-full group-hover:translate-x-0 transition-transform duration-700" />
+                                    <span className="text-sm text-black/25 dark:text-white/25 font-grotesk group-hover:text-brand-blue transition-colors">
                                         {project.year}
                                     </span>
-                                    <span className="text-3xl md:text-4xl font-normal font-['Space_Grotesk',sans-serif] relative">
+                                    <span className="text-3xl md:text-4xl font-normal font-grotesk relative">
                                         {project.name}
-                                        <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#3b82f6] group-hover:w-full transition-all duration-400" />
+                                        <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-brand-blue group-hover:w-full transition-all duration-400" />
                                     </span>
-                                    <span className="text-sm uppercase tracking-widest text-white/50 group-hover:text-[#3b82f6] transition-colors">
+                                    <span className="text-sm uppercase tracking-widest text-black/50 dark:text-white/50 group-hover:text-brand-blue transition-colors">
                                         {project.category}
                                     </span>
-                                    <div className="w-12 h-12 border border-white/10 rounded-full flex items-center justify-center group-hover:border-[#3b82f6] group-hover:rotate-45 transition-all duration-400">
+                                    <div className="w-12 h-12 border border-black/10 dark:border-white/10 rounded-full flex items-center justify-center group-hover:border-brand-blue group-hover:rotate-45 transition-all duration-400">
                                         <ArrowRight className="w-5 h-5" />
                                     </div>
                                 </motion.a>
@@ -599,9 +600,9 @@ export default function HomePage() {
                 {/* Team Section */}
                 <section id="team" className="relative px-6 md:px-16 py-40">
                     <div className="max-w-7xl mx-auto">
-                        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between mb-24 pb-8 border-b border-white/10">
-                            <span className="text-sm text-[#3b82f6] font-medium font-['Space_Grotesk',sans-serif]">03</span>
-                            <h2 className="text-5xl md:text-7xl font-light max-w-[600px] leading-tight font-['Space_Grotesk',sans-serif]">
+                        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between mb-24 pb-8 border-b border-black/10 dark:border-white/10">
+                            <span className="text-sm text-brand-blue font-medium font-grotesk">04</span>
+                            <h2 className="text-5xl md:text-7xl font-light max-w-[600px] leading-tight font-grotesk">
                                 Leadership
                             </h2>
                         </div>
@@ -629,16 +630,17 @@ export default function HomePage() {
                                     transition={{ delay: index * 0.1 }}
                                     className="glass p-12 rounded-3xl text-center cursor-pointer group hover:-translate-y-2 transition-all duration-400"
                                 >
-                                    <div className="w-28 h-28 mx-auto mb-8 rounded-full overflow-hidden border-2 border-white/10 group-hover:border-[#3b82f6] group-hover:scale-110 transition-all duration-400">
-                                        <img
+                                    <div className="w-28 h-28 mx-auto mb-8 rounded-full overflow-hidden border-2 border-black/10 dark:border-white/10 group-hover:border-brand-blue group-hover:scale-110 transition-all duration-400">
+                                        <Image
                                             src={member.image}
                                             alt={member.name}
+                                            width={200}
+                                            height={200}
                                             className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-                                            loading="lazy"
                                         />
                                     </div>
-                                    <h3 className="text-xl mb-2 font-normal uppercase font-['Space_Grotesk',sans-serif]">{member.name}</h3>
-                                    <div className="text-sm uppercase tracking-widest text-white/50 group-hover:text-[#3b82f6] transition-colors">
+                                    <h3 className="text-xl mb-2 font-normal uppercase font-grotesk">{member.name}</h3>
+                                    <div className="text-sm uppercase tracking-widest text-black/50 dark:text-white/50 group-hover:text-brand-blue transition-colors">
                                         {member.role}
                                     </div>
                                 </motion.div>
@@ -648,7 +650,7 @@ export default function HomePage() {
                 </section>
 
                 {/* Contact Section */}
-                <section id="contact" className="relative px-6 md:px-16 py-40 bg-gradient-to-b from-transparent via-[#3b82f6]/5 to-transparent">
+                <section id="contact" className="relative px-6 md:px-16 py-40 bg-gradient-to-b from-transparent via-brand-blue/5 to-transparent">
                     <div className="max-w-5xl mx-auto">
                         <div className="grid md:grid-cols-2 gap-16">
                             {/* Contact Info */}
@@ -660,7 +662,7 @@ export default function HomePage() {
                                 <h3 className="text-4xl md:text-5xl font-light mb-8 leading-tight">
                                     Let's build something extraordinary.
                                 </h3>
-                                <p className="text-white/50 mb-12 leading-relaxed text-lg">
+                                <p className="text-black/50 dark:text-white/50 mb-12 leading-relaxed text-lg">
                                     We're currently accepting new partnerships for Q2 2025. If you're working on challenging problems at
                                     the intersection of AI and science, we'd love to hear from you.
                                 </p>
@@ -671,7 +673,7 @@ export default function HomePage() {
                                         className="magnetic glass flex items-center justify-between p-6 rounded-2xl group hover:translate-x-2 transition-all duration-400"
                                     >
                                         <div>
-                                            <div className="text-xs uppercase tracking-widest text-white/25 mb-1">Email</div>
+                                            <div className="text-xs uppercase tracking-widest text-black/25 dark:text-white/25 mb-1">Email</div>
                                             <div className="text-lg">hello@trixode.com</div>
                                         </div>
                                         <ArrowRight className="w-5 h-5 group-hover:rotate-45 transition-transform duration-400" />
@@ -681,7 +683,7 @@ export default function HomePage() {
                                         className="magnetic glass flex items-center justify-between p-6 rounded-2xl group hover:translate-x-2 transition-all duration-400"
                                     >
                                         <div>
-                                            <div className="text-xs uppercase tracking-widest text-white/25 mb-1">Phone</div>
+                                            <div className="text-xs uppercase tracking-widest text-black/25 dark:text-white/25 mb-1">Phone</div>
                                             <div className="text-lg">+1 (250) 555-0127</div>
                                         </div>
                                         <ArrowRight className="w-5 h-5 group-hover:rotate-45 transition-transform duration-400" />
@@ -705,11 +707,11 @@ export default function HomePage() {
                                         type="text"
                                         placeholder=" "
                                         id="name"
-                                        className="peer w-full bg-transparent border-b border-white/10 py-4 text-white outline-none focus:border-[#3b82f6] transition-colors"
+                                        className="peer w-full bg-transparent border-b border-black/10 dark:border-white/10 py-4 text-black dark:text-white outline-none focus:border-brand-blue transition-colors"
                                     />
                                     <label
                                         htmlFor="name"
-                                        className="absolute left-0 top-4 text-white/50 transition-all peer-focus:text-[#3b82f6] peer-focus:text-xs peer-focus:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-top-4"
+                                        className="absolute left-0 top-4 text-black/50 dark:text-white/50 transition-all peer-focus:text-brand-blue peer-focus:text-xs peer-focus:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-top-4"
                                     >
                                         Your Name
                                     </label>
@@ -720,11 +722,11 @@ export default function HomePage() {
                                         type="email"
                                         placeholder=" "
                                         id="email"
-                                        className="peer w-full bg-transparent border-b border-white/10 py-4 text-white outline-none focus:border-[#3b82f6] transition-colors"
+                                        className="peer w-full bg-transparent border-b border-black/10 dark:border-white/10 py-4 text-black dark:text-white outline-none focus:border-brand-blue transition-colors"
                                     />
                                     <label
                                         htmlFor="email"
-                                        className="absolute left-0 top-4 text-white/50 transition-all peer-focus:text-[#3b82f6] peer-focus:text-xs peer-focus:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-top-4"
+                                        className="absolute left-0 top-4 text-black/50 dark:text-white/50 transition-all peer-focus:text-brand-blue peer-focus:text-xs peer-focus:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-top-4"
                                     >
                                         Email Address
                                     </label>
@@ -735,11 +737,11 @@ export default function HomePage() {
                                         placeholder=" "
                                         id="message"
                                         rows={4}
-                                        className="peer w-full bg-transparent border-b border-white/10 py-4 text-white outline-none focus:border-[#3b82f6] transition-colors resize-none"
+                                        className="peer w-full bg-transparent border-b border-black/10 dark:border-white/10 py-4 text-black dark:text-white outline-none focus:border-brand-blue transition-colors resize-none"
                                     />
                                     <label
                                         htmlFor="message"
-                                        className="absolute left-0 top-4 text-white/50 transition-all peer-focus:text-[#3b82f6] peer-focus:text-xs peer-focus:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-top-4"
+                                        className="absolute left-0 top-4 text-black/50 dark:text-white/50 transition-all peer-focus:text-brand-blue peer-focus:text-xs peer-focus:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-top-4"
                                     >
                                         Tell us about your project
                                     </label>
@@ -747,10 +749,10 @@ export default function HomePage() {
 
                                 <button
                                     type="submit"
-                                    className="magnetic w-full py-5 border border-white/10 text-sm uppercase tracking-widest relative overflow-hidden group hover:border-[#3b82f6] transition-all duration-400"
+                                    className="magnetic w-full py-5 border border-black/10 dark:border-white/10 text-sm uppercase tracking-widest relative overflow-hidden group hover:border-brand-blue transition-all duration-400"
                                 >
                                     <span className="relative z-10">Send Message</span>
-                                    <div className="absolute inset-0 bg-[#3b82f6] scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-400" />
+                                    <div className="absolute inset-0 bg-brand-blue scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-400" />
                                 </button>
                             </motion.form>
                         </div>

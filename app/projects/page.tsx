@@ -14,7 +14,7 @@ export default function ProjectsPage() {
   useMagneticEffect()
 
   return (
-    <div className="min-h-screen bg-[#030303] text-white overflow-hidden">
+    <div className="min-h-screen bg-white dark:bg-[#030303] text-black dark:text-white overflow-hidden">
       {/* Custom Cursor */}
       <CustomCursor />
 
@@ -75,7 +75,7 @@ export default function ProjectsPage() {
         className="fixed inset-0 pointer-events-none z-0"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px)",
+            "linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px)",
           backgroundSize: "100px 100px",
         }}
       />
@@ -91,7 +91,7 @@ export default function ProjectsPage() {
           >
             <Link
               href="/"
-              className="magnetic inline-flex items-center text-white/50 hover:text-white transition-colors duration-300 font-medium group"
+              className="magnetic inline-flex items-center text-black/50 dark:text-white/50 hover:text-black dark:hover:text-white transition-colors duration-300 font-medium group"
             >
               <ArrowLeft className="mr-2 h-5 w-5 group-hover:-translate-x-1 transition-transform" />
               Back to Home
@@ -100,14 +100,14 @@ export default function ProjectsPage() {
 
           {/* Page Title */}
           <motion.h1
-            className="text-5xl md:text-7xl lg:text-8xl font-light mb-12 text-white font-['Space_Grotesk',sans-serif] leading-[0.9]"
+            className="text-5xl md:text-7xl lg:text-8xl font-light mb-12 text-black dark:text-white font-grotesk leading-[0.9]"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             Projects &
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50">Services</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-black dark:from-white to-black/50 dark:to-white/50">Services</span>
           </motion.h1>
 
           {/* Tab Navigation */}
@@ -121,8 +121,8 @@ export default function ProjectsPage() {
               <button
                 onClick={() => setActiveTab("current")}
                 className={`magnetic px-8 py-4 rounded-full font-medium text-lg transition-all duration-300 border ${activeTab === "current"
-                  ? "bg-white text-black border-white"
-                  : "glass text-white/70 border-white/10 hover:text-white hover:border-white/30"
+                  ? "bg-black dark:bg-white text-white dark:text-black border-black dark:border-white"
+                  : "glass text-black/70 dark:text-white/70 border-black/10 dark:border-white/10 hover:text-black dark:hover:text-white hover:border-black/30 dark:hover:border-white/30"
                   }`}
               >
                 Current Projects
@@ -130,8 +130,8 @@ export default function ProjectsPage() {
               <button
                 onClick={() => setActiveTab("consulting")}
                 className={`magnetic px-8 py-4 rounded-full font-medium text-lg transition-all duration-300 border ${activeTab === "consulting"
-                  ? "bg-white text-black border-white"
-                  : "glass text-white/70 border-white/10 hover:text-white hover:border-white/30"
+                  ? "bg-black dark:bg-white text-white dark:text-black border-black dark:border-white"
+                  : "glass text-black/70 dark:text-white/70 border-black/10 dark:border-white/10 hover:text-black dark:hover:text-white hover:border-black/30 dark:hover:border-white/30"
                   }`}
               >
                 AI Consulting
@@ -150,7 +150,7 @@ export default function ProjectsPage() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {/* Morphika Project */}
                 <motion.div
-                  className="group glass rounded-3xl overflow-hidden hover:bg-white/[0.06] transition-all duration-500 border border-white/5 hover:border-white/10"
+                  className="group glass rounded-3xl overflow-hidden hover:bg-black/[0.06] dark:hover:bg-white/[0.06] transition-all duration-500 border border-black/5 dark:border-white/5 hover:border-black/10 dark:hover:border-white/10"
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
@@ -162,9 +162,9 @@ export default function ProjectsPage() {
                     <div className="relative z-10 h-full flex items-center justify-center">
                       <div className="text-center">
                         <div className="w-20 h-20 glass rounded-2xl flex items-center justify-center mx-auto mb-4">
-                          <Sparkles className="h-10 w-10 text-[#3b82f6]" />
+                          <Sparkles className="h-10 w-10 text-brand-blue" />
                         </div>
-                        <h3 className="text-2xl font-light text-white font-['Space_Grotesk',sans-serif]">MORPHIKA</h3>
+                        <h3 className="text-2xl font-light text-black dark:text-white font-grotesk">MORPHIKA</h3>
                       </div>
                     </div>
                   </div>
@@ -172,21 +172,21 @@ export default function ProjectsPage() {
                   {/* Project Content */}
                   <div className="p-8">
                     <div className="flex items-center justify-between mb-6">
-                      <h2 className="text-2xl font-medium text-white font-['Space_Grotesk',sans-serif]">MORPHIKA</h2>
-                      <span className="bg-[#3b82f6]/10 text-[#3b82f6] border border-[#3b82f6]/20 px-4 py-1 text-xs font-medium uppercase tracking-widest rounded-full">
+                      <h2 className="text-2xl font-medium text-black dark:text-white font-grotesk">MORPHIKA</h2>
+                      <span className="bg-brand-blue/10 text-brand-blue border border-brand-blue/20 px-4 py-1 text-xs font-medium uppercase tracking-widest rounded-full">
                         AI TOOL
                       </span>
                     </div>
 
-                    <p className="text-lg text-white/60 mb-8 leading-relaxed font-light">
+                    <p className="text-lg text-black/60 dark:text-white/60 mb-8 leading-relaxed font-light">
                       AI-powered image generator for eCommerce. Create hyper-realistic product visuals that elevate your
                       brand instantly with cutting-edge machine learning technology.
                     </p>
 
                     {/* Features */}
                     <div className="mb-8">
-                      <h4 className="text-sm font-medium mb-4 text-white uppercase tracking-widest">Key Features</h4>
-                      <ul className="space-y-3 text-white/50">
+                      <h4 className="text-sm font-medium mb-4 text-black dark:text-white uppercase tracking-widest">Key Features</h4>
+                      <ul className="space-y-3 text-black/50 dark:text-white/50">
                         {[
                           "Hyper-realistic product visualization",
                           "Brand-consistent styling",
@@ -200,7 +200,7 @@ export default function ProjectsPage() {
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.6 + index * 0.1 }}
                           >
-                            <div className="w-1.5 h-1.5 bg-[#3b82f6] rounded-full mr-3" />
+                            <div className="w-1.5 h-1.5 bg-brand-blue rounded-full mr-3" />
                             {feature}
                           </motion.li>
                         ))}
@@ -209,12 +209,12 @@ export default function ProjectsPage() {
 
                     {/* Tech Stack */}
                     <div className="mb-8">
-                      <h4 className="text-sm font-medium mb-4 text-white uppercase tracking-widest">Tech Stack</h4>
+                      <h4 className="text-sm font-medium mb-4 text-black dark:text-white uppercase tracking-widest">Tech Stack</h4>
                       <div className="flex flex-wrap gap-2">
                         {["AI/ML", "Python", "React", "API"].map((tech) => (
                           <span
                             key={tech}
-                            className="bg-white/5 text-white/70 px-3 py-1 text-xs font-medium rounded border border-white/10"
+                            className="bg-black/5 dark:bg-white/5 text-black/70 dark:text-white/70 px-3 py-1 text-xs font-medium rounded border border-black/10 dark:border-white/10"
                           >
                             {tech}
                           </span>
@@ -224,11 +224,11 @@ export default function ProjectsPage() {
 
                     {/* CTA Button */}
                     <Link href="https://morphika.ai" target="_blank" rel="noopener noreferrer">
-                      <button className="magnetic w-full py-4 border border-white/10 text-sm uppercase tracking-widest relative overflow-hidden group hover:border-[#3b82f6] transition-all duration-400 bg-white/[0.02]">
+                      <button className="magnetic w-full py-4 border border-black/10 dark:border-white/10 text-sm uppercase tracking-widest relative overflow-hidden group hover:border-brand-blue transition-all duration-400 bg-black/[0.02] dark:bg-white/[0.02]">
                         <span className="relative z-10 flex items-center justify-center gap-2">
                           View Live Demo <ExternalLink className="h-4 w-4" />
                         </span>
-                        <div className="absolute inset-0 bg-[#3b82f6] scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-400 opacity-20" />
+                        <div className="absolute inset-0 bg-brand-blue scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-400 opacity-20" />
                       </button>
                     </Link>
                   </div>
@@ -236,7 +236,7 @@ export default function ProjectsPage() {
 
                 {/* Researcher AI Project */}
                 <motion.div
-                  className="group glass rounded-3xl overflow-hidden hover:bg-white/[0.06] transition-all duration-500 border border-white/5 hover:border-white/10"
+                  className="group glass rounded-3xl overflow-hidden hover:bg-black/[0.06] dark:hover:bg-white/[0.06] transition-all duration-500 border border-black/5 dark:border-white/5 hover:border-black/10 dark:hover:border-white/10"
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.6 }}
@@ -248,11 +248,11 @@ export default function ProjectsPage() {
                     <div className="relative z-10 h-full flex items-center justify-center">
                       <div className="text-center">
                         <div className="w-20 h-20 glass rounded-2xl flex items-center justify-center mx-auto mb-4">
-                          <Brain className="h-10 w-10 text-[#8b5cf6]" />
+                          <Brain className="h-10 w-10 text-brand-purple" />
                         </div>
-                        <h3 className="text-2xl font-light text-white font-['Space_Grotesk',sans-serif]">RESEARCHER AI</h3>
+                        <h3 className="text-2xl font-light text-black dark:text-white font-grotesk">RESEARCHER AI</h3>
                         <div className="mt-2 flex items-center justify-center">
-                          <span className="bg-white/10 text-white/80 px-3 py-1 text-[10px] font-medium tracking-widest uppercase rounded-full border border-white/10">
+                          <span className="bg-black/10 dark:bg-white/10 text-black/80 dark:text-white/80 px-3 py-1 text-[10px] font-medium tracking-widest uppercase rounded-full border border-black/10 dark:border-white/10">
                             Coming Soon
                           </span>
                         </div>
@@ -263,20 +263,20 @@ export default function ProjectsPage() {
                   {/* Project Content */}
                   <div className="p-8">
                     <div className="flex items-center justify-between mb-6">
-                      <h2 className="text-2xl font-medium text-white font-['Space_Grotesk',sans-serif]">RESEARCHER AI</h2>
-                      <span className="bg-[#8b5cf6]/10 text-[#8b5cf6] border border-[#8b5cf6]/20 px-4 py-1 text-xs font-medium uppercase tracking-widest rounded-full">
+                      <h2 className="text-2xl font-medium text-black dark:text-white font-grotesk">RESEARCHER AI</h2>
+                      <span className="bg-brand-purple/10 text-brand-purple border border-brand-purple/20 px-4 py-1 text-xs font-medium uppercase tracking-widest rounded-full">
                         AI Agent
                       </span>
                     </div>
 
-                    <p className="text-lg text-white/60 mb-8 leading-relaxed font-light">
+                    <p className="text-lg text-black/60 dark:text-white/60 mb-8 leading-relaxed font-light">
                       Your intelligent research companion that understands scientific literature, generates hypotheses, designs experiments, and accelerates discovery across all research domains.
                     </p>
 
                     {/* Features */}
                     <div className="mb-8">
-                      <h4 className="text-sm font-medium mb-4 text-white uppercase tracking-widest">Planned Features</h4>
-                      <ul className="space-y-3 text-white/50">
+                      <h4 className="text-sm font-medium mb-4 text-black dark:text-white uppercase tracking-widest">Planned Features</h4>
+                      <ul className="space-y-3 text-black/50 dark:text-white/50">
                         {[
                           "Intelligent literature review & synthesis",
                           "Automated hypothesis generation",
@@ -290,7 +290,7 @@ export default function ProjectsPage() {
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.8 + index * 0.1 }}
                           >
-                            <div className="w-1.5 h-1.5 bg-[#8b5cf6] rounded-full mr-3" />
+                            <div className="w-1.5 h-1.5 bg-brand-purple rounded-full mr-3" />
                             {feature}
                           </motion.li>
                         ))}
@@ -299,12 +299,12 @@ export default function ProjectsPage() {
 
                     {/* Tech Stack */}
                     <div className="mb-8">
-                      <h4 className="text-sm font-medium mb-4 text-white uppercase tracking-widest">Tech Stack</h4>
+                      <h4 className="text-sm font-medium mb-4 text-black dark:text-white uppercase tracking-widest">Tech Stack</h4>
                       <div className="flex flex-wrap gap-2">
                         {["LLM", "RAG", "Vector DB", "NLP"].map((tech) => (
                           <span
                             key={tech}
-                            className="bg-white/5 text-white/70 px-3 py-1 text-xs font-medium rounded border border-white/10"
+                            className="bg-black/5 dark:bg-white/5 text-black/70 dark:text-white/70 px-3 py-1 text-xs font-medium rounded border border-black/10 dark:border-white/10"
                           >
                             {tech}
                           </span>
@@ -315,20 +315,20 @@ export default function ProjectsPage() {
                     {/* Progress Indicator */}
                     <div className="mb-8">
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-xs uppercase tracking-widest text-white/40">Development Progress</span>
-                        <span className="text-xs font-medium text-[#8b5cf6]">35%</span>
+                        <span className="text-xs uppercase tracking-widest text-black/40 dark:text-white/40">Development Progress</span>
+                        <span className="text-xs font-medium text-brand-purple">35%</span>
                       </div>
-                      <div className="w-full bg-white/5 rounded-full h-1">
-                        <div className="bg-gradient-to-r from-[#8b5cf6] to-pink-500 h-1 rounded-full" style={{ width: '35%' }}></div>
+                      <div className="w-full bg-black/5 dark:bg-white/5 rounded-full h-1">
+                        <div className="bg-gradient-to-r from-brand-purple to-pink-500 h-1 rounded-full" style={{ width: '35%' }}></div>
                       </div>
                     </div>
 
                     {/* CTA Button */}
-                    <button className="magnetic w-full py-4 border border-white/10 text-sm uppercase tracking-widest relative overflow-hidden group hover:border-[#8b5cf6] transition-all duration-400 bg-white/[0.02]">
+                    <button className="magnetic w-full py-4 border border-black/10 dark:border-white/10 text-sm uppercase tracking-widest relative overflow-hidden group hover:border-brand-purple transition-all duration-400 bg-black/[0.02] dark:bg-white/[0.02]">
                       <span className="relative z-10 flex items-center justify-center gap-2">
                         Notify Me <Zap className="h-4 w-4" />
                       </span>
-                      <div className="absolute inset-0 bg-[#8b5cf6] scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-400 opacity-20" />
+                      <div className="absolute inset-0 bg-brand-purple scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-400 opacity-20" />
                     </button>
                   </div>
                 </motion.div>
@@ -341,10 +341,10 @@ export default function ProjectsPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
               >
-                <div className="glass p-16 rounded-3xl border border-white/5 relative overflow-hidden group">
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#3b82f6]/5 to-[#8b5cf6]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                  <h2 className="text-4xl md:text-5xl font-light mb-6 text-white font-['Space_Grotesk',sans-serif]">Have a Project in Mind?</h2>
-                  <p className="text-xl text-white/60 mb-10 max-w-2xl mx-auto leading-relaxed font-light">
+                <div className="glass p-16 rounded-3xl border border-black/5 dark:border-white/5 relative overflow-hidden group">
+                  <div className="absolute inset-0 bg-gradient-to-r from-brand-blue/5 to-brand-purple/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  <h2 className="text-4xl md:text-5xl font-light mb-6 text-black dark:text-white font-grotesk">Have a Project in Mind?</h2>
+                  <p className="text-xl text-black/60 dark:text-white/60 mb-10 max-w-2xl mx-auto leading-relaxed font-light">
                     Let's collaborate to build something extraordinary that pushes the boundaries of what's possible in
                     research and innovation.
                   </p>
@@ -378,7 +378,7 @@ export default function ProjectsPage() {
                 </motion.div>
 
                 <motion.h2
-                  className="text-4xl md:text-6xl font-light mb-8 text-white font-['Space_Grotesk',sans-serif] leading-tight"
+                  className="text-4xl md:text-6xl font-light mb-8 text-black dark:text-white font-grotesk leading-tight"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.3 }}
@@ -389,7 +389,7 @@ export default function ProjectsPage() {
                 </motion.h2>
 
                 <motion.p
-                  className="text-xl text-white/60 max-w-3xl mx-auto leading-relaxed font-light"
+                  className="text-xl text-black/60 dark:text-white/60 max-w-3xl mx-auto leading-relaxed font-light"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
@@ -402,7 +402,7 @@ export default function ProjectsPage() {
               {/* Our Approach */}
               <div className="mb-24">
                 <motion.h3
-                  className="text-2xl font-light mb-12 text-center text-white font-['Space_Grotesk',sans-serif]"
+                  className="text-2xl font-light mb-12 text-center text-black dark:text-white font-grotesk"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.5 }}
@@ -439,17 +439,17 @@ export default function ProjectsPage() {
                   ].map((step, index) => (
                     <motion.div
                       key={step.title}
-                      className="glass p-8 rounded-2xl hover:bg-white/[0.08] transition-all duration-300 group"
+                      className="glass p-8 rounded-2xl hover:bg-black/[0.08] dark:hover:bg-white/[0.08] transition-all duration-300 group"
                       initial={{ opacity: 0, y: 50 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
                       whileHover={{ y: -5 }}
                     >
-                      <div className={`w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center mb-6 mx-auto group-hover:bg-white/10 transition-colors`}>
+                      <div className={`w-12 h-12 bg-black/5 dark:bg-white/5 rounded-xl flex items-center justify-center mb-6 mx-auto group-hover:bg-black/10 dark:group-hover:bg-white/10 transition-colors`}>
                         <step.icon className={`h-6 w-6 ${step.color}`} />
                       </div>
-                      <h4 className="text-lg font-medium text-white mb-3 text-center">{step.title}</h4>
-                      <p className="text-white/50 text-center text-sm leading-relaxed font-light">{step.description}</p>
+                      <h4 className="text-lg font-medium text-black dark:text-white mb-3 text-center">{step.title}</h4>
+                      <p className="text-black/50 dark:text-white/50 text-center text-sm leading-relaxed font-light">{step.description}</p>
                     </motion.div>
                   ))}
                 </div>
@@ -458,7 +458,7 @@ export default function ProjectsPage() {
               {/* Services */}
               <div className="mb-24">
                 <motion.h3
-                  className="text-2xl font-light mb-12 text-center text-white font-['Space_Grotesk',sans-serif]"
+                  className="text-2xl font-light mb-12 text-center text-black dark:text-white font-grotesk"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.8 }}
@@ -491,17 +491,17 @@ export default function ProjectsPage() {
                   ].map((service, index) => (
                     <motion.div
                       key={service.title}
-                      className="glass p-10 rounded-3xl hover:bg-white/[0.06] transition-all duration-500 border border-white/5"
+                      className="glass p-10 rounded-3xl hover:bg-black/[0.06] dark:hover:bg-white/[0.06] transition-all duration-500 border border-black/5 dark:border-white/5"
                       initial={{ opacity: 0, y: 50 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.9 + index * 0.1 }}
                       whileHover={{ y: -5 }}
                     >
-                      <h4 className="text-xl font-medium text-white mb-4 font-['Space_Grotesk',sans-serif]">{service.title}</h4>
-                      <p className="text-white/60 mb-8 font-light leading-relaxed">{service.description}</p>
+                      <h4 className="text-xl font-medium text-black dark:text-white mb-4 font-grotesk">{service.title}</h4>
+                      <p className="text-black/60 dark:text-white/60 mb-8 font-light leading-relaxed">{service.description}</p>
                       <ul className="space-y-3">
                         {service.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-center text-white/50 text-sm font-light">
+                          <li key={idx} className="flex items-center text-black/50 dark:text-white/50 text-sm font-light">
                             <CheckCircle className="h-4 w-4 text-[#10b981] mr-3 flex-shrink-0" />
                             {feature}
                           </li>
@@ -519,13 +519,13 @@ export default function ProjectsPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 1.2 }}
               >
-                <div className="glass p-16 rounded-3xl border border-white/5 relative overflow-hidden">
+                <div className="glass p-16 rounded-3xl border border-black/5 dark:border-white/5 relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-r from-[#10b981]/5 to-[#059669]/5 opacity-30" />
                   <div className="flex items-center justify-center mb-6">
                     <Users className="h-10 w-10 text-[#10b981] mr-4" />
-                    <h2 className="text-4xl md:text-5xl font-light text-white font-['Space_Grotesk',sans-serif]">Ready to Transform?</h2>
+                    <h2 className="text-4xl md:text-5xl font-light text-black dark:text-white font-grotesk">Ready to Transform?</h2>
                   </div>
-                  <p className="text-xl text-white/60 mb-10 max-w-2xl mx-auto leading-relaxed font-light">
+                  <p className="text-xl text-black/60 dark:text-white/60 mb-10 max-w-2xl mx-auto leading-relaxed font-light">
                     Let's discuss how AI can solve your business challenges and unlock new opportunities for growth.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">

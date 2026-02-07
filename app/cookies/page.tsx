@@ -12,7 +12,7 @@ export default function CookiesPage() {
   useMagneticEffect()
 
   return (
-    <div className="min-h-screen bg-[#030303] text-white overflow-hidden">
+    <div className="min-h-screen bg-white dark:bg-[#030303] text-black dark:text-white overflow-hidden">
       {/* Custom Cursor */}
       <CustomCursor />
 
@@ -73,7 +73,7 @@ export default function CookiesPage() {
         className="fixed inset-0 pointer-events-none z-0"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px)",
+            "linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px)",
           backgroundSize: "100px 100px",
         }}
       />
@@ -89,7 +89,7 @@ export default function CookiesPage() {
           >
             <Link
               href="/"
-              className="magnetic inline-flex items-center text-white/50 hover:text-white transition-colors duration-300 font-medium group"
+              className="magnetic inline-flex items-center text-black/50 dark:text-white/50 hover:text-black dark:hover:text-white transition-colors duration-300 font-medium group"
             >
               <ArrowLeft className="mr-2 h-5 w-5" />
               Back to Home
@@ -98,7 +98,7 @@ export default function CookiesPage() {
 
           {/* Page Title */}
           <motion.h1
-            className="text-5xl md:text-7xl lg:text-8xl font-light mb-8 text-white font-['Space_Grotesk',sans-serif]"
+            className="text-5xl md:text-7xl lg:text-8xl font-light mb-8 text-black dark:text-white font-grotesk"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -107,7 +107,7 @@ export default function CookiesPage() {
           </motion.h1>
 
           <motion.div
-            className="text-white/40 mb-12"
+            className="text-black/40 dark:text-white/40 mb-12"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -122,9 +122,9 @@ export default function CookiesPage() {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <div className="space-y-8">
-              <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-['Space_Grotesk',sans-serif]">WHAT ARE COOKIES</h2>
-                <p className="text-white/60 leading-relaxed font-light">
+              <section className="glass rounded-3xl p-10 border border-black/5 dark:border-white/5">
+                <h2 className="text-2xl md:text-3xl font-light text-black dark:text-white mb-4 font-grotesk">WHAT ARE COOKIES</h2>
+                <p className="text-black/60 dark:text-white/60 leading-relaxed font-light">
                   Cookies are small text files that are placed on your computer or mobile device when you visit a
                   website. They are widely used to make websites work more efficiently and to provide information to
                   website owners.
@@ -132,12 +132,12 @@ export default function CookiesPage() {
               </section>
 
               <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-['Space_Grotesk',sans-serif]">HOW WE USE COOKIES</h2>
+                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">HOW WE USE COOKIES</h2>
                 <p className="text-white/60 leading-relaxed font-light mb-4">
                   Trixode Studios uses cookies to enhance your browsing experience and improve our services. We use
                   cookies for:
                 </p>
-                <ul className="list-disc list-inside space-y-1 text-white/60 font-light">
+                <ul className="list-disc list-inside space-y-1 text-black/60 dark:text-white/60 font-light">
                   <li>Essential website functionality</li>
                   <li>Remembering your preferences</li>
                   <li>Analytics and performance monitoring</li>
@@ -147,24 +147,24 @@ export default function CookiesPage() {
               </section>
 
               <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-['Space_Grotesk',sans-serif]">TYPES OF COOKIES WE USE</h2>
-                <div className="space-y-6 text-white/60 font-light">
+                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">TYPES OF COOKIES WE USE</h2>
+                <div className="space-y-6 text-black/60 dark:text-white/60 font-light">
                   <div>
-                    <h3 className="text-lg font-medium text-white mb-2 font-['Space_Grotesk',sans-serif]">Essential Cookies</h3>
+                    <h3 className="text-lg font-medium text-black dark:text-white mb-2 font-grotesk">Essential Cookies</h3>
                     <p className="leading-relaxed">
                       These cookies are necessary for the website to function properly. They enable basic functions like
                       page navigation and access to secure areas of the website.
                     </p>
                   </div>
                   <div>
-                    <h3 className="text-lg font-medium text-white mb-2 font-['Space_Grotesk',sans-serif]">Analytics Cookies</h3>
+                    <h3 className="text-lg font-medium text-white mb-2 font-grotesk">Analytics Cookies</h3>
                     <p className="leading-relaxed">
                       These cookies help us understand how visitors interact with our website by collecting and
                       reporting information anonymously.
                     </p>
                   </div>
                   <div>
-                    <h3 className="text-lg font-medium text-white mb-2 font-['Space_Grotesk',sans-serif]">Functional Cookies</h3>
+                    <h3 className="text-lg font-medium text-white mb-2 font-grotesk">Functional Cookies</h3>
                     <p className="leading-relaxed">
                       These cookies enable the website to provide enhanced functionality and personalization, such as
                       remembering your preferences.
@@ -174,11 +174,11 @@ export default function CookiesPage() {
               </section>
 
               <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-['Space_Grotesk',sans-serif]">THIRD-PARTY COOKIES</h2>
+                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">THIRD-PARTY COOKIES</h2>
                 <p className="text-white/60 leading-relaxed font-light">
                   We may use third-party services that place cookies on your device. These include:
                 </p>
-                <ul className="list-disc list-inside mt-4 space-y-1 text-white/60 font-light">
+                <ul className="list-disc list-inside mt-4 space-y-1 text-black/60 dark:text-white/60 font-light">
                   <li>Google Analytics for website analytics</li>
                   <li>Social media platforms for content sharing</li>
                   <li>Content delivery networks for performance</li>
@@ -186,8 +186,8 @@ export default function CookiesPage() {
               </section>
 
               <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-['Space_Grotesk',sans-serif]">MANAGING COOKIES</h2>
-                <div className="text-white/60 font-light space-y-4">
+                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">MANAGING COOKIES</h2>
+                <div className="text-black/60 dark:text-white/60 font-light space-y-4">
                   <p className="leading-relaxed">You can control and manage cookies in various ways:</p>
                   <ul className="list-disc list-inside space-y-1">
                     <li>Browser settings: Most browsers allow you to refuse or accept cookies</li>
@@ -202,8 +202,8 @@ export default function CookiesPage() {
               </section>
 
               <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-['Space_Grotesk',sans-serif]">COOKIE RETENTION</h2>
-                <div className="text-white/60 font-light space-y-4">
+                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">COOKIE RETENTION</h2>
+                <div className="text-black/60 dark:text-white/60 font-light space-y-4">
                   <p className="leading-relaxed">
                     Cookies are retained for different periods depending on their purpose:
                   </p>
@@ -217,7 +217,7 @@ export default function CookiesPage() {
               </section>
 
               <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-['Space_Grotesk',sans-serif]">UPDATES TO THIS POLICY</h2>
+                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">UPDATES TO THIS POLICY</h2>
                 <p className="text-white/60 leading-relaxed font-light">
                   We may update this Cookie Policy from time to time to reflect changes in our practices or for other
                   operational, legal, or regulatory reasons. We will notify you of any changes by posting the new Cookie
@@ -226,11 +226,11 @@ export default function CookiesPage() {
               </section>
 
               <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-['Space_Grotesk',sans-serif]">CONTACT US</h2>
+                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">CONTACT US</h2>
                 <p className="text-white/60 leading-relaxed font-light">
                   If you have any questions about our use of cookies or this Cookie Policy, please contact us at:
                 </p>
-                <div className="mt-4 text-white/70 font-light">
+                <div className="mt-4 text-black/70 dark:text-white/70 font-light">
                   <p>Email: privacy@trixodestudios.com</p>
                   <p>Address: Victoria, BC, Canada</p>
                 </div>

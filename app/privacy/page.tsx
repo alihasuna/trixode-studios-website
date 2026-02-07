@@ -12,7 +12,7 @@ export default function PrivacyPage() {
   useMagneticEffect()
 
   return (
-    <div className="min-h-screen bg-[#030303] text-white overflow-hidden">
+    <div className="min-h-screen bg-white dark:bg-[#030303] text-black dark:text-white overflow-hidden">
       {/* Custom Cursor */}
       <CustomCursor />
 
@@ -73,7 +73,7 @@ export default function PrivacyPage() {
         className="fixed inset-0 pointer-events-none z-0"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px)",
+            "linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px)",
           backgroundSize: "100px 100px",
         }}
       />
@@ -89,7 +89,7 @@ export default function PrivacyPage() {
           >
             <Link
               href="/"
-              className="magnetic inline-flex items-center text-white/50 hover:text-white transition-colors duration-300 font-medium group"
+              className="magnetic inline-flex items-center text-black/50 dark:text-white/50 hover:text-black dark:hover:text-white transition-colors duration-300 font-medium group"
             >
               <ArrowLeft className="mr-2 h-5 w-5" />
               Back to Home
@@ -98,7 +98,7 @@ export default function PrivacyPage() {
 
           {/* Page Title */}
           <motion.h1
-            className="text-5xl md:text-7xl lg:text-8xl font-light mb-8 text-white font-['Space_Grotesk',sans-serif]"
+            className="text-5xl md:text-7xl lg:text-8xl font-light mb-8 text-black dark:text-white font-grotesk"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -107,7 +107,7 @@ export default function PrivacyPage() {
           </motion.h1>
 
           <motion.div
-            className="text-white/40 mb-12"
+            className="text-black/40 dark:text-white/40 mb-12"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -122,9 +122,9 @@ export default function PrivacyPage() {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <div className="space-y-8">
-              <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-['Space_Grotesk',sans-serif]">INTRODUCTION</h2>
-                <p className="text-white/60 leading-relaxed font-light">
+              <section className="glass rounded-3xl p-10 border border-black/5 dark:border-white/5">
+                <h2 className="text-2xl md:text-3xl font-light text-black dark:text-white mb-4 font-grotesk">INTRODUCTION</h2>
+                <p className="text-black/60 dark:text-white/60 leading-relaxed font-light">
                   At Trixode Studios, we are committed to protecting your privacy and ensuring the security of your
                   personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your
                   information when you visit our website or use our services.
@@ -132,10 +132,10 @@ export default function PrivacyPage() {
               </section>
 
               <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-['Space_Grotesk',sans-serif]">INFORMATION WE COLLECT</h2>
-                <div className="space-y-4 text-white/60 font-light">
+                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">INFORMATION WE COLLECT</h2>
+                <div className="space-y-4 text-black/60 dark:text-white/60 font-light">
                   <div>
-                    <h3 className="text-lg font-medium text-white mb-2 font-['Space_Grotesk',sans-serif]">Personal Information</h3>
+                    <h3 className="text-lg font-medium text-black dark:text-white mb-2 font-grotesk">Personal Information</h3>
                     <p className="leading-relaxed">
                       We may collect personal information that you voluntarily provide to us, including:
                     </p>
@@ -147,7 +147,7 @@ export default function PrivacyPage() {
                     </ul>
                   </div>
                   <div>
-                    <h3 className="text-lg font-medium text-white mb-2 font-['Space_Grotesk',sans-serif]">Automatically Collected Information</h3>
+                    <h3 className="text-lg font-medium text-white mb-2 font-grotesk">Automatically Collected Information</h3>
                     <p className="leading-relaxed">
                       We may automatically collect certain information about your device and usage patterns:
                     </p>
@@ -162,8 +162,8 @@ export default function PrivacyPage() {
               </section>
 
               <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-['Space_Grotesk',sans-serif]">HOW WE USE YOUR INFORMATION</h2>
-                <div className="text-white/60 font-light space-y-2">
+                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">HOW WE USE YOUR INFORMATION</h2>
+                <div className="text-black/60 dark:text-white/60 font-light space-y-2">
                   <p className="leading-relaxed">We use the information we collect to:</p>
                   <ul className="list-disc list-inside space-y-1">
                     <li>Provide and maintain our services</li>
@@ -177,12 +177,12 @@ export default function PrivacyPage() {
               </section>
 
               <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-['Space_Grotesk',sans-serif]">INFORMATION SHARING</h2>
+                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">INFORMATION SHARING</h2>
                 <p className="text-white/60 leading-relaxed font-light">
                   We do not sell, trade, or otherwise transfer your personal information to third parties without your
                   consent, except as described in this policy. We may share information with:
                 </p>
-                <ul className="list-disc list-inside mt-4 space-y-1 text-white/60 font-light">
+                <ul className="list-disc list-inside mt-4 space-y-1 text-black/60 dark:text-white/60 font-light">
                   <li>Service providers who assist in our operations</li>
                   <li>Legal authorities when required by law</li>
                   <li>Business partners with your explicit consent</li>
@@ -190,8 +190,8 @@ export default function PrivacyPage() {
               </section>
 
               <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-['Space_Grotesk',sans-serif]">DATA SECURITY</h2>
-                <p className="text-white/60 leading-relaxed font-light">
+                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">DATA SECURITY</h2>
+                <p className="text-black/60 dark:text-white/60 leading-relaxed font-light">
                   We implement appropriate technical and organizational security measures to protect your personal
                   information against unauthorized access, alteration, disclosure, or destruction. However, no method of
                   transmission over the internet is 100% secure.
@@ -199,8 +199,8 @@ export default function PrivacyPage() {
               </section>
 
               <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-['Space_Grotesk',sans-serif]">YOUR RIGHTS</h2>
-                <div className="text-white/60 font-light space-y-2">
+                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">YOUR RIGHTS</h2>
+                <div className="text-black/60 dark:text-white/60 font-light space-y-2">
                   <p className="leading-relaxed">You have the right to:</p>
                   <ul className="list-disc list-inside space-y-1">
                     <li>Access your personal information</li>
@@ -214,11 +214,11 @@ export default function PrivacyPage() {
               </section>
 
               <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-['Space_Grotesk',sans-serif]">CONTACT US</h2>
+                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">CONTACT US</h2>
                 <p className="text-white/60 leading-relaxed font-light">
                   If you have any questions about this Privacy Policy or our data practices, please contact us at:
                 </p>
-                <div className="mt-4 text-white/70 font-light">
+                <div className="mt-4 text-black/70 dark:text-white/70 font-light">
                   <p>Email: privacy@trixodestudios.com</p>
                   <p>Address: Victoria, BC, Canada</p>
                 </div>

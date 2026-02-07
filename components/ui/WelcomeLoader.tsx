@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react"
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
+import { useTheme } from "next-themes"
 
 interface WelcomeLoaderProps {
     onLoadingComplete?: () => void
@@ -10,10 +11,13 @@ interface WelcomeLoaderProps {
 
 export default function WelcomeLoader({ onLoadingComplete, onAnimationProgress }: WelcomeLoaderProps) {
     const prefersReducedMotion = useReducedMotion()
+    const { resolvedTheme } = useTheme()
     const [isVisible, setIsVisible] = useState(true)
     const [isMounted, setIsMounted] = useState(false)
     const [showCurtainAnimation, setShowCurtainAnimation] = useState(false)
     const [showLogoExit, setShowLogoExit] = useState(false)
+
+    const isDark = resolvedTheme === "dark"
 
     // Use refs to store callbacks to avoid dependency issues
     const onProgressRef = useRef(onAnimationProgress)
@@ -87,18 +91,28 @@ export default function WelcomeLoader({ onLoadingComplete, onAnimationProgress }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isMounted, prefersReducedMotion])
 
-    // Multi-layer curtain configuration
-    const curtainLayers = [
-        { delay: 0, duration: 1.2, color: '#030303', zIndex: 30 },
-        { delay: 0.06, duration: 1.15, color: '#080810', zIndex: 25 },
-        { delay: 0.12, duration: 1.1, color: '#101018', zIndex: 20 },
-    ]
+    // Multi-layer curtain configuration - adapts to current theme
+    const curtainLayers = isDark
+        ? [
+            { delay: 0, duration: 1.2, color: '#030303', zIndex: 30 },
+            { delay: 0.06, duration: 1.15, color: '#080810', zIndex: 25 },
+            { delay: 0.12, duration: 1.1, color: '#101018', zIndex: 20 },
+        ]
+        : [
+            { delay: 0, duration: 1.2, color: '#e8e6e3', zIndex: 30 },
+            { delay: 0.06, duration: 1.15, color: '#dfddd9', zIndex: 25 },
+            { delay: 0.12, duration: 1.1, color: '#d5d3cf', zIndex: 20 },
+        ]
 
-    // Don't render on server or before mount
+    // Don't render on server or before mount - use CSS variable so it
+    // matches whatever theme the user's system selects before hydration
     if (!isMounted) {
         return (
-            <div className="fixed inset-0 z-[9999] bg-[#030303] flex items-center justify-center">
-                <div className="text-white/20 text-sm">Loading...</div>
+            <div
+                className="fixed inset-0 z-[9999] flex items-center justify-center"
+                style={{ backgroundColor: 'var(--bg)' }}
+            >
+                <div className="text-sm" style={{ color: 'var(--text-tertiary)' }}>Loading...</div>
             </div>
         )
     }
@@ -146,8 +160,12 @@ export default function WelcomeLoader({ onLoadingComplete, onAnimationProgress }
                         className="absolute left-0 right-0 h-[3px] origin-top pointer-events-none"
                         style={{
                             top: 0,
-                            background: 'linear-gradient(90deg, transparent 10%, rgba(59, 130, 246, 0.5) 50%, transparent 90%)',
-                            boxShadow: '0 2px 30px rgba(59, 130, 246, 0.6), 0 0 60px rgba(59, 130, 246, 0.3)',
+                            background: isDark
+                                ? 'linear-gradient(90deg, transparent 10%, rgba(59, 130, 246, 0.5) 50%, transparent 90%)'
+                                : 'linear-gradient(90deg, transparent 10%, rgba(59, 130, 246, 0.35) 50%, transparent 90%)',
+                            boxShadow: isDark
+                                ? '0 2px 30px rgba(59, 130, 246, 0.6), 0 0 60px rgba(59, 130, 246, 0.3)'
+                                : '0 2px 20px rgba(59, 130, 246, 0.3), 0 0 40px rgba(59, 130, 246, 0.15)',
                             zIndex: 35,
                             willChange: 'transform',
                         }}
@@ -183,7 +201,7 @@ export default function WelcomeLoader({ onLoadingComplete, onAnimationProgress }
                     >
                         {/* Logo Letters with 3D flip effect */}
                         <div
-                            className="flex text-[1.8rem] sm:text-[2rem] md:text-[2.5rem] font-light tracking-[0.2em] sm:tracking-[0.3em] md:tracking-[0.5em] font-['Space_Grotesk',sans-serif] overflow-hidden text-white"
+                            className="flex text-[1.8rem] sm:text-[2rem] md:text-[2.5rem] font-light tracking-[0.2em] sm:tracking-[0.3em] md:tracking-[0.5em] font-grotesk overflow-hidden text-black dark:text-white"
                             style={{ perspective: '1000px' }}
                         >
                             {"Trixode-Studios".split("").map((letter, index) => (
@@ -211,14 +229,14 @@ export default function WelcomeLoader({ onLoadingComplete, onAnimationProgress }
                                     }}
                                 >
                                     {letter === "-" ? (
-                                        <span className="opacity-40 mx-1">·</span>
+                                        <span className="opacity-40 mx-1">&#xB7;</span>
                                     ) : letter}
                                 </motion.span>
                             ))}
                         </div>
 
                         {/* Animated underline with glow pulse */}
-                        <div className="relative w-[180px] sm:w-[200px] h-[1px] bg-white/10 mt-8 sm:mt-12 overflow-hidden">
+                        <div className="relative w-[180px] sm:w-[200px] h-[1px] bg-black/10 dark:bg-white/10 mt-8 sm:mt-12 overflow-hidden">
                             <motion.div
                                 initial={{ scaleX: 0 }}
                                 animate={{ scaleX: 1 }}
@@ -231,7 +249,7 @@ export default function WelcomeLoader({ onLoadingComplete, onAnimationProgress }
                                 style={{ willChange: 'transform' }}
                             >
                                 <div
-                                    className="w-full h-full bg-gradient-to-r from-transparent via-[#3b82f6] to-transparent"
+                                    className="w-full h-full bg-gradient-to-r from-transparent via-brand-blue to-transparent"
                                     style={{ boxShadow: '0 0 15px rgba(59, 130, 246, 0.5)' }}
                                 />
                             </motion.div>
@@ -242,7 +260,7 @@ export default function WelcomeLoader({ onLoadingComplete, onAnimationProgress }
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 0.4, y: 0 }}
                             transition={{ duration: 0.5, delay: 1.0 }}
-                            className="mt-6 text-[10px] sm:text-xs uppercase tracking-[0.3em] text-white/40 font-['Space_Grotesk',sans-serif]"
+                            className="mt-6 text-[10px] sm:text-xs uppercase tracking-[0.3em] text-black/40 dark:text-white/40 font-grotesk"
                         >
                             Crafting Intelligence
                         </motion.p>

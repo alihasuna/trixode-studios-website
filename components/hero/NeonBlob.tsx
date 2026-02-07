@@ -27,7 +27,8 @@ const NeonBlob = memo(function NeonBlob() {
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    filter: drop-shadow(0 0 40px rgba(59, 130, 246, 0.18));
+                    filter: drop-shadow(0 0 50px rgba(59, 130, 246, 0.22))
+                           drop-shadow(0 0 100px rgba(139, 92, 246, 0.1));
                 }
 
                 .liquid-metal {
@@ -38,112 +39,127 @@ const NeonBlob = memo(function NeonBlob() {
                     backface-visibility: hidden;
                 }
 
-                /* Base metallic chrome blob */
+                /* Base metallic chrome blob — sharper definition */
                 .liquid-metal-base {
                     width: 420px;
                     height: 420px;
-                    background: 
-                        radial-gradient(ellipse at 28% 20%, rgba(255, 255, 255, 0.32) 0%, transparent 42%),
-                        radial-gradient(ellipse at 72% 82%, rgba(120, 135, 160, 0.22) 0%, transparent 55%),
+                    background:
+                        radial-gradient(ellipse at 25% 18%, rgba(255, 255, 255, 0.45) 0%, transparent 38%),
+                        radial-gradient(ellipse at 75% 85%, rgba(100, 120, 160, 0.3) 0%, transparent 50%),
+                        radial-gradient(ellipse at 50% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 60%),
                         linear-gradient(
                             135deg,
-                            #1a1a2e 0%,
-                            #3d4f6f 20%,
-                            #a8b5c9 40%,
-                            #e8eef5 50%,
-                            #a8b5c9 60%,
-                            #3d4f6f 80%,
-                            #1a1a2e 100%
+                            #0d0d1a 0%,
+                            #2a3a5c 18%,
+                            #7b8fad 35%,
+                            #c8d4e5 48%,
+                            #eef2f8 52%,
+                            #c8d4e5 56%,
+                            #7b8fad 70%,
+                            #2a3a5c 85%,
+                            #0d0d1a 100%
                         );
-                    filter: blur(12px) saturate(1.05);
-                    box-shadow: 
-                        0 0 50px rgba(168, 181, 201, 0.28),
-                        0 0 90px rgba(59, 130, 246, 0.18),
-                        inset 0 0 80px rgba(0, 0, 0, 0.3);
-                    animation: morph-metal 8s ease-in-out infinite;
+                    filter: blur(6px) saturate(1.1) contrast(1.05);
+                    box-shadow:
+                        0 0 60px rgba(168, 181, 201, 0.35),
+                        0 0 100px rgba(59, 130, 246, 0.2),
+                        inset 0 -20px 60px rgba(0, 0, 0, 0.4),
+                        inset 0 20px 40px rgba(255, 255, 255, 0.06);
+                    animation: morph-metal 10s ease-in-out infinite;
                 }
 
-                /* Bright highlight reflection */
+                /* Bright highlight reflection — sharper specular */
                 .liquid-metal-highlight {
-                    width: 220px;
-                    height: 140px;
+                    width: 200px;
+                    height: 120px;
                     background: radial-gradient(
-                        ellipse at 50% 30%,
-                        rgba(255, 255, 255, 0.8) 0%,
-                        rgba(255, 255, 255, 0.3) 30%,
+                        ellipse at 50% 35%,
+                        rgba(255, 255, 255, 0.9) 0%,
+                        rgba(255, 255, 255, 0.4) 25%,
+                        rgba(255, 255, 255, 0.1) 50%,
                         transparent 70%
                     );
-                    filter: blur(10px);
-                    animation: morph-highlight 8s ease-in-out infinite;
+                    filter: blur(6px);
+                    animation: morph-highlight 10s ease-in-out infinite;
                     animation-delay: -0.5s;
                     mix-blend-mode: overlay;
                 }
 
-                /* Secondary flowing element */
+                /* Secondary flowing element — tighter blur */
                 .liquid-metal-flow {
-                    width: 300px;
-                    height: 300px;
-                    background: 
-                        radial-gradient(ellipse at 60% 30%, rgba(200, 215, 235, 0.4) 0%, transparent 55%),
+                    width: 320px;
+                    height: 320px;
+                    background:
+                        radial-gradient(ellipse at 65% 25%, rgba(200, 215, 240, 0.45) 0%, transparent 50%),
                         linear-gradient(
                             225deg,
-                            rgba(61, 79, 111, 0.6) 0%,
-                            rgba(168, 181, 201, 0.4) 50%,
-                            rgba(61, 79, 111, 0.6) 100%
+                            rgba(45, 65, 100, 0.7) 0%,
+                            rgba(140, 160, 200, 0.45) 50%,
+                            rgba(45, 65, 100, 0.7) 100%
                         );
-                    filter: blur(16px);
-                    animation: morph-flow 12s ease-in-out infinite;
+                    filter: blur(10px);
+                    animation: morph-flow 14s ease-in-out infinite;
                     animation-delay: -3s;
                 }
 
-                /* Inner glowing core */
+                /* Inner glowing core — more vivid, less blur */
                 .liquid-metal-core {
-                    width: 160px;
-                    height: 160px;
+                    width: 180px;
+                    height: 180px;
                     background: radial-gradient(
                         circle,
-                        rgba(59, 130, 246, 0.5) 0%,
-                        rgba(139, 92, 246, 0.3) 40%,
-                        transparent 70%
+                        rgba(59, 130, 246, 0.55) 0%,
+                        rgba(99, 102, 241, 0.35) 30%,
+                        rgba(139, 92, 246, 0.2) 55%,
+                        transparent 75%
                     );
-                    filter: blur(26px);
-                    animation: pulse-core 4s ease-in-out infinite;
+                    filter: blur(18px);
+                    animation: pulse-core 5s ease-in-out infinite;
                 }
 
                 @keyframes morph-metal {
                     0%, 100% {
-                        border-radius: 55% 45% 42% 58% / 55% 45% 55% 45%;
+                        border-radius: 58% 42% 40% 60% / 55% 45% 55% 45%;
                         transform: translate(0, 0) rotate(0deg) scale(1);
                     }
-                    25% {
-                        border-radius: 48% 52% 58% 42% / 50% 50% 45% 55%;
-                        transform: translate(18px, -10px) rotate(18deg) scale(1.01);
+                    20% {
+                        border-radius: 45% 55% 60% 40% / 48% 52% 42% 58%;
+                        transform: translate(20px, -12px) rotate(12deg) scale(1.02);
                     }
-                    50% {
-                        border-radius: 52% 48% 40% 60% / 45% 55% 50% 50%;
-                        transform: translate(-10px, 14px) rotate(36deg) scale(0.99);
+                    40% {
+                        border-radius: 52% 48% 38% 62% / 58% 42% 55% 45%;
+                        transform: translate(-8px, 18px) rotate(28deg) scale(0.98);
                     }
-                    75% {
-                        border-radius: 46% 54% 55% 45% / 55% 45% 50% 50%;
-                        transform: translate(8px, -8px) rotate(54deg) scale(1);
+                    60% {
+                        border-radius: 42% 58% 55% 45% / 45% 55% 48% 52%;
+                        transform: translate(-15px, -6px) rotate(42deg) scale(1.01);
+                    }
+                    80% {
+                        border-radius: 50% 50% 48% 52% / 52% 48% 50% 50%;
+                        transform: translate(10px, -10px) rotate(56deg) scale(0.99);
                     }
                 }
 
                 @keyframes morph-highlight {
                     0%, 100% {
                         border-radius: 62% 38% 42% 58% / 55% 45% 55% 45%;
-                        transform: translate(-50px, -70px) rotate(0deg) scale(1);
-                        opacity: 0.9;
+                        transform: translate(-55px, -75px) rotate(0deg) scale(1);
+                        opacity: 0.85;
                     }
-                    33% {
-                        border-radius: 50% 50% 60% 40% / 50% 50% 50% 50%;
-                        transform: translate(-35px, -60px) rotate(12deg) scale(1.06);
+                    25% {
+                        border-radius: 50% 50% 58% 42% / 48% 52% 48% 52%;
+                        transform: translate(-38px, -60px) rotate(8deg) scale(1.08);
                         opacity: 1;
                     }
-                    66% {
+                    50% {
                         border-radius: 55% 45% 45% 55% / 45% 55% 45% 55%;
-                        transform: translate(-60px, -80px) rotate(-8deg) scale(0.97);
-                        opacity: 0.8;
+                        transform: translate(-65px, -82px) rotate(-6deg) scale(0.96);
+                        opacity: 0.75;
+                    }
+                    75% {
+                        border-radius: 48% 52% 55% 45% / 52% 48% 52% 48%;
+                        transform: translate(-42px, -68px) rotate(4deg) scale(1.02);
+                        opacity: 0.9;
                     }
                 }
 
@@ -152,24 +168,28 @@ const NeonBlob = memo(function NeonBlob() {
                         border-radius: 48% 52% 52% 48% / 50% 50% 50% 50%;
                         transform: translate(22px, 14px) rotate(0deg) scale(1);
                     }
-                    33% {
+                    25% {
                         border-radius: 56% 44% 40% 60% / 45% 55% 45% 55%;
-                        transform: translate(-14px, -8px) rotate(-18deg) scale(1.04);
+                        transform: translate(-14px, -8px) rotate(-14deg) scale(1.03);
                     }
-                    66% {
+                    50% {
                         border-radius: 44% 56% 50% 50% / 55% 45% 55% 45%;
-                        transform: translate(10px, -16px) rotate(14deg) scale(0.98);
+                        transform: translate(10px, -16px) rotate(10deg) scale(0.97);
+                    }
+                    75% {
+                        border-radius: 52% 48% 46% 54% / 48% 52% 50% 50%;
+                        transform: translate(-6px, 10px) rotate(-6deg) scale(1.01);
                     }
                 }
 
                 @keyframes pulse-core {
                     0%, 100% {
                         transform: scale(1);
-                        opacity: 0.6;
+                        opacity: 0.55;
                     }
                     50% {
-                        transform: scale(1.12);
-                        opacity: 0.9;
+                        transform: scale(1.15);
+                        opacity: 0.85;
                     }
                 }
 

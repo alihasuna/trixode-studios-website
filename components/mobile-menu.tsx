@@ -64,9 +64,9 @@ export default function MobileMenu({ currentPath = "/" }: MobileMenuProps) {
         pointerEvents: isOpen ? 'auto' : 'none',
       }}
     >
-      {/* Dark background overlay */}
+      {/* Background overlay */}
       <div
-        className="absolute top-0 left-0 right-0 bottom-0 bg-[#030303]"
+        className="absolute top-0 left-0 right-0 bottom-0 bg-white dark:bg-[#030303]"
         style={{
           opacity: isOpen ? 1 : 0,
           transition: 'opacity 0.4s ease-out',
@@ -112,7 +112,7 @@ export default function MobileMenu({ currentPath = "/" }: MobileMenuProps) {
           }}
         >
           <HexagonLogo size={32} />
-          <span className="text-2xl font-medium text-white font-['Space_Grotesk',sans-serif] tracking-tight">
+          <span className="text-2xl font-medium text-black dark:text-white font-grotesk tracking-tight">
             Trixode
           </span>
         </div>
@@ -141,7 +141,7 @@ export default function MobileMenu({ currentPath = "/" }: MobileMenuProps) {
                       className={`w-2 h-2 rounded-full transition-all duration-300 flex-shrink-0
                         ${isActive
                           ? "bg-blue-500 shadow-[0_0_12px_rgba(59,130,246,0.8)]"
-                          : "bg-white/20 group-hover:bg-blue-400"
+                          : "bg-black/20 dark:bg-white/20 group-hover:bg-blue-400"
                         }`}
                     />
 
@@ -149,10 +149,10 @@ export default function MobileMenu({ currentPath = "/" }: MobileMenuProps) {
                     <span
                       className={`text-3xl sm:text-4xl font-light tracking-tight transition-all duration-300
                         ${isActive
-                          ? "text-white"
-                          : "text-white/50 group-hover:text-white group-hover:translate-x-2"
+                          ? "text-black dark:text-white"
+                          : "text-black/50 dark:text-white/50 group-hover:text-black dark:group-hover:text-white group-hover:translate-x-2"
                         }`}
-                      style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                      style={{ fontFamily: "var(--font-space-grotesk), sans-serif" }}
                     >
                       {item.name}
                     </span>
@@ -162,7 +162,7 @@ export default function MobileMenu({ currentPath = "/" }: MobileMenuProps) {
                       className={`w-5 h-5 transition-all duration-300 flex-shrink-0
                         ${isActive
                           ? "text-blue-500 opacity-100 translate-x-0"
-                          : "text-white/40 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0"
+                          : "text-black/40 dark:text-white/40 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0"
                         }`}
                       fill="none"
                       viewBox="0 0 24 24"
@@ -192,7 +192,7 @@ export default function MobileMenu({ currentPath = "/" }: MobileMenuProps) {
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white/40 hover:text-white transition-colors duration-300"
+              className="text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white transition-colors duration-300"
               aria-label="Twitter"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -203,7 +203,7 @@ export default function MobileMenu({ currentPath = "/" }: MobileMenuProps) {
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white/40 hover:text-white transition-colors duration-300"
+              className="text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white transition-colors duration-300"
               aria-label="LinkedIn"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -214,7 +214,7 @@ export default function MobileMenu({ currentPath = "/" }: MobileMenuProps) {
               href="https://github.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white/40 hover:text-white transition-colors duration-300"
+              className="text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white transition-colors duration-300"
               aria-label="GitHub"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -224,11 +224,11 @@ export default function MobileMenu({ currentPath = "/" }: MobileMenuProps) {
           </div>
 
           {/* Copyright */}
-          <div className="flex items-center justify-between border-t border-white/10 pt-6">
-            <p className="text-white/30 text-sm font-light">
+          <div className="flex items-center justify-between border-t border-black/10 dark:border-white/10 pt-6">
+            <p className="text-black/30 dark:text-white/30 text-sm font-light">
               © {new Date().getFullYear()} Trixode Studios
             </p>
-            <p className="text-white/20 text-xs">
+            <p className="text-black/20 dark:text-white/20 text-xs">
               Victoria, BC
             </p>
           </div>
@@ -253,15 +253,15 @@ export default function MobileMenu({ currentPath = "/" }: MobileMenuProps) {
         <div className="relative w-6 h-5 flex flex-col justify-between">
           {/* Top line */}
           <span
-            className={`block h-[2px] rounded-full bg-white transition-all duration-500 ease-[cubic-bezier(0.68,-0.6,0.32,1.6)] origin-center
+            className={`block h-[2px] rounded-full bg-black dark:bg-white transition-all duration-500 ease-[cubic-bezier(0.68,-0.6,0.32,1.6)] origin-center
               ${isOpen
-                ? "translate-y-[9px] rotate-45 w-full bg-white"
+                ? "translate-y-[9px] rotate-45 w-full"
                 : "w-full group-hover:w-4 group-hover:translate-x-2"
               }`}
           />
           {/* Middle line */}
           <span
-            className={`block h-[2px] rounded-full bg-white transition-all duration-300 ease-out
+            className={`block h-[2px] rounded-full bg-black dark:bg-white transition-all duration-300 ease-out
               ${isOpen
                 ? "opacity-0 translate-x-4"
                 : "w-full opacity-100 group-hover:w-6"
@@ -269,9 +269,9 @@ export default function MobileMenu({ currentPath = "/" }: MobileMenuProps) {
           />
           {/* Bottom line */}
           <span
-            className={`block h-[2px] rounded-full bg-white transition-all duration-500 ease-[cubic-bezier(0.68,-0.6,0.32,1.6)] origin-center
+            className={`block h-[2px] rounded-full bg-black dark:bg-white transition-all duration-500 ease-[cubic-bezier(0.68,-0.6,0.32,1.6)] origin-center
               ${isOpen
-                ? "-translate-y-[9px] -rotate-45 w-full bg-white"
+                ? "-translate-y-[9px] -rotate-45 w-full"
                 : "w-4 group-hover:w-full group-hover:-translate-x-0"
               }`}
           />

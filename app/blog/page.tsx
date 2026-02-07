@@ -138,7 +138,7 @@ export default function BlogPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#030303] text-white overflow-hidden">
+    <div className="min-h-screen bg-white dark:bg-[#030303] text-black dark:text-white overflow-hidden">
       {/* Custom Cursor */}
       <CustomCursor />
 
@@ -199,7 +199,7 @@ export default function BlogPage() {
         className="fixed inset-0 pointer-events-none z-0"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px)",
+            "linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px)",
           backgroundSize: "100px 100px",
         }}
       />
@@ -215,7 +215,7 @@ export default function BlogPage() {
           >
             <Link
               href="/"
-              className="magnetic inline-flex items-center text-white/50 hover:text-white transition-colors duration-300 font-medium group"
+              className="magnetic inline-flex items-center text-black/50 dark:text-white/50 hover:text-black dark:hover:text-white transition-colors duration-300 font-medium group"
             >
               <ArrowLeft className="mr-2 h-5 w-5 group-hover:-translate-x-1 transition-transform" />
               Back to Home
@@ -224,14 +224,14 @@ export default function BlogPage() {
 
           {/* Page Title */}
           <motion.h1
-            className="text-6xl md:text-8xl font-light mb-16 text-white font-['Space_Grotesk',sans-serif]"
+            className="text-6xl md:text-8xl font-light mb-16 text-black dark:text-white font-grotesk"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             Updates &
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50">Insights</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-black dark:from-white to-black/50 dark:to-white/50">Insights</span>
           </motion.h1>
 
           {/* Category Filter */}
@@ -247,8 +247,8 @@ export default function BlogPage() {
                   key={category}
                   onClick={() => handleCategoryChange(category)}
                   className={`magnetic px-6 py-3 font-medium text-sm rounded-full transition-all duration-300 border ${selectedCategory === category
-                    ? "bg-white text-black border-white"
-                    : "bg-white/[0.03] text-white/70 border-white/10 hover:border-white/30 hover:text-white"
+                    ? "bg-black dark:bg-white text-white dark:text-black border-black dark:border-white"
+                    : "bg-black/[0.03] dark:bg-white/[0.03] text-black/70 dark:text-white/70 border-black/10 dark:border-white/10 hover:border-black/30 dark:hover:border-white/30 hover:text-black dark:hover:text-white"
                     }`}
                 >
                   {category}
@@ -264,7 +264,7 @@ export default function BlogPage() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <p className="text-white/40 font-medium text-sm">
+            <p className="text-black/40 dark:text-white/40 font-medium text-sm">
               Showing {filteredPosts.length} posts
               {selectedCategory !== "All" && ` in "${selectedCategory}"`}
             </p>
@@ -279,7 +279,7 @@ export default function BlogPage() {
                 className="block h-full"
               >
                 <motion.article
-                  className="group glass p-8 rounded-3xl h-full flex flex-col justify-between hover:bg-white/[0.06] transition-all duration-500 border border-white/5 hover:border-white/10"
+                  className="group glass p-8 rounded-3xl h-full flex flex-col justify-between hover:bg-black/[0.06] dark:hover:bg-white/[0.06] transition-all duration-500 border border-black/5 dark:border-white/5 hover:border-black/10 dark:hover:border-white/10"
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
@@ -288,31 +288,31 @@ export default function BlogPage() {
                   <div>
                     {/* Category & Date */}
                     <div className="flex items-center justify-between mb-6">
-                      <span className="text-[#3b82f6] text-xs font-medium uppercase tracking-widest border border-[#3b82f6]/20 bg-[#3b82f6]/5 px-3 py-1 rounded-full">
+                      <span className="text-brand-blue text-xs font-medium uppercase tracking-widest border border-brand-blue/20 bg-brand-blue/5 px-3 py-1 rounded-full">
                         {post.category}
                       </span>
-                      <div className="flex items-center text-white/40 text-xs font-medium">
+                      <div className="flex items-center text-black/40 dark:text-white/40 text-xs font-medium">
                         <Calendar className="h-3 w-3 mr-2" />
                         {new Date(post.date).toLocaleDateString()}
                       </div>
                     </div>
 
                     {/* Title */}
-                    <h2 className="text-xl font-medium mb-4 leading-tight text-white group-hover:text-[#3b82f6] transition-colors font-['Space_Grotesk',sans-serif]">
+                    <h2 className="text-xl font-medium mb-4 leading-tight text-black dark:text-white group-hover:text-brand-blue transition-colors font-grotesk">
                       {post.title}
                     </h2>
 
                     {/* Excerpt */}
-                    <p className="text-white/60 mb-8 leading-relaxed font-light text-sm line-clamp-3">{post.excerpt}</p>
+                    <p className="text-black/60 dark:text-white/60 mb-8 leading-relaxed font-light text-sm line-clamp-3">{post.excerpt}</p>
                   </div>
 
                   {/* Read More */}
-                  <div className="flex items-center justify-between pt-6 border-t border-white/5">
-                    <div className="flex items-center text-white/40 text-xs font-medium">
+                  <div className="flex items-center justify-between pt-6 border-t border-black/5 dark:border-white/5">
+                    <div className="flex items-center text-black/40 dark:text-white/40 text-xs font-medium">
                       <BookOpen className="h-3 w-3 mr-2" />
                       {post.readTime}
                     </div>
-                    <div className="flex items-center text-white font-medium text-sm group-hover:translate-x-1 transition-transform">
+                    <div className="flex items-center text-black dark:text-white font-medium text-sm group-hover:translate-x-1 transition-transform">
                       Read Article
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </div>
@@ -330,7 +330,7 @@ export default function BlogPage() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
             >
-              <p className="text-lg text-white/40 font-light">
+              <p className="text-lg text-black/40 dark:text-white/40 font-light">
                 No posts found in "{selectedCategory}" category.
               </p>
             </motion.div>
@@ -343,16 +343,16 @@ export default function BlogPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.2 }}
           >
-            <div className="glass p-12 lg:p-16 rounded-3xl border border-white/5 relative overflow-hidden text-center">
+            <div className="glass p-12 lg:p-16 rounded-3xl border border-black/5 dark:border-white/5 relative overflow-hidden text-center">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5" />
 
               <div className="relative z-10 max-w-2xl mx-auto">
-                <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mx-auto mb-8 border border-white/10">
-                  <Mail className="h-8 w-8 text-white" />
+                <div className="w-16 h-16 bg-black/5 dark:bg-white/5 rounded-2xl flex items-center justify-center mx-auto mb-8 border border-black/10 dark:border-white/10">
+                  <Mail className="h-8 w-8 text-black dark:text-white" />
                 </div>
 
-                <h2 className="text-4xl font-light mb-6 text-white font-['Space_Grotesk',sans-serif]">Stay Updated</h2>
-                <p className="text-lg text-white/60 mb-10 font-light">
+                <h2 className="text-4xl font-light mb-6 text-black dark:text-white font-grotesk">Stay Updated</h2>
+                <p className="text-lg text-black/60 dark:text-white/60 mb-10 font-light">
                   Get the latest insights on AI, software development, and research impact delivered to your inbox.
                 </p>
 
@@ -388,14 +388,14 @@ export default function BlogPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="your@email.com"
-                    className="flex-1 px-6 py-4 bg-white/[0.03] border border-white/10 text-white placeholder-white/30 rounded-full focus:border-[#3b82f6] focus:outline-none transition-all duration-300"
+                    className="flex-1 px-6 py-4 bg-black/[0.03] dark:bg-white/[0.03] border border-black/10 dark:border-white/10 text-black dark:text-white placeholder-black/30 dark:placeholder-white/30 rounded-full focus:border-brand-blue focus:outline-none transition-all duration-300"
                     required
                     disabled={isSubscribing}
                   />
                   <button
                     type="submit"
                     disabled={isSubscribing || !email}
-                    className="magnetic bg-white text-black font-medium px-8 py-4 rounded-full transition-all duration-300 hover:bg-white/90 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+                    className="magnetic bg-black dark:bg-white text-white dark:text-black font-medium px-8 py-4 rounded-full transition-all duration-300 hover:bg-black/90 dark:hover:bg-white/90 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
                   >
                     {isSubscribing ? "Subscribing..." : "Subscribe"}
                   </button>

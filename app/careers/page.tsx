@@ -188,7 +188,7 @@ export default function CareersPage() {
   useMagneticEffect()
 
   return (
-    <div className="min-h-screen bg-[#030303] text-white overflow-hidden">
+    <div className="min-h-screen bg-white dark:bg-[#030303] text-black dark:text-white overflow-hidden">
       {/* Custom Cursor */}
       <CustomCursor />
 
@@ -249,7 +249,7 @@ export default function CareersPage() {
         className="fixed inset-0 pointer-events-none z-0"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px)",
+            "linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px)",
           backgroundSize: "100px 100px",
         }}
       />
@@ -264,7 +264,7 @@ export default function CareersPage() {
           >
             <Link
               href="/"
-              className="magnetic inline-flex items-center text-white/50 hover:text-white transition-colors duration-300 font-medium group"
+              className="magnetic inline-flex items-center text-black/50 dark:text-white/50 hover:text-black dark:hover:text-white transition-colors duration-300 font-medium group"
             >
               <ArrowLeft className="mr-2 h-5 w-5" />
               Back
@@ -278,8 +278,8 @@ export default function CareersPage() {
                 <div key={s.title} className="flex flex-col items-center">
                   <div
                     className={`w-10 h-10 md:w-12 md:h-12 border-2 md:border-4 flex items-center justify-center font-black text-lg transition-all ${i <= step
-                      ? "bg-gradient-to-r from-blue-500 to-cyan-400 border-cyan-400 text-white"
-                      : "bg-[#0a0a1a] border-cyan-500/30 text-gray-400"
+                      ? "bg-gradient-to-r from-blue-500 to-cyan-400 border-cyan-400 text-white dark:text-white"
+                      : "bg-black/[0.03] dark:bg-[#0a0a1a] border-cyan-500/30 text-gray-600 dark:text-gray-400"
                       }`}
                   >
                     {i < step ? <Check className="w-6 h-6" /> : <s.icon className="w-5 h-5" />}
@@ -318,7 +318,7 @@ export default function CareersPage() {
 
                 <div className="border-2 border-cyan-500/30 bg-gradient-to-br from-blue-900/20 to-purple-900/10 backdrop-blur-sm p-8 mb-8 text-left rounded-xl">
                   <h2 className="text-2xl font-black mb-4 uppercase">We're hiring AI-native developers</h2>
-                  <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                  <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-6">
                     At Trixode Studios, we build fast using AI. We're looking for developers who
                     embrace vibe coding, leverage AI tools daily, and can turn ideas into
                     production-ready code at lightning speed.
@@ -367,7 +367,7 @@ export default function CareersPage() {
                       name="fullName"
                       value={formData.fullName}
                       onChange={handleInputChange}
-                      className={`w-full bg-[#0a0a1a] border-2 ${errors.fullName ? "border-red-500" : "border-cyan-500/30"} p-4 text-white font-bold focus:border-cyan-400 focus:outline-none transition-colors rounded-lg`}
+                      className={`w-full bg-black/[0.03] dark:bg-[#0a0a1a] border-2 ${errors.fullName ? "border-red-500" : "border-cyan-500/30"} p-4 text-black dark:text-white font-bold focus:border-cyan-400 focus:outline-none transition-colors rounded-lg`}
                       placeholder="Your full name"
                     />
                     {errors.fullName && <p className="text-red-500 text-sm mt-1 font-bold">{errors.fullName}</p>}
@@ -382,7 +382,7 @@ export default function CareersPage() {
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className={`w-full bg-[#0a0a1a] border-2 ${errors.email ? "border-red-500" : "border-cyan-500/30"} p-4 text-white font-bold focus:border-cyan-400 focus:outline-none transition-colors rounded-lg`}
+                      className={`w-full bg-black/[0.03] dark:bg-[#0a0a1a] border-2 ${errors.email ? "border-red-500" : "border-cyan-500/30"} p-4 text-black dark:text-white font-bold focus:border-cyan-400 focus:outline-none transition-colors rounded-lg`}
                       placeholder="your@email.com"
                     />
                     {errors.email && <p className="text-red-500 text-sm mt-1 font-bold">{errors.email}</p>}
@@ -397,7 +397,7 @@ export default function CareersPage() {
                       name="location"
                       value={formData.location}
                       onChange={handleInputChange}
-                      className={`w-full bg-[#0a0a1a] border-2 ${errors.location ? "border-red-500" : "border-cyan-500/30"} p-4 text-white font-bold focus:border-cyan-400 focus:outline-none transition-colors rounded-lg`}
+                      className={`w-full bg-black/[0.03] dark:bg-[#0a0a1a] border-2 ${errors.location ? "border-red-500" : "border-cyan-500/30"} p-4 text-black dark:text-white font-bold focus:border-cyan-400 focus:outline-none transition-colors rounded-lg`}
                       placeholder="City, Country"
                     />
                     {errors.location && <p className="text-red-500 text-sm mt-1 font-bold">{errors.location}</p>}
@@ -412,7 +412,7 @@ export default function CareersPage() {
                       name="portfolio"
                       value={formData.portfolio}
                       onChange={handleInputChange}
-                      className="w-full bg-[#0a0a1a] border-2 border-cyan-500/30 p-4 text-white font-bold focus:border-cyan-400 focus:outline-none transition-colors rounded-lg"
+                      className="w-full bg-black/[0.03] dark:bg-[#0a0a1a] border-2 border-cyan-500/30 p-4 text-black dark:text-white font-bold focus:border-cyan-400 focus:outline-none transition-colors rounded-lg"
                       placeholder="https://github.com/yourusername"
                     />
                   </div>
@@ -426,7 +426,7 @@ export default function CareersPage() {
                       name="linkedin"
                       value={formData.linkedin}
                       onChange={handleInputChange}
-                      className="w-full bg-[#0a0a1a] border-2 border-cyan-500/30 p-4 text-white font-bold focus:border-cyan-400 focus:outline-none transition-colors rounded-lg"
+                      className="w-full bg-black/[0.03] dark:bg-[#0a0a1a] border-2 border-cyan-500/30 p-4 text-black dark:text-white font-bold focus:border-cyan-400 focus:outline-none transition-colors rounded-lg"
                       placeholder="https://linkedin.com/in/yourprofile"
                     />
                   </div>
@@ -457,7 +457,7 @@ export default function CareersPage() {
                           onClick={() => handleMultiSelect("languages", lang)}
                           className={`px-3 py-2 border-2 font-bold uppercase text-xs transition-all rounded-lg ${formData.languages.includes(lang)
                             ? "bg-gradient-to-r from-blue-500 to-cyan-400 border-cyan-400 text-white"
-                            : "bg-[#0a0a1a] border-cyan-500/30 text-gray-300 hover:border-cyan-400"
+                            : "bg-black/[0.03] dark:bg-[#0a0a1a] border-cyan-500/30 text-gray-700 dark:text-gray-300 hover:border-cyan-400"
                             }`}
                         >
                           {lang}
@@ -479,7 +479,7 @@ export default function CareersPage() {
                           onClick={() => handleMultiSelect("frameworks", fw)}
                           className={`px-3 py-2 border-2 font-bold uppercase text-xs transition-all rounded-lg ${formData.frameworks.includes(fw)
                             ? "bg-gradient-to-r from-blue-500 to-cyan-400 border-cyan-400 text-white"
-                            : "bg-[#0a0a1a] border-cyan-500/30 text-gray-300 hover:border-cyan-400"
+                            : "bg-black/[0.03] dark:bg-[#0a0a1a] border-cyan-500/30 text-gray-700 dark:text-gray-300 hover:border-cyan-400"
                             }`}
                         >
                           {fw}
@@ -500,7 +500,7 @@ export default function CareersPage() {
                           onClick={() => handleMultiSelect("aiTools", tool)}
                           className={`px-3 py-2 border-2 font-bold uppercase text-xs transition-all rounded-lg ${formData.aiTools.includes(tool)
                             ? "bg-gradient-to-r from-blue-500 to-cyan-400 border-cyan-400 text-white"
-                            : "bg-[#0a0a1a] border-cyan-500/30 text-gray-300 hover:border-cyan-400"
+                            : "bg-black/[0.03] dark:bg-[#0a0a1a] border-cyan-500/30 text-gray-700 dark:text-gray-300 hover:border-cyan-400"
                             }`}
                         >
                           {tool}
@@ -525,7 +525,7 @@ export default function CareersPage() {
                           }}
                           className={`px-3 py-2 border-2 font-bold uppercase text-xs transition-all rounded-lg ${formData.yearsExperience === exp
                             ? "bg-gradient-to-r from-blue-500 to-cyan-400 border-cyan-400 text-white"
-                            : "bg-[#0a0a1a] border-cyan-500/30 text-gray-300 hover:border-cyan-400"
+                            : "bg-black/[0.03] dark:bg-[#0a0a1a] border-cyan-500/30 text-gray-700 dark:text-gray-300 hover:border-cyan-400"
                             }`}
                         >
                           {exp}
@@ -544,7 +544,7 @@ export default function CareersPage() {
                       value={formData.bestProject}
                       onChange={handleInputChange}
                       rows={4}
-                      className="w-full bg-[#0a0a1a] border-2 border-cyan-500/30 p-4 text-white font-bold focus:border-cyan-400 focus:outline-none transition-colors resize-none rounded-lg"
+                      className="w-full bg-black/[0.03] dark:bg-[#0a0a1a] border-2 border-cyan-500/30 p-4 text-black dark:text-white font-bold focus:border-cyan-400 focus:outline-none transition-colors resize-none rounded-lg"
                       placeholder="Tell us about a project you're proud of..."
                     />
                   </div>
@@ -561,7 +561,7 @@ export default function CareersPage() {
                 exit={{ opacity: 0, y: -20 }}
               >
                 <h2 className="text-4xl font-black mb-4 uppercase">Agentic AI & MCP</h2>
-                <p className="text-gray-400 mb-8 text-lg">
+                <p className="text-gray-600 dark:text-gray-400 mb-8 text-lg">
                   We build AI agents and use MCP servers. Tell us about your experience.
                 </p>
 
@@ -578,7 +578,7 @@ export default function CareersPage() {
                           onClick={() => handleMultiSelect("agenticTools", tool)}
                           className={`px-3 py-2 border-2 font-bold uppercase text-xs transition-all rounded-lg ${formData.agenticTools.includes(tool)
                             ? "bg-gradient-to-r from-blue-500 to-cyan-400 border-cyan-400 text-white"
-                            : "bg-[#0a0a1a] border-cyan-500/30 text-gray-300 hover:border-cyan-400"
+                            : "bg-black/[0.03] dark:bg-[#0a0a1a] border-cyan-500/30 text-gray-700 dark:text-gray-300 hover:border-cyan-400"
                             }`}
                         >
                           {tool}
@@ -596,7 +596,7 @@ export default function CareersPage() {
                       value={formData.agenticExperience}
                       onChange={handleInputChange}
                       rows={4}
-                      className={`w-full bg-[#0a0a1a] border-2 ${errors.agenticExperience ? "border-red-500" : "border-cyan-500/30"} p-4 text-white font-bold focus:border-cyan-400 focus:outline-none transition-colors resize-none rounded-lg`}
+                      className={`w-full bg-black/[0.03] dark:bg-[#0a0a1a] border-2 ${errors.agenticExperience ? "border-red-500" : "border-cyan-500/30"} p-4 text-black dark:text-white font-bold focus:border-cyan-400 focus:outline-none transition-colors resize-none rounded-lg`}
                       placeholder="Have you built autonomous agents, multi-agent systems, or AI workflows? What tools did you use?"
                     />
                     {errors.agenticExperience && <p className="text-red-500 text-sm mt-1 font-bold">{errors.agenticExperience}</p>}
@@ -611,7 +611,7 @@ export default function CareersPage() {
                       value={formData.mcpKnowledge}
                       onChange={handleInputChange}
                       rows={3}
-                      className="w-full bg-[#0a0a1a] border-2 border-cyan-500/30 p-4 text-white font-bold focus:border-cyan-400 focus:outline-none transition-colors resize-none rounded-lg"
+                      className="w-full bg-black/[0.03] dark:bg-[#0a0a1a] border-2 border-cyan-500/30 p-4 text-black dark:text-white font-bold focus:border-cyan-400 focus:outline-none transition-colors resize-none rounded-lg"
                       placeholder="Have you used Anthropic's MCP? Built MCP servers? Integrated MCP tools into agents? Tell us about it..."
                     />
                   </div>
@@ -625,7 +625,7 @@ export default function CareersPage() {
                       value={formData.agentProject}
                       onChange={handleInputChange}
                       rows={3}
-                      className="w-full bg-[#0a0a1a] border-2 border-cyan-500/30 p-4 text-white font-bold focus:border-cyan-400 focus:outline-none transition-colors resize-none rounded-lg"
+                      className="w-full bg-black/[0.03] dark:bg-[#0a0a1a] border-2 border-cyan-500/30 p-4 text-black dark:text-white font-bold focus:border-cyan-400 focus:outline-none transition-colors resize-none rounded-lg"
                       placeholder="What kind of autonomous system excites you? Research agents? Coding agents? Multi-modal agents?"
                     />
                   </div>
@@ -660,7 +660,7 @@ export default function CareersPage() {
                       value={formData.cliToolsExperience}
                       onChange={handleInputChange}
                       rows={3}
-                      className="w-full bg-[#0a0a1a] border-2 border-cyan-500/30 p-4 text-white font-bold focus:border-cyan-400 focus:outline-none transition-colors resize-none rounded-lg"
+                      className="w-full bg-black/[0.03] dark:bg-[#0a0a1a] border-2 border-cyan-500/30 p-4 text-black dark:text-white font-bold focus:border-cyan-400 focus:outline-none transition-colors resize-none rounded-lg"
                       placeholder="Do you use CLI AI tools? Built automations with n8n, Make, or Zapier? Custom shell scripts for dev workflows?"
                     />
                   </div>
@@ -695,7 +695,7 @@ export default function CareersPage() {
                       value={formData.securityExperience}
                       onChange={handleInputChange}
                       rows={3}
-                      className="w-full bg-[#0a0a1a] border-2 border-cyan-500/30 p-4 text-white font-bold focus:border-cyan-400 focus:outline-none transition-colors resize-none rounded-lg"
+                      className="w-full bg-black/[0.03] dark:bg-[#0a0a1a] border-2 border-cyan-500/30 p-4 text-black dark:text-white font-bold focus:border-cyan-400 focus:outline-none transition-colors resize-none rounded-lg"
                       placeholder="Any experience with security audits, pen testing, OWASP top 10, or secure coding practices?"
                     />
                   </div>
@@ -723,7 +723,7 @@ export default function CareersPage() {
                       value={formData.idealWorkday}
                       onChange={handleInputChange}
                       rows={3}
-                      className={`w-full bg-[#0a0a1a] border-2 ${errors.idealWorkday ? "border-red-500" : "border-cyan-500/30"} p-4 text-white font-bold focus:border-cyan-400 focus:outline-none transition-colors resize-none rounded-lg`}
+                      className={`w-full bg-black/[0.03] dark:bg-[#0a0a1a] border-2 ${errors.idealWorkday ? "border-red-500" : "border-cyan-500/30"} p-4 text-black dark:text-white font-bold focus:border-cyan-400 focus:outline-none transition-colors resize-none rounded-lg`}
                       placeholder="When are you most productive? What does a great day look like?"
                     />
                     {errors.idealWorkday && <p className="text-red-500 text-sm mt-1 font-bold">{errors.idealWorkday}</p>}
@@ -738,7 +738,7 @@ export default function CareersPage() {
                       value={formData.handleAmbiguity}
                       onChange={handleInputChange}
                       rows={3}
-                      className={`w-full bg-[#0a0a1a] border-2 ${errors.handleAmbiguity ? "border-red-500" : "border-cyan-500/30"} p-4 text-white font-bold focus:border-cyan-400 focus:outline-none transition-colors resize-none rounded-lg`}
+                      className={`w-full bg-black/[0.03] dark:bg-[#0a0a1a] border-2 ${errors.handleAmbiguity ? "border-red-500" : "border-cyan-500/30"} p-4 text-black dark:text-white font-bold focus:border-cyan-400 focus:outline-none transition-colors resize-none rounded-lg`}
                       placeholder="What do you do when requirements are unclear?"
                     />
                     {errors.handleAmbiguity && <p className="text-red-500 text-sm mt-1 font-bold">{errors.handleAmbiguity}</p>}
@@ -753,7 +753,7 @@ export default function CareersPage() {
                       value={formData.motivation}
                       onChange={handleInputChange}
                       rows={3}
-                      className="w-full bg-[#0a0a1a] border-2 border-cyan-500/30 p-4 text-white font-bold focus:border-cyan-400 focus:outline-none transition-colors resize-none rounded-lg"
+                      className="w-full bg-black/[0.03] dark:bg-[#0a0a1a] border-2 border-cyan-500/30 p-4 text-black dark:text-white font-bold focus:border-cyan-400 focus:outline-none transition-colors resize-none rounded-lg"
                       placeholder="What gets you excited about work?"
                     />
                   </div>
@@ -773,7 +773,7 @@ export default function CareersPage() {
                           }}
                           className={`px-3 py-2 border-2 font-bold text-sm transition-all rounded-lg ${formData.communicationPref === opt
                             ? "bg-gradient-to-r from-blue-500 to-cyan-400 border-cyan-400 text-white"
-                            : "bg-[#0a0a1a] border-cyan-500/30 text-gray-300 hover:border-cyan-400"
+                            : "bg-black/[0.03] dark:bg-[#0a0a1a] border-cyan-500/30 text-gray-700 dark:text-gray-300 hover:border-cyan-400"
                             }`}
                         >
                           {opt}
@@ -792,7 +792,7 @@ export default function CareersPage() {
                       value={formData.remoteExperience}
                       onChange={handleInputChange}
                       rows={2}
-                      className="w-full bg-[#0a0a1a] border-2 border-cyan-500/30 p-4 text-white font-bold focus:border-cyan-400 focus:outline-none transition-colors resize-none rounded-lg"
+                      className="w-full bg-black/[0.03] dark:bg-[#0a0a1a] border-2 border-cyan-500/30 p-4 text-black dark:text-white font-bold focus:border-cyan-400 focus:outline-none transition-colors resize-none rounded-lg"
                       placeholder="Have you worked remotely before? How did it go?"
                     />
                   </div>
@@ -809,7 +809,7 @@ export default function CareersPage() {
                 exit={{ opacity: 0, y: -20 }}
               >
                 <h2 className="text-4xl font-black mb-4 uppercase">The Vibe Check</h2>
-                <p className="text-gray-400 mb-8 text-lg">
+                <p className="text-gray-600 dark:text-gray-400 mb-8 text-lg">
                   Show us how you use AI to solve problems. Pick one option.
                 </p>
 
@@ -829,11 +829,11 @@ export default function CareersPage() {
                         }}
                         className={`p-6 border-2 text-left transition-all rounded-xl ${formData.challengeType === opt.value
                           ? "bg-gradient-to-r from-blue-500 to-cyan-400 border-cyan-400 text-white"
-                          : "bg-[#0a0a1a] border-cyan-500/30 text-white hover:border-cyan-400"
+                          : "bg-black/[0.03] dark:bg-[#0a0a1a] border-cyan-500/30 text-black dark:text-white hover:border-cyan-400"
                           }`}
                       >
                         <div className="font-black uppercase mb-2">{opt.label}</div>
-                        <div className={`text-sm ${formData.challengeType === opt.value ? "text-white/70" : "text-gray-400"}`}>
+                        <div className={`text-sm ${formData.challengeType === opt.value ? "text-white/70" : "text-gray-600 dark:text-gray-400"}`}>
                           {opt.desc}
                         </div>
                       </button>
@@ -857,7 +857,7 @@ export default function CareersPage() {
                           value={formData.challengeContent}
                           onChange={handleInputChange}
                           rows={8}
-                          className={`w-full bg-[#0a0a1a] border-2 ${errors.challengeContent ? "border-red-500" : "border-cyan-500/30"} p-4 text-white font-bold focus:border-cyan-400 focus:outline-none transition-colors resize-none font-mono rounded-lg`}
+                          className={`w-full bg-black/[0.03] dark:bg-[#0a0a1a] border-2 ${errors.challengeContent ? "border-red-500" : "border-cyan-500/30"} p-4 text-black dark:text-white font-bold focus:border-cyan-400 focus:outline-none transition-colors resize-none font-mono rounded-lg`}
                           placeholder={`Example: "To build a todo app with AI, I would first prompt Claude to scaffold a Next.js project with TypeScript. Then I'd iterate on the component structure by..."`}
                         />
                       ) : (
@@ -866,7 +866,7 @@ export default function CareersPage() {
                           name="challengeContent"
                           value={formData.challengeContent}
                           onChange={handleInputChange}
-                          className={`w-full bg-[#0a0a1a] border-2 ${errors.challengeContent ? "border-red-500" : "border-cyan-500/30"} p-4 text-white font-bold focus:border-cyan-400 focus:outline-none transition-colors rounded-lg`}
+                          className={`w-full bg-black/[0.03] dark:bg-[#0a0a1a] border-2 ${errors.challengeContent ? "border-red-500" : "border-cyan-500/30"} p-4 text-black dark:text-white font-bold focus:border-cyan-400 focus:outline-none transition-colors rounded-lg`}
                           placeholder={formData.challengeType === "video" ? "https://loom.com/share/..." : "https://github.com/..."}
                         />
                       )}
@@ -896,10 +896,10 @@ export default function CareersPage() {
                 </h2>
 
                 <div className="border-2 border-cyan-500/30 bg-gradient-to-br from-blue-900/20 to-purple-900/10 p-8 mb-8 text-left max-w-xl mx-auto rounded-xl">
-                  <p className="text-gray-300 text-lg leading-relaxed">
+                  <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
                     Thanks for applying, <span className="text-cyan-400 font-bold">{formData.fullName}</span>!
                   </p>
-                  <p className="text-gray-400 mt-4">
+                  <p className="text-gray-600 dark:text-gray-400 mt-4">
                     We'll review your application and get back to you within <span className="text-white font-bold">48 hours</span>.
                     Check your email for a confirmation.
                   </p>
@@ -921,7 +921,7 @@ export default function CareersPage() {
             <div className="flex justify-between mt-12">
               <button
                 onClick={prevStep}
-                className="bg-[#0a0a1a] text-white font-black px-8 py-4 border-2 border-cyan-500/30 rounded-lg hover:border-cyan-400 transition-all uppercase tracking-wide inline-flex items-center gap-2"
+                className="bg-black/[0.03] dark:bg-[#0a0a1a] text-black dark:text-white font-black px-8 py-4 border-2 border-cyan-500/30 rounded-lg hover:border-cyan-400 transition-all uppercase tracking-wide inline-flex items-center gap-2"
               >
                 <ArrowLeft className="w-5 h-5" />
                 Back

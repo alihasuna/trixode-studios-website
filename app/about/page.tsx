@@ -12,7 +12,7 @@ export default function AboutPage() {
   useMagneticEffect()
 
   return (
-    <div className="min-h-screen bg-[#030303] text-white overflow-hidden">
+    <div className="min-h-screen bg-white dark:bg-[#030303] text-black dark:text-white overflow-hidden">
       {/* Custom Cursor */}
       <CustomCursor />
 
@@ -73,7 +73,7 @@ export default function AboutPage() {
         className="fixed inset-0 pointer-events-none z-0"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px)",
+            "linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px)",
           backgroundSize: "100px 100px",
         }}
       />
@@ -89,7 +89,7 @@ export default function AboutPage() {
           >
             <Link
               href="/"
-              className="magnetic inline-flex items-center text-white/50 hover:text-white transition-colors duration-300 font-medium group"
+              className="magnetic inline-flex items-center text-black/50 dark:text-white/50 hover:text-black dark:hover:text-white transition-colors duration-300 font-medium group"
             >
               <ArrowLeft className="mr-2 h-5 w-5 group-hover:-translate-x-1 transition-transform" />
               Back to Home
@@ -98,7 +98,7 @@ export default function AboutPage() {
 
           {/* Page Title */}
           <motion.h1
-            className="text-6xl md:text-8xl font-light mb-16 text-white font-['Space_Grotesk',sans-serif]"
+            className="text-6xl md:text-8xl font-light mb-16 text-black dark:text-white font-grotesk"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -114,15 +114,15 @@ export default function AboutPage() {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <div className="flex items-center gap-4 mb-8">
-              <span className="text-sm text-[#3b82f6] font-medium font-['Space_Grotesk',sans-serif]">01</span>
-              <h2 className="text-3xl md:text-4xl font-light text-white font-['Space_Grotesk',sans-serif]">The Story</h2>
+              <span className="text-sm text-brand-blue font-medium font-grotesk">01</span>
+              <h2 className="text-3xl md:text-4xl font-light text-black dark:text-white font-grotesk">The Story</h2>
             </div>
 
             <div className="glass p-12 rounded-3xl relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#3b82f6]/10 to-transparent rounded-full blur-3xl -z-10" />
+              <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-brand-blue/10 to-transparent rounded-full blur-3xl -z-10" />
 
-              <h3 className="text-2xl font-medium mb-6 text-white font-['Space_Grotesk',sans-serif]">Origin of the Studio</h3>
-              <div className="space-y-6 text-white/70 leading-relaxed text-lg font-light">
+              <h3 className="text-2xl font-medium mb-6 text-black dark:text-white font-grotesk">Origin of the Studio</h3>
+              <div className="space-y-6 text-black/70 dark:text-white/70 leading-relaxed text-lg font-light">
                 <p>
                   Trixode Studios was born from watching businesses struggle with AI adoption. Founded by Hussien Ballouk, our studio
                   emerged from years of seeing companies miss massive opportunities because AI felt too complex, too risky, or too
@@ -145,13 +145,13 @@ export default function AboutPage() {
               transition={{ duration: 0.8, delay: 0.6 }}
             >
               <div className="flex items-center gap-4 mb-8">
-                <span className="text-sm text-[#3b82f6] font-medium font-['Space_Grotesk',sans-serif]">02</span>
-                <h2 className="text-3xl md:text-4xl font-light text-white font-['Space_Grotesk',sans-serif]">Mission</h2>
+                <span className="text-sm text-brand-blue font-medium font-grotesk">02</span>
+                <h2 className="text-3xl md:text-4xl font-light text-black dark:text-white font-grotesk">Mission</h2>
               </div>
-              <div className="glass p-10 rounded-3xl h-full flex flex-col justify-center relative overflow-hidden group hover:bg-white/[0.06] transition-colors duration-500">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#3b82f6]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <Target className="h-10 w-10 text-[#3b82f6] mb-6" />
-                <blockquote className="text-xl md:text-2xl font-light leading-relaxed text-white font-['Space_Grotesk',sans-serif]">
+              <div className="glass p-10 rounded-3xl h-full flex flex-col justify-center relative overflow-hidden group hover:bg-black/[0.06] dark:hover:bg-white/[0.06] transition-colors duration-500">
+                <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <Target className="h-10 w-10 text-brand-blue mb-6" />
+                <blockquote className="text-xl md:text-2xl font-light leading-relaxed text-black dark:text-white font-grotesk">
                   "To build AI-powered automation tools that save time, cut costs, and scale growth for businesses
                   and innovators—making advanced technology accessible to every company ready to transform their operations."
                 </blockquote>
@@ -164,13 +164,13 @@ export default function AboutPage() {
               transition={{ duration: 0.8, delay: 0.8 }}
             >
               <div className="flex items-center gap-4 mb-8">
-                <span className="text-sm text-[#3b82f6] font-medium font-['Space_Grotesk',sans-serif]">03</span>
-                <h2 className="text-3xl md:text-4xl font-light text-white font-['Space_Grotesk',sans-serif]">Vision</h2>
+                <span className="text-sm text-brand-blue font-medium font-grotesk">03</span>
+                <h2 className="text-3xl md:text-4xl font-light text-black dark:text-white font-grotesk">Vision</h2>
               </div>
-              <div className="glass p-10 rounded-3xl h-full flex flex-col justify-center relative overflow-hidden group hover:bg-white/[0.06] transition-colors duration-500">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#8b5cf6]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <Eye className="h-10 w-10 text-[#8b5cf6] mb-6" />
-                <blockquote className="text-xl md:text-2xl font-light leading-relaxed text-white font-['Space_Grotesk',sans-serif]">
+              <div className="glass p-10 rounded-3xl h-full flex flex-col justify-center relative overflow-hidden group hover:bg-black/[0.06] dark:hover:bg-white/[0.06] transition-colors duration-500">
+                <div className="absolute inset-0 bg-gradient-to-br from-brand-purple/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <Eye className="h-10 w-10 text-brand-purple mb-6" />
+                <blockquote className="text-xl md:text-2xl font-light leading-relaxed text-black dark:text-white font-grotesk">
                   "A future where every company—from startups to enterprises—can harness AI automation
                   securely and effectively to drive innovation and competitive advantage."
                 </blockquote>
@@ -185,8 +185,8 @@ export default function AboutPage() {
             transition={{ duration: 0.8, delay: 1.0 }}
           >
             <div className="flex items-center gap-4 mb-12">
-              <span className="text-sm text-[#3b82f6] font-medium font-['Space_Grotesk',sans-serif]">04</span>
-              <h2 className="text-4xl md:text-5xl font-light text-white font-['Space_Grotesk',sans-serif]">Core Values</h2>
+              <span className="text-sm text-brand-blue font-medium font-grotesk">04</span>
+              <h2 className="text-4xl md:text-5xl font-light text-black dark:text-white font-grotesk">Core Values</h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -224,16 +224,16 @@ export default function AboutPage() {
               ].map((value, index) => (
                 <motion.div
                   key={value.title}
-                  className="group glass p-8 rounded-2xl hover:bg-white/[0.08] transition-all duration-500 cursor-default"
+                  className="group glass p-8 rounded-2xl hover:bg-black/[0.08] dark:hover:bg-white/[0.08] transition-all duration-500 cursor-default"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.2 + index * 0.1 }}
                   whileHover={{ y: -5 }}
                 >
-                  <h3 className="text-lg font-medium mb-4 text-white group-hover:text-[#3b82f6] transition-colors font-['Space_Grotesk',sans-serif] tracking-wide">
+                  <h3 className="text-lg font-medium mb-4 text-black dark:text-white group-hover:text-brand-blue transition-colors font-grotesk tracking-wide">
                     {value.title}
                   </h3>
-                  <p className="text-white/60 leading-relaxed text-sm font-light">{value.description}</p>
+                  <p className="text-black/60 dark:text-white/60 leading-relaxed text-sm font-light">{value.description}</p>
                 </motion.div>
               ))}
             </div>

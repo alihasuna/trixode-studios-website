@@ -12,7 +12,7 @@ export default function TermsPage() {
   useMagneticEffect()
 
   return (
-    <div className="min-h-screen bg-[#030303] text-white overflow-hidden">
+    <div className="min-h-screen bg-white dark:bg-[#030303] text-black dark:text-white overflow-hidden">
       {/* Custom Cursor */}
       <CustomCursor />
 
@@ -73,7 +73,7 @@ export default function TermsPage() {
         className="fixed inset-0 pointer-events-none z-0"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px)",
+            "linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px)",
           backgroundSize: "100px 100px",
         }}
       />
@@ -89,7 +89,7 @@ export default function TermsPage() {
           >
             <Link
               href="/"
-              className="magnetic inline-flex items-center text-white/50 hover:text-white transition-colors duration-300 font-medium group"
+              className="magnetic inline-flex items-center text-black/50 dark:text-white/50 hover:text-black dark:hover:text-white transition-colors duration-300 font-medium group"
             >
               <ArrowLeft className="mr-2 h-5 w-5" />
               Back to Home
@@ -98,7 +98,7 @@ export default function TermsPage() {
 
           {/* Page Title */}
           <motion.h1
-            className="text-5xl md:text-7xl lg:text-8xl font-light mb-8 text-white font-['Space_Grotesk',sans-serif]"
+            className="text-5xl md:text-7xl lg:text-8xl font-light mb-8 text-black dark:text-white font-grotesk"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -107,7 +107,7 @@ export default function TermsPage() {
           </motion.h1>
 
           <motion.div
-            className="text-white/40 mb-12"
+            className="text-black/40 dark:text-white/40 mb-12"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -122,9 +122,9 @@ export default function TermsPage() {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <div className="space-y-8">
-              <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-['Space_Grotesk',sans-serif]">ACCEPTANCE OF TERMS</h2>
-                <p className="text-white/60 leading-relaxed font-light">
+              <section className="glass rounded-3xl p-10 border border-black/5 dark:border-white/5">
+                <h2 className="text-2xl md:text-3xl font-light text-black dark:text-white mb-4 font-grotesk">ACCEPTANCE OF TERMS</h2>
+                <p className="text-black/60 dark:text-white/60 leading-relaxed font-light">
                   By accessing and using the Trixode Studios website and services, you accept and agree to be bound by
                   the terms and provision of this agreement. If you do not agree to abide by the above, please do not
                   use this service.
@@ -132,13 +132,13 @@ export default function TermsPage() {
               </section>
 
               <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-['Space_Grotesk',sans-serif]">SERVICES DESCRIPTION</h2>
+                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">SERVICES DESCRIPTION</h2>
                 <p className="text-white/60 leading-relaxed font-light">
                   Trixode Studios provides software development, AI-powered tools, and technology consulting services.
                   We specialize in creating elegant solutions for researchers, scientists, and innovators. Our services
                   include but are not limited to:
                 </p>
-                <ul className="list-disc list-inside mt-4 space-y-1 text-white/60 font-light">
+                <ul className="list-disc list-inside mt-4 space-y-1 text-black/60 dark:text-white/60 font-light">
                   <li>Custom software development</li>
                   <li>AI and machine learning solutions</li>
                   <li>Research tool development</li>
@@ -148,8 +148,8 @@ export default function TermsPage() {
               </section>
 
               <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-['Space_Grotesk',sans-serif]">USER RESPONSIBILITIES</h2>
-                <div className="text-white/60 font-light space-y-4">
+                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">USER RESPONSIBILITIES</h2>
+                <div className="text-black/60 dark:text-white/60 font-light space-y-4">
                   <p className="leading-relaxed">By using our services, you agree to:</p>
                   <ul className="list-disc list-inside space-y-1">
                     <li>Provide accurate and complete information</li>
@@ -163,8 +163,8 @@ export default function TermsPage() {
               </section>
 
               <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-['Space_Grotesk',sans-serif]">INTELLECTUAL PROPERTY</h2>
-                <div className="text-white/60 font-light space-y-4">
+                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">INTELLECTUAL PROPERTY</h2>
+                <div className="text-black/60 dark:text-white/60 font-light space-y-4">
                   <p className="leading-relaxed">
                     All content, features, and functionality on our website and in our services are owned by Trixode
                     Studios and are protected by copyright, trademark, and other intellectual property laws.
@@ -177,8 +177,8 @@ export default function TermsPage() {
               </section>
 
               <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-['Space_Grotesk',sans-serif]">PAYMENT TERMS</h2>
-                <div className="text-white/60 font-light space-y-4">
+                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">PAYMENT TERMS</h2>
+                <div className="text-black/60 dark:text-white/60 font-light space-y-4">
                   <p className="leading-relaxed">
                     Payment terms for our services will be specified in individual project agreements. Generally:
                   </p>
@@ -192,7 +192,7 @@ export default function TermsPage() {
               </section>
 
               <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-['Space_Grotesk',sans-serif]">LIMITATION OF LIABILITY</h2>
+                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">LIMITATION OF LIABILITY</h2>
                 <p className="text-white/60 leading-relaxed font-light">
                   To the fullest extent permitted by law, Trixode Studios shall not be liable for any indirect,
                   incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether
@@ -201,7 +201,7 @@ export default function TermsPage() {
               </section>
 
               <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-['Space_Grotesk',sans-serif]">TERMINATION</h2>
+                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">TERMINATION</h2>
                 <p className="text-white/60 leading-relaxed font-light">
                   We may terminate or suspend your access to our services immediately, without prior notice or
                   liability, for any reason whatsoever, including without limitation if you breach the Terms of Service.
@@ -209,7 +209,7 @@ export default function TermsPage() {
               </section>
 
               <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-['Space_Grotesk',sans-serif]">GOVERNING LAW</h2>
+                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">GOVERNING LAW</h2>
                 <p className="text-white/60 leading-relaxed font-light">
                   These Terms shall be interpreted and governed by the laws of British Columbia, Canada, without regard
                   to its conflict of law provisions.
@@ -217,11 +217,11 @@ export default function TermsPage() {
               </section>
 
               <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-['Space_Grotesk',sans-serif]">CONTACT INFORMATION</h2>
+                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">CONTACT INFORMATION</h2>
                 <p className="text-white/60 leading-relaxed font-light">
                   If you have any questions about these Terms of Service, please contact us at:
                 </p>
-                <div className="mt-4 text-white/70 font-light">
+                <div className="mt-4 text-black/70 dark:text-white/70 font-light">
                   <p>Email: legal@trixodestudios.com</p>
                   <p>Address: Victoria, BC, Canada</p>
                 </div>

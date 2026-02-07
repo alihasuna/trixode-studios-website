@@ -92,7 +92,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#030303] text-white overflow-hidden">
+    <div className="min-h-screen bg-white dark:bg-[#030303] text-black dark:text-white overflow-hidden">
       {/* Custom Cursor */}
       <CustomCursor />
 
@@ -153,7 +153,7 @@ export default function ContactPage() {
         className="fixed inset-0 pointer-events-none z-0"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px)",
+            "linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px)",
           backgroundSize: "100px 100px",
         }}
       />
@@ -169,7 +169,7 @@ export default function ContactPage() {
           >
             <Link
               href="/"
-              className="magnetic inline-flex items-center text-white/50 hover:text-white transition-colors duration-300 font-medium group"
+              className="magnetic inline-flex items-center text-black/50 dark:text-white/50 hover:text-black dark:hover:text-white transition-colors duration-300 font-medium group"
             >
               <ArrowLeft className="mr-2 h-5 w-5 group-hover:-translate-x-1 transition-transform" />
               Back to Home
@@ -178,14 +178,14 @@ export default function ContactPage() {
 
           {/* Page Title */}
           <motion.h1
-            className="text-6xl md:text-8xl font-light mb-16 text-white font-['Space_Grotesk',sans-serif]"
+            className="text-6xl md:text-8xl font-light mb-16 text-black dark:text-white font-grotesk"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             Get in
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50">Touch</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-black dark:from-white to-black/50 dark:to-white/50">Touch</span>
           </motion.h1>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -195,9 +195,9 @@ export default function ContactPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <div className="glass p-10 rounded-3xl border border-white/5 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#3b82f6]/5 to-transparent rounded-full blur-3xl -z-10" />
-                <h2 className="text-3xl font-light mb-8 text-white font-['Space_Grotesk',sans-serif]">Send Message</h2>
+              <div className="glass p-10 rounded-3xl border border-black/5 dark:border-white/5 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-brand-blue/5 to-transparent rounded-full blur-3xl -z-10" />
+                <h2 className="text-3xl font-light mb-8 text-black dark:text-white font-grotesk">Send Message</h2>
 
                 {submitStatus === "success" && (
                   <div className="mb-6 p-4 bg-green-500/10 border border-green-500/20 rounded-lg flex items-center space-x-3">
@@ -226,12 +226,12 @@ export default function ContactPage() {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder=" "
-                        className={`peer w-full bg-transparent border-b border-white/10 py-4 text-white outline-none transition-colors ${errors.name ? "border-red-500/50" : "focus:border-[#3b82f6]"
+                        className={`peer w-full bg-transparent border-b border-black/10 dark:border-white/10 py-4 text-black dark:text-white outline-none transition-colors ${errors.name ? "border-red-500/50" : "focus:border-brand-blue"
                           }`}
                         required
                       />
                       <label
-                        className={`absolute left-0 top-4 text-white/50 transition-all peer-focus:text-[#3b82f6] peer-focus:text-xs peer-focus:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-top-4 pointer-events-none ${errors.name ? "text-red-400" : ""
+                        className={`absolute left-0 top-4 text-black/50 dark:text-white/50 transition-all peer-focus:text-brand-blue peer-focus:text-xs peer-focus:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-top-4 pointer-events-none ${errors.name ? "text-red-400" : ""
                           }`}
                       >
                         Your Name
@@ -248,12 +248,12 @@ export default function ContactPage() {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder=" "
-                        className={`peer w-full bg-transparent border-b border-white/10 py-4 text-white outline-none transition-colors ${errors.email ? "border-red-500/50" : "focus:border-[#3b82f6]"
+                        className={`peer w-full bg-transparent border-b border-black/10 dark:border-white/10 py-4 text-black dark:text-white outline-none transition-colors ${errors.email ? "border-red-500/50" : "focus:border-brand-blue"
                           }`}
                         required
                       />
                       <label
-                        className={`absolute left-0 top-4 text-white/50 transition-all peer-focus:text-[#3b82f6] peer-focus:text-xs peer-focus:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-top-4 pointer-events-none ${errors.email ? "text-red-400" : ""
+                        className={`absolute left-0 top-4 text-black/50 dark:text-white/50 transition-all peer-focus:text-brand-blue peer-focus:text-xs peer-focus:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-top-4 pointer-events-none ${errors.email ? "text-red-400" : ""
                           }`}
                       >
                         Email Address
@@ -270,12 +270,12 @@ export default function ContactPage() {
                         onChange={handleChange}
                         placeholder=" "
                         rows={6}
-                        className={`peer w-full bg-transparent border-b border-white/10 py-4 text-white outline-none transition-colors resize-none ${errors.message ? "border-red-500/50" : "focus:border-[#3b82f6]"
+                        className={`peer w-full bg-transparent border-b border-black/10 dark:border-white/10 py-4 text-black dark:text-white outline-none transition-colors resize-none ${errors.message ? "border-red-500/50" : "focus:border-brand-blue"
                           }`}
                         required
                       />
                       <label
-                        className={`absolute left-0 top-4 text-white/50 transition-all peer-focus:text-[#3b82f6] peer-focus:text-xs peer-focus:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-top-4 pointer-events-none ${errors.message ? "text-red-400" : ""
+                        className={`absolute left-0 top-4 text-black/50 dark:text-white/50 transition-all peer-focus:text-brand-blue peer-focus:text-xs peer-focus:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-top-4 pointer-events-none ${errors.message ? "text-red-400" : ""
                           }`}
                       >
                         Tell us about your project...
@@ -287,12 +287,12 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="magnetic w-full py-5 border border-white/10 text-sm uppercase tracking-widest relative overflow-hidden group hover:border-[#3b82f6] transition-all duration-400 bg-white/[0.02] disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="magnetic w-full py-5 border border-black/10 dark:border-white/10 text-sm uppercase tracking-widest relative overflow-hidden group hover:border-brand-blue transition-all duration-400 bg-black/[0.02] dark:bg-white/[0.02] disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <span className="relative z-10 flex items-center justify-center gap-2">
                       {isSubmitting ? "Sending..." : "Send Message"} <Send className="h-4 w-4" />
                     </span>
-                    <div className="absolute inset-0 bg-[#3b82f6] scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-400 opacity-20" />
+                    <div className="absolute inset-0 bg-brand-blue scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-400 opacity-20" />
                   </button>
                 </form>
               </div>
@@ -306,19 +306,19 @@ export default function ContactPage() {
               className="space-y-8"
             >
               {/* Contact Details */}
-              <div className="glass p-10 rounded-3xl border border-white/5 relative overflow-hidden">
-                <h2 className="text-3xl font-light mb-8 text-white font-['Space_Grotesk',sans-serif]">Contact Info</h2>
+              <div className="glass p-10 rounded-3xl border border-black/5 dark:border-white/5 relative overflow-hidden">
+                <h2 className="text-3xl font-light mb-8 text-black dark:text-white font-grotesk">Contact Info</h2>
 
                 <div className="space-y-8">
                   <div className="flex items-start space-x-6 group">
-                    <div className="w-12 h-12 border border-white/10 rounded-full flex items-center justify-center group-hover:border-[#3b82f6] group-hover:text-[#3b82f6] transition-all duration-300">
-                      <Mail className="h-5 w-5 hover:text-[#3b82f6]" />
+                    <div className="w-12 h-12 border border-black/10 dark:border-white/10 rounded-full flex items-center justify-center group-hover:border-brand-blue group-hover:text-brand-blue transition-all duration-300">
+                      <Mail className="h-5 w-5 hover:text-brand-blue" />
                     </div>
                     <div>
-                      <h3 className="text-sm font-medium text-white/50 uppercase tracking-widest mb-1 font-['Space_Grotesk',sans-serif]">Email</h3>
+                      <h3 className="text-sm font-medium text-black/50 dark:text-white/50 uppercase tracking-widest mb-1 font-grotesk">Email</h3>
                       <a
                         href="mailto:ceo@trixode-studios.com"
-                        className="text-lg text-white hover:text-[#3b82f6] transition-colors font-light"
+                        className="text-lg text-black dark:text-white hover:text-brand-blue transition-colors font-light"
                       >
                         ceo@trixode-studios.com
                       </a>
@@ -326,30 +326,30 @@ export default function ContactPage() {
                   </div>
 
                   <div className="flex items-start space-x-6 group">
-                    <div className="w-12 h-12 border border-white/10 rounded-full flex items-center justify-center group-hover:border-[#3b82f6] group-hover:text-[#3b82f6] transition-all duration-300">
+                    <div className="w-12 h-12 border border-black/10 dark:border-white/10 rounded-full flex items-center justify-center group-hover:border-brand-blue group-hover:text-brand-blue transition-all duration-300">
                       <MapPin className="h-5 w-5" />
                     </div>
                     <div>
-                      <h3 className="text-sm font-medium text-white/50 uppercase tracking-widest mb-1 font-['Space_Grotesk',sans-serif]">Locations</h3>
-                      <p className="text-lg text-white font-light">Victoria, BC, Canada</p>
-                      <p className="text-lg text-white font-light">Quito, Ecuador</p>
+                      <h3 className="text-sm font-medium text-black/50 dark:text-white/50 uppercase tracking-widest mb-1 font-grotesk">Locations</h3>
+                      <p className="text-lg text-black dark:text-white font-light">Victoria, BC, Canada</p>
+                      <p className="text-lg text-black dark:text-white font-light">Quito, Ecuador</p>
                     </div>
                   </div>
 
                   <div className="flex items-start space-x-6 group">
-                    <div className="w-12 h-12 border border-white/10 rounded-full flex items-center justify-center group-hover:border-[#3b82f6] group-hover:text-[#3b82f6] transition-all duration-300">
+                    <div className="w-12 h-12 border border-black/10 dark:border-white/10 rounded-full flex items-center justify-center group-hover:border-brand-blue group-hover:text-brand-blue transition-all duration-300">
                       <Clock className="h-5 w-5" />
                     </div>
                     <div>
-                      <h3 className="text-sm font-medium text-white/50 uppercase tracking-widest mb-1 font-['Space_Grotesk',sans-serif]">Response Time</h3>
-                      <p className="text-lg text-white font-light">Within 24 hours</p>
+                      <h3 className="text-sm font-medium text-black/50 dark:text-white/50 uppercase tracking-widest mb-1 font-grotesk">Response Time</h3>
+                      <p className="text-lg text-black dark:text-white font-light">Within 24 hours</p>
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Map */}
-              <div className="glass p-2 rounded-3xl border border-white/5 overflow-hidden h-64 relative">
+              <div className="glass p-2 rounded-3xl border border-black/5 dark:border-white/5 overflow-hidden h-64 relative">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2644.4268!2d-123.3703512!3d48.4285154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x548f738ad41f3453%3A0x1e3e5d4d5f5f5f5f!2s341%20Quebec%20St%2C%20Victoria%2C%20BC%20V8V%201W4%2C%20Canada!5e0!3m2!1sen!2sus!4v1703123456789!5m2!1sen!2sus"
                   width="100%"
@@ -363,8 +363,8 @@ export default function ContactPage() {
               </div>
 
               {/* Social Links */}
-              <div className="glass p-10 rounded-3xl border border-white/5">
-                <h2 className="text-xl font-light mb-8 text-white font-['Space_Grotesk',sans-serif]">Follow Us</h2>
+              <div className="glass p-10 rounded-3xl border border-black/5 dark:border-white/5">
+                <h2 className="text-xl font-light mb-8 text-black dark:text-white font-grotesk">Follow Us</h2>
 
                 <div className="flex space-x-4">
                   {[
@@ -376,7 +376,7 @@ export default function ContactPage() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="magnetic w-14 h-14 border border-white/10 rounded-full flex items-center justify-center hover:bg-white text-white hover:text-black transition-all duration-300"
+                      className="magnetic w-14 h-14 border border-black/10 dark:border-white/10 rounded-full flex items-center justify-center hover:bg-black dark:hover:bg-white text-black dark:text-white hover:text-white dark:hover:text-black transition-all duration-300"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.95 }}
                     >

@@ -107,9 +107,9 @@ export default function CustomCursor() {
             {/* Main cursor ring */}
             <div
                 ref={cursorRef}
-                className={`fixed pointer-events-none z-[9999] rounded-full border border-[rgba(255,255,255,0.55)] transition-[width,height,background-color,border-color] duration-150 ease-out ${
+                className={`fixed pointer-events-none z-[9999] rounded-full border border-[rgba(0,0,0,0.4)] dark:border-[rgba(255,255,255,0.55)] transition-[width,height,background-color,border-color] duration-150 ease-out ${
                     isHovering
-                        ? "w-[42px] h-[42px] border-white/70 bg-white/15"
+                        ? "w-[42px] h-[42px] border-black/50 dark:border-white/70 bg-black/10 dark:bg-white/15"
                         : "w-[14px] h-[14px] bg-transparent"
                 }`}
                 style={{
@@ -129,7 +129,7 @@ export default function CustomCursor() {
                     left: 0,
                     top: 0,
                     transform: "translate3d(0, 0, 0) translate(-50%, -50%)",
-                    background: "radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, transparent 70%)",
+                    background: "var(--cursor-follower)",
                     willChange: "transform",
                 }}
             />

@@ -12,7 +12,7 @@ export default function AccessibilityPage() {
   useMagneticEffect()
 
   return (
-    <div className="min-h-screen bg-[#030303] text-white overflow-hidden">
+    <div className="min-h-screen bg-white dark:bg-[#030303] text-black dark:text-white overflow-hidden">
       {/* Custom Cursor */}
       <CustomCursor />
 
@@ -73,7 +73,7 @@ export default function AccessibilityPage() {
         className="fixed inset-0 pointer-events-none z-0"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px)",
+            "linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px)",
           backgroundSize: "100px 100px",
         }}
       />
@@ -89,7 +89,7 @@ export default function AccessibilityPage() {
           >
             <Link
               href="/"
-              className="magnetic inline-flex items-center text-white/50 hover:text-white transition-colors duration-300 font-medium group"
+              className="magnetic inline-flex items-center text-black/50 dark:text-white/50 hover:text-black dark:hover:text-white transition-colors duration-300 font-medium group"
             >
               <ArrowLeft className="mr-2 h-5 w-5" />
               Back to Home
@@ -98,7 +98,7 @@ export default function AccessibilityPage() {
 
           {/* Page Title */}
           <motion.h1
-            className="text-5xl md:text-7xl lg:text-8xl font-light mb-8 text-white font-['Space_Grotesk',sans-serif]"
+            className="text-5xl md:text-7xl lg:text-8xl font-light mb-8 text-black dark:text-white font-grotesk"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -107,7 +107,7 @@ export default function AccessibilityPage() {
           </motion.h1>
 
           <motion.div
-            className="text-white/40 mb-12"
+            className="text-black/40 dark:text-white/40 mb-12"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -122,9 +122,9 @@ export default function AccessibilityPage() {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <div className="space-y-8">
-              <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-['Space_Grotesk',sans-serif]">OUR COMMITMENT</h2>
-                <p className="text-white/60 leading-relaxed font-light">
+              <section className="glass rounded-3xl p-10 border border-black/5 dark:border-white/5">
+                <h2 className="text-2xl md:text-3xl font-light text-black dark:text-white mb-4 font-grotesk">OUR COMMITMENT</h2>
+                <p className="text-black/60 dark:text-white/60 leading-relaxed font-light">
                   Trixode Studios is committed to ensuring digital accessibility for people with disabilities. We are
                   continually improving the user experience for everyone and applying the relevant accessibility
                   standards to ensure we provide equal access to all users.
@@ -132,7 +132,7 @@ export default function AccessibilityPage() {
               </section>
 
               <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-['Space_Grotesk',sans-serif]">ACCESSIBILITY STANDARDS</h2>
+                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">ACCESSIBILITY STANDARDS</h2>
                 <p className="text-white/60 leading-relaxed font-light mb-4">
                   We strive to conform to the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA standards. These
                   guidelines explain how to make web content more accessible for people with disabilities and
@@ -141,7 +141,7 @@ export default function AccessibilityPage() {
                 <p className="text-white/60 leading-relaxed font-light">
                   Our website aims to achieve and maintain compliance with these standards through:
                 </p>
-                <ul className="list-disc list-inside mt-4 space-y-1 text-white/60 font-light">
+                <ul className="list-disc list-inside mt-4 space-y-1 text-black/60 dark:text-white/60 font-light">
                   <li>Proper semantic HTML structure</li>
                   <li>Sufficient color contrast ratios</li>
                   <li>Keyboard navigation support</li>
@@ -152,10 +152,10 @@ export default function AccessibilityPage() {
               </section>
 
               <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-['Space_Grotesk',sans-serif]">ACCESSIBILITY FEATURES</h2>
-                <div className="space-y-6 text-white/60 font-light">
+                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">ACCESSIBILITY FEATURES</h2>
+                <div className="space-y-6 text-black/60 dark:text-white/60 font-light">
                   <div>
-                    <h3 className="text-lg font-medium text-white mb-2 font-['Space_Grotesk',sans-serif]">Visual Accessibility</h3>
+                    <h3 className="text-lg font-medium text-black dark:text-white mb-2 font-grotesk">Visual Accessibility</h3>
                     <ul className="list-disc list-inside space-y-1">
                       <li>High contrast color schemes</li>
                       <li>Scalable fonts and responsive design</li>
@@ -164,7 +164,7 @@ export default function AccessibilityPage() {
                     </ul>
                   </div>
                   <div>
-                    <h3 className="text-lg font-medium text-white mb-2 font-['Space_Grotesk',sans-serif]">Motor Accessibility</h3>
+                    <h3 className="text-lg font-medium text-white mb-2 font-grotesk">Motor Accessibility</h3>
                     <ul className="list-disc list-inside space-y-1">
                       <li>Full keyboard navigation support</li>
                       <li>Large clickable areas</li>
@@ -173,7 +173,7 @@ export default function AccessibilityPage() {
                     </ul>
                   </div>
                   <div>
-                    <h3 className="text-lg font-medium text-white mb-2 font-['Space_Grotesk',sans-serif]">Cognitive Accessibility</h3>
+                    <h3 className="text-lg font-medium text-white mb-2 font-grotesk">Cognitive Accessibility</h3>
                     <ul className="list-disc list-inside space-y-1">
                       <li>Clear and simple language</li>
                       <li>Consistent navigation and layout</li>
@@ -185,11 +185,11 @@ export default function AccessibilityPage() {
               </section>
 
               <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-['Space_Grotesk',sans-serif]">ASSISTIVE TECHNOLOGIES</h2>
+                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">ASSISTIVE TECHNOLOGIES</h2>
                 <p className="text-white/60 leading-relaxed font-light mb-4">
                   Our website is designed to be compatible with assistive technologies, including:
                 </p>
-                <ul className="list-disc list-inside space-y-1 text-white/60 font-light">
+                <ul className="list-disc list-inside space-y-1 text-black/60 dark:text-white/60 font-light">
                   <li>Screen readers (NVDA, JAWS, VoiceOver)</li>
                   <li>Voice recognition software</li>
                   <li>Keyboard-only navigation</li>
@@ -199,11 +199,11 @@ export default function AccessibilityPage() {
               </section>
 
               <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-['Space_Grotesk',sans-serif]">ONGOING EFFORTS</h2>
+                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">ONGOING EFFORTS</h2>
                 <p className="text-white/60 leading-relaxed font-light mb-4">
                   We are continuously working to improve the accessibility of our website through:
                 </p>
-                <ul className="list-disc list-inside space-y-1 text-white/60 font-light">
+                <ul className="list-disc list-inside space-y-1 text-black/60 dark:text-white/60 font-light">
                   <li>Regular accessibility audits and testing</li>
                   <li>User feedback incorporation</li>
                   <li>Staff training on accessibility best practices</li>
@@ -213,12 +213,12 @@ export default function AccessibilityPage() {
               </section>
 
               <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-['Space_Grotesk',sans-serif]">FEEDBACK AND SUPPORT</h2>
+                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">FEEDBACK AND SUPPORT</h2>
                 <p className="text-white/60 leading-relaxed font-light mb-4">
                   We welcome your feedback on the accessibility of our website. If you encounter any accessibility
                   barriers or have suggestions for improvement, please let us know:
                 </p>
-                <div className="text-white/70 font-light space-y-2">
+                <div className="text-black/70 dark:text-white/70 font-light space-y-2">
                   <p>Email: accessibility@trixodestudios.com</p>
                   <p>Phone: Available upon request</p>
                   <p>Address: Victoria, BC, Canada</p>
@@ -229,7 +229,7 @@ export default function AccessibilityPage() {
               </section>
 
               <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-['Space_Grotesk',sans-serif]">ALTERNATIVE FORMATS</h2>
+                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">ALTERNATIVE FORMATS</h2>
                 <p className="text-white/60 leading-relaxed font-light">
                   If you need information from our website in an alternative format, such as large print, audio, or
                   Braille, please contact us. We will work with you to provide the information in a format that meets

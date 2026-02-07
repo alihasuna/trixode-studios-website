@@ -767,7 +767,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
   useMagneticEffect()
 
   return (
-    <div className="min-h-screen bg-[#030303] text-white overflow-hidden">
+    <div className="min-h-screen bg-white dark:bg-[#030303] text-black dark:text-white overflow-hidden">
       {/* Custom Cursor */}
       <CustomCursor />
 
@@ -828,7 +828,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
         className="fixed inset-0 pointer-events-none z-0"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px)",
+            "linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px)",
           backgroundSize: "100px 100px",
         }}
       />
@@ -844,7 +844,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
           >
             <Link
               href="/blog"
-              className="magnetic inline-flex items-center text-white/50 hover:text-white transition-colors duration-300 font-medium group"
+              className="magnetic inline-flex items-center text-black/50 dark:text-white/50 hover:text-black dark:hover:text-white transition-colors duration-300 font-medium group"
             >
               <ArrowLeft className="mr-2 h-5 w-5" />
               Back to Blog
@@ -859,16 +859,16 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div className="mb-6">
-              <span className="text-[#3b82f6] text-xs font-medium uppercase tracking-widest border border-[#3b82f6]/20 bg-[#3b82f6]/5 px-3 py-1 rounded-full">
+              <span className="text-brand-blue text-xs font-medium uppercase tracking-widest border border-brand-blue/20 bg-brand-blue/5 px-3 py-1 rounded-full">
                 {post.category}
               </span>
             </div>
 
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-light mb-6 text-white leading-tight font-['Space_Grotesk',sans-serif]">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-light mb-6 text-black dark:text-white leading-tight font-grotesk">
               {post.title}
             </h1>
 
-            <div className="flex flex-wrap items-center gap-6 text-white/40 font-light">
+            <div className="flex flex-wrap items-center gap-6 text-black/40 dark:text-white/40 font-light">
               <div className="flex items-center space-x-2">
                 <User className="h-4 w-4" />
                 <span>{post.author}</span>
@@ -1051,7 +1051,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              <h2 className="text-3xl font-black mb-8 text-white">RELATED POSTS</h2>
+              <h2 className="text-3xl font-black mb-8 text-black dark:text-white">RELATED POSTS</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {post.relatedPosts.map((relatedPost, index) => (
                   <Link
