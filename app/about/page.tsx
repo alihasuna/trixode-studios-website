@@ -82,9 +82,9 @@ export default function AboutPage() {
         <div className="max-w-6xl mx-auto px-6">
           {/* Back Button */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -12 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.4 }}
             className="mb-12"
           >
             <Link
@@ -99,9 +99,9 @@ export default function AboutPage() {
           {/* Page Title */}
           <motion.h1
             className="text-6xl md:text-8xl font-light mb-16 text-black dark:text-white font-grotesk"
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
           >
             About
           </motion.h1>
@@ -109,9 +109,9 @@ export default function AboutPage() {
           {/* Story Section */}
           <motion.section
             className="mb-24"
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
             <div className="flex items-center gap-4 mb-8">
               <span className="text-sm text-brand-blue font-medium font-grotesk">01</span>
@@ -140,9 +140,9 @@ export default function AboutPage() {
           {/* Mission & Vision */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-24">
             <motion.section
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
             >
               <div className="flex items-center gap-4 mb-8">
                 <span className="text-sm text-brand-blue font-medium font-grotesk">02</span>
@@ -159,9 +159,9 @@ export default function AboutPage() {
             </motion.section>
 
             <motion.section
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
             >
               <div className="flex items-center gap-4 mb-8">
                 <span className="text-sm text-brand-blue font-medium font-grotesk">03</span>
@@ -180,9 +180,9 @@ export default function AboutPage() {
 
           {/* Values Grid */}
           <motion.section
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
           >
             <div className="flex items-center gap-4 mb-12">
               <span className="text-sm text-brand-blue font-medium font-grotesk">04</span>
@@ -225,9 +225,9 @@ export default function AboutPage() {
                 <motion.div
                   key={value.title}
                   className="group glass p-8 rounded-2xl hover:bg-black/[0.08] dark:hover:bg-white/[0.08] transition-all duration-500 cursor-default"
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.2 + index * 0.1 }}
+                  transition={{ delay: 0.6 + index * 0.06 }}
                   whileHover={{ y: -5 }}
                 >
                   <h3 className="text-lg font-medium mb-4 text-black dark:text-white group-hover:text-brand-blue transition-colors font-grotesk tracking-wide">

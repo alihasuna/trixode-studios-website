@@ -189,9 +189,9 @@ export default function HomePage() {
                         {/* Hero Text */}
                         <div className="relative z-10">
                             <motion.div
-                                initial={{ opacity: 0, y: 30 }}
+                                initial={{ opacity: 0, y: 16 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.8, delay: 3.2 }}
+                                transition={{ duration: 0.5, delay: 3.2 }}
                                 className="flex items-center gap-4 mb-8"
                             >
                                 <div className="w-10 h-[1px] bg-brand-blue" style={{ boxShadow: "0 0 10px rgba(59, 130, 246, 0.4)" }} />
@@ -204,14 +204,14 @@ export default function HomePage() {
                                 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-light mb-8 leading-none tracking-tight"
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
-                                transition={{ delay: 3.4 }}
+                                transition={{ delay: 3.3 }}
                             >
                                 <span className="block overflow-hidden pb-[0.12em]">
                                     <motion.span
                                         className="block font-grotesk"
                                         initial={{ y: "110%" }}
                                         animate={{ y: 0 }}
-                                        transition={{ duration: 0.9, delay: 3.5, ease: [0.16, 1, 0.3, 1] }}
+                                        transition={{ duration: 0.7, delay: 3.35, ease: [0.16, 1, 0.3, 1] }}
                                         style={{ willChange: "transform" }}
                                     >
                                         Crafting
@@ -222,7 +222,7 @@ export default function HomePage() {
                                         className="block bg-gradient-to-r from-slate-800 to-brand-blue dark:from-white dark:to-brand-blue bg-clip-text text-transparent font-grotesk"
                                         initial={{ y: "110%" }}
                                         animate={{ y: 0 }}
-                                        transition={{ duration: 0.9, delay: 3.7, ease: [0.16, 1, 0.3, 1] }}
+                                        transition={{ duration: 0.7, delay: 3.5, ease: [0.16, 1, 0.3, 1] }}
                                         style={{ willChange: "transform" }}
                                     >
                                         Intelligence
@@ -231,9 +231,9 @@ export default function HomePage() {
                             </motion.h1>
 
                             <motion.p
-                                initial={{ opacity: 0, y: 30 }}
+                                initial={{ opacity: 0, y: 16 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.8, delay: 3.9 }}
+                                transition={{ duration: 0.5, delay: 3.6 }}
                                 className="text-lg text-black/50 dark:text-white/50 mb-12 max-w-[500px] leading-relaxed font-light"
                             >
                                 Advanced software infrastructure for AI research and scientific computing. We build elegant systems that
@@ -242,9 +242,9 @@ export default function HomePage() {
 
                             <motion.a
                                 href="#contact"
-                                initial={{ opacity: 0, y: 30 }}
+                                initial={{ opacity: 0, y: 16 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.8, delay: 4.1 }}
+                                transition={{ duration: 0.5, delay: 3.75 }}
                                 className="magnetic inline-flex items-center gap-4 px-8 py-4 border border-black/10 dark:border-white/10 text-sm uppercase tracking-widest relative overflow-hidden group"
                             >
                                 <span className="relative z-10">Start a Project</span>
@@ -285,7 +285,7 @@ export default function HomePage() {
                                         key={stat.label}
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: 4.0 + i * 0.1 }}
+                                        transition={{ delay: 3.7 + i * 0.08 }}
                                         className="glass p-4 rounded-2xl text-center"
                                     >
                                         <div
@@ -527,10 +527,10 @@ export default function HomePage() {
                             ].map((item, index) => (
                                 <motion.div
                                     key={item.num}
-                                    initial={{ opacity: 0, y: 50 }}
+                                    initial={{ opacity: 0, y: 24 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
+                                    transition={{ delay: index * 0.06 }}
                                     className="group bg-[rgba(0,0,0,0.02)] dark:bg-[rgba(255,255,255,0.02)] p-12 relative overflow-hidden cursor-pointer hover:bg-black/[0.06] dark:hover:bg-white/[0.06] transition-all duration-400"
                                 >
                                     <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
@@ -571,10 +571,10 @@ export default function HomePage() {
                                 <motion.a
                                     key={project.name}
                                     href="#"
-                                    initial={{ opacity: 0, y: 50 }}
+                                    initial={{ opacity: 0, y: 24 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
+                                    transition={{ delay: index * 0.06 }}
                                     className="magnetic group grid grid-cols-1 md:grid-cols-[100px_1fr_200px_auto] gap-8 p-12 border border-black/[0.08] dark:border-white/[0.08] items-center relative overflow-hidden hover:border-black/20 dark:hover:border-white/20 hover:translate-x-5 transition-all duration-400"
                                 >
                                     <div className="absolute inset-0 bg-gradient-to-r from-brand-blue/5 to-transparent -translate-x-full group-hover:translate-x-0 transition-transform duration-700" />
@@ -624,10 +624,10 @@ export default function HomePage() {
                             ].map((member, index) => (
                                 <motion.div
                                     key={member.name}
-                                    initial={{ opacity: 0, y: 50 }}
+                                    initial={{ opacity: 0, y: 24 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
+                                    transition={{ delay: index * 0.06 }}
                                     className="glass p-12 rounded-3xl text-center cursor-pointer group hover:-translate-y-2 transition-all duration-400"
                                 >
                                     <div className="w-28 h-28 mx-auto mb-8 rounded-full overflow-hidden border-2 border-black/10 dark:border-white/10 group-hover:border-brand-blue group-hover:scale-110 transition-all duration-400">
@@ -655,7 +655,7 @@ export default function HomePage() {
                         <div className="grid md:grid-cols-2 gap-16">
                             {/* Contact Info */}
                             <motion.div
-                                initial={{ opacity: 0, y: 50 }}
+                                initial={{ opacity: 0, y: 24 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                             >
@@ -693,7 +693,7 @@ export default function HomePage() {
 
                             {/* Contact Form */}
                             <motion.form
-                                initial={{ opacity: 0, y: 50 }}
+                                initial={{ opacity: 0, y: 24 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 className="flex flex-col gap-8"

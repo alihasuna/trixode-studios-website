@@ -258,7 +258,7 @@ export default function CareersPage() {
         <div className="max-w-5xl mx-auto px-6">
           {/* Back Button */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -12 }}
             animate={{ opacity: 1, x: 0 }}
             className="mb-8"
           >
@@ -305,7 +305,7 @@ export default function CareersPage() {
             {step === 0 && (
               <motion.div
                 key="step0"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 className="text-center"
@@ -351,7 +351,7 @@ export default function CareersPage() {
             {step === 1 && (
               <motion.div
                 key="step1"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
               >
@@ -438,7 +438,7 @@ export default function CareersPage() {
             {step === 2 && (
               <motion.div
                 key="step2"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
               >
@@ -556,7 +556,7 @@ export default function CareersPage() {
             {step === 3 && (
               <motion.div
                 key="step3"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
               >
@@ -707,7 +707,7 @@ export default function CareersPage() {
             {step === 4 && (
               <motion.div
                 key="step4"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
               >
@@ -804,7 +804,7 @@ export default function CareersPage() {
             {step === 5 && (
               <motion.div
                 key="step5"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
               >
@@ -881,7 +881,7 @@ export default function CareersPage() {
             {step === 6 && (
               <motion.div
                 key="step6"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="text-center"
               >

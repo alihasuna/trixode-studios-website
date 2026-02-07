@@ -208,9 +208,9 @@ export default function BlogPage() {
         <div className="max-w-7xl mx-auto px-6">
           {/* Back Button */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -12 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.4 }}
             className="mb-12"
           >
             <Link
@@ -225,9 +225,9 @@ export default function BlogPage() {
           {/* Page Title */}
           <motion.h1
             className="text-6xl md:text-8xl font-light mb-16 text-black dark:text-white font-grotesk"
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
           >
             Updates &
             <br />
@@ -237,9 +237,9 @@ export default function BlogPage() {
           {/* Category Filter */}
           <motion.div
             className="mb-16"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
             <div className="flex flex-wrap gap-3">
               {categories.map((category) => (
@@ -280,9 +280,9 @@ export default function BlogPage() {
               >
                 <motion.article
                   className="group glass p-8 rounded-3xl h-full flex flex-col justify-between hover:bg-black/[0.06] dark:hover:bg-white/[0.06] transition-all duration-500 border border-black/5 dark:border-white/5 hover:border-black/10 dark:hover:border-white/10"
-                  initial={{ opacity: 0, y: 50 }}
+                  initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
+                  transition={{ duration: 0.4, delay: 0.3 + index * 0.06 }}
                   whileHover={{ y: -5 }}
                 >
                   <div>
@@ -339,9 +339,9 @@ export default function BlogPage() {
           {/* Newsletter Signup */}
           <motion.section
             className="mt-32"
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
           >
             <div className="glass p-12 lg:p-16 rounded-3xl border border-black/5 dark:border-white/5 relative overflow-hidden text-center">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5" />

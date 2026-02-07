@@ -82,9 +82,9 @@ export default function PeoplePage() {
         <div className="max-w-6xl mx-auto px-6">
           {/* Back Button */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -12 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.4 }}
             className="mb-12"
           >
             <Link
@@ -99,9 +99,9 @@ export default function PeoplePage() {
           {/* Page Title */}
           <motion.h1
             className="text-6xl md:text-8xl font-light mb-16 text-black dark:text-white font-grotesk"
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
           >
             Our
             <br />
@@ -111,9 +111,9 @@ export default function PeoplePage() {
           {/* People Grid */}
           <motion.div
             className="grid grid-cols-1 xl:grid-cols-2 gap-12 mb-20"
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
             {/* Hussien Ballouk */}
             <div className="glass rounded-3xl p-10 relative overflow-hidden group hover:bg-black/[0.06] dark:hover:bg-white/[0.06] transition-all duration-500 border border-black/5 dark:border-white/5 hover:border-black/10 dark:hover:border-white/10">
@@ -218,9 +218,9 @@ export default function PeoplePage() {
           {/* Additional Info */}
           <motion.div
             className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8"
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
           >
             <div className="glass p-10 rounded-3xl border border-black/5 dark:border-white/5 hover:bg-black/[0.06] dark:hover:bg-white/[0.06] transition-all duration-300">
               <div className="flex items-center gap-4 mb-6">
@@ -240,9 +240,9 @@ export default function PeoplePage() {
                   <motion.li
                     key={skill}
                     className="flex items-center text-black/70 dark:text-white/70 font-light"
-                    initial={{ opacity: 0, x: -20 }}
+                    initial={{ opacity: 0, x: -12 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.8 + index * 0.1 }}
+                    transition={{ delay: 0.4 + index * 0.06 }}
                   >
                     <div className="w-1.5 h-1.5 bg-brand-blue rounded-full mr-3" />
                     {skill}

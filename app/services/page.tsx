@@ -497,9 +497,9 @@ export default function ServicesPage() {
         createTimeline()
             .add(heroEls, {
                 opacity: [0, 1],
-                translateY: [40, 0],
-                delay: stagger(120),
-                duration: 1000,
+                translateY: [24, 0],
+                delay: stagger(70),
+                duration: 600,
                 ease: "outExpo",
             })
 
@@ -510,21 +510,21 @@ export default function ServicesPage() {
             scale: [1, 1.08],
             direction: "alternate",
             ease: "inOutSine",
-            duration: 8000,
-            delay: stagger(2000),
+            duration: 10000,
+            delay: stagger(2500),
             loop: true,
         })
 
         /* ---- 3. Floating particles ---- */
         if (particleEls.length > 0) {
             animate(particleEls, {
-                translateY: [0, -18],
-                translateX: [0, 8],
-                opacity: [0.2, 0.6],
+                translateY: [0, -14],
+                translateX: [0, 6],
+                opacity: [0.2, 0.5],
                 direction: "alternate",
                 ease: "inOutSine",
-                duration: () => 2000 + Math.random() * 3000,
-                delay: stagger(200),
+                duration: () => 3000 + Math.random() * 3000,
+                delay: stagger(250),
                 loop: true,
             })
         }
@@ -535,7 +535,7 @@ export default function ServicesPage() {
                 const speed = parseFloat(el.getAttribute("data-orbit-speed") ?? "1")
                 animate(el, {
                     rotate: [0, 360],
-                    duration: 18000 / speed,
+                    duration: 24000 / speed,
                     easing: "linear",
                     loop: true,
                 })
@@ -544,12 +544,12 @@ export default function ServicesPage() {
 
         if (signalEls.length > 0) {
             animate(signalEls, {
-                scale: [0.85, 1.2],
-                opacity: [0.35, 0.9],
+                scale: [0.9, 1.15],
+                opacity: [0.4, 0.85],
                 direction: "alternate",
                 easing: "inOutSine",
-                duration: 1600,
-                delay: stagger(260),
+                duration: 2000,
+                delay: stagger(320),
                 loop: true,
             })
         }
@@ -570,8 +570,8 @@ export default function ServicesPage() {
                     if (type === "section") {
                         animate(el, {
                             opacity: [0, 1],
-                            translateY: [80, 0],
-                            duration: 1000,
+                            translateY: [40, 0],
+                            duration: 550,
                             ease: "outExpo",
                         })
 
@@ -584,9 +584,9 @@ export default function ServicesPage() {
                             if (features.length > 0) {
                                 animate(features, {
                                     opacity: [0, 1],
-                                    translateX: [-30, 0],
-                                    delay: stagger(80, { start: 400 }),
-                                    duration: 700,
+                                    translateX: [-16, 0],
+                                    delay: stagger(50, { start: 200 }),
+                                    duration: 400,
                                     ease: "outExpo",
                                 })
                                 features.forEach((f) => observer.unobserve(f))
@@ -603,14 +603,14 @@ export default function ServicesPage() {
                                 )
                                 animate(priceEl, {
                                     opacity: [0, 1],
-                                    translateY: [20, 0],
-                                    duration: 600,
+                                    translateY: [12, 0],
+                                    duration: 400,
                                     ease: "outExpo",
                                 })
                                 const counter = { val: 0 }
                                 animate(counter, {
                                     val: [0, target],
-                                    duration: 1800,
+                                    duration: 900,
                                     ease: "outExpo",
                                     onUpdate: () => {
                                         priceEl.textContent = formatPrice(
@@ -628,18 +628,18 @@ export default function ServicesPage() {
                             if (icon) {
                                 animate(icon, {
                                     opacity: [0, 1],
-                                    scale: [0.5, 1],
-                                    rotate: ["-20deg", "0deg"],
-                                    duration: 1200,
-                                    ease: "outElastic(1, 0.5)",
+                                    scale: [0.7, 1],
+                                    rotate: ["-12deg", "0deg"],
+                                    duration: 500,
+                                    ease: "outExpo",
                                 })
                                 animate(icon, {
-                                    translateY: [0, -16],
+                                    translateY: [0, -10],
                                     direction: "alternate",
                                     ease: "inOutSine",
-                                    duration: 3000,
+                                    duration: 2400,
                                     loop: true,
-                                    delay: 1200,
+                                    delay: 500,
                                 })
                                 observer.unobserve(icon)
                             }
@@ -651,7 +651,7 @@ export default function ServicesPage() {
                             if (line) {
                                 animate(line, {
                                     scaleY: [0, 1],
-                                    duration: 1400,
+                                    duration: 700,
                                     ease: "outExpo",
                                 })
                                 observer.unobserve(line)
@@ -672,15 +672,15 @@ export default function ServicesPage() {
 
                         animate(el, {
                             opacity: [0, 1],
-                            translateY: [30, 0],
-                            duration: 800,
+                            translateY: [16, 0],
+                            duration: 450,
                             ease: "outExpo",
                         })
 
                         const counter = { val: 0 }
                         animate(counter, {
                             val: [0, target],
-                            duration: 2000,
+                            duration: 1000,
                             ease: "outExpo",
                             onUpdate: () => {
                                 el.textContent =
@@ -694,9 +694,9 @@ export default function ServicesPage() {
                     if (type === "process") {
                         animate(el, {
                             opacity: [0, 1],
-                            translateY: [50, 0],
-                            scale: [0.92, 1],
-                            duration: 900,
+                            translateY: [24, 0],
+                            scale: [0.95, 1],
+                            duration: 500,
                             ease: "outExpo",
                         })
                     }
@@ -705,7 +705,7 @@ export default function ServicesPage() {
                     if (type === "timeline-line") {
                         animate(el, {
                             scaleX: [0, 1],
-                            duration: 1800,
+                            duration: 800,
                             ease: "outExpo",
                         })
                     }
@@ -714,9 +714,9 @@ export default function ServicesPage() {
                     if (type === "cta") {
                         animate(el, {
                             opacity: [0, 1],
-                            translateY: [100, 0],
-                            scale: [0.9, 1],
-                            duration: 1200,
+                            translateY: [40, 0],
+                            scale: [0.95, 1],
+                            duration: 600,
                             ease: "outExpo",
                         })
                         const children = el.querySelectorAll(
@@ -725,9 +725,9 @@ export default function ServicesPage() {
                         if (children.length > 0) {
                             animate(children, {
                                 opacity: [0, 1],
-                                translateY: [40, 0],
-                                delay: stagger(140, { start: 500 }),
-                                duration: 900,
+                                translateY: [20, 0],
+                                delay: stagger(80, { start: 250 }),
+                                duration: 500,
                                 ease: "outExpo",
                             })
                         }

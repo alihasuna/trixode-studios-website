@@ -34,7 +34,7 @@ export default function FloatingNav() {
 
     return (
         <nav
-            className={`fixed top-4 md:top-8 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] md:w-[calc(100%-4rem)] max-w-[1400px] z-[100] ${prefersReducedMotion ? "" : "transition-all duration-400"} rounded-full px-4 md:px-8 py-3 md:py-4 ${scrolled
+            className={`fixed top-4 lg:top-8 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] lg:w-[calc(100%-4rem)] max-w-[1400px] z-[100] ${prefersReducedMotion ? "" : "transition-all duration-400"} rounded-full px-4 lg:px-8 py-3 lg:py-4 ${scrolled
                 ? "bg-white/80 dark:bg-[#030303]/80 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.08)] dark:shadow-[0_20px_40px_rgba(0,0,0,0.3)]"
                 : "bg-transparent"
                 }`}
@@ -49,7 +49,7 @@ export default function FloatingNav() {
                 </Link>
 
                 {/* Desktop Navigation Links */}
-                <div className="hidden md:flex items-center gap-8">
+                <div className="hidden lg:flex items-center gap-8">
                     <ul className="flex items-center gap-12">
                         {navLinks.map((link) => {
                             const isActive = pathname === link.href || (pathname?.startsWith(link.href) && link.href !== "/")
@@ -74,7 +74,7 @@ export default function FloatingNav() {
                 </div>
 
                 {/* Mobile Menu */}
-                <div className="md:hidden flex items-center gap-3">
+                <div className="lg:hidden flex items-center gap-3">
                     <ThemeToggle />
                     <MobileMenu currentPath={pathname || "/"} />
                 </div>

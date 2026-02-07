@@ -162,9 +162,9 @@ export default function ContactPage() {
         <div className="max-w-6xl mx-auto px-6">
           {/* Back Button */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -12 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.4 }}
             className="mb-12"
           >
             <Link
@@ -179,9 +179,9 @@ export default function ContactPage() {
           {/* Page Title */}
           <motion.h1
             className="text-6xl md:text-8xl font-light mb-16 text-black dark:text-white font-grotesk"
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
           >
             Get in
             <br />
@@ -191,9 +191,9 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Contact Form */}
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
             >
               <div className="glass p-10 rounded-3xl border border-black/5 dark:border-white/5 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-brand-blue/5 to-transparent rounded-full blur-3xl -z-10" />
@@ -300,9 +300,9 @@ export default function ContactPage() {
 
             {/* Contact Info & Map */}
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
               className="space-y-8"
             >
               {/* Contact Details */}
