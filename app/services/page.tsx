@@ -503,55 +503,62 @@ export default function ServicesPage() {
                 ease: "outExpo",
             })
 
-        /* ---- 2. Aurora morph ---- */
-        animate(auroraEls, {
-            translateY: [0, -40],
-            translateX: [0, 30],
-            scale: [1, 1.08],
-            direction: "alternate",
-            ease: "inOutSine",
-            duration: 10000,
-            delay: stagger(2500),
-            loop: true,
-        })
+        /* ---- 2. Continuous loops (desktop only — too heavy for mobile GPUs) ---- */
+        const isDesktopDevice = window.matchMedia(
+            "(min-width: 1024px) and (hover: hover) and (pointer: fine)"
+        ).matches
 
-        /* ---- 3. Floating particles ---- */
-        if (particleEls.length > 0) {
-            animate(particleEls, {
-                translateY: [0, -14],
-                translateX: [0, 6],
-                opacity: [0.2, 0.5],
+        if (isDesktopDevice) {
+            /* Aurora morph */
+            animate(auroraEls, {
+                translateY: [0, -40],
+                translateX: [0, 30],
+                scale: [1, 1.08],
                 direction: "alternate",
                 ease: "inOutSine",
-                duration: () => 3000 + Math.random() * 3000,
-                delay: stagger(250),
+                duration: 10000,
+                delay: stagger(2500),
                 loop: true,
             })
-        }
 
-        /* ---- 3b. Orbital figure motion ---- */
-        if (orbitEls.length > 0) {
-            orbitEls.forEach((el) => {
-                const speed = parseFloat(el.getAttribute("data-orbit-speed") ?? "1")
-                animate(el, {
-                    rotate: [0, 360],
-                    duration: 24000 / speed,
-                    easing: "linear",
+            /* Floating particles */
+            if (particleEls.length > 0) {
+                animate(particleEls, {
+                    translateY: [0, -14],
+                    translateX: [0, 6],
+                    opacity: [0.2, 0.5],
+                    direction: "alternate",
+                    ease: "inOutSine",
+                    duration: () => 3000 + Math.random() * 3000,
+                    delay: stagger(250),
                     loop: true,
                 })
-            })
-        }
+            }
 
-        if (signalEls.length > 0) {
-            animate(signalEls, {
-                scale: [0.9, 1.15],
-                opacity: [0.4, 0.85],
-                direction: "alternate",
-                easing: "inOutSine",
-                duration: 2000,
-                delay: stagger(320),
-                loop: true,
-            })
+            /* Orbital figure motion */
+            if (orbitEls.length > 0) {
+                orbitEls.forEach((el) => {
+                    const speed = parseFloat(el.getAttribute("data-orbit-speed") ?? "1")
+                    animate(el, {
+                        rotate: [0, 360],
+                        duration: 24000 / speed,
+                        easing: "linear",
+                        loop: true,
+                    })
+                })
+            }
+
+            if (signalEls.length > 0) {
+                animate(signalEls, {
+                    scale: [0.9, 1.15],
+                    opacity: [0.4, 0.85],
+                    direction: "alternate",
+                    easing: "inOutSine",
+                    duration: 2000,
+                    delay: stagger(320),
+                    loop: true,
+                })
+            }
         }
 
 
@@ -807,7 +814,7 @@ export default function ServicesPage() {
             <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
                 <div
                     data-animate="aurora"
-                    className="absolute w-[900px] h-[900px] -top-60 -right-60 rounded-full blur-[140px] opacity-15"
+                    className="absolute w-[500px] h-[500px] lg:w-[900px] lg:h-[900px] -top-60 -right-60 rounded-full blur-[60px] lg:blur-[140px] opacity-10 lg:opacity-15"
                     style={{
                         background:
                             "radial-gradient(circle, rgba(59,130,246,0.4) 0%, transparent 70%)",
@@ -815,7 +822,7 @@ export default function ServicesPage() {
                 />
                 <div
                     data-animate="aurora"
-                    className="absolute w-[700px] h-[700px] top-[40%] -left-40 rounded-full blur-[120px] opacity-15"
+                    className="absolute w-[400px] h-[400px] lg:w-[700px] lg:h-[700px] top-[40%] -left-40 rounded-full blur-[60px] lg:blur-[120px] opacity-10 lg:opacity-15"
                     style={{
                         background:
                             "radial-gradient(circle, rgba(139,92,246,0.3) 0%, transparent 70%)",
@@ -823,7 +830,7 @@ export default function ServicesPage() {
                 />
                 <div
                     data-animate="aurora"
-                    className="absolute w-[500px] h-[500px] bottom-[10%] right-[20%] rounded-full blur-[100px] opacity-10"
+                    className="absolute w-[300px] h-[300px] lg:w-[500px] lg:h-[500px] bottom-[10%] right-[20%] rounded-full blur-[60px] lg:blur-[100px] opacity-8 lg:opacity-10"
                     style={{
                         background:
                             "radial-gradient(circle, rgba(6,182,212,0.3) 0%, transparent 70%)",

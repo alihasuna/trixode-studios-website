@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
 import Link from "next/link"
 import { useState } from "react"
 import { ArrowLeft, ArrowRight, Check, Send, Code, Brain, Users, Zap } from "lucide-react"
@@ -9,6 +9,7 @@ import Footer from "@/components/footer"
 import CustomCursor from "@/components/ui/CustomCursor"
 import FloatingNav from "@/components/layout/FloatingNav"
 import { useMagneticEffect } from "@/hooks/useMagneticEffect"
+import { useMediaQuery } from "@/hooks/useMediaQuery"
 
 // Types
 interface FormData {
@@ -83,6 +84,9 @@ const experienceOptions = ["< 1 year", "1-2 years", "3-5 years", "5-10 years", "
 const communicationOptions = ["Mostly async (Slack, email)", "Mostly sync (calls, meetings)", "Balanced mix"]
 
 export default function CareersPage() {
+  const isDesktop = useMediaQuery("(min-width: 1024px) and (hover: hover) and (pointer: fine)")
+  const prefersReducedMotion = useReducedMotion()
+  const enableHeavyEffects = !prefersReducedMotion && isDesktop
   const [step, setStep] = useState(0)
   const [formData, setFormData] = useState<FormData>(initialFormData)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -197,51 +201,34 @@ export default function CareersPage() {
 
       {/* Background Aurora Effects */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        <motion.div
-          className="absolute w-[600px] h-[600px] -top-20 -left-20 rounded-full blur-[100px] opacity-30"
-          style={{
-            background: "radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, transparent 70%)",
-          }}
-          animate={{
-            x: [0, 30, 0],
-            y: [0, 50, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className="absolute w-[500px] h-[500px] top-1/3 -right-10 rounded-full blur-[100px] opacity-30"
-          style={{
-            background: "radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%)",
-          }}
-          animate={{
-            x: [0, -20, 0],
-            y: [0, 30, 0],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className="absolute w-[400px] h-[400px] bottom-0 left-1/3 rounded-full blur-[100px] opacity-30"
-          style={{
-            background: "radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, transparent 70%)",
-          }}
-          animate={{
-            x: [0, 40, 0],
-            y: [0, -30, 0],
-          }}
-          transition={{
-            duration: 18,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
+        {enableHeavyEffects ? (
+          <>
+            <motion.div
+              className="absolute w-[600px] h-[600px] -top-20 -left-20 rounded-full blur-[100px] opacity-30"
+              style={{ background: "radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, transparent 70%)" }}
+              animate={{ x: [0, 30, 0], y: [0, 50, 0] }}
+              transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <motion.div
+              className="absolute w-[500px] h-[500px] top-1/3 -right-10 rounded-full blur-[100px] opacity-30"
+              style={{ background: "radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%)" }}
+              animate={{ x: [0, -20, 0], y: [0, 30, 0] }}
+              transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <motion.div
+              className="absolute w-[400px] h-[400px] bottom-0 left-1/3 rounded-full blur-[100px] opacity-30"
+              style={{ background: "radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, transparent 70%)" }}
+              animate={{ x: [0, 40, 0], y: [0, -30, 0] }}
+              transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </>
+        ) : (
+          <>
+            <div className="absolute w-[400px] h-[400px] -top-20 -left-20 rounded-full blur-[60px] opacity-20" style={{ background: "radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%)" }} />
+            <div className="absolute w-[350px] h-[350px] top-1/3 -right-10 rounded-full blur-[60px] opacity-20" style={{ background: "radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 70%)" }} />
+            <div className="absolute w-[300px] h-[300px] bottom-0 left-1/3 rounded-full blur-[60px] opacity-20" style={{ background: "radial-gradient(circle, rgba(6, 182, 212, 0.2) 0%, transparent 70%)" }} />
+          </>
+        )}
       </div>
 
       {/* Grid Overlay */}
