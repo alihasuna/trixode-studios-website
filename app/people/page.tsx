@@ -1,6 +1,7 @@
 "use client"
 
 import { motion, useReducedMotion } from "framer-motion"
+import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft, Github, Linkedin, Mail, Code, Brain, Rocket, Users, Globe } from "lucide-react"
 import CustomCursor from "@/components/ui/CustomCursor"
@@ -110,11 +111,13 @@ export default function PeoplePage() {
                 {/* Avatar */}
                 <div className="relative w-48 h-48 sm:w-56 sm:h-56">
                   <div className="relative w-full h-full rounded-2xl overflow-hidden border border-black/10 dark:border-white/10 shadow-2xl group-hover:scale-105 transition-transform duration-500">
-                    <img
+                    <Image
                       src="https://res.cloudinary.com/dmkfxjv0s/image/upload/w_400,h_400,c_fill,g_face,f_auto,q_auto/v1749088385/ceo_photo.png"
                       alt="Hussien Ballouk - CEO of Trixode Studios"
-                      className="w-full h-full object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-500"
-                      loading="lazy"
+                      fill
+                      sizes="(max-width: 640px) 192px, 224px"
+                      className="object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-500"
+                      priority={false}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                   </div>
@@ -161,11 +164,13 @@ export default function PeoplePage() {
                 {/* Avatar */}
                 <div className="relative w-48 h-48 sm:w-56 sm:h-56">
                   <div className="relative w-full h-full rounded-2xl overflow-hidden border border-black/10 dark:border-white/10 shadow-2xl group-hover:scale-105 transition-transform duration-500">
-                    <img
+                    <Image
                       src="https://res.cloudinary.com/dnsl6kst1/image/upload/v1770191425/ChatGPT_Image_Feb_3_2026_11_47_46_PM_sasgnj.png"
                       alt="Amir Ahmadian - Chief Scientific Officer at Trixode Studios"
-                      className="w-full h-full object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-500"
-                      loading="lazy"
+                      fill
+                      sizes="(max-width: 640px) 192px, 224px"
+                      className="object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-500"
+                      priority={false}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                   </div>

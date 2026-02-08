@@ -467,32 +467,31 @@ export default function FluidBackground() {
         }
 
         // Create shader program wrapper
-        class Program {
-            uniforms: Record<string, WebGLUniformLocation>
-            program: WebGLProgram
+        const createProgramWrapper = (vertexShader: WebGLShader, fragmentShader: WebGLShader) => {
+            const program = createProgram(vertexShader, fragmentShader)!
+            const uniforms = getUniforms(program)
 
-            constructor(vertexShader: WebGLShader, fragmentShader: WebGLShader) {
-                this.program = createProgram(vertexShader, fragmentShader)!
-                this.uniforms = getUniforms(this.program)
-            }
-
-            bind() {
-                gl!.useProgram(this.program)
+            return {
+                program,
+                uniforms,
+                bind() {
+                    gl!.useProgram(program)
+                },
             }
         }
 
         // Compile all shaders
         const baseVertex = compileShader(gl.VERTEX_SHADER, baseVertexShader)!
 
-        const clearProgram = new Program(baseVertex, compileShader(gl.FRAGMENT_SHADER, clearShader)!)
-        const splatProgram = new Program(baseVertex, compileShader(gl.FRAGMENT_SHADER, splatShader)!)
-        const advectionProgram = new Program(baseVertex, compileShader(gl.FRAGMENT_SHADER, advectionShader)!)
-        const divergenceProgram = new Program(baseVertex, compileShader(gl.FRAGMENT_SHADER, divergenceShader)!)
-        const curlProgram = new Program(baseVertex, compileShader(gl.FRAGMENT_SHADER, curlShader)!)
-        const vorticityProgram = new Program(baseVertex, compileShader(gl.FRAGMENT_SHADER, vorticityShader)!)
-        const pressureProgram = new Program(baseVertex, compileShader(gl.FRAGMENT_SHADER, pressureShader)!)
-        const gradientSubtractProgram = new Program(baseVertex, compileShader(gl.FRAGMENT_SHADER, gradientSubtractShader)!)
-        const displayProgram = new Program(baseVertex, compileShader(gl.FRAGMENT_SHADER, displayShaderSource)!)
+        const clearProgram = createProgramWrapper(baseVertex, compileShader(gl.FRAGMENT_SHADER, clearShader)!)
+        const splatProgram = createProgramWrapper(baseVertex, compileShader(gl.FRAGMENT_SHADER, splatShader)!)
+        const advectionProgram = createProgramWrapper(baseVertex, compileShader(gl.FRAGMENT_SHADER, advectionShader)!)
+        const divergenceProgram = createProgramWrapper(baseVertex, compileShader(gl.FRAGMENT_SHADER, divergenceShader)!)
+        const curlProgram = createProgramWrapper(baseVertex, compileShader(gl.FRAGMENT_SHADER, curlShader)!)
+        const vorticityProgram = createProgramWrapper(baseVertex, compileShader(gl.FRAGMENT_SHADER, vorticityShader)!)
+        const pressureProgram = createProgramWrapper(baseVertex, compileShader(gl.FRAGMENT_SHADER, pressureShader)!)
+        const gradientSubtractProgram = createProgramWrapper(baseVertex, compileShader(gl.FRAGMENT_SHADER, gradientSubtractShader)!)
+        const displayProgram = createProgramWrapper(baseVertex, compileShader(gl.FRAGMENT_SHADER, displayShaderSource)!)
 
         // Create vertex buffer (single quad for all full-screen passes)
         const vertexBuffer = gl.createBuffer()

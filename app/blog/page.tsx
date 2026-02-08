@@ -1,74 +1,16 @@
 "use client"
 
+import { useState } from "react"
 import { motion, useReducedMotion } from "framer-motion"
 import Link from "next/link"
 import { ArrowLeft, Calendar, ArrowRight, BookOpen, Mail, CheckCircle, AlertCircle } from "lucide-react"
+
+import { blogPosts } from "@/app/blog/blogData"
 import CustomCursor from "@/components/ui/CustomCursor"
 import FloatingNav from "@/components/layout/FloatingNav"
 import Footer from "@/components/footer"
 import { useMagneticEffect } from "@/hooks/useMagneticEffect"
 import { useMediaQuery } from "@/hooks/useMediaQuery"
-import { useState } from "react"
-
-const blogPosts = [
-  {
-    id: 1,
-    title: "The Future of AI in Research Tools",
-    category: "AI & Research",
-    date: "2024-01-15",
-    excerpt:
-      "Exploring how artificial intelligence is revolutionizing the way researchers approach complex problems and data analysis.",
-    readTime: "5 min read",
-    slug: "future-of-ai-research-tools",
-  },
-  {
-    id: 2,
-    title: "Building Elegant Software Architecture",
-    category: "Software Dev",
-    date: "2024-01-10",
-    excerpt:
-      "A deep dive into the principles of creating maintainable, scalable, and beautiful code that stands the test of time.",
-    readTime: "8 min read",
-    slug: "building-elegant-software-architecture",
-  },
-  {
-    id: 3,
-    title: "Bridging Academia and Industry",
-    category: "Research Impact",
-    date: "2024-01-05",
-    excerpt: "How we're working to close the gap between cutting-edge research and practical, real-world applications.",
-    readTime: "6 min read",
-    slug: "bridging-academia-industry",
-  },
-  {
-    id: 4,
-    title: "Quantum Computing and Software Design",
-    category: "Quantum Tech",
-    date: "2023-12-28",
-    excerpt: "Exploring the intersection of quantum computing principles and modern software architecture patterns.",
-    readTime: "7 min read",
-    slug: "quantum-computing-software-design",
-  },
-  {
-    id: 5,
-    title: "Open Source and Research Collaboration",
-    category: "Open Source",
-    date: "2023-12-20",
-    excerpt:
-      "The importance of open-source software in advancing scientific research and fostering global collaboration.",
-    readTime: "5 min read",
-    slug: "open-source-research-collaboration",
-  },
-  {
-    id: 6,
-    title: "Performance Optimization for AI Tools",
-    category: "Performance",
-    date: "2023-12-15",
-    excerpt: "Technical strategies for building fast, responsive AI-powered applications that scale with user demand.",
-    readTime: "10 min read",
-    slug: "performance-optimization-ai-tools",
-  },
-]
 
 const categories = [
   "All",

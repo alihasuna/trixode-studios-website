@@ -88,7 +88,6 @@ export default function WelcomeLoader({ onLoadingComplete, onAnimationProgress }
         return () => {
             timers.forEach(clearTimeout)
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isMounted, prefersReducedMotion])
 
     // Multi-layer curtain configuration - adapts to current theme

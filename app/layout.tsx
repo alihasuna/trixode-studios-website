@@ -36,13 +36,13 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Trixode Studios - Crafting the Future of Software",
+  title: {
+    default: "Trixode Studios - Crafting the Future of Software",
+    template: "%s | Trixode Studios",
+  },
   description: "High-tech software and AI studio crafting elegant tools for scientists, innovators, and creators. We specialize in AI-powered solutions, research tools and advanced software development.",
   keywords: "AI, software development, research tools, innovation, technology, quantum computing, machine learning, scientific tools, data science",
   authors: [{ name: "Trixode Studios" }],
-  alternates: {
-    canonical: "/",
-  },
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
@@ -56,6 +56,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteUrl,
+    siteName: "Trixode Studios",
     images: [
       {
         url: "/logo.png",
