@@ -26,6 +26,53 @@ export default function HomePage() {
     const htmlOverflowRef = useRef<string | null>(null)
     const bodyOverflowRef = useRef<string | null>(null)
 
+    // Form state
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        message: "",
+    })
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    const [isSuccess, setIsSuccess] = useState(false)
+    const [errorMessage, setErrorMessage] = useState<string | null>(null)
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { id, value } = e.target
+        setFormData((prev) => ({
+            ...prev,
+            [id]: value,
+        }))
+    }
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault()
+        setIsSubmitting(true)
+        setErrorMessage(null)
+
+        try {
+            const response = await fetch("/api/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            })
+
+            const data = await response.json()
+
+            if (!response.ok) {
+                throw new Error(data.error || "Something went wrong")
+            }
+
+            setIsSuccess(true)
+            setFormData({ name: "", email: "", message: "" })
+        } catch (error) {
+            setErrorMessage(error instanceof Error ? error.message : "Failed to send message")
+        } finally {
+            setIsSubmitting(false)
+        }
+    }
+
     useEffect(() => {
         if (!enableHeavyEffects) {
             setShowHeroBlob(false)
@@ -681,69 +728,114 @@ export default function HomePage() {
                             </motion.div>
 
                             {/* Contact Form */}
-                            <motion.form
+                            <motion.div
                                 initial={{ opacity: 0, y: 24 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 className="flex flex-col gap-8"
-                                onSubmit={(e) => {
-                                    e.preventDefault()
-                                    alert("Form submitted! (Demo only)")
-                                }}
                             >
-                                <div className="relative">
-                                    <input
-                                        type="text"
-                                        placeholder=" "
-                                        id="name"
-                                        className="peer w-full bg-transparent border-b border-black/10 dark:border-white/10 py-4 text-black dark:text-white outline-none focus:border-brand-blue transition-colors"
-                                    />
-                                    <label
-                                        htmlFor="name"
-                                        className="absolute left-0 top-4 text-black/50 dark:text-white/50 transition-all peer-focus:text-brand-blue peer-focus:text-xs peer-focus:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-top-4"
+                                {isSuccess ? (
+                                    <motion.div
+                                        initial={{ opacity: 0, scale: 0.95 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        className="glass p-8 rounded-3xl text-center flex flex-col items-center justify-center h-full min-h-[400px]"
                                     >
-                                        Your Name
-                                    </label>
-                                </div>
+                                        <div className="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mb-6">
+                                            <svg className="w-8 h-8 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                            </svg>
+                                        </div>
+                                        <h3 className="text-2xl font-light mb-4 text-black dark:text-white">Message Sent!</h3>
+                                        <p className="text-black/50 dark:text-white/50 mb-8 max-w-[300px]">
+                                            Thanks for reaching out. We've received your message and will get back to you within 24 hours.
+                                        </p>
+                                        <button
+                                            onClick={() => setIsSuccess(false)}
+                                            className="text-brand-blue hover:text-brand-blue/80 text-sm uppercase tracking-widest transition-colors"
+                                        >
+                                            Send Another Message
+                                        </button>
+                                    </motion.div>
+                                ) : (
+                                    <form onSubmit={handleSubmit} className="flex flex-col gap-8">
+                                        {errorMessage && (
+                                            <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-xl text-red-500 text-sm">
+                                                {errorMessage}
+                                            </div>
+                                        )}
 
-                                <div className="relative">
-                                    <input
-                                        type="email"
-                                        placeholder=" "
-                                        id="email"
-                                        className="peer w-full bg-transparent border-b border-black/10 dark:border-white/10 py-4 text-black dark:text-white outline-none focus:border-brand-blue transition-colors"
-                                    />
-                                    <label
-                                        htmlFor="email"
-                                        className="absolute left-0 top-4 text-black/50 dark:text-white/50 transition-all peer-focus:text-brand-blue peer-focus:text-xs peer-focus:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-top-4"
-                                    >
-                                        Email Address
-                                    </label>
-                                </div>
+                                        <div className="relative">
+                                            <input
+                                                type="text"
+                                                placeholder=" "
+                                                id="name"
+                                                value={formData.name}
+                                                onChange={handleInputChange}
+                                                required
+                                                disabled={isSubmitting}
+                                                className="peer w-full bg-transparent border-b border-black/10 dark:border-white/10 py-4 text-black dark:text-white outline-none focus:border-brand-blue transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                            />
+                                            <label
+                                                htmlFor="name"
+                                                className="absolute left-0 top-4 text-black/50 dark:text-white/50 transition-all peer-focus:text-brand-blue peer-focus:text-xs peer-focus:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-top-4"
+                                            >
+                                                Your Name
+                                            </label>
+                                        </div>
 
-                                <div className="relative">
-                                    <textarea
-                                        placeholder=" "
-                                        id="message"
-                                        rows={4}
-                                        className="peer w-full bg-transparent border-b border-black/10 dark:border-white/10 py-4 text-black dark:text-white outline-none focus:border-brand-blue transition-colors resize-none"
-                                    />
-                                    <label
-                                        htmlFor="message"
-                                        className="absolute left-0 top-4 text-black/50 dark:text-white/50 transition-all peer-focus:text-brand-blue peer-focus:text-xs peer-focus:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-top-4"
-                                    >
-                                        What's the biggest bottleneck in your business right now?
-                                    </label>
-                                </div>
+                                        <div className="relative">
+                                            <input
+                                                type="email"
+                                                placeholder=" "
+                                                id="email"
+                                                value={formData.email}
+                                                onChange={handleInputChange}
+                                                required
+                                                disabled={isSubmitting}
+                                                className="peer w-full bg-transparent border-b border-black/10 dark:border-white/10 py-4 text-black dark:text-white outline-none focus:border-brand-blue transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                            />
+                                            <label
+                                                htmlFor="email"
+                                                className="absolute left-0 top-4 text-black/50 dark:text-white/50 transition-all peer-focus:text-brand-blue peer-focus:text-xs peer-focus:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-top-4"
+                                            >
+                                                Email Address
+                                            </label>
+                                        </div>
 
-                                <button
-                                    type="submit"
-                                    className="magnetic w-full py-5 border border-black/10 dark:border-white/10 text-sm uppercase tracking-widest relative overflow-hidden group hover:border-brand-blue transition-all duration-400"
-                                >
-                                    <span className="relative z-10">Send Message — We'll Reply Within 24 Hours</span>
-                                    <div className="absolute inset-0 bg-brand-blue scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-400" />
-                                </button>
-                            </motion.form>
+                                        <div className="relative">
+                                            <textarea
+                                                placeholder=" "
+                                                id="message"
+                                                rows={4}
+                                                value={formData.message}
+                                                onChange={handleInputChange}
+                                                required
+                                                disabled={isSubmitting}
+                                                className="peer w-full bg-transparent border-b border-black/10 dark:border-white/10 py-4 text-black dark:text-white outline-none focus:border-brand-blue transition-colors resize-none disabled:opacity-50 disabled:cursor-not-allowed"
+                                            />
+                                            <label
+                                                htmlFor="message"
+                                                className="absolute left-0 top-4 text-black/50 dark:text-white/50 transition-all peer-focus:text-brand-blue peer-focus:text-xs peer-focus:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-top-4"
+                                            >
+                                                What's the biggest bottleneck in your business right now?
+                                            </label>
+                                        </div>
+
+                                        <button
+                                            type="submit"
+                                            disabled={isSubmitting}
+                                            className="magnetic w-full py-5 border border-black/10 dark:border-white/10 text-sm uppercase tracking-widest relative overflow-hidden group hover:border-brand-blue transition-all duration-400 disabled:opacity-70 disabled:cursor-not-allowed"
+                                        >
+                                            <span className="relative z-10">
+                                                {isSubmitting ? "Sending..." : "Send Message — We'll Reply Within 24 Hours"}
+                                            </span>
+                                            {!isSubmitting && (
+                                                <div className="absolute inset-0 bg-brand-blue scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-400" />
+                                            )}
+                                        </button>
+                                    </form>
+                                )}
+                            </motion.div>
                         </div>
                     </div>
                 </section>
