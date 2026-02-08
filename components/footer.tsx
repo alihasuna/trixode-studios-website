@@ -15,12 +15,15 @@ export default function Footer() {
               <span className="text-xl font-medium text-black dark:text-white font-grotesk">Trixode Studios</span>
             </div>
             <p className="text-black/60 dark:text-white/60 mb-6 font-light leading-relaxed max-w-md">
-              Building beautiful and elegant software that empowers scientists, innovators, and creators with AI-powered
-              tools.
+              The AI agency that builds intelligent systems to automate your business and accelerate growth.
             </p>
-            <div className="flex items-center space-x-2 text-black/50 dark:text-white/50 mb-4">
+            <div className="flex items-center space-x-2 text-black/50 dark:text-white/50 mb-2">
               <MapPin className="h-4 w-4" />
               <span className="font-light">Victoria, BC, Canada</span>
+            </div>
+            <div className="flex items-center space-x-2 text-black/50 dark:text-white/50 mb-4">
+              <MapPin className="h-4 w-4" />
+              <span className="font-light">Quito, Ecuador</span>
             </div>
             <div className="flex space-x-4">
               {[
@@ -48,7 +51,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {[
                 { name: "About", href: "/about" },
-                { name: "People", href: "/people" },
+                { name: "Services", href: "/services" },
                 { name: "Projects", href: "/projects" },
                 { name: "Blog", href: "/blog" },
                 { name: "Contact", href: "/contact" },
@@ -93,7 +96,7 @@ export default function Footer() {
           <p className="text-black/50 dark:text-white/50 font-light">
             © 2026 Trixode-Studios S.A.S. B.I.C. | All rights reserved.
           </p>
-          <p className="text-black/30 dark:text-white/30 font-light">Made with ❤️ in Victoria, BC</p>
+          <p className="text-black/30 dark:text-white/30 font-light">Built with AI in Victoria, BC & Quito, Ecuador</p>
         </div>
       </div>
     </footer>

@@ -165,15 +165,24 @@ export default function ContactPage() {
 
           {/* Page Title */}
           <motion.h1
-            className="text-6xl md:text-8xl font-light mb-16 text-black dark:text-white font-grotesk"
+            className="text-6xl md:text-8xl font-light mb-8 text-black dark:text-white font-grotesk"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            Get in
+            Let's
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-black dark:from-white to-black/50 dark:to-white/50">Touch</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-black dark:from-white to-black/50 dark:to-white/50">Talk</span>
           </motion.h1>
+
+          <motion.p
+            className="text-lg text-black/60 dark:text-white/60 mb-16 max-w-xl leading-relaxed font-light"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+          >
+            Tell us about your business and what you're trying to solve. We'll respond within 24 hours.
+          </motion.p>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Contact Form */}
@@ -265,7 +274,7 @@ export default function ContactPage() {
                         className={`absolute left-0 top-4 text-black/50 dark:text-white/50 transition-all peer-focus:text-brand-blue peer-focus:text-xs peer-focus:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-top-4 pointer-events-none ${errors.message ? "text-red-400" : ""
                           }`}
                       >
-                        Tell us about your project...
+                        What's the biggest bottleneck in your business right now?
                       </label>
                     </div>
                     {errors.message && <p className="mt-1 text-xs text-red-400">{errors.message}</p>}
@@ -277,11 +286,30 @@ export default function ContactPage() {
                     className="magnetic w-full py-5 border border-black/10 dark:border-white/10 text-sm uppercase tracking-widest relative overflow-hidden group hover:border-brand-blue transition-all duration-400 bg-black/[0.02] dark:bg-white/[0.02] disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <span className="relative z-10 flex items-center justify-center gap-2">
-                      {isSubmitting ? "Sending..." : "Send Message"} <Send className="h-4 w-4" />
+                      {isSubmitting ? "Sending..." : "Send — We'll Respond Within 24 Hours"} <Send className="h-4 w-4" />
                     </span>
                     <div className="absolute inset-0 bg-brand-blue scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-400 opacity-20" />
                   </button>
                 </form>
+
+                {/* What Happens Next Section */}
+                <div className="mt-10 pt-10 border-t border-black/10 dark:border-white/10">
+                  <h3 className="text-sm font-medium mb-6 text-black dark:text-white uppercase tracking-widest font-grotesk">What Happens Next?</h3>
+                  <div className="space-y-4">
+                    {[
+                      { num: "1", text: "You send this form." },
+                      { num: "2", text: "We review and reply within 24 hours." },
+                      { num: "3", text: "We hop on a free 30-minute strategy call." },
+                    ].map((step) => (
+                      <div key={step.num} className="flex items-start gap-4">
+                        <div className="w-6 h-6 rounded-full bg-brand-blue/10 text-brand-blue text-xs font-medium flex items-center justify-center flex-shrink-0">
+                          {step.num}
+                        </div>
+                        <p className="text-black/60 dark:text-white/60 font-light text-sm">{step.text}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </motion.div>
 

@@ -125,9 +125,10 @@ export default function AboutPage() {
                   expensive. We saw businesses drowning in manual processes while AI solutions sat unused on the shelf.
                 </p>
                 <p>
-                  We believe that AI should solve real business problems—not create new ones. Every solution we build is designed to
-                  eliminate operational friction, reduce costs, and accelerate growth. We turn AI from a technical challenge into a
-                  competitive advantage that any business can understand and implement with confidence.
+                  We believe AI should solve real business problems — not create new ones. Every solution we build eliminates manual work, reduces costs, and drives measurable growth.
+                </p>
+                <p>
+                  Based in Victoria, BC and Quito, Ecuador, we serve clients across the Americas. Our flagship product, Morphika, is an AI-powered image generator for eCommerce. And we're just getting started.
                 </p>
               </div>
             </div>
@@ -148,8 +149,7 @@ export default function AboutPage() {
                 <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <Target className="h-10 w-10 text-brand-blue mb-6" />
                 <blockquote className="text-xl md:text-2xl font-light leading-relaxed text-black dark:text-white font-grotesk">
-                  "To build AI-powered automation tools that save time, cut costs, and scale growth for businesses
-                  and innovators—making advanced technology accessible to every company ready to transform their operations."
+                  "To build AI systems that save time, cut costs, and accelerate growth — making automation accessible to every business ready to move faster."
                 </blockquote>
               </div>
             </motion.section>
@@ -167,8 +167,7 @@ export default function AboutPage() {
                 <div className="absolute inset-0 bg-gradient-to-br from-brand-purple/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <Eye className="h-10 w-10 text-brand-purple mb-6" />
                 <blockquote className="text-xl md:text-2xl font-light leading-relaxed text-black dark:text-white font-grotesk">
-                  "A future where every company—from startups to enterprises—can harness AI automation
-                  securely and effectively to drive innovation and competitive advantage."
+                  "A world where every company can deploy AI automation confidently, securely, and profitably."
                 </blockquote>
               </div>
             </motion.section>
@@ -190,32 +189,32 @@ export default function AboutPage() {
                 {
                   title: "CLARITY",
                   description:
-                    "We cut through AI complexity to deliver clear, actionable solutions that business leaders can understand and implement confidently.",
+                    "We explain what we're building and why. No black-box AI. No jargon walls.",
                 },
                 {
                   title: "IMPACT",
                   description:
-                    "We measure success by tangible business results: time saved, costs reduced, and revenue growth accelerated through AI automation.",
+                    "We measure success in business results: hours saved, revenue gained, costs cut.",
                 },
                 {
                   title: "TRUST",
                   description:
-                    "We build secure, transparent AI solutions that protect your data and reputation while delivering measurable value to your business.",
+                    "Your data stays yours. We build secure, transparent systems.",
                 },
                 {
-                  title: "INNOVATION",
+                  title: "SPEED",
                   description:
-                    "We combine proven AI technologies with creative problem-solving to unlock new efficiencies and competitive advantages.",
+                    "We ship fast. Weekly demos, rapid iteration, bias toward deploying.",
                 },
                 {
                   title: "COLLABORATION",
                   description:
-                    "We partner closely with your team to ensure AI adoption enhances human capabilities rather than replacing them.",
+                    "We work alongside your team. AI amplifies your people, not replaces them.",
                 },
                 {
-                  title: "SUSTAINABILITY",
+                  title: "ADAPTABILITY",
                   description:
-                    "We design AI systems that scale with your business growth and adapt to evolving market demands for long-term success.",
+                    "We build systems that evolve with your business.",
                 },
               ].map((value, index) => (
                 <motion.div

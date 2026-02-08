@@ -8,25 +8,34 @@ import { useIsMobile } from "@/hooks/use-mobile"
 
 const services = [
     {
-        tag: "SEO",
-        title: "AI SEO",
-        description: "Perfect for brands seeking max efficiency and ROI by outsourcing the entire SEO and content process.",
+        tag: "AI SEO & GROWTH",
+        title: "AI SEO & GROWTH ENGINE",
+        description: "AI-powered content strategy, predictive keyword analysis, and automated optimization. Monthly reporting that shows exactly where your traffic and revenue are growing.",
         price: "$999",
+        priceSuffix: "/mo",
+        secondaryPrice: null,
+        ctaText: "Learn More",
         link: "/services#seo"
     },
     {
-        tag: "WEB DEVELOPMENT",
-        title: "FULL WEBSITE DEV",
-        description: "We will develop a product of any complexity for you, which will take your business to a new level with the snap of a finger.",
-        price: "$1,499",
+        tag: "AI-POWERED WEBSITES",
+        title: "AI-POWERED WEBSITES",
+        description: "High-performance Next.js sites with AI chatbots, smart forms, and conversion optimization baked in. Built to load fast, rank high, and turn visitors into customers.",
+        price: "$4,999",
+        priceSuffix: "",
+        secondaryPrice: "or $1,499/mo retainer",
+        ctaText: "Learn More",
         link: "/services#webdev"
     },
     {
-        tag: "AI SYSTEMS",
-        title: "AGENTIC AI BESPOKE SYSTEMS",
-        description: "We have highly qualified specialists in various fields. With our team, you can develop solutions of any complexity for your business.",
-        price: "$19,999",
-        link: "/services#agentic"
+        tag: "CUSTOM AI AGENTS",
+        title: "CUSTOM AI AGENTS & AUTOMATION",
+        description: "Autonomous AI agents that handle workflows, integrate with your CRM and tools, and eliminate the manual work slowing your team down. Built for your specific business.",
+        price: "$15,000",
+        priceSuffix: "+",
+        secondaryPrice: "Based on scope & complexity",
+        ctaText: "Book a Call",
+        link: "/contact"
     }
 ]
 
@@ -87,11 +96,24 @@ export default function ServicesSection() {
 
                             <div className="relative z-10">
                                 <div className="mb-6">
-                                    <span className="block text-sm font-bold uppercase tracking-wider text-black/30 dark:text-white/30 mb-1">Starting At</span>
-                                    <div className="flex items-baseline">
-                                        <span className="text-4xl md:text-5xl font-light font-grotesk text-black dark:text-white">{service.price}</span>
-                                        <span className="text-black/30 dark:text-white/30 ml-1 font-medium">/mo</span>
-                                    </div>
+                                    {service.price ? (
+                                        <>
+                                            <span className="block text-sm font-bold uppercase tracking-wider text-black/30 dark:text-white/30 mb-1">Starting At</span>
+                                            <div className="flex items-baseline">
+                                                <span className="text-4xl md:text-5xl font-light font-grotesk text-black dark:text-white">{service.price}</span>
+                                                {service.priceSuffix && <span className="text-black/30 dark:text-white/30 ml-1 font-medium">{service.priceSuffix}</span>}
+                                            </div>
+                                            {service.secondaryPrice && (
+                                                <span className="block text-sm text-black/40 dark:text-white/40 mt-1">{service.secondaryPrice}</span>
+                                            )}
+                                        </>
+                                    ) : (
+                                        <>
+                                            <span className="block text-sm font-bold uppercase tracking-wider text-black/30 dark:text-white/30 mb-1">Pricing</span>
+                                            <span className="text-2xl md:text-3xl font-light font-grotesk text-black dark:text-white">Custom</span>
+                                            <span className="block text-sm text-black/40 dark:text-white/40 mt-1">Based on scope & requirements</span>
+                                        </>
+                                    )}
                                 </div>
 
                                 <Link
@@ -99,7 +121,7 @@ export default function ServicesSection() {
                                     className="block w-full"
                                 >
                                     <div className="bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-black dark:text-white rounded-full py-4 px-6 flex items-center justify-center gap-2 group-hover:bg-brand-blue group-hover:border-brand-blue group-hover:text-white transition-all duration-300">
-                                        <span className="text-sm font-bold tracking-widest uppercase">Get More</span>
+                                        <span className="text-sm font-bold tracking-widest uppercase">{service.ctaText}</span>
                                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                                     </div>
                                 </Link>

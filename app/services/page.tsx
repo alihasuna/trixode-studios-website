@@ -28,92 +28,101 @@ const services = [
     {
         id: "seo",
         icon: Rocket,
-        title: "AI SEO",
-        subtitle: "Data-Driven Search Dominance",
+        title: "AI SEO & Growth Engine",
+        subtitle: "Compound Your Organic Traffic",
         description:
-            "Our AI-driven SEO approach goes beyond traditional keyword stuffing. We use advanced machine learning models to analyze search intent, predict trends, and optimize your content ecosystem for maximum visibility.",
+            "We don't just optimize keywords \u2014 we build an AI-powered content engine that identifies opportunities your competitors miss, produces optimized content at scale, and tracks every dollar of ROI. Monthly reporting shows exactly what's working and what's next.",
         features: [
-            "Predictive Keyword Analysis",
-            "Automated Content Optimization",
-            "Competitor Strategy Decoding",
-            "Technical SEO Automation",
-            "Voice Search Optimization",
+            "Predictive keyword analysis & gap identification",
+            "AI-powered content strategy & production",
+            "Automated on-page & technical SEO optimization",
+            "Monthly performance reporting tied to revenue",
+            "Competitor monitoring & opportunity alerts",
         ],
         price: "$999",
         priceNum: 999,
+        priceSuffix: "/mo",
+        secondaryPrice: null,
+        ctaText: "Get Started",
         gradient: "from-brand-blue to-[#60a5fa]",
         accentColor: "rgba(59, 130, 246, 0.15)",
     },
     {
         id: "webdev",
         icon: Globe,
-        title: "Full Website Dev",
-        subtitle: "Performance-First Digital Experiences",
+        title: "AI-Powered Websites",
+        subtitle: "Sites That Convert, Not Just Look Pretty",
         description:
-            "We build websites that are not just digital business cards but powerful growth engines. Using the latest frameworks like Next.js and React, we ensure lightning-fast performance, elite accessibility, and stunning visual aesthetics.",
+            "High-performance Next.js and React sites built for speed, SEO, and conversion. Every site ships with AI chatbot integration, smart lead-capture forms, and analytics that tell you exactly how visitors become customers.",
         features: [
-            "Headless CMS Architecture",
-            "React & Next.js Frameworks",
-            "3D WebGL Interactions",
-            "Global CDN Deployment",
-            "Mobile-First Responsive Design",
+            "Next.js & React with sub-2-second load times",
+            "AI chatbot integration for 24/7 lead capture",
+            "Conversion-optimized layouts & smart forms",
+            "SEO-ready architecture from day one",
+            "Mobile-first responsive design",
         ],
-        price: "$1,499",
-        priceNum: 1499,
+        price: "$4,999",
+        priceNum: 4999,
+        priceSuffix: "",
+        secondaryPrice: "or $1,499/mo retainer",
+        ctaText: "Start Your Project",
         gradient: "from-brand-purple to-[#a78bfa]",
         accentColor: "rgba(139, 92, 246, 0.15)",
     },
     {
         id: "agentic",
         icon: Bot,
-        title: "Agentic AI Bespoke Systems",
-        subtitle: "Autonomous Workflows for Enterprise",
+        title: "Custom AI Agents & Automation",
+        subtitle: "Your Business, Running on Autopilot",
         description:
-            "Step into the future with custom agentic AI systems designed for your specific business needs. We build autonomous agents that can plan, execute, and verify complex workflows, reducing operational friction and unlocking new capabilities.",
+            "We build autonomous AI agents designed for your specific business. Agents that handle customer inquiries, process documents, manage workflows, and integrate with your existing CRM, ERP, and tools \u2014 so your team can focus on what actually moves the needle.",
         features: [
-            "Custom LLM Fine-Tuning",
-            "Multi-Agent Orchestration",
-            "Secure Enterprise Integration",
-            "Automated Decision Pipelines",
-            "Real-time Data Processing",
+            "Custom AI agent development for your workflows",
+            "Multi-agent orchestration",
+            "RAG systems for your proprietary data",
+            "Enterprise integration (CRM, ERP, Slack, existing tools)",
+            "Ongoing optimization & support",
         ],
-        price: "$19,999",
-        priceNum: 19999,
+        price: "$15,000",
+        priceNum: 15000,
+        priceSuffix: "+",
+        secondaryPrice: "Based on scope & complexity",
+        ctaText: "Book a Free Strategy Call",
         gradient: "from-[#10b981] to-[#34d399]",
         accentColor: "rgba(16, 185, 129, 0.15)",
     },
 ]
 
 const stats = [
-    { label: "Projects Delivered", value: 120, suffix: "+" },
-    { label: "Client Retention", value: 98, suffix: "%" },
-    { label: "Avg. ROI Increase", value: 340, suffix: "%" },
-    { label: "Uptime Guaranteed", value: 99.9, suffix: "%", decimals: 1 },
+    { label: "Avg. Site Load Time", value: 2, suffix: "s", prefix: "<", isStatic: true },
+    { label: "Client Satisfaction", value: 100, suffix: "%" },
+    { label: "Response Time", value: 24, suffix: "hrs", prefix: "<", isStatic: true },
+    { label: "Countries", value: 2, suffix: "" },
 ]
 
 const process = [
     {
         step: "01",
         title: "Discovery",
-        desc: "Deep-dive into your business goals, technical landscape, and competitive positioning.",
+        desc: "Deep-dive into your business: what's working, what's broken, and where AI creates the biggest impact.",
         icon: BarChart3,
     },
     {
         step: "02",
         title: "Strategy",
-        desc: "Architect the solution, define milestones, and align on measurable KPIs.",
+        desc: "We build the roadmap: what to build, in what order, with clear milestones and measurable KPIs.",
         icon: Layers,
     },
     {
         step: "03",
         title: "Build",
-        desc: "Iterative development with weekly demos, continuous testing, and agile sprints.",
+        desc: "Iterative development with weekly demos. You see progress every week and stay in control.",
         icon: Zap,
     },
     {
         step: "04",
-        title: "Scale",
-        desc: "Launch, monitor, optimise. Ongoing support and performance tuning.",
+        title: "Launch & Scale",
+        desc: "We deploy, monitor, and optimize. Ongoing support as your business grows.",
         icon: Shield,
     },
 ]
@@ -253,7 +262,8 @@ export default function ServicesPage() {
         const reducedMotion = window.matchMedia(
             "(prefers-reduced-motion: reduce)"
         ).matches
-        if (reducedMotion || els.length === 0) return () => { }
+        const isTouchDevice = !window.matchMedia("(hover: hover) and (pointer: fine)").matches
+        if (reducedMotion || isTouchDevice || els.length === 0) return () => { }
 
         let raf = 0
         const onScroll = () => {
@@ -284,7 +294,8 @@ export default function ServicesPage() {
         const reducedMotion = window.matchMedia(
             "(prefers-reduced-motion: reduce)"
         ).matches
-        if (reducedMotion) return () => { }
+        const isTouchDevice = !window.matchMedia("(hover: hover) and (pointer: fine)").matches
+        if (reducedMotion || isTouchDevice) return () => { }
 
         const reactiveEls = root.querySelectorAll<HTMLElement>(
             "[data-scroll-reactive]"
@@ -374,7 +385,8 @@ export default function ServicesPage() {
         const reducedMotion = window.matchMedia(
             "(prefers-reduced-motion: reduce)"
         ).matches
-        if (!figure || !orbit || reducedMotion) return () => { }
+        const isTouchDevice = !window.matchMedia("(hover: hover) and (pointer: fine)").matches
+        if (!figure || !orbit || reducedMotion || isTouchDevice) return () => { }
 
         let raf = 0
         const onMove = (e: MouseEvent) => {
@@ -889,17 +901,17 @@ export default function ServicesPage() {
                             </div>
                             <div data-animate="hero" className="opacity-0">
                                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-light mb-8 font-grotesk leading-[0.95]">
-                                    Our{" "}
+                                    AI{" "}
                                     <span className="bg-gradient-to-r from-brand-blue via-brand-purple to-brand-cyan bg-clip-text text-transparent">
-                                        Services
+                                        Solutions
                                     </span>
                                 </h1>
                             </div>
                             <div data-animate="hero" className="opacity-0">
                                 <p className="text-xl text-black/50 dark:text-white/50 max-w-xl leading-relaxed font-light mb-10">
-                                    We combine cutting-edge technology with strategic
-                                    expertise to deliver solutions that drive measurable
-                                    business impact.
+                                    Three ways we help businesses grow: AI-powered websites
+                                    that convert, SEO engines that compound, and custom AI
+                                    agents that automate the work slowing you down.
                                 </p>
                             </div>
                             <div data-animate="hero" className="opacity-0 flex flex-wrap gap-4">
@@ -907,14 +919,14 @@ export default function ServicesPage() {
                                     href="/contact"
                                     className="magnetic inline-flex items-center gap-3 px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-full font-bold uppercase tracking-wider hover:bg-brand-blue hover:text-white transition-all duration-300 group"
                                 >
-                                    Start a Project
+                                    Book a Free Strategy Call
                                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                                 </Link>
                                 <a
                                     href="#process"
                                     className="magnetic inline-flex items-center gap-3 px-8 py-4 border border-black/10 dark:border-white/10 rounded-full text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white hover:border-black/30 dark:hover:border-white/30 transition-all duration-300 font-medium uppercase tracking-wider text-sm"
                                 >
-                                    Our Process
+                                    See Our Process
                                 </a>
                             </div>
                         </div>
@@ -998,14 +1010,14 @@ export default function ServicesPage() {
 
                                 <div className="relative z-10">
                                     <div className="text-5xl xl:text-6xl font-light font-grotesk bg-gradient-to-r from-brand-blue via-brand-purple to-brand-blue bg-[length:200%_100%] bg-clip-text text-transparent mb-3 group-hover/card:animate-gradient-x">
-                                        120+
+                                        &lt;2s
                                     </div>
                                     <div className="text-[10px] uppercase tracking-[0.25em] text-black/50 dark:text-white/50 mb-2 font-medium">
-                                        Projects Delivered
+                                        Avg. Load Time
                                     </div>
                                     <div className="text-lg font-medium text-black/80 dark:text-white/80 flex items-center gap-2">
                                         <span className="w-2 h-2 rounded-full bg-brand-blue animate-pulse" />
-                                        Enterprise Scale
+                                        Performance First
                                     </div>
                                 </div>
                             </div>
@@ -1028,14 +1040,14 @@ export default function ServicesPage() {
 
                                 <div className="relative z-10">
                                     <div className="text-5xl xl:text-6xl font-light font-grotesk bg-gradient-to-r from-brand-purple via-brand-cyan to-brand-purple bg-[length:200%_100%] bg-clip-text text-transparent mb-3 group-hover/card:animate-gradient-x">
-                                        98%
+                                        100%
                                     </div>
                                     <div className="text-[10px] uppercase tracking-[0.25em] text-black/50 dark:text-white/50 mb-2 font-medium">
-                                        Client Retention
+                                        Client Satisfaction
                                     </div>
                                     <div className="text-lg font-medium text-black/80 dark:text-white/80 flex items-center gap-2">
                                         <span className="w-2 h-2 rounded-full bg-brand-purple animate-pulse" />
-                                        Year over Year
+                                        And Counting
                                     </div>
                                 </div>
                             </div>
@@ -1058,14 +1070,14 @@ export default function ServicesPage() {
 
                                 <div className="relative z-10">
                                     <div className="text-5xl xl:text-5xl font-light font-grotesk bg-gradient-to-r from-[#10b981] via-[#34d399] to-[#10b981] bg-[length:200%_100%] bg-clip-text text-transparent mb-3 group-hover/card:animate-gradient-x">
-                                        10x
+                                        &lt;24h
                                     </div>
                                     <div className="text-[10px] uppercase tracking-[0.25em] text-black/50 dark:text-white/50 mb-2 font-medium">
-                                        Performance
+                                        Response Time
                                     </div>
                                     <div className="text-base font-medium text-black/80 dark:text-white/80 flex items-center gap-2">
                                         <span className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse" />
-                                        vs Traditional
+                                        Guaranteed
                                     </div>
                                 </div>
                             </div>
@@ -1085,10 +1097,10 @@ export default function ServicesPage() {
                                     data-animate="stat"
                                     data-stat-target={stat.value}
                                     data-stat-suffix={stat.suffix}
-                                    data-stat-decimals={stat.decimals ?? 0}
+                                    data-stat-decimals={0}
                                     className="opacity-0 text-4xl md:text-5xl font-light font-grotesk text-black dark:text-white mb-2"
                                 >
-                                    0{stat.suffix}
+                                    {"prefix" in stat && stat.prefix ? stat.prefix : ""}{stat.isStatic ? stat.value : 0}{stat.suffix}
                                 </div>
                                 <div className="text-xs uppercase tracking-[0.2em] text-black/40 dark:text-white/40 font-grotesk">
                                     {stat.label}
@@ -1174,28 +1186,49 @@ export default function ServicesPage() {
                                         </ul>
 
                                         <div className="pt-8 flex flex-wrap items-center gap-8 border-t border-black/10 dark:border-white/10">
-                                            <div>
-                                                <div className="text-xs uppercase tracking-widest text-black/40 dark:text-white/40 mb-1">
-                                                    Starting At
+                                            {service.price ? (
+                                                <div>
+                                                    <div className="text-xs uppercase tracking-widest text-black/40 dark:text-white/40 mb-1">
+                                                        Starting At
+                                                    </div>
+                                                    <div className="text-3xl md:text-4xl font-bold font-grotesk">
+                                                        <span
+                                                            data-animate="price"
+                                                            data-price-target={service.priceNum}
+                                                            className="opacity-0"
+                                                        >
+                                                            {service.price}
+                                                        </span>
+                                                        {service.priceSuffix && (
+                                                            <span className="text-sm font-normal text-black/40 dark:text-white/40 ml-1">
+                                                                {service.priceSuffix}
+                                                            </span>
+                                                        )}
+                                                    </div>
+                                                    {service.secondaryPrice && (
+                                                        <div className="text-sm text-black/40 dark:text-white/40 mt-1">
+                                                            {service.secondaryPrice}
+                                                        </div>
+                                                    )}
                                                 </div>
-                                                <div className="text-3xl md:text-4xl font-bold font-grotesk">
-                                                    <span
-                                                        data-animate="price"
-                                                        data-price-target={service.priceNum}
-                                                        className="opacity-0"
-                                                    >
-                                                        {service.price}
-                                                    </span>
-                                                    <span className="text-sm font-normal text-black/40 dark:text-white/40 ml-1">
-                                                        /mo
-                                                    </span>
+                                            ) : (
+                                                <div>
+                                                    <div className="text-xs uppercase tracking-widest text-black/40 dark:text-white/40 mb-1">
+                                                        Pricing
+                                                    </div>
+                                                    <div className="text-2xl md:text-3xl font-bold font-grotesk">
+                                                        Custom
+                                                    </div>
+                                                    <div className="text-sm text-black/40 dark:text-white/40 mt-1">
+                                                        Based on scope & requirements
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            )}
                                             <Link
                                                 href="/contact"
                                                 className="magnetic px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-full font-bold uppercase tracking-wider hover:bg-brand-blue hover:text-white transition-all duration-300 flex items-center gap-2 group"
                                             >
-                                                Start Project
+                                                {service.ctaText}
                                                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                                             </Link>
                                         </div>
@@ -1270,8 +1303,8 @@ export default function ServicesPage() {
                                 </h2>
                             </div>
                             <p className="hidden md:block text-black/40 dark:text-white/40 max-w-sm text-right text-sm leading-relaxed">
-                                A proven methodology refined across 120+ projects for
-                                predictable, high-quality outcomes.
+                                A proven methodology for predictable, high-quality
+                                outcomes.
                             </p>
                         </div>
 
@@ -1338,18 +1371,19 @@ export default function ServicesPage() {
                                 data-animate="cta-child"
                                 className="opacity-0 text-4xl md:text-6xl font-light mb-6 font-grotesk relative z-10"
                             >
-                                Ready to Transform
+                                Stop Thinking About AI.
                                 <br />
                                 <span className="bg-gradient-to-r from-brand-blue to-brand-purple bg-clip-text text-transparent">
-                                    Your Business?
+                                    Start Shipping It.
                                 </span>
                             </h2>
                             <p
                                 data-animate="cta-child"
                                 className="opacity-0 text-black/50 dark:text-white/50 text-xl mb-12 max-w-2xl mx-auto relative z-10"
                             >
-                                Schedule a free consultation with our experts to discuss
-                                your specific needs and goals.
+                                Book a free 30-minute strategy call. We&apos;ll audit your current
+                                setup, identify the highest-impact opportunity, and tell you
+                                exactly how we&apos;d execute it.
                             </p>
                             <div
                                 data-animate="cta-child"
@@ -1359,7 +1393,7 @@ export default function ServicesPage() {
                                     href="/contact"
                                     className="magnetic inline-flex items-center gap-3 px-10 py-5 bg-brand-blue text-white rounded-full font-bold uppercase tracking-wider hover:bg-[#2563eb] transition-colors group"
                                 >
-                                    Get in Touch
+                                    Book a Free Strategy Call
                                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                                 </Link>
                                 <Link

@@ -92,9 +92,9 @@ export default function ProjectsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            Projects &
+            Our
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-black dark:from-white to-black/50 dark:to-white/50">Services</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-black dark:from-white to-black/50 dark:to-white/50">Work</span>
           </motion.h1>
 
           {/* Tab Navigation */}
@@ -112,7 +112,7 @@ export default function ProjectsPage() {
                   : "glass text-black/70 dark:text-white/70 border-black/10 dark:border-white/10 hover:text-black dark:hover:text-white hover:border-black/30 dark:hover:border-white/30"
                   }`}
               >
-                Current Projects
+                Products
               </button>
               <button
                 onClick={() => setActiveTab("consulting")}
@@ -121,7 +121,7 @@ export default function ProjectsPage() {
                   : "glass text-black/70 dark:text-white/70 border-black/10 dark:border-white/10 hover:text-black dark:hover:text-white hover:border-black/30 dark:hover:border-white/30"
                   }`}
               >
-                AI Consulting
+                Client Work
               </button>
             </div>
           </motion.div>
@@ -161,7 +161,7 @@ export default function ProjectsPage() {
                     <div className="flex items-center justify-between mb-6">
                       <h2 className="text-2xl font-medium text-black dark:text-white font-grotesk">MORPHIKA</h2>
                       <span className="bg-brand-blue/10 text-brand-blue border border-brand-blue/20 px-4 py-1 text-xs font-medium uppercase tracking-widest rounded-full">
-                        AI TOOL
+                        LIVE PRODUCT
                       </span>
                     </div>
 
@@ -213,7 +213,7 @@ export default function ProjectsPage() {
                     <Link href="https://morphika.ai" target="_blank" rel="noopener noreferrer">
                       <button className="magnetic w-full py-4 border border-black/10 dark:border-white/10 text-sm uppercase tracking-widest relative overflow-hidden group hover:border-brand-blue transition-all duration-400 bg-black/[0.02] dark:bg-white/[0.02]">
                         <span className="relative z-10 flex items-center justify-center gap-2">
-                          View Live Demo <ExternalLink className="h-4 w-4" />
+                          Try Morphika <ExternalLink className="h-4 w-4" />
                         </span>
                         <div className="absolute inset-0 bg-brand-blue scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-400 opacity-20" />
                       </button>
@@ -337,7 +337,7 @@ export default function ProjectsPage() {
                   </p>
                   <Link href="/contact">
                     <button className="magnetic px-10 py-5 bg-white text-black text-sm uppercase tracking-widest font-medium rounded-full hover:bg-white/90 transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)]">
-                      Start a Project
+                      Book a Free Strategy Call
                     </button>
                   </Link>
                 </div>

@@ -196,7 +196,7 @@ export default function HomePage() {
                             >
                                 <div className="w-10 h-[1px] bg-brand-blue" style={{ boxShadow: "0 0 10px rgba(59, 130, 246, 0.4)" }} />
                                 <span className="text-xs uppercase tracking-[0.2em] text-black/50 dark:text-white/50 font-grotesk">
-                                    Victoria, BC / Software Studio
+                                    Victoria, BC / Full-Service AI Agency
                                 </span>
                             </motion.div>
 
@@ -214,7 +214,7 @@ export default function HomePage() {
                                         transition={{ duration: 0.7, delay: 3.35, ease: [0.16, 1, 0.3, 1] }}
                                         style={{ willChange: "transform" }}
                                     >
-                                        Crafting
+                                        We Build
                                     </motion.span>
                                 </span>
                                 <span className="block overflow-hidden pb-[0.12em]">
@@ -225,7 +225,7 @@ export default function HomePage() {
                                         transition={{ duration: 0.7, delay: 3.5, ease: [0.16, 1, 0.3, 1] }}
                                         style={{ willChange: "transform" }}
                                     >
-                                        Intelligence
+                                        AI That Ships
                                     </motion.span>
                                 </span>
                             </motion.h1>
@@ -236,8 +236,7 @@ export default function HomePage() {
                                 transition={{ duration: 0.5, delay: 3.6 }}
                                 className="text-lg text-black/50 dark:text-white/50 mb-12 max-w-[500px] leading-relaxed font-light"
                             >
-                                Advanced software infrastructure for AI research and scientific computing. We build elegant systems that
-                                empower innovators.
+                                AI agents, high-performance websites, and growth engines for businesses that refuse to move slow. We don&apos;t just talk about AI &mdash; we deploy it.
                             </motion.p>
 
                             <motion.a
@@ -247,7 +246,7 @@ export default function HomePage() {
                                 transition={{ duration: 0.5, delay: 3.75 }}
                                 className="magnetic inline-flex items-center gap-4 px-8 py-4 border border-black/10 dark:border-white/10 text-sm uppercase tracking-widest relative overflow-hidden group"
                             >
-                                <span className="relative z-10">Start a Project</span>
+                                <span className="relative z-10">Book a Free Strategy Call</span>
                                 <ArrowRight className="w-4 h-4 relative z-10" />
                                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/5 dark:via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
                             </motion.a>
@@ -277,9 +276,9 @@ export default function HomePage() {
                             {/* Mobile Stats Grid */}
                             <div className="grid grid-cols-3 gap-4 lg:hidden mt-12">
                                 {[
-                                    { value: "99.9%", label: "Uptime" },
-                                    { value: "50+", label: "Labs" },
-                                    { value: "10x", label: "Faster" }
+                                    { value: "3", label: "Services" },
+                                    { value: "$999", label: "Starting" },
+                                    { value: "24h", label: "Response" }
                                 ].map((stat, i) => (
                                     <motion.div
                                         key={stat.label}
@@ -355,10 +354,10 @@ export default function HomePage() {
                                                     className="text-5xl font-light text-brand-blue mb-2 font-grotesk"
                                                     style={{ textShadow: "0 0 20px rgba(59, 130, 246, 0.4)" }}
                                                 >
-                                                    99.9%
+                                                    3
                                                 </div>
-                                                <div className="text-xs uppercase tracking-widest text-black/50 dark:text-white/50 mb-1">Uptime SLA</div>
-                                                <div className="text-lg text-black dark:text-white">Enterprise Ready</div>
+                                                <div className="text-xs uppercase tracking-widest text-black/50 dark:text-white/50 mb-1">Service Tiers</div>
+                                                <div className="text-lg text-black dark:text-white">Starting at $999/mo</div>
                                             </motion.div>
                                         </motion.div>
                                     </motion.div>
@@ -413,10 +412,10 @@ export default function HomePage() {
                                                     className="text-5xl font-light text-brand-blue mb-2 font-grotesk"
                                                     style={{ textShadow: "0 0 20px rgba(59, 130, 246, 0.4)" }}
                                                 >
-                                                    50+
+                                                    10+
                                                 </div>
-                                                <div className="text-xs uppercase tracking-widest text-black/50 dark:text-white/50 mb-1">Research Labs</div>
-                                                <div className="text-lg text-black dark:text-white">Global Partners</div>
+                                                <div className="text-xs uppercase tracking-widest text-black/50 dark:text-white/50 mb-1">Projects Shipped</div>
+                                                <div className="text-lg text-black dark:text-white">And Counting</div>
                                             </motion.div>
                                         </motion.div>
                                     </motion.div>
@@ -471,10 +470,10 @@ export default function HomePage() {
                                                     className="text-5xl font-light text-brand-blue mb-2 font-grotesk"
                                                     style={{ textShadow: "0 0 20px rgba(59, 130, 246, 0.4)" }}
                                                 >
-                                                    10x
+                                                    24h
                                                 </div>
-                                                <div className="text-xs uppercase tracking-widest text-black/50 dark:text-white/50 mb-1">Performance</div>
-                                                <div className="text-lg text-black dark:text-white">vs Traditional</div>
+                                                <div className="text-xs uppercase tracking-widest text-black/50 dark:text-white/50 mb-1">Response Time</div>
+                                                <div className="text-lg text-black dark:text-white">Guaranteed</div>
                                             </motion.div>
                                         </motion.div>
                                     </motion.div>
@@ -492,7 +491,7 @@ export default function HomePage() {
                         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between mb-24 pb-8 border-b border-black/10 dark:border-white/10">
                             <span className="text-sm text-brand-blue font-medium font-grotesk">02</span>
                             <h2 className="text-5xl md:text-7xl font-light max-w-[600px] leading-tight font-grotesk">
-                                Core Systems
+                                What We Do
                             </h2>
                         </div>
 
@@ -500,29 +499,29 @@ export default function HomePage() {
                             {[
                                 {
                                     num: "01",
-                                    title: "Neural Infrastructure",
-                                    desc: "Distributed training platforms and model serving architectures.",
+                                    title: "AI Agent Development",
+                                    desc: "Custom autonomous agents that handle complex workflows and integrate with your existing tools.",
                                 },
                                 {
                                     num: "02",
-                                    title: "Scientific Computing",
-                                    desc: "High-performance frameworks for research workloads.",
+                                    title: "AI-Powered Web Development",
+                                    desc: "Next.js and React sites engineered for speed, SEO, and conversion — with AI features built in.",
                                 },
                                 {
                                     num: "03",
-                                    title: "Creative Intelligence",
-                                    desc: "Generative systems for human-AI collaboration.",
+                                    title: "AI SEO & Content",
+                                    desc: "Predictive keyword strategy, automated content optimization, and reporting tied directly to revenue.",
                                 },
                                 {
                                     num: "04",
-                                    title: "Data Architecture",
-                                    desc: "Stream processing and visualization pipelines.",
+                                    title: "Business Process Automation",
+                                    desc: "We find the manual work eating your team's time and replace it with AI workflows that run 24/7.",
                                 },
-                                { num: "05", title: "Cloud Systems", desc: "Scalable infrastructure with enterprise security." },
+                                { num: "05", title: "Multi-Agent Orchestration", desc: "Multiple AI agents working together to handle end-to-end business processes." },
                                 {
                                     num: "06",
-                                    title: "Lab Automation",
-                                    desc: "Intelligent workflow orchestration systems.",
+                                    title: "Enterprise Integration",
+                                    desc: "Connect AI systems to your CRM, ERP, and existing tools without disrupting what already works.",
                                 },
                             ].map((item, index) => (
                                 <motion.div
@@ -563,13 +562,13 @@ export default function HomePage() {
 
                         <div className="flex flex-col gap-4">
                             {[
-                                { year: "2025", name: "GenomeAnalyzer Pro", category: "Bioinformatics" },
-                                { year: "2025", name: "Visionary Studio", category: "Creative Tools" },
-                                { year: "2024", name: "InsightFlow", category: "Data Science" },
-                                { year: "2024", name: "LabAssistant AI", category: "Automation" },
+                                { year: "2025", name: "Morphika", category: "AI Product", href: "https://morphika.ai" },
+                                { year: "2025", name: "Client Project #1", category: "AI Automation" },
+                                { year: "2025", name: "Client Project #2", category: "AI Web Development" },
+                                { year: "2025", name: "Trixode Studios", category: "Agency Website" },
                             ].map((project, index) => (
                                 <motion.a
-                                    key={project.name}
+                                    key={`${project.name}-${index}`}
                                     href="#"
                                     initial={{ opacity: 0, y: 24 }}
                                     whileInView={{ opacity: 1, y: 0 }}
@@ -617,7 +616,7 @@ export default function HomePage() {
                                 },
                                 {
                                     name: "Amir Ahmadian",
-                                    role: "Chief Scientific Officer",
+                                    role: "Chief Technology Officer",
                                     image: "https://res.cloudinary.com/dnsl6kst1/image/upload/w_200,h_200,c_fill,g_face,f_auto,q_auto/v1770191425/ChatGPT_Image_Feb_3_2026_11_47_46_PM_sasgnj.png",
                                     color: "#8b5cf6"
                                 },
@@ -660,11 +659,10 @@ export default function HomePage() {
                                 viewport={{ once: true }}
                             >
                                 <h3 className="text-4xl md:text-5xl font-light mb-8 leading-tight">
-                                    Let's build something extraordinary.
+                                    Ready to put AI to work?
                                 </h3>
                                 <p className="text-black/50 dark:text-white/50 mb-12 leading-relaxed text-lg">
-                                    We're currently accepting new partnerships for Q2 2025. If you're working on challenging problems at
-                                    the intersection of AI and science, we'd love to hear from you.
+                                    Tell us what you're working on. We'll respond within 24 hours with a clear plan.
                                 </p>
 
                                 <div className="flex flex-col gap-4">
@@ -678,16 +676,7 @@ export default function HomePage() {
                                         </div>
                                         <ArrowRight className="w-5 h-5 group-hover:rotate-45 transition-transform duration-400" />
                                     </a>
-                                    <a
-                                        href="tel:+12505550127"
-                                        className="magnetic glass flex items-center justify-between p-6 rounded-2xl group hover:translate-x-2 transition-all duration-400"
-                                    >
-                                        <div>
-                                            <div className="text-xs uppercase tracking-widest text-black/25 dark:text-white/25 mb-1">Phone</div>
-                                            <div className="text-lg">+1 (250) 555-0127</div>
-                                        </div>
-                                        <ArrowRight className="w-5 h-5 group-hover:rotate-45 transition-transform duration-400" />
-                                    </a>
+
                                 </div>
                             </motion.div>
 
@@ -743,7 +732,7 @@ export default function HomePage() {
                                         htmlFor="message"
                                         className="absolute left-0 top-4 text-black/50 dark:text-white/50 transition-all peer-focus:text-brand-blue peer-focus:text-xs peer-focus:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-top-4"
                                     >
-                                        Tell us about your project
+                                        What's the biggest bottleneck in your business right now?
                                     </label>
                                 </div>
 
@@ -751,7 +740,7 @@ export default function HomePage() {
                                     type="submit"
                                     className="magnetic w-full py-5 border border-black/10 dark:border-white/10 text-sm uppercase tracking-widest relative overflow-hidden group hover:border-brand-blue transition-all duration-400"
                                 >
-                                    <span className="relative z-10">Send Message</span>
+                                    <span className="relative z-10">Send Message — We'll Reply Within 24 Hours</span>
                                     <div className="absolute inset-0 bg-brand-blue scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-400" />
                                 </button>
                             </motion.form>

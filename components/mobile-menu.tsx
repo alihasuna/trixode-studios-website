@@ -74,9 +74,9 @@ export default function MobileMenu({ currentPath = "/" }: MobileMenuProps) {
         onClick={closeMenu}
       />
 
-      {/* Decorative gradient orbs */}
+      {/* Decorative gradient orbs - Optimized for mobile performance */}
       <div
-        className="absolute rounded-full bg-gradient-to-br from-blue-600/30 to-purple-600/20 blur-[100px]"
+        className="absolute rounded-full bg-gradient-to-br from-blue-600/30 to-purple-600/20 blur-[60px] sm:blur-[100px]"
         style={{
           top: '-20%',
           right: '-10%',
@@ -85,10 +85,11 @@ export default function MobileMenu({ currentPath = "/" }: MobileMenuProps) {
           opacity: isOpen ? 1 : 0,
           transform: isOpen ? 'translateX(0)' : 'translateX(50px)',
           transition: 'all 0.8s ease-out',
+          willChange: 'transform, opacity',
         }}
       />
       <div
-        className="absolute rounded-full bg-gradient-to-tr from-cyan-500/20 to-blue-600/15 blur-[80px]"
+        className="absolute rounded-full bg-gradient-to-tr from-cyan-500/20 to-blue-600/15 blur-[50px] sm:blur-[80px]"
         style={{
           bottom: '-10%',
           left: '-10%',
@@ -97,6 +98,7 @@ export default function MobileMenu({ currentPath = "/" }: MobileMenuProps) {
           opacity: isOpen ? 1 : 0,
           transform: isOpen ? 'translateY(0)' : 'translateY(50px)',
           transition: 'all 0.8s ease-out 0.1s',
+          willChange: 'transform, opacity',
         }}
       />
 
@@ -119,7 +121,7 @@ export default function MobileMenu({ currentPath = "/" }: MobileMenuProps) {
 
         {/* Navigation Links */}
         <nav className="flex-1 flex flex-col justify-center">
-          <ul className="space-y-4">
+          <ul className="space-y-6"> {/* Increased vertical spacing for touch targets */}
             {menuItems.map((item, index) => {
               const isActive = currentPath === item.href
               const delay = 0.15 + (index * 0.05)
@@ -129,7 +131,7 @@ export default function MobileMenu({ currentPath = "/" }: MobileMenuProps) {
                   <Link
                     href={item.href}
                     onClick={closeMenu}
-                    className="group flex items-center gap-4 py-2"
+                    className="group flex items-center gap-4 py-3 sm:py-2" // Increased padding for touch targets
                     style={{
                       opacity: isOpen ? 1 : 0,
                       transform: isOpen ? 'translateX(0)' : 'translateX(-30px)',
