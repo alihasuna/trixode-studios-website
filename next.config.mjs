@@ -58,6 +58,17 @@ const nextConfig = {
       },
     ]
   },
+
+  // Redirect old routes
+  async redirects() {
+    return [
+      {
+        source: '/services',
+        destination: '/pricing',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 export default nextConfig

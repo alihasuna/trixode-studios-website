@@ -8,10 +8,10 @@ Trixode Studios corporate website — a Next.js 16 App Router site with heavy an
 
 ## Commands
 
-- `npm run dev` — Start dev server (Turbopack enabled via `next.config.mjs`)
+- `npm run dev` — Start dev server (Turbopack enabled via `turbopack` config in `next.config.mjs`)
 - `npm run build` — Production build (TS errors ignored via `typescript.ignoreBuildErrors`)
 - `npm run start` — Serve production build
-- `npm run lint` — ESLint with next/core-web-vitals + next/typescript
+- `npm run lint` — ESLint 9 flat config with next/core-web-vitals
 
 No test framework is configured.
 
@@ -20,7 +20,7 @@ No test framework is configured.
 - **Framework**: Next.js 16.1.6, React 19, TypeScript 5 (strict)
 - **Styling**: Tailwind CSS 3.4 with `tailwindcss-animate`, class-variance-authority, clsx + tailwind-merge via `cn()` in `lib/utils.ts`
 - **UI**: Radix UI primitives wrapped as shadcn/ui components (config in `components.json`)
-- **Animation**: Framer Motion (interactions/transitions), GSAP 3.14 + ScrollTrigger (choreography), CSS keyframes (always-on GPU effects), Anime.js
+- **Animation**: Framer Motion (interactions/transitions), GSAP 3.14 + ScrollTrigger (choreography), CSS keyframes (always-on GPU effects), Anime.js v4
 - **3D**: Three.js + React Three Fiber/Drei (used sparingly)
 - **Forms**: React Hook Form + Zod validation
 - **Email**: Resend API (`RESEND_API_KEY` in `.env.local`)
@@ -34,11 +34,22 @@ No test framework is configured.
 
 **Config**: `next.config.mjs` (note: `.mjs` extension, not `.ts`).
 
+**Environment variables** (in `.env.local`):
+- `RESEND_API_KEY` — used by all API routes for email delivery
+- `NEXT_PUBLIC_SITE_URL` / `NEXT_PUBLIC_BASE_URL` — base URL for sitemap, metadata, and OG tags (falls back to `https://www.trixode-studios.com`)
+
 **App Router structure** (`app/`):
-- Pages: home, about, services, careers, contact, blog (with `[slug]` dynamic route), projects, people, privacy, terms, cookies, accessibility, home-2 (alternate design)
+- Home page is in a route group: `app/(home)/page.tsx`
+- Pages: home, home-2 (alternate design), about, pricing, careers, contact, blog (with `[slug]` dynamic route), projects, people, privacy, terms, cookies, accessibility
+- **Routing gotcha**: `/services` permanently redirects to `/pricing` (configured in `next.config.mjs` redirects). A legacy `app/services/page.tsx` still exists.
 - API routes: `api/contact/`, `api/newsletter/`, `api/apply/` — all use Resend for email
 - SEO: dynamic `sitemap.ts` and `robots.ts`, Organization JSON-LD schema in root layout
+- Blog data is static in `app/blog/blogData.ts` (no CMS)
 - Global CSS imported from `styles/globals.css` in root layout (not `app/globals.css`)
+
+**Providers** (in `components/providers/`):
+- `ThemeProvider` — wraps next-themes with `attribute="class"`, `defaultTheme="dark"`, `enableSystem`
+- `ClientEffects` — dynamically imports and renders `FluidBackground` (global animated background, SSR-disabled)
 
 **Components** (`components/`):
 - `ui/` — Radix/shadcn primitives plus custom: `CustomCursor.tsx` (dual-element, desktop-only), `WelcomeLoader.tsx` (animated loading screen), `HexagonLogo.tsx`
@@ -54,6 +65,13 @@ No test framework is configured.
 
 **Note**: `useIsMobile` exists in both `hooks/use-mobile.tsx` and `components/ui/use-mobile.tsx` (identical copies — the `components/ui/` copy is the shadcn default).
 
+## ESLint Configuration
+
+Uses ESLint 9 flat config (`eslint.config.mjs`) extending `eslint-config-next/core-web-vitals`. Disabled rules:
+- `react/no-unescaped-entities` — off (allows `'` and `"` in JSX text)
+- `react-hooks/purity` — off
+- `react-hooks/set-state-in-effect` — off
+
 ## Animation Patterns
 
 Three-layer approach — use the right tool for each job:
@@ -62,9 +80,11 @@ Three-layer approach — use the right tool for each job:
 2. **Framer Motion** for interaction-driven animations (page transitions, scroll reveals, hover states). Use `variants` pattern for reusable definitions. Use `useReducedMotion()` from framer-motion to check preference.
 3. **GSAP** for complex timeline choreography. Always clean up with `useGSAP()` context or manual cleanup in useEffect return.
 
+**Anime.js v4** is also used (notably on the services page) — import from `animejs` (not `anime.js`): `import { animate, createTimeline, stagger } from "animejs"`.
+
 All animations must respect `prefers-reduced-motion`. Desktop-only effects (custom cursor, magnetic) are gated behind `useMediaQuery`. The homepage demonstrates the pattern:
 ```
-const isDesktop = useMediaQuery("(min-width: 1024px)")
+const isDesktop = useMediaQuery("(min-width: 1024px) and (hover: hover) and (pointer: fine)")
 const prefersReducedMotion = useReducedMotion()
 const enableHeavyEffects = !prefersReducedMotion && isDesktop
 ```
@@ -77,7 +97,7 @@ const enableHeavyEffects = !prefersReducedMotion && isDesktop
 
 When adding shadcn components, they use the HSL system. Custom components typically use the raw theme tokens directly.
 
-**Gotcha**: `components.json` references `app/globals.css` as the CSS path, but the actual file is `styles/globals.css`. If `npx shadcn` commands fail to find the CSS, adjust the path.
+**Gotcha**: `components.json` references `app/globals.css` as the CSS path, but the actual file is `styles/globals.css`. If `npx shadcn` commands fail to find the CSS, adjust the path in `components.json` first.
 
 - Glassmorphism via `.glass` utility class in `@layer utilities` (backdrop-blur + inset box-shadow + border, reduced blur on mobile)
 - Dark mode via class strategy in Tailwind config

@@ -148,18 +148,17 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <div
-              className="bg-gradient-to-br from-blue-900/20 to-purple-900/10 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-8 md:p-12"
+              className="bg-black/[0.02] dark:bg-gradient-to-br dark:from-blue-900/20 dark:to-purple-900/10 backdrop-blur-sm border border-black/10 dark:border-blue-500/20 rounded-2xl p-8 md:p-12"
               dangerouslySetInnerHTML={{ __html: post.content }}
               style={{
-                color: "#e5e7eb",
                 lineHeight: "1.8",
                 fontSize: "1.1rem",
               }}
             />
             <style jsx global>{`
-              /* Enhanced Typography */
+              /* Enhanced Typography — Light Mode */
               .prose h2 {
-                color: #ffffff !important;
+                color: #111827 !important;
                 font-weight: 800 !important;
                 font-size: 1.75rem !important;
                 margin: 2.5rem 0 1.5rem 0 !important;
@@ -168,113 +167,104 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
               }
               
               .prose h3 {
-                color: #60a5fa !important;
+                color: #2563eb !important;
                 font-weight: 700 !important;
                 font-size: 1.4rem !important;
                 margin: 2rem 0 1rem 0 !important;
               }
               
               .prose h4 {
-                color: #93c5fd !important;
+                color: #3b82f6 !important;
                 font-weight: 600 !important;
                 font-size: 1.2rem !important;
                 margin: 1.5rem 0 0.75rem 0 !important;
               }
               
-              /* Improved Paragraphs */
               .prose p {
-                color: #e5e7eb !important;
+                color: #374151 !important;
                 margin: 1.5rem 0 !important;
                 text-align: left !important;
                 max-width: none !important;
               }
               
-              /* Better Lists */
               .prose ul, .prose ol {
                 margin: 1.5rem 0 !important;
                 padding-left: 1.5rem !important;
               }
               
               .prose li {
-                color: #d1d5db !important;
+                color: #4b5563 !important;
                 margin: 0.75rem 0 !important;
                 line-height: 1.7 !important;
               }
               
               .prose li::marker {
-                color: #60a5fa !important;
+                color: #3b82f6 !important;
               }
               
-              /* Enhanced Code Blocks */
               .prose pre {
-                background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.9)) !important;
-                border: 1px solid rgba(59, 130, 246, 0.3) !important;
+                background: linear-gradient(135deg, rgba(243, 244, 246, 0.9), rgba(229, 231, 235, 0.9)) !important;
+                border: 1px solid rgba(59, 130, 246, 0.2) !important;
                 border-radius: 12px !important;
                 padding: 1.5rem !important;
                 margin: 2rem 0 !important;
                 overflow-x: auto !important;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
               }
               
               .prose code {
-                background: rgba(59, 130, 246, 0.1) !important;
-                color: #93c5fd !important;
+                background: rgba(59, 130, 246, 0.08) !important;
+                color: #2563eb !important;
                 padding: 0.25rem 0.5rem !important;
                 border-radius: 6px !important;
                 font-size: 0.9em !important;
                 font-weight: 500 !important;
-                border: 1px solid rgba(59, 130, 246, 0.2) !important;
+                border: 1px solid rgba(59, 130, 246, 0.15) !important;
               }
               
               .prose pre code {
                 background: transparent !important;
-                color: #e2e8f0 !important;
+                color: #1f2937 !important;
                 padding: 0 !important;
                 border: none !important;
                 font-size: 0.95rem !important;
               }
               
-              /* Strong Text */
               .prose strong {
-                color: #ffffff !important;
+                color: #111827 !important;
                 font-weight: 700 !important;
               }
               
-              /* Emphasis */
               .prose em {
-                color: #fbbf24 !important;
+                color: #b45309 !important;
                 font-style: italic !important;
               }
               
-              /* Better Spacing */
               .prose > * {
                 max-width: none !important;
               }
               
-              /* Links */
               .prose a {
-                color: #60a5fa !important;
+                color: #2563eb !important;
                 text-decoration: underline !important;
-                text-decoration-color: rgba(96, 165, 250, 0.5) !important;
+                text-decoration-color: rgba(37, 99, 235, 0.4) !important;
                 transition: all 0.2s ease !important;
               }
               
               .prose a:hover {
-                color: #93c5fd !important;
-                text-decoration-color: #93c5fd !important;
+                color: #1d4ed8 !important;
+                text-decoration-color: #1d4ed8 !important;
               }
               
-              /* Blockquotes */
               .prose blockquote {
                 border-left: 4px solid #3b82f6 !important;
                 background: rgba(59, 130, 246, 0.05) !important;
                 padding: 1rem 1.5rem !important;
                 margin: 2rem 0 !important;
                 font-style: italic !important;
-                color: #d1d5db !important;
+                color: #4b5563 !important;
               }
               
-              /* Tables */
               .prose table {
                 width: 100% !important;
                 border-collapse: collapse !important;
@@ -282,20 +272,50 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
               }
               
               .prose th, .prose td {
-                border: 1px solid rgba(59, 130, 246, 0.3) !important;
+                border: 1px solid rgba(59, 130, 246, 0.2) !important;
                 padding: 0.75rem !important;
                 text-align: left !important;
               }
               
               .prose th {
-                background: rgba(59, 130, 246, 0.1) !important;
-                color: #ffffff !important;
+                background: rgba(59, 130, 246, 0.08) !important;
+                color: #111827 !important;
                 font-weight: 600 !important;
               }
               
               .prose td {
-                color: #e5e7eb !important;
+                color: #374151 !important;
               }
+
+              /* Dark Mode Overrides */
+              html.dark .prose h2 { color: #ffffff !important; }
+              html.dark .prose h3 { color: #60a5fa !important; }
+              html.dark .prose h4 { color: #93c5fd !important; }
+              html.dark .prose p { color: #e5e7eb !important; }
+              html.dark .prose li { color: #d1d5db !important; }
+              html.dark .prose pre {
+                background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.9)) !important;
+                border-color: rgba(59, 130, 246, 0.3) !important;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+              }
+              html.dark .prose code {
+                background: rgba(59, 130, 246, 0.1) !important;
+                color: #93c5fd !important;
+                border-color: rgba(59, 130, 246, 0.2) !important;
+              }
+              html.dark .prose pre code {
+                background: transparent !important;
+                color: #e2e8f0 !important;
+                border: none !important;
+              }
+              html.dark .prose strong { color: #ffffff !important; }
+              html.dark .prose em { color: #fbbf24 !important; }
+              html.dark .prose a { color: #60a5fa !important; text-decoration-color: rgba(96, 165, 250, 0.5) !important; }
+              html.dark .prose a:hover { color: #93c5fd !important; text-decoration-color: #93c5fd !important; }
+              html.dark .prose blockquote { color: #d1d5db !important; }
+              html.dark .prose th { background: rgba(59, 130, 246, 0.1) !important; color: #ffffff !important; }
+              html.dark .prose th, html.dark .prose td { border-color: rgba(59, 130, 246, 0.3) !important; }
+              html.dark .prose td { color: #e5e7eb !important; }
             `}</style>
           </motion.article>
 
@@ -313,12 +333,12 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                   <Link
                     key={relatedPost.slug}
                     href={`/blog/${relatedPost.slug}`}
-                    className="group bg-gradient-to-br from-blue-900/20 to-purple-900/10 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-6 hover:border-blue-400/40 transition-all duration-300"
+                    className="group bg-black/[0.02] dark:bg-gradient-to-br dark:from-blue-900/20 dark:to-purple-900/10 backdrop-blur-sm border border-black/10 dark:border-blue-500/20 rounded-2xl p-6 hover:border-blue-400/40 transition-all duration-300"
                   >
-                    <h3 className="text-xl font-black text-white group-hover:text-cyan-300 transition-colors mb-2">
+                    <h3 className="text-xl font-black text-black dark:text-white group-hover:text-brand-blue transition-colors mb-2">
                       {relatedPost.title}
                     </h3>
-                    <div className="flex items-center text-cyan-300 font-semibold text-sm">
+                    <div className="flex items-center text-brand-blue font-semibold text-sm">
                       Read More
                       <ArrowRight className="ml-1 h-4 w-4" />
                     </div>

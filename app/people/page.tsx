@@ -136,7 +136,7 @@ export default function PeoplePage() {
                   <div className="flex space-x-4 justify-center">
                     {[
                       { icon: Github, href: "https://github.com/trixodestudios" },
-                      { icon: Linkedin, href: "https://linkedin.com/in/trixode-studios-054154311" },
+                      { icon: Linkedin, href: "https://www.linkedin.com/in/trixode-studios-054154311/" },
                       { icon: Mail, href: "mailto:ceo@trixode-studios.com" },
                     ].map((social, index) => (
                       <motion.a

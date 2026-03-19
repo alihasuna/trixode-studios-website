@@ -23,7 +23,7 @@ export default function FloatingNav() {
     }, [])
 
     const navLinks = [
-        { name: "Services", href: "/services" },
+        { name: "Pricing", href: "/pricing" },
         { name: "Projects", href: "/projects" },
         { name: "About", href: "/about" },
         { name: "Blog", href: "/blog" },

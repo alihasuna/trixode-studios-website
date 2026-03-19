@@ -28,8 +28,8 @@ export default function Footer() {
             <div className="flex space-x-4">
               {[
                 { icon: Github, href: "https://github.com/trixodestudios", label: "GitHub" },
-                { icon: Linkedin, href: "https://linkedin.com/in/trixode-studios-054154311", label: "LinkedIn" },
-                { icon: Mail, href: "mailto:ceo@trixode-studios.com", label: "Email" },
+                { icon: Linkedin, href: "https://www.linkedin.com/in/trixode-studios-054154311/", label: "LinkedIn" },
+                { icon: Mail, href: "mailto:hello@trixode.com", label: "Email" },
               ].map((social) => (
                 <a
                   key={social.label}
@@ -51,7 +51,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {[
                 { name: "About", href: "/about" },
-                { name: "Services", href: "/services" },
+                { name: "Pricing", href: "/pricing" },
                 { name: "Projects", href: "/projects" },
                 { name: "Blog", href: "/blog" },
                 { name: "Contact", href: "/contact" },
@@ -94,7 +94,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-black/10 dark:border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-black/50 dark:text-white/50 font-light">
-            © 2026 Trixode-Studios S.A.S. B.I.C. | All rights reserved.
+            © {new Date().getFullYear()} Trixode-Studios S.A.S. B.I.C. | All rights reserved.
           </p>
           <p className="text-black/30 dark:text-white/30 font-light">Built with AI in Victoria, BC & Quito, Ecuador</p>
         </div>

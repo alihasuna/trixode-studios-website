@@ -332,10 +332,10 @@ export default function ContactPage() {
                     <div>
                       <h3 className="text-sm font-medium text-black/50 dark:text-white/50 uppercase tracking-widest mb-1 font-grotesk">Email</h3>
                       <a
-                        href="mailto:ceo@trixode-studios.com"
+                        href="mailto:hello@trixode.com"
                         className="text-lg text-black dark:text-white hover:text-brand-blue transition-colors font-light"
                       >
-                        ceo@trixode-studios.com
+                        hello@trixode.com
                       </a>
                     </div>
                   </div>

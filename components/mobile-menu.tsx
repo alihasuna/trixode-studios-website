@@ -45,7 +45,7 @@ export default function MobileMenu({ currentPath = "/" }: MobileMenuProps) {
   const menuItems = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
-    { name: "Services", href: "/services" },
+    { name: "Pricing", href: "/pricing" },
     { name: "Projects", href: "/projects" },
     { name: "People", href: "/people" },
     { name: "Blog", href: "/blog" },
@@ -191,18 +191,16 @@ export default function MobileMenu({ currentPath = "/" }: MobileMenuProps) {
           {/* Social Links */}
           <div className="flex items-center gap-6">
             <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="mailto:hello@trixode.com"
               className="text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white transition-colors duration-300"
-              aria-label="Twitter"
+              aria-label="Email"
             >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
               </svg>
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/trixode-studios-054154311/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white transition-colors duration-300"
@@ -213,7 +211,7 @@ export default function MobileMenu({ currentPath = "/" }: MobileMenuProps) {
               </svg>
             </a>
             <a
-              href="https://github.com"
+              href="https://github.com/trixodestudios"
               target="_blank"
               rel="noopener noreferrer"
               className="text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white transition-colors duration-300"

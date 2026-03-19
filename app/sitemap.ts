@@ -14,7 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/people',
     '/about',
     '/projects',
-    '/services',
+    '/pricing',
     '/careers',
     '/blog',
     '/contact',

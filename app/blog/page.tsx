@@ -292,7 +292,7 @@ export default function BlogPage() {
                     className="mb-8 p-4 bg-green-500/10 border border-green-500/20 rounded-xl flex items-center justify-center gap-2"
                   >
                     <CheckCircle className="h-5 w-5 text-green-400" />
-                    <p className="text-green-300 font-medium">
+                    <p className="text-green-600 dark:text-green-300 font-medium">
                       Successfully subscribed!
                     </p>
                   </motion.div>
@@ -305,7 +305,7 @@ export default function BlogPage() {
                     className="mb-8 p-4 bg-red-500/10 border border-red-500/20 rounded-xl flex items-center justify-center gap-2"
                   >
                     <AlertCircle className="h-5 w-5 text-red-400" />
-                    <p className="text-red-300 font-medium">
+                    <p className="text-red-600 dark:text-red-300 font-medium">
                       Something went wrong. Please try again.
                     </p>
                   </motion.div>

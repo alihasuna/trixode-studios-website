@@ -131,9 +131,9 @@ export default function TermsPage() {
                 </p>
               </section>
 
-              <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">SERVICES DESCRIPTION</h2>
-                <p className="text-white/60 leading-relaxed font-light">
+              <section className="glass rounded-3xl p-10 border border-black/5 dark:border-white/5">
+                <h2 className="text-2xl md:text-3xl font-light text-black dark:text-white mb-4 font-grotesk">SERVICES DESCRIPTION</h2>
+                <p className="text-black/60 dark:text-white/60 leading-relaxed font-light">
                   Trixode Studios provides software development, AI-powered tools, and technology consulting services.
                   We specialize in creating elegant solutions for researchers, scientists, and innovators. Our services
                   include but are not limited to:
@@ -147,8 +147,8 @@ export default function TermsPage() {
                 </ul>
               </section>
 
-              <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">USER RESPONSIBILITIES</h2>
+              <section className="glass rounded-3xl p-10 border border-black/5 dark:border-white/5">
+                <h2 className="text-2xl md:text-3xl font-light text-black dark:text-white mb-4 font-grotesk">USER RESPONSIBILITIES</h2>
                 <div className="text-black/60 dark:text-white/60 font-light space-y-4">
                   <p className="leading-relaxed">By using our services, you agree to:</p>
                   <ul className="list-disc list-inside space-y-1">
@@ -162,8 +162,8 @@ export default function TermsPage() {
                 </div>
               </section>
 
-              <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">INTELLECTUAL PROPERTY</h2>
+              <section className="glass rounded-3xl p-10 border border-black/5 dark:border-white/5">
+                <h2 className="text-2xl md:text-3xl font-light text-black dark:text-white mb-4 font-grotesk">INTELLECTUAL PROPERTY</h2>
                 <div className="text-black/60 dark:text-white/60 font-light space-y-4">
                   <p className="leading-relaxed">
                     All content, features, and functionality on our website and in our services are owned by Trixode
@@ -176,8 +176,8 @@ export default function TermsPage() {
                 </div>
               </section>
 
-              <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">PAYMENT TERMS</h2>
+              <section className="glass rounded-3xl p-10 border border-black/5 dark:border-white/5">
+                <h2 className="text-2xl md:text-3xl font-light text-black dark:text-white mb-4 font-grotesk">PAYMENT TERMS</h2>
                 <div className="text-black/60 dark:text-white/60 font-light space-y-4">
                   <p className="leading-relaxed">
                     Payment terms for our services will be specified in individual project agreements. Generally:
@@ -191,34 +191,34 @@ export default function TermsPage() {
                 </div>
               </section>
 
-              <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">LIMITATION OF LIABILITY</h2>
-                <p className="text-white/60 leading-relaxed font-light">
+              <section className="glass rounded-3xl p-10 border border-black/5 dark:border-white/5">
+                <h2 className="text-2xl md:text-3xl font-light text-black dark:text-white mb-4 font-grotesk">LIMITATION OF LIABILITY</h2>
+                <p className="text-black/60 dark:text-white/60 leading-relaxed font-light">
                   To the fullest extent permitted by law, Trixode Studios shall not be liable for any indirect,
                   incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether
                   incurred directly or indirectly, or any loss of data, use, goodwill, or other intangible losses.
                 </p>
               </section>
 
-              <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">TERMINATION</h2>
-                <p className="text-white/60 leading-relaxed font-light">
+              <section className="glass rounded-3xl p-10 border border-black/5 dark:border-white/5">
+                <h2 className="text-2xl md:text-3xl font-light text-black dark:text-white mb-4 font-grotesk">TERMINATION</h2>
+                <p className="text-black/60 dark:text-white/60 leading-relaxed font-light">
                   We may terminate or suspend your access to our services immediately, without prior notice or
                   liability, for any reason whatsoever, including without limitation if you breach the Terms of Service.
                 </p>
               </section>
 
-              <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">GOVERNING LAW</h2>
-                <p className="text-white/60 leading-relaxed font-light">
+              <section className="glass rounded-3xl p-10 border border-black/5 dark:border-white/5">
+                <h2 className="text-2xl md:text-3xl font-light text-black dark:text-white mb-4 font-grotesk">GOVERNING LAW</h2>
+                <p className="text-black/60 dark:text-white/60 leading-relaxed font-light">
                   These Terms shall be interpreted and governed by the laws of British Columbia, Canada, without regard
                   to its conflict of law provisions.
                 </p>
               </section>
 
-              <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">CONTACT INFORMATION</h2>
-                <p className="text-white/60 leading-relaxed font-light">
+              <section className="glass rounded-3xl p-10 border border-black/5 dark:border-white/5">
+                <h2 className="text-2xl md:text-3xl font-light text-black dark:text-white mb-4 font-grotesk">CONTACT INFORMATION</h2>
+                <p className="text-black/60 dark:text-white/60 leading-relaxed font-light">
                   If you have any questions about these Terms of Service, please contact us at:
                 </p>
                 <div className="mt-4 text-black/70 dark:text-white/70 font-light">

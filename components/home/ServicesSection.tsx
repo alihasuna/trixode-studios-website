@@ -15,7 +15,7 @@ const services = [
         priceSuffix: "/mo",
         secondaryPrice: null,
         ctaText: "Learn More",
-        link: "/services#seo"
+        link: "/pricing"
     },
     {
         tag: "AI-POWERED WEBSITES",
@@ -25,13 +25,13 @@ const services = [
         priceSuffix: "",
         secondaryPrice: "or $1,499/mo retainer",
         ctaText: "Learn More",
-        link: "/services#webdev"
+        link: "/pricing"
     },
     {
         tag: "CUSTOM AI AGENTS",
         title: "CUSTOM AI AGENTS & AUTOMATION",
         description: "Autonomous AI agents that handle workflows, integrate with your CRM and tools, and eliminate the manual work slowing your team down. Built for your specific business.",
-        price: "$15,000",
+        price: "$7,500",
         priceSuffix: "+",
         secondaryPrice: "Based on scope & complexity",
         ctaText: "Book a Call",

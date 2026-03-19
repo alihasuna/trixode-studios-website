@@ -15,12 +15,6 @@ import {
     ShieldCheck,
     Zap,
     BarChart3,
-    MessageSquare,
-    Mail,
-    Gauge,
-    Languages,
-    Accessibility,
-    Layers,
 } from "lucide-react"
 import FloatingNav from "@/components/layout/FloatingNav"
 import Footer from "@/components/footer"
@@ -34,93 +28,69 @@ import { useMediaQuery } from "@/hooks/useMediaQuery"
 
 const websitePackages = [
     {
-        tier: "Starter",
-        badge: "Quick Launch",
-        price: "$2,500",
-        timeline: "2 weeks",
-        description: "Perfect for solo consultants, freelancers, and new startups who need a professional presence fast.",
+        tier: "The Lead Engine",
+        badge: "Most Popular",
+        price: "$4,999",
+        timeline: "2–3 weeks",
+        description: "Your website captures leads while you sleep. AI chatbot answers questions 24/7, smart forms qualify visitors, and sub-2-second load times mean nobody bounces.",
         gradient: "from-brand-blue/20 to-brand-cyan/10",
         borderGlow: "group-hover:shadow-[0_0_60px_rgba(59,130,246,0.15)]",
-        features: [
-            "5-page responsive website",
-            "Mobile-first design",
-            "SEO-ready architecture",
-            "Contact form + email notifications",
-            "Google Analytics setup",
-            "1 round of revisions",
-        ],
-    },
-    {
-        tier: "Growth",
-        badge: "Most Popular",
-        price: "$5,000",
-        timeline: "3–4 weeks",
-        description: "For growing businesses that need a site that converts visitors into customers — with AI built in.",
-        gradient: "from-brand-purple/20 to-brand-blue/10",
-        borderGlow: "group-hover:shadow-[0_0_60px_rgba(139,92,246,0.15)]",
         popular: true,
+        guarantee: "30-day satisfaction guarantee",
         features: [
-            "Up to 10 pages with custom design",
+            "Up to 8 pages, premium responsive design",
             "AI chatbot for 24/7 lead capture",
             "Smart lead-capture forms + CRM integration",
+            "Sub-2-second load time, mobile-first",
+            "SEO-ready architecture + Google Analytics",
             "Blog / CMS system",
-            "Sub-2-second load time",
-            "Animations & micro-interactions",
-            "2 rounds of revisions",
+            "2 rounds of revisions + 60-day support",
         ],
     },
     {
-        tier: "Premium",
+        tier: "The Lead Engine Pro",
         badge: "Full Power",
-        price: "$10,000+",
+        price: "$9,999",
         timeline: "4–6 weeks",
-        description: "For established businesses and funded startups that need a world-class digital experience.",
-        gradient: "from-emerald-500/20 to-brand-cyan/10",
-        borderGlow: "group-hover:shadow-[0_0_60px_rgba(16,185,129,0.15)]",
+        description: "A world-class digital experience that makes your company look 10x its size. WebGL effects, advanced AI, and everything built to convert.",
+        gradient: "from-brand-purple/20 to-brand-blue/10",
+        borderGlow: "group-hover:shadow-[0_0_60px_rgba(139,92,246,0.15)]",
+        guarantee: "30-day satisfaction guarantee",
         features: [
             "Unlimited pages, fully custom design",
-            "WebGL / 3D effects & advanced animations",
-            "AI-powered search & recommendations",
+            "Advanced AI chatbot (lead-qualifying)",
+            "WebGL / 3D effects & premium animations",
             "Multi-language support",
             "E-commerce or booking integration",
+            "Full technical SEO audit & optimization",
             "A/B testing setup",
-            "Priority support + 3 revision rounds",
+            "3 revision rounds + 90-day priority support",
         ],
     },
 ]
 
 const retainerPlans = [
     {
-        tier: "Essential",
+        tier: "Care Plan",
         price: "$499",
         period: "/mo",
         features: [
-            "Hosting & security updates",
-            "Uptime monitoring",
-            "Monthly backups",
+            "Hosting, security & uptime monitoring",
+            "Monthly backups & updates",
             "2 hours of content updates",
+            "Bug fixes & performance checks",
         ],
     },
     {
-        tier: "Growth",
-        price: "$999",
+        tier: "Growth Plan",
+        price: "$1,499",
         period: "/mo",
         popular: true,
         features: [
-            "Everything in Essential",
+            "Everything in Care Plan",
+            "8 hours of dev / new features",
             "Monthly performance report",
-            "5 hours of updates / new features",
             "A/B test management",
-        ],
-    },
-    {
-        tier: "Scale",
-        price: "$1,999",
-        period: "/mo",
-        features: [
-            "Everything in Growth",
-            "Dedicated dev hours",
-            "Priority support",
             "Monthly strategy call",
             "Conversion optimization",
         ],
@@ -129,101 +99,68 @@ const retainerPlans = [
 
 const seoPlans = [
     {
-        tier: "Foundation",
+        tier: "Page One Engine",
         price: "$999",
         period: "/mo",
+        guarantee: "Page 1 ranking for 3 keywords in 90 days, or next month free",
         features: [
-            "Keyword research & strategy",
+            "Keyword research & content strategy",
             "4 SEO-optimized articles / month",
             "On-page optimization",
-            "Monthly ranking report",
+            "Monthly ranking & traffic report",
+            "3-month minimum commitment",
         ],
     },
     {
-        tier: "Accelerator",
-        price: "$1,999",
+        tier: "Page One Domination",
+        price: "$2,499",
         period: "/mo",
         popular: true,
+        guarantee: "Page 1 for 5 keywords in 90 days, or next month free",
         features: [
-            "Everything in Foundation",
-            "8 articles / month",
-            "AI-powered content generation",
+            "Everything in Page One Engine",
+            "10 articles / month + content calendar",
             "Competitor gap analysis",
             "Technical SEO audit & fixes",
-        ],
-    },
-    {
-        tier: "Domination",
-        price: "$3,999",
-        period: "/mo",
-        features: [
-            "Everything in Accelerator",
-            "16 articles / month",
-            "Full content calendar management",
-            "Landing page creation",
-            "Revenue-tied conversion tracking",
-            "Weekly reporting calls",
+            "Weekly report + revenue attribution",
+            "6-month minimum commitment",
         ],
     },
 ]
 
 const aiPackages = [
     {
-        tier: "Starter Agent",
-        price: "$5,000–$8,000",
+        tier: "The Autopilot Agent",
+        price: "$7,500",
         timeline: "2–3 weeks",
         description:
-            "A single-purpose AI agent that handles one workflow — customer support, lead qualification, or appointment booking.",
+            "One AI agent that handles one workflow end-to-end. Customer support, lead qualification, or appointment booking — running 24/7 without human intervention.",
+        guarantee: "Working demo in 2 weeks or full refund",
         features: [
-            "Single-purpose AI agent",
-            "Integration with 1–2 tools",
+            "Single-purpose AI agent for your workflow",
+            "Integration with 1–2 tools (CRM, email, Slack)",
             "Trained on your business data (RAG)",
             "Monitoring dashboard",
             "30-day post-launch support",
         ],
     },
     {
-        tier: "Business Automation",
-        price: "$15,000–$25,000",
-        timeline: "4–8 weeks",
+        tier: "The Autopilot System",
+        price: "$20,000+",
+        timeline: "6–10 weeks",
         popular: true,
         description:
-            "Multiple AI agents working together to automate entire business processes end-to-end.",
+            "Multiple AI agents orchestrated together to automate entire business processes. Your team focuses on strategy while AI handles the execution.",
+        guarantee: "Pilot results in 4 weeks or full refund",
         features: [
-            "Multi-step workflow automation",
-            "CRM, ERP, Slack, email integration",
             "Multi-agent orchestration",
-            "Custom RAG on proprietary data",
-            "Analytics dashboard",
-            "Employee training + 60-day support",
+            "Unlimited integrations (CRM, ERP, custom APIs)",
+            "Custom fine-tuning + RAG on proprietary data",
+            "Full analytics dashboard",
+            "Employee training + documentation",
+            "90-day support + monthly optimization",
         ],
     },
-    {
-        tier: "Enterprise Suite",
-        price: "$40,000+",
-        timeline: "2–4 months",
-        description:
-            "Full AI transformation across departments. Custom models, enterprise security, and ongoing optimization.",
-        features: [
-            "Multiple agents across departments",
-            "Custom model fine-tuning",
-            "ISO 27001-aligned security & compliance",
-            "SOC 2 Type II compatible architecture",
-            "Private cloud / on-premises deployment",
-            "Full documentation & training",
-            "Dedicated project manager",
-        ],
-    },
-]
-
-const addOns = [
-    { icon: MessageSquare, name: "AI Chatbot", price: "$1,500" },
-    { icon: Mail, name: "Email Automation", price: "$1,000" },
-    { icon: Layers, name: "CRM Integration", price: "$1,500" },
-    { icon: BarChart3, name: "Analytics Dashboard", price: "$2,000" },
-    { icon: Gauge, name: "Speed Optimization", price: "$1,000" },
-    { icon: Languages, name: "Multilingual Setup", price: "$2,000" },
-    { icon: Accessibility, name: "Accessibility Audit", price: "$1,500" },
 ]
 
 const processSteps = [
@@ -384,9 +321,9 @@ export default function PricingPage() {
                             transition={{ duration: 0.6, delay: 0.2 }}
                             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light mb-8 leading-[1.05] tracking-tight font-grotesk"
                         >
-                            <span className="block">Clear Pricing.</span>
+                            <span className="block">Stop Losing Leads.</span>
                             <span className="block bg-gradient-to-r from-brand-blue to-brand-purple bg-clip-text text-transparent">
-                                Real Results.
+                                Start Growing Revenue.
                             </span>
                         </motion.h1>
 
@@ -396,7 +333,7 @@ export default function PricingPage() {
                             transition={{ duration: 0.5, delay: 0.35 }}
                             className="text-lg md:text-xl text-black/50 dark:text-white/50 max-w-2xl leading-relaxed font-light"
                         >
-                            No hidden fees. No surprise invoices. Pick what you need, and we&apos;ll build it — fast, premium, and designed to grow your business.
+                            Every service comes with a guarantee. Pick the system that fits your business. We&apos;ll build it fast, and it&apos;ll start working while you sleep.
                         </motion.p>
                     </div>
                 </section>
@@ -456,13 +393,13 @@ export default function PricingPage() {
                             <div className="max-w-6xl mx-auto">
                                 <SectionHeader
                                     num="01"
-                                    title="AI-Powered Websites"
-                                    subtitle="High-performance sites built for speed, SEO, and conversion. Every site ships with AI features that capture leads while you sleep."
+                                    title="The Lead Engine"
+                                    subtitle="High-performance AI websites that capture leads 24/7, load in under 2 seconds, and make your business look 10x its size."
                                     icon={Globe}
                                 />
 
                                 {/* Website Package Cards */}
-                                <div className="grid md:grid-cols-3 gap-6 mb-24">
+                                <div className="grid md:grid-cols-2 gap-6 mb-24 max-w-4xl">
                                     {websitePackages.map((pkg, i) => (
                                         <motion.div
                                             key={pkg.tier}
@@ -515,12 +452,20 @@ export default function PricingPage() {
                                                     ))}
                                                 </ul>
 
+                                                {/* Guarantee */}
+                                                {pkg.guarantee && (
+                                                    <div className="flex items-center gap-2 mb-6 px-3 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
+                                                        <ShieldCheck className="w-4 h-4 text-emerald-500 shrink-0" />
+                                                        <span className="text-xs text-emerald-600 dark:text-emerald-400 font-medium">{pkg.guarantee}</span>
+                                                    </div>
+                                                )}
+
                                                 {/* CTA */}
                                                 <a
                                                     href="#cta"
                                                     className="magnetic inline-flex items-center justify-center gap-3 px-6 py-3.5 rounded-2xl text-sm font-medium uppercase tracking-wider transition-all duration-300 border border-black/10 dark:border-white/10 hover:border-brand-blue hover:text-brand-blue group/btn"
                                                 >
-                                                    <span>Get Started</span>
+                                                    <span>Book Free Strategy Call</span>
                                                     <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                                                 </a>
                                             </div>
@@ -543,7 +488,7 @@ export default function PricingPage() {
                                     </p>
                                 </motion.div>
 
-                                <div className="grid md:grid-cols-3 gap-6">
+                                <div className="grid md:grid-cols-2 gap-6 max-w-3xl">
                                     {retainerPlans.map((plan, i) => (
                                         <motion.div
                                             key={plan.tier}
@@ -588,12 +533,12 @@ export default function PricingPage() {
                             <div className="max-w-6xl mx-auto">
                                 <SectionHeader
                                     num="02"
-                                    title="AI SEO & Content Growth"
+                                    title="Page One Engine"
                                     subtitle="We turn Google into your #1 salesperson. Predictive keyword analysis, AI-generated content, and reporting tied directly to revenue."
                                     icon={Rocket}
                                 />
 
-                                <div className="grid md:grid-cols-3 gap-6">
+                                <div className="grid md:grid-cols-2 gap-6 max-w-4xl">
                                     {seoPlans.map((plan, i) => (
                                         <motion.div
                                             key={plan.tier}
@@ -635,11 +580,19 @@ export default function PricingPage() {
                                                     ))}
                                                 </ul>
 
+                                                {/* Guarantee */}
+                                                {plan.guarantee && (
+                                                    <div className="flex items-center gap-2 mb-6 px-3 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
+                                                        <ShieldCheck className="w-4 h-4 text-emerald-500 shrink-0" />
+                                                        <span className="text-xs text-emerald-600 dark:text-emerald-400 font-medium">{plan.guarantee}</span>
+                                                    </div>
+                                                )}
+
                                                 <a
                                                     href="#cta"
                                                     className="magnetic inline-flex items-center justify-center gap-3 px-6 py-3.5 rounded-2xl text-sm font-medium uppercase tracking-wider transition-all duration-300 border border-black/10 dark:border-white/10 hover:border-brand-blue hover:text-brand-blue group/btn"
                                                 >
-                                                    <span>Get Started</span>
+                                                    <span>Book Free Strategy Call</span>
                                                     <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                                                 </a>
                                             </div>
@@ -665,12 +618,12 @@ export default function PricingPage() {
                             <div className="max-w-6xl mx-auto">
                                 <SectionHeader
                                     num="03"
-                                    title="Custom AI Agents & Automation"
+                                    title="The Autopilot System"
                                     subtitle="Your business, running on autopilot. We build autonomous AI agents designed specifically for your workflows and processes."
                                     icon={Bot}
                                 />
 
-                                <div className="grid md:grid-cols-3 gap-6">
+                                <div className="grid md:grid-cols-2 gap-6 max-w-4xl">
                                     {aiPackages.map((pkg, i) => (
                                         <motion.div
                                             key={pkg.tier}
@@ -718,11 +671,19 @@ export default function PricingPage() {
                                                     ))}
                                                 </ul>
 
+                                                {/* Guarantee */}
+                                                {pkg.guarantee && (
+                                                    <div className="flex items-center gap-2 mb-6 px-3 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
+                                                        <ShieldCheck className="w-4 h-4 text-emerald-500 shrink-0" />
+                                                        <span className="text-xs text-emerald-600 dark:text-emerald-400 font-medium">{pkg.guarantee}</span>
+                                                    </div>
+                                                )}
+
                                                 <a
                                                     href="#cta"
                                                     className="magnetic inline-flex items-center justify-center gap-3 px-6 py-3.5 rounded-2xl text-sm font-medium uppercase tracking-wider transition-all duration-300 border border-black/10 dark:border-white/10 hover:border-emerald-500 hover:text-emerald-500 group/btn"
                                                 >
-                                                    <span>Book a Strategy Call</span>
+                                                    <span>Book Free Strategy Call</span>
                                                     <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                                                 </a>
                                             </div>
@@ -734,40 +695,7 @@ export default function PricingPage() {
                     )}
                 </AnimatePresence>
 
-                {/* ============================================================ */}
-                {/*  ADD-ONS                                                       */}
-                {/* ============================================================ */}
-                <section className="relative px-6 md:px-16 py-16 md:py-24">
-                    <div className="max-w-6xl mx-auto">
-                        <motion.div {...fadeUp} className="mb-12">
-                            <div className="flex items-center gap-4 mb-4">
-                                <div className="w-10 h-10 rounded-xl bg-brand-cyan/10 flex items-center justify-center">
-                                    <Zap className="w-4 h-4 text-brand-cyan" />
-                                </div>
-                                <h3 className="text-2xl md:text-3xl font-light font-grotesk">Power-Ups</h3>
-                            </div>
-                            <p className="text-black/50 dark:text-white/50 max-w-xl">
-                                Attach to any project to supercharge your results.
-                            </p>
-                        </motion.div>
 
-                        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
-                            {addOns.map((addon, i) => (
-                                <motion.div
-                                    key={addon.name}
-                                    {...stagger(i, 0.05)}
-                                    className="glass p-5 rounded-2xl text-center group hover:-translate-y-1 transition-all duration-300 cursor-pointer"
-                                >
-                                    <div className="w-10 h-10 mx-auto mb-3 rounded-xl bg-brand-cyan/10 flex items-center justify-center group-hover:bg-brand-cyan/20 transition-colors">
-                                        <addon.icon className="w-4 h-4 text-brand-cyan" />
-                                    </div>
-                                    <div className="text-xs font-medium mb-1">{addon.name}</div>
-                                    <div className="text-sm font-light text-brand-blue font-grotesk">{addon.price}</div>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
 
                 {/* ============================================================ */}
                 {/*  HOW IT WORKS                                                  */}
@@ -901,15 +829,14 @@ export default function PricingPage() {
 
                             <div className="relative z-10">
                                 <h2 className="text-4xl md:text-6xl lg:text-7xl font-light font-grotesk mb-8 leading-tight">
-                                    Ready to put{" "}
+                                    Your competitors are{" "}
                                     <span className="bg-gradient-to-r from-brand-blue to-brand-purple bg-clip-text text-transparent">
-                                        AI to work
+                                        already using AI
                                     </span>
-                                    ?
                                 </h2>
 
                                 <p className="text-lg text-black/50 dark:text-white/50 max-w-xl mx-auto mb-12 leading-relaxed">
-                                    Book a free 30-minute AI audit. We&apos;ll analyze your business, identify opportunities, and give you a clear plan — no strings attached.
+                                    Book a free 30-minute strategy call. We&apos;ll audit your current setup, identify the biggest revenue leak, and give you a clear plan — whether you hire us or not.
                                 </p>
 
                                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -917,7 +844,7 @@ export default function PricingPage() {
                                         href="mailto:hello@trixode.com"
                                         className="magnetic inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-brand-blue to-brand-purple text-white rounded-2xl text-sm font-medium uppercase tracking-wider hover:opacity-90 transition-opacity"
                                     >
-                                        <span>Book Free AI Audit</span>
+                                        <span>Book Free Strategy Call</span>
                                         <ArrowRight className="w-4 h-4" />
                                     </a>
                                     <a

@@ -131,8 +131,8 @@ export default function PrivacyPage() {
                 </p>
               </section>
 
-              <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">INFORMATION WE COLLECT</h2>
+              <section className="glass rounded-3xl p-10 border border-black/5 dark:border-white/5">
+                <h2 className="text-2xl md:text-3xl font-light text-black dark:text-white mb-4 font-grotesk">INFORMATION WE COLLECT</h2>
                 <div className="space-y-4 text-black/60 dark:text-white/60 font-light">
                   <div>
                     <h3 className="text-lg font-medium text-black dark:text-white mb-2 font-grotesk">Personal Information</h3>
@@ -147,7 +147,7 @@ export default function PrivacyPage() {
                     </ul>
                   </div>
                   <div>
-                    <h3 className="text-lg font-medium text-white mb-2 font-grotesk">Automatically Collected Information</h3>
+                    <h3 className="text-lg font-medium text-black dark:text-white mb-2 font-grotesk">Automatically Collected Information</h3>
                     <p className="leading-relaxed">
                       We may automatically collect certain information about your device and usage patterns:
                     </p>
@@ -161,8 +161,8 @@ export default function PrivacyPage() {
                 </div>
               </section>
 
-              <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">HOW WE USE YOUR INFORMATION</h2>
+              <section className="glass rounded-3xl p-10 border border-black/5 dark:border-white/5">
+                <h2 className="text-2xl md:text-3xl font-light text-black dark:text-white mb-4 font-grotesk">HOW WE USE YOUR INFORMATION</h2>
                 <div className="text-black/60 dark:text-white/60 font-light space-y-2">
                   <p className="leading-relaxed">We use the information we collect to:</p>
                   <ul className="list-disc list-inside space-y-1">
@@ -176,9 +176,9 @@ export default function PrivacyPage() {
                 </div>
               </section>
 
-              <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">INFORMATION SHARING</h2>
-                <p className="text-white/60 leading-relaxed font-light">
+              <section className="glass rounded-3xl p-10 border border-black/5 dark:border-white/5">
+                <h2 className="text-2xl md:text-3xl font-light text-black dark:text-white mb-4 font-grotesk">INFORMATION SHARING</h2>
+                <p className="text-black/60 dark:text-white/60 leading-relaxed font-light">
                   We do not sell, trade, or otherwise transfer your personal information to third parties without your
                   consent, except as described in this policy. We may share information with:
                 </p>
@@ -189,8 +189,8 @@ export default function PrivacyPage() {
                 </ul>
               </section>
 
-              <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">DATA SECURITY</h2>
+              <section className="glass rounded-3xl p-10 border border-black/5 dark:border-white/5">
+                <h2 className="text-2xl md:text-3xl font-light text-black dark:text-white mb-4 font-grotesk">DATA SECURITY</h2>
                 <p className="text-black/60 dark:text-white/60 leading-relaxed font-light">
                   We implement appropriate technical and organizational security measures to protect your personal
                   information against unauthorized access, alteration, disclosure, or destruction. However, no method of
@@ -198,8 +198,8 @@ export default function PrivacyPage() {
                 </p>
               </section>
 
-              <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">YOUR RIGHTS</h2>
+              <section className="glass rounded-3xl p-10 border border-black/5 dark:border-white/5">
+                <h2 className="text-2xl md:text-3xl font-light text-black dark:text-white mb-4 font-grotesk">YOUR RIGHTS</h2>
                 <div className="text-black/60 dark:text-white/60 font-light space-y-2">
                   <p className="leading-relaxed">You have the right to:</p>
                   <ul className="list-disc list-inside space-y-1">
@@ -213,9 +213,9 @@ export default function PrivacyPage() {
                 </div>
               </section>
 
-              <section className="glass rounded-3xl p-10 border border-white/5">
-                <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-grotesk">CONTACT US</h2>
-                <p className="text-white/60 leading-relaxed font-light">
+              <section className="glass rounded-3xl p-10 border border-black/5 dark:border-white/5">
+                <h2 className="text-2xl md:text-3xl font-light text-black dark:text-white mb-4 font-grotesk">CONTACT US</h2>
+                <p className="text-black/60 dark:text-white/60 leading-relaxed font-light">
                   If you have any questions about this Privacy Policy or our data practices, please contact us at:
                 </p>
                 <div className="mt-4 text-black/70 dark:text-white/70 font-light">
