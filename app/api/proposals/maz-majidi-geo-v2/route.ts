@@ -848,7 +848,7 @@ const htmlContent = `<!DOCTYPE html>
                     <span class="logo-text">Trixode-Studios Inc.</span>
                 </div>
                 <div class="header-meta">
-                    Victoria, BC &amp; Quito, Ecuador<br>
+                    Victoria, BC, Canada<br>
                     <a href="https://www.trixode-studios.com" style="color: var(--brand-blue); text-decoration: none;">trixode-studios.com</a>
                 </div>
             </div>
