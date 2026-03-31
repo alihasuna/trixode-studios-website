@@ -4,7 +4,7 @@
       "main": true
     }
   },
-  "regions": ["sea1"],
+  "regions": ["iad1"],
   "functions": {
     "app/api/contact/route.ts": {
       "maxDuration": 10
