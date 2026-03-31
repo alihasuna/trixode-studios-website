@@ -1,21 +1,51 @@
 # Trixode Studios
 
-## Summary
-Trixode Studios is a software and AI studio building advanced infrastructure, research tools, and custom systems for science-driven teams. We focus on AI systems, scientific computing, data architecture, and cloud platforms.
+> AI Software Company based in Victoria, BC, Canada
+
+## About
+
+Trixode Studios is an AI agency based in Victoria, British Columbia, Canada. We build custom AI agents, high-performance websites, and AI-powered SEO systems for businesses in Victoria, Vancouver, and across British Columbia.
+
+Founded by Hussien Ballouk, Trixode Studios combines AI engineering with applied business strategy to help companies automate workflows, capture more leads, and grow revenue using artificial intelligence.
 
 ## Services
-- AI systems and agentic workflows
-- Scientific computing and research tooling
-- Data architecture and visualization
-- Web and product development
 
-## Key pages
-- https://www.trixode-studios.com/
+- **AI Agent Development**: Custom autonomous AI agents for business automation. Starting at $7,500.
+- **AI-Powered Web Development**: Next.js websites with AI chatbots, lead capture, and sub-2-second load times. Starting at $4,999.
+- **AI SEO & Content**: Predictive keyword strategy, AI-generated content, and revenue-tied reporting. Starting at $999/month.
+- **Business Process Automation**: End-to-end workflow automation using multi-agent AI systems.
+- **Enterprise Integration**: Connect AI systems to CRM, ERP, and existing business tools.
+
+## Products
+
+- **Morphika**: AI-powered image generator for eCommerce businesses.
+
+## Location
+
+- Victoria, BC, Canada (headquarters)
+- Quito, Ecuador (second office)
+- Serving: Victoria, Vancouver, Greater Victoria, Vancouver Island, British Columbia, and all of Canada
+
+## Leadership
+
+- Hussien Ballouk — Founder & CEO
+- Amir Ahmadian — Chief Technology Officer
+
+## Key Pages
+
+- https://www.trixode-studios.com/ (homepage)
 - https://www.trixode-studios.com/about
+- https://www.trixode-studios.com/pricing
 - https://www.trixode-studios.com/services
 - https://www.trixode-studios.com/projects
-- https://www.trixode-studios.com/people
+- https://www.trixode-studios.com/blog
 - https://www.trixode-studios.com/contact
+- https://www.trixode-studios.com/people
+- https://www.trixode-studios.com/careers
 
 ## Contact
-- hello@trixode.com
+
+- Email: hello@trixode.com
+- Website: https://www.trixode-studios.com
+- LinkedIn: https://linkedin.com/in/trixode-studios-054154311
+- GitHub: https://github.com/trixodestudios

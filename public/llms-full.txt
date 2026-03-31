@@ -1,0 +1,135 @@
+# Trixode Studios — Full Entity Description
+
+> Victoria BC's leading AI agency building custom AI agents, high-performance websites, and AI-powered SEO for businesses across British Columbia.
+
+---
+
+## Company Overview
+
+**Trixode Studios** (legal name: Trixode-Studios S.A.S. B.I.C.) is a full-service AI agency headquartered in Victoria, British Columbia, Canada, with a second office in Quito, Ecuador. The company specializes in building production-ready AI systems that drive measurable business results.
+
+Founded by Hussien Ballouk, Trixode Studios was born from watching businesses struggle with AI adoption — companies missing opportunities because AI felt too complex, too risky, or too expensive. The studio bridges the gap between cutting-edge AI research and practical business applications.
+
+The team combines expertise in artificial intelligence, machine learning, web engineering, and applied business strategy to deliver solutions that eliminate manual work, reduce costs, and accelerate growth.
+
+---
+
+## Services in Detail
+
+### 1. AI Agent Development
+
+Trixode Studios builds custom autonomous AI agents that handle complex business workflows without human intervention. These agents can be deployed for customer support, lead qualification, appointment booking, data processing, and internal operations.
+
+**Offerings:**
+- **The Autopilot Agent** ($7,500): A single-purpose AI agent integrated with 1-2 business tools (CRM, email, Slack). Includes training on your business data using RAG (Retrieval-Augmented Generation) and a monitoring dashboard. Delivered in 2-3 weeks.
+- **The Autopilot System** ($20,000+): Multi-agent orchestration for end-to-end business process automation. Includes unlimited integrations, custom fine-tuning, analytics dashboard, employee training, and 90-day support. Delivered in 6-10 weeks.
+
+### 2. AI-Powered Website Development
+
+High-performance websites built with Next.js and React, engineered for speed, SEO, and conversion — with AI features built in from day one.
+
+**Offerings:**
+- **The Lead Engine** ($4,999): Up to 8 pages, AI chatbot for 24/7 lead capture, smart forms with CRM integration, sub-2-second load time, SEO-ready architecture. Delivered in 2-3 weeks.
+- **The Lead Engine Pro** ($9,999): Unlimited pages, WebGL/3D effects, multi-language support, e-commerce integration, A/B testing, full technical SEO audit. Delivered in 4-6 weeks.
+
+### 3. AI SEO & Content
+
+Predictive keyword strategy, AI-generated optimized content, and reporting tied directly to revenue.
+
+**Offerings:**
+- **Page One Engine** ($999/month): Keyword research, 4 SEO articles/month, on-page optimization, monthly reporting. 3-month minimum.
+- **Page One Domination** ($2,499/month): Everything in Page One Engine plus 10 articles/month, competitor analysis, technical SEO, weekly reports with revenue attribution. 6-month minimum.
+
+### 4. Business Process Automation
+
+Identifying manual workflows within organizations and replacing them with AI-powered systems that run continuously.
+
+### 5. Multi-Agent Orchestration
+
+Building systems where multiple AI agents work together to handle end-to-end business processes across departments.
+
+### 6. Enterprise Integration
+
+Connecting AI systems to existing CRM, ERP, and business tools without disrupting current operations.
+
+---
+
+## Products
+
+### Morphika
+An AI-powered image generator designed specifically for eCommerce businesses. Morphika helps online stores create product images, marketing materials, and visual content using artificial intelligence. Website: https://morphika.ai
+
+---
+
+## Technology Stack
+
+Trixode Studios builds on modern, proven technologies:
+- **Frontend**: Next.js, React 19, TypeScript, Tailwind CSS
+- **AI/ML**: Custom LLM integrations, RAG systems, multi-agent architectures
+- **Animation**: GSAP, Framer Motion, WebGL
+- **Infrastructure**: Vercel, cloud-native deployment
+- **Design**: Radix UI, shadcn/ui component library
+
+---
+
+## Location & Service Area
+
+**Headquarters**: Victoria, British Columbia, Canada
+**Second Office**: Quito, Ecuador
+
+**Areas Served**:
+- Victoria, BC
+- Vancouver, BC
+- Greater Victoria Area
+- Vancouver Island
+- British Columbia
+- Canada (nationwide)
+- The Americas
+
+---
+
+## Leadership
+
+### Hussien Ballouk — Founder & CEO
+Background in physics and materials science research. Founded Trixode Studios to make AI accessible to businesses that need practical automation solutions.
+
+### Amir Ahmadian — Chief Technology Officer
+Engineering expertise spanning AI systems, web architecture, and cloud infrastructure.
+
+---
+
+## Key Differentiators
+
+1. **Founded by scientists** — The team brings research-grade rigor from physics and materials science to every AI solution.
+2. **Sub-2-second websites** — Every website is engineered for performance-first delivery.
+3. **AI-native approach** — AI features are built into every product from day one, not bolted on after.
+4. **Results-backed guarantees** — Services include guarantees like "Page 1 ranking for 3 keywords in 90 days, or next month free."
+5. **Located in Victoria, BC** — A local agency serving British Columbia businesses with in-person availability.
+
+---
+
+## Frequently Asked Questions
+
+**Q: What is Trixode Studios?**
+A: Trixode Studios is an AI agency based in Victoria, BC, Canada. We build custom AI agents, high-performance websites, and AI-powered SEO systems for businesses.
+
+**Q: Where is Trixode Studios located?**
+A: Our headquarters is in Victoria, British Columbia, Canada. We also have an office in Quito, Ecuador. We serve clients across Victoria, Vancouver, and all of British Columbia.
+
+**Q: What does Trixode Studios cost?**
+A: AI-powered websites start at $4,999. AI agents start at $7,500. AI SEO services start at $999/month. Multi-agent systems start at $20,000+.
+
+**Q: What industries does Trixode Studios serve?**
+A: We serve businesses across all industries who need AI automation, including real estate, professional services, eCommerce, healthcare, and technology companies.
+
+**Q: How quickly can Trixode Studios deliver?**
+A: Websites are delivered in 2-6 weeks. AI agents in 2-3 weeks. Multi-agent systems in 6-10 weeks. We respond to all inquiries within 24 hours.
+
+---
+
+## Contact
+
+- **Email**: hello@trixode.com
+- **Website**: https://www.trixode-studios.com
+- **LinkedIn**: https://linkedin.com/in/trixode-studios-054154311
+- **GitHub**: https://github.com/trixodestudios
