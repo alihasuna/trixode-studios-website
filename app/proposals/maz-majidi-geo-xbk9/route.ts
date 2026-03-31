@@ -1,9 +1,11 @@
-<!DOCTYPE html>
+import { NextResponse } from 'next/server';
+
+const htmlContent = `<!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="robots" content="noindex, nofollow">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, nofollow">
     <title>Trixode-Studios Inc. — GEO & Website Development Proposal for Maz Majidi</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -906,7 +908,7 @@
             <!-- Stat Badges -->
             <div class="stat-row">
                 <div class="stat-badge">
-                    <div class="stat-value">$0</div>
+                    <div class="stat-value">\$0</div>
                     <div class="stat-label">Website Redesign</div>
                 </div>
                 <div class="stat-badge">
@@ -1128,26 +1130,26 @@
                         <tr>
                             <td>Website Restructure</td>
                             <td style="color: var(--text-secondary);">Full framework rebuild, state-of-the-art design, 2 iteration sessions</td>
-                            <td><span class="price-original">$2,200</span></td>
+                            <td><span class="price-original">\$2,200</span></td>
                             <td><span class="price-free">FREE</span></td>
                         </tr>
                         <tr>
                             <td>GEO Optimization Setup</td>
                             <td style="color: var(--text-secondary);">Schema markup, content restructuring, AI crawler config, health report</td>
-                            <td><span class="price-original">$1,200</span></td>
+                            <td><span class="price-original">\$1,200</span></td>
                             <td><span class="price-included">Included</span></td>
                         </tr>
                         <tr>
                             <td>Monthly GEO Retainer</td>
                             <td style="color: var(--text-secondary);">4 AI posts, citation monitoring, prompt testing, competitor gap analysis</td>
-                            <td><span class="price-original">$990/mo</span></td>
-                            <td><span class="price-highlight">$700/mo</span></td>
+                            <td><span class="price-original">\$990/mo</span></td>
+                            <td><span class="price-highlight">\$700/mo</span></td>
                         </tr>
                         <tr>
                             <td>First Client Discount</td>
                             <td style="color: var(--text-secondary);">30% applied to monthly retainer</td>
                             <td>—</td>
-                            <td style="color: var(--success); font-weight: 600;">Save $290/mo</td>
+                            <td style="color: var(--success); font-weight: 600;">Save \$290/mo</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1157,13 +1159,13 @@
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
                 <div class="highlight-box">
                     <div class="label">Your Monthly Investment</div>
-                    <div class="value">$700<span style="font-size: 0.8rem; font-weight: 400; color: var(--text-muted);">/month</span></div>
-                    <div class="detail">Regular: $990/mo — you save $290 every month</div>
+                    <div class="value">\$700<span style="font-size: 0.8rem; font-weight: 400; color: var(--text-muted);">/month</span></div>
+                    <div class="detail">Regular: \$990/mo — you save \$290 every month</div>
                 </div>
                 <div class="highlight-box">
                     <div class="label">Website Redesign Value</div>
                     <div class="value" style="color: var(--success);">Complimentary</div>
-                    <div class="detail">Valued at $2,200+ — provided at no cost</div>
+                    <div class="detail">Valued at \$2,200+ — provided at no cost</div>
                 </div>
             </div>
 
@@ -1348,3 +1350,13 @@
     </script>
 </body>
 </html>
+`;
+
+export async function GET() {
+  return new NextResponse(htmlContent, {
+    headers: { 
+      'Content-Type': 'text/html; charset=utf-8',
+      'X-Robots-Tag': 'noindex, nofollow'
+    },
+  });
+}
