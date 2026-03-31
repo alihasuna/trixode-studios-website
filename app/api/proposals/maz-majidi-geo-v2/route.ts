@@ -1,5 +1,8 @@
 import { NextResponse } from 'next/server';
 
+// Password for accessing the proposal
+const PROPOSAL_PASSWORD = 'Maz2026Trixode';
+
 const htmlContent = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -821,7 +824,92 @@ const htmlContent = `<!DOCTYPE html>
     </style>
 </head>
 <body>
-    <div class="document">
+    <!-- Password Protection Overlay -->
+    <div id="passwordOverlay" style="
+        position: fixed;
+        inset: 0;
+        background: var(--bg-primary);
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    ">
+        <div style="
+            max-width: 420px;
+            width: 100%;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 48px 40px;
+            text-align: center;
+        ">
+            <svg style="width: 48px; height: 48px; color: var(--brand-blue); margin: 0 auto 24px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 12px; color: var(--text-primary);">
+                Confidential Proposal
+            </h2>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 32px;">
+                This document is password protected. Please enter the password to continue.
+            </p>
+            <form id="passwordForm" onsubmit="return false;">
+                <input
+                    type="password"
+                    id="passwordInput"
+                    placeholder="Enter password"
+                    autocomplete="off"
+                    style="
+                        width: 100%;
+                        padding: 14px 18px;
+                        font-size: 0.95rem;
+                        background: var(--bg-card);
+                        border: 1px solid var(--border);
+                        border-radius: 10px;
+                        color: var(--text-primary);
+                        margin-bottom: 16px;
+                        font-family: var(--font);
+                        outline: none;
+                        transition: border-color 0.2s;
+                    "
+                    onfocus="this.style.borderColor='var(--brand-blue)'"
+                    onblur="this.style.borderColor='var(--border)'"
+                />
+                <button
+                    type="submit"
+                    onclick="checkPassword()"
+                    style="
+                        width: 100%;
+                        padding: 14px 18px;
+                        font-size: 0.95rem;
+                        font-weight: 600;
+                        background: var(--brand-blue);
+                        color: white;
+                        border: none;
+                        border-radius: 10px;
+                        cursor: pointer;
+                        font-family: var(--font);
+                        transition: opacity 0.2s;
+                    "
+                    onmouseover="this.style.opacity='0.9'"
+                    onmouseout="this.style.opacity='1'"
+                >
+                    Access Proposal
+                </button>
+                <p id="errorMessage" style="
+                    color: var(--danger);
+                    font-size: 0.85rem;
+                    margin-top: 12px;
+                    display: none;
+                ">
+                    Incorrect password. Please try again.
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <div class="document" id="proposalContent" style="display: none;">
 
         <!-- ═══════════ PAGE 1: COVER & INTRODUCTION ═══════════ -->
         <div class="page" id="page-1">
@@ -1326,6 +1414,47 @@ const htmlContent = `<!DOCTYPE html>
     </button>
 
     <script>
+        // Password Protection
+        const CORRECT_PASSWORD = '${PROPOSAL_PASSWORD}';
+
+        function checkPassword() {
+            const input = document.getElementById('passwordInput');
+            const error = document.getElementById('errorMessage');
+            const overlay = document.getElementById('passwordOverlay');
+            const content = document.getElementById('proposalContent');
+
+            if (input.value === CORRECT_PASSWORD) {
+                // Store auth in sessionStorage
+                sessionStorage.setItem('proposal-auth', 'true');
+                overlay.style.display = 'none';
+                content.style.display = 'block';
+                error.style.display = 'none';
+            } else {
+                error.style.display = 'block';
+                input.value = '';
+                input.focus();
+            }
+            return false;
+        }
+
+        // Check if already authenticated
+        window.addEventListener('DOMContentLoaded', function() {
+            if (sessionStorage.getItem('proposal-auth') === 'true') {
+                document.getElementById('passwordOverlay').style.display = 'none';
+                document.getElementById('proposalContent').style.display = 'block';
+            } else {
+                document.getElementById('passwordInput').focus();
+            }
+        });
+
+        // Handle Enter key
+        document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+
+        // Theme Toggle
         (function() {
             const toggle = document.getElementById('themeToggle');
             const html = document.documentElement;
@@ -1354,7 +1483,7 @@ const htmlContent = `<!DOCTYPE html>
 
 export async function GET() {
   return new NextResponse(htmlContent, {
-    headers: { 
+    headers: {
       'Content-Type': 'text/html; charset=utf-8',
       'X-Robots-Tag': 'noindex, nofollow'
     },
