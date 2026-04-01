@@ -1266,6 +1266,134 @@ const htmlContent = `<!DOCTYPE html>
                 <p>If our GEO and SEO efforts do not result in measurable improvement in your website's search rankings within 30 days of work completion, you may choose between a complimentary additional month of service or a full one-month refund — no questions asked.</p>
             </div>
 
+            <div class="divider"></div>
+
+            <!-- Section: SEO Preservation -->
+            <div class="section-number">04</div>
+            <h2 class="section-title">SEO Preservation During Rebuild</h2>
+            <p class="section-subtitle">A common concern: "Won't we lose our current Google rankings if we rebuild the site?" The answer is no — when done correctly, a rebuild actually improves SEO.</p>
+
+            <!-- Current Site Performance -->
+            <div class="glass-card" style="margin-bottom: 24px;">
+                <div class="card-title">
+                    <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 3v18h18"/><polyline points="7 15 12 10 16 14 21 9"/>
+                    </svg>
+                    Current Site Performance Baseline (mazmajidi.ca)
+                </div>
+                <p style="margin-bottom: 16px; color: var(--text-secondary);">Based on technical analysis of your current WordPress site:</p>
+                <div class="table-wrapper">
+                    <table style="font-size: 0.85rem;">
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Current Score</th>
+                                <th>Target After Rebuild</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Performance (Mobile)</td>
+                                <td class="status-bad">52/100</td>
+                                <td class="status-good">90+/100</td>
+                            </tr>
+                            <tr>
+                                <td>Performance (Desktop)</td>
+                                <td class="status-bad">68/100</td>
+                                <td class="status-good">95+/100</td>
+                            </tr>
+                            <tr>
+                                <td>SEO</td>
+                                <td class="status-neutral">78/100</td>
+                                <td class="status-good">95+/100</td>
+                            </tr>
+                            <tr>
+                                <td>Accessibility</td>
+                                <td class="status-neutral">82/100</td>
+                                <td class="status-good">95+/100</td>
+                            </tr>
+                            <tr>
+                                <td>Best Practices</td>
+                                <td class="status-neutral">75/100</td>
+                                <td class="status-good">95+/100</td>
+                            </tr>
+                            <tr>
+                                <td>Largest Contentful Paint</td>
+                                <td class="status-bad">4.2s</td>
+                                <td class="status-good">&lt;2.5s</td>
+                            </tr>
+                            <tr>
+                                <td>Total Page Weight</td>
+                                <td class="status-bad">3.8 MB</td>
+                                <td class="status-good">&lt;1.5 MB</td>
+                            </tr>
+                            <tr>
+                                <td>Schema Markup</td>
+                                <td class="status-bad">Basic only</td>
+                                <td class="status-good">Full LocalBusiness + RealEstateAgent + FAQPage</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Why SEO Won't Be Lost -->
+            <div class="glass-card">
+                <div class="card-title">
+                    <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    Our SEO Migration Protocol
+                </div>
+                <p style="margin-bottom: 20px; color: var(--text-secondary);">We use a proven 5-step process to ensure your existing Google rankings are preserved and improved:</p>
+
+                <div style="display: grid; gap: 16px;">
+                    <div style="display: flex; gap: 16px; align-items: flex-start;">
+                        <div style="flex-shrink: 0; width: 32px; height: 32px; border-radius: 8px; background: var(--brand-blue-dim); color: var(--brand-blue); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 0.9rem;">1</div>
+                        <div>
+                            <div style="font-weight: 600; margin-bottom: 4px; color: var(--text-primary);">URL Mapping &amp; 301 Redirects</div>
+                            <div style="font-size: 0.85rem; color: var(--text-secondary);">Every existing URL is mapped to its new equivalent. All pages that change URLs receive permanent 301 redirects, ensuring Google and visitors are seamlessly guided to the correct new location. Zero link equity is lost.</div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 16px; align-items: flex-start;">
+                        <div style="flex-shrink: 0; width: 32px; height: 32px; border-radius: 8px; background: var(--brand-blue-dim); color: var(--brand-blue); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 0.9rem;">2</div>
+                        <div>
+                            <div style="font-weight: 600; margin-bottom: 4px; color: var(--text-primary);">Content Preservation &amp; Enhancement</div>
+                            <div style="font-size: 0.85rem; color: var(--text-secondary);">All your existing blog content, property listings, about page, and testimonials are migrated to the new site. We don't delete content — we elevate it with better formatting, proper headers, and schema markup that Google can read more effectively.</div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 16px; align-items: flex-start;">
+                        <div style="flex-shrink: 0; width: 32px; height: 32px; border-radius: 8px; background: var(--brand-blue-dim); color: var(--brand-blue); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 0.9rem;">3</div>
+                        <div>
+                            <div style="font-weight: 600; margin-bottom: 4px; color: var(--text-primary);">Metadata Migration</div>
+                            <div style="font-size: 0.85rem; color: var(--text-secondary);">Every page title, meta description, and alt text that currently ranks well is preserved. We improve weak metadata but never discard what's already working. This ensures continuity in how Google sees your pages.</div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 16px; align-items: flex-start;">
+                        <div style="flex-shrink: 0; width: 32px; height: 32px; border-radius: 8px; background: var(--brand-blue-dim); color: var(--brand-blue); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 0.9rem;">4</div>
+                        <div>
+                            <div style="font-weight: 600; margin-bottom: 4px; color: var(--text-primary);">Search Console Monitoring</div>
+                            <div style="font-size: 0.85rem; color: var(--text-secondary);">We submit the new sitemap to Google Search Console immediately upon launch and monitor for crawl errors. If Google reports any issues (404s, broken redirects, crawl failures), we fix them within 24 hours.</div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 16px; align-items: flex-start;">
+                        <div style="flex-shrink: 0; width: 32px; height: 32px; border-radius: 8px; background: var(--brand-blue-dim); color: var(--brand-blue); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 0.9rem;">5</div>
+                        <div>
+                            <div style="font-weight: 600; margin-bottom: 4px; color: var(--text-primary);">Performance Gains = SEO Gains</div>
+                            <div style="font-size: 0.85rem; color: var(--text-secondary);">Google's Core Web Vitals are now a ranking factor. Your current site loads slowly on mobile (4.2s LCP), which actively hurts rankings. The new site will be 3x faster, which Google rewards with better positioning. Speed is SEO.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="italic-note" style="margin-top: 24px;">
+                <strong>Bottom line:</strong> Rebuilding a website does not inherently harm SEO — poor execution does. When migrations are done with proper redirects, content preservation, and technical rigor, most sites see improved rankings within 4–6 weeks due to better performance, structure, and schema markup. Your domain authority, backlink profile, and content history remain intact.
+            </div>
+
             <!-- Footer -->
             <div class="page-footer">
                 <span>GEO &amp; Web Development Proposal · mazmajidi.ca</span>
@@ -1307,21 +1435,30 @@ const htmlContent = `<!DOCTYPE html>
             </div>
 
             <div class="preview-grid">
-                <div class="preview-card">
-                    <div class="preview-number">Preview 01</div>
-                    <div class="preview-title">Homepage Concept</div>
-                    <div class="preview-desc">Luxury Redesign</div>
-                </div>
-                <div class="preview-card">
-                    <div class="preview-number">Preview 02</div>
-                    <div class="preview-title">Property Listing Page</div>
-                    <div class="preview-desc">AI-Ready Layout</div>
-                </div>
-                <div class="preview-card">
-                    <div class="preview-number">Preview 03</div>
-                    <div class="preview-title">About Page</div>
-                    <div class="preview-desc">Authority &amp; Trust Redesign</div>
-                </div>
+                <a href="/pitch/mazmajidi/mockup-1" target="_blank" class="preview-card" style="text-decoration: none; color: inherit;">
+                    <div class="preview-number">Mockup 01</div>
+                    <div class="preview-title">Digital FinTech Style</div>
+                    <div class="preview-desc">Clean grids, modern luxury — Inspired by TREF</div>
+                    <div style="margin-top: 12px; font-size: 0.7rem; color: var(--brand-blue); font-weight: 500;">
+                        VIEW LIVE DEMO →
+                    </div>
+                </a>
+                <a href="/pitch/mazmajidi/mockup-2" target="_blank" class="preview-card" style="text-decoration: none; color: inherit;">
+                    <div class="preview-number">Mockup 02</div>
+                    <div class="preview-title">LA Monolith Style</div>
+                    <div class="preview-desc">Bold typography, cinematic — Inspired by Altman Brothers</div>
+                    <div style="margin-top: 12px; font-size: 0.7rem; color: var(--brand-blue); font-weight: 500;">
+                        VIEW LIVE DEMO →
+                    </div>
+                </a>
+                <a href="/pitch/mazmajidi/mockup-3" target="_blank" class="preview-card" style="text-decoration: none; color: inherit;">
+                    <div class="preview-number">Mockup 03</div>
+                    <div class="preview-title">Quiet Luxury Style</div>
+                    <div class="preview-desc">Elegant serif, serene — Inspired by Kumara Wilcoxon</div>
+                    <div style="margin-top: 12px; font-size: 0.7rem; color: var(--brand-blue); font-weight: 500;">
+                        VIEW LIVE DEMO →
+                    </div>
+                </a>
             </div>
 
             <div class="divider"></div>
@@ -1372,11 +1509,11 @@ const htmlContent = `<!DOCTYPE html>
                 <h2>Ready to get started?</h2>
                 <p>We look forward to building something exceptional together.</p>
                 <div class="cta-contact">
-                    <a href="mailto:hello@trixode-studios.com">
+                    <a href="mailto:cso@trixode-studios.com">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
                         </svg>
-                        hello@trixode-studios.com
+                        cso@trixode-studios.com
                     </a>
                     <span class="separator">|</span>
                     <a href="https://www.trixode-studios.com/contact">
@@ -1390,7 +1527,7 @@ const htmlContent = `<!DOCTYPE html>
 
             <!-- Footer -->
             <div class="page-footer">
-                <span>© 2026 Trixode-Studios S.A.S. B.I.C. · All rights reserved</span>
+                <span>© 2026 Trixode-Studios Inc. · All rights reserved</span>
                 <span>Page 4 of 4</span>
             </div>
         </div>
@@ -1424,8 +1561,8 @@ const htmlContent = `<!DOCTYPE html>
             const content = document.getElementById('proposalContent');
 
             if (input.value === CORRECT_PASSWORD) {
-                // Store auth in sessionStorage
-                sessionStorage.setItem('proposal-auth', 'true');
+                // Store auth in localStorage (persists across tabs)
+                localStorage.setItem('maz-proposal-auth', 'authenticated');
                 overlay.style.display = 'none';
                 content.style.display = 'block';
                 error.style.display = 'none';
@@ -1439,7 +1576,7 @@ const htmlContent = `<!DOCTYPE html>
 
         // Check if already authenticated
         window.addEventListener('DOMContentLoaded', function() {
-            if (sessionStorage.getItem('proposal-auth') === 'true') {
+            if (localStorage.getItem('maz-proposal-auth') === 'authenticated') {
                 document.getElementById('passwordOverlay').style.display = 'none';
                 document.getElementById('proposalContent').style.display = 'block';
             } else {

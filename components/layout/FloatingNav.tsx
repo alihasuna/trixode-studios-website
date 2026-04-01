@@ -72,7 +72,7 @@ export default function FloatingNav() {
                     </ul>
                     <Link
                         href={contactLink.href}
-                        className="magnetic px-5 py-2 bg-brand-blue text-white text-sm font-medium rounded-full hover:bg-brand-blue/90 transition-colors duration-300 shadow-[0_0_15px_rgba(59,130,246,0.3)]"
+                        className="magnetic px-5 py-2 bg-[#2563eb] text-white text-sm font-medium rounded-full hover:bg-[#2563eb]/90 transition-colors duration-300 shadow-[0_0_15px_rgba(37,99,235,0.3)]"
                     >
                         {contactLink.name}
                     </Link>

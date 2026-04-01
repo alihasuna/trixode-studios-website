@@ -119,6 +119,7 @@ export default function ServicesSection() {
                                 <Link
                                     href={service.link}
                                     className="block w-full"
+                                    aria-label={`${service.ctaText} — ${service.title}`}
                                 >
                                     <div className="bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-black dark:text-white rounded-full py-4 px-6 flex items-center justify-center gap-2 group-hover:bg-brand-blue group-hover:border-brand-blue group-hover:text-white transition-all duration-300">
                                         <span className="text-sm font-bold tracking-widest uppercase">{service.ctaText}</span>

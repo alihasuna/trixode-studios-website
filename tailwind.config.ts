@@ -13,6 +13,7 @@ const config: Config = {
 			fontFamily: {
 				sans: ['var(--font-inter)', 'sans-serif'],
 				grotesk: ['var(--font-space-grotesk)', 'sans-serif'],
+				montserrat: ['var(--font-montserrat)', 'sans-serif'],
 			},
 			colors: {
 				'brand-blue': '#3b82f6',

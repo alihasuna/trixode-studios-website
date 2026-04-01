@@ -769,6 +769,7 @@ export default function HomePage() {
                                                 type="text"
                                                 placeholder=" "
                                                 id="name"
+                                                autoComplete="name"
                                                 value={formData.name}
                                                 onChange={handleInputChange}
                                                 required
@@ -788,6 +789,7 @@ export default function HomePage() {
                                                 type="email"
                                                 placeholder=" "
                                                 id="email"
+                                                autoComplete="email"
                                                 value={formData.email}
                                                 onChange={handleInputChange}
                                                 required

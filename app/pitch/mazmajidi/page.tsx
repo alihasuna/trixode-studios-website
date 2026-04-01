@@ -513,6 +513,85 @@ export default function MazMajidiPitchPage() {
                             </motion.div>
                         ))}
                     </div>
+
+                    {/* LIVE MOCKUPS SHOWCASE */}
+                    <div className="mt-32 pt-20 border-t border-white/10">
+                        <motion.div {...fadeUp} className="text-center mb-16">
+                            <span className="text-sm text-amber-400 font-medium font-grotesk block mb-4">Interactive Demos</span>
+                            <h3 className="text-3xl md:text-5xl font-light font-grotesk">Choose Your Aesthetic</h3>
+                            <p className="text-white/40 mt-4 max-w-2xl mx-auto">
+                                We&apos;ve built three functional, animated Next.js mockups based on your reference materials. 
+                                Click any option below to experience a live preview.
+                            </p>
+                        </motion.div>
+
+                        <div className="grid md:grid-cols-3 gap-6">
+                            {[
+                                {
+                                    name: "Digital FinTech",
+                                    href: "/pitch/mazmajidi/mockup-1",
+                                    desc: "Sleek, data-driven luxury with clean grids. Inspired by TREF.",
+                                    tag: "Modern Tech",
+                                    preview: "/mockup-1-hero-screenshot.png"
+                                },
+                                {
+                                    name: "LA Monolith",
+                                    href: "/pitch/mazmajidi/mockup-2",
+                                    desc: "Aggressive typography, cinematic visuals, high contrast. Inspired by Altman Brothers.",
+                                    tag: "Edgy Modern",
+                                    preview: "/mockup-2-hero-screenshot.png"
+                                },
+                                {
+                                    name: "Quiet Luxury",
+                                    href: "/pitch/mazmajidi/mockup-3",
+                                    desc: "Prestige elegance, serif typography, serene interactions. Inspired by Kumara Wilcoxon.",
+                                    tag: "Classic Elegance",
+                                    preview: "/mockup-3-hero-screenshot.png"
+                                },
+                            ].map((mockup, index) => (
+                                <motion.a
+                                    key={mockup.name}
+                                    href={mockup.href}
+                                    target="_blank"
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: index * 0.1 }}
+                                    className={`block group rounded-3xl overflow-hidden transition-all duration-400 ${d("glass border border-white/10 hover:border-white/20", "bg-white/80 backdrop-blur-sm border border-slate-200/80 shadow-sm hover:shadow-xl")}`}
+                                >
+                                    {/* Preview Image */}
+                                    <div className="relative h-64 overflow-hidden">
+                                        <Image
+                                            src={mockup.preview}
+                                            alt={`${mockup.name} mockup preview`}
+                                            fill
+                                            className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                                        />
+                                        <div className={`absolute inset-0 bg-gradient-to-t transition-opacity duration-300 ${d("from-[#030303] via-[#030303]/50 to-transparent", "from-white via-white/50 to-transparent")}`} />
+                                    </div>
+
+                                    {/* Content */}
+                                    <div className="p-8">
+                                        <div className="flex justify-between items-start mb-4">
+                                            <span className={`text-[10px] uppercase tracking-widest px-3 py-1 border rounded-full ${d("text-amber-400/60 border-amber-400/10", "text-amber-600/70 border-amber-200")}`}>
+                                                {mockup.tag}
+                                            </span>
+                                            <ArrowRight className="w-5 h-5 text-amber-400 group-hover:-rotate-45 transition-transform duration-300" />
+                                        </div>
+                                        <h4 className="text-2xl mb-2 font-normal font-grotesk group-hover:text-amber-400 transition-colors">{mockup.name}</h4>
+                                        <p className={`text-sm leading-relaxed transition-colors duration-700 ${d("text-white/40 group-hover:text-white/60", "text-slate-500")}`}>
+                                            {mockup.desc}
+                                        </p>
+                                        <div className={`mt-4 text-xs uppercase tracking-widest flex items-center gap-2 ${d("text-white/30", "text-slate-400")}`}>
+                                            <span>View Live Demo</span>
+                                            <ChevronRight className="w-3 h-3" />
+                                        </div>
+                                    </div>
+                                </motion.a>
+                            ))}
+                        </div>
+                    </div>
+
                 </div>
             </section>
 
