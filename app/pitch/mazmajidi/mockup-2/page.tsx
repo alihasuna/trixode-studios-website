@@ -180,8 +180,8 @@ export default function Mockup2Page() {
           {/* Image */}
           <div className="relative h-[500px] lg:h-[700px]">
             <Image
-              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-              alt="Maz Majidi"
+              src="https://mazmajidi.ca/wp-content/uploads/2026/01/MEET-MAZ-ON-HOME-PAGE-e1769211794373-919x1024.webp"
+              alt="Maz Majidi - Luxury Real Estate Advisor"
               fill
               className="object-cover"
               quality={100}
@@ -421,28 +421,28 @@ export default function Mockup2Page() {
 
             <div className="flex flex-col md:flex-row gap-6 justify-center items-center mb-16">
               <a
-                href="tel:+16045551234"
+                href="tel:+16047268081"
                 className="group flex items-center gap-3 text-white hover:text-[#D2AF41] transition-colors duration-300"
               >
                 <Phone className="w-6 h-6" />
                 <span className="font-bold text-lg tracking-wide">
-                  +1 (604) 555-1234
+                  +1 (604) 726-8081
                 </span>
               </a>
               <div className="hidden md:block w-px h-6 bg-white/30" />
               <a
-                href="mailto:maz@example.com"
+                href="mailto:info@mazmajidi.ca"
                 className="group flex items-center gap-3 text-white hover:text-[#D2AF41] transition-colors duration-300"
               >
                 <Mail className="w-6 h-6" />
                 <span className="font-bold text-lg tracking-wide">
-                  maz@example.com
+                  info@mazmajidi.ca
                 </span>
               </a>
             </div>
 
             <motion.a
-              href="mailto:maz@example.com"
+              href="mailto:info@mazmajidi.ca"
               className="inline-block bg-[#D2AF41] text-black px-16 py-6 font-bold text-xl tracking-widest hover:bg-white transition-colors duration-300"
               whileHover={{ scale: prefersReducedMotion ? 1 : 1.05 }}
               whileTap={{ scale: prefersReducedMotion ? 1 : 0.98 }}

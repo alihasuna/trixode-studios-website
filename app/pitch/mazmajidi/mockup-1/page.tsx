@@ -26,22 +26,22 @@ export default function Mockup1Page() {
     {
       name: "Abdu G.",
       role: "Buyer, Port Moody",
-      quote: "I had an excellent experience working with Maz throughout my home-buying process... Maz was consistently punctual, efficient, and meticulous... Maz managed the negotiation process effectively and secured a strong deal on my behalf."
+      quote: "I had an excellent experience working with Maz throughout my home-buying process. Maz was consistently punctual, efficient, and meticulous. Maz managed the negotiation process effectively and secured a strong deal on my behalf."
     },
     {
       name: "Coco P.",
-      role: "Seller, Edgemont Village North Vancouver",
+      role: "Seller, Edgemont Village",
       quote: "He is very professional, honest, and easy to communicate with. He truly cared about my needs and worked hard to get the best result."
     },
     {
       name: "Maryam A.",
-      role: "Buyer, British Properties West Vancouver",
-      quote: "From the very first meeting we had with him, he asked the right questions to fully understand our values and goals... He gave us adequate knowledge about the area we are choosing, neighborhood, even the challenges we might face in each of our choices."
+      role: "Buyer, British Properties",
+      quote: "From the very first meeting, he asked the right questions to fully understand our values and goals. He gave us adequate knowledge about the area, neighborhood, even the challenges we might face."
     },
     {
       name: "Mehrdad B.",
-      role: "Buyer & Seller, North Vancouver & Vancouver Downtown",
-      quote: "Maz brings a rare combination of deep local knowledge, construction background, and strategic insight... What sets Maz apart is not just his technical skill, but his unwavering honesty, tireless work ethic, and genuine commitment to his clients' best interests."
+      role: "Buyer & Seller, North Vancouver",
+      quote: "Maz brings a rare combination of deep local knowledge, construction background, and strategic insight. What sets Maz apart is not just his technical skill, but his unwavering honesty, tireless work ethic, and genuine commitment to his clients' best interests."
     }
   ]
 
@@ -147,7 +147,7 @@ export default function Mockup1Page() {
               <div className="absolute inset-0 bg-gradient-to-br from-[#FFC421]/20 to-transparent rounded-sm" />
               <div className="relative h-full border border-white/10 rounded-sm overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                  src="https://mazmajidi.ca/wp-content/uploads/2026/01/MEET-MAZ-ON-HOME-PAGE-e1769211794373-919x1024.webp"
                   alt="Maz Majidi - Luxury Real Estate Advisor"
                   fill
                   className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
@@ -196,16 +196,13 @@ export default function Mockup1Page() {
 
               <div className="space-y-4 text-white/60 leading-relaxed">
                 <p>
-                  With over a decade of experience in Vancouver real estate, Maz Majidi brings a unique combination of construction expertise and market intelligence to every transaction.
+                  Maz Majidi is a real estate advisor specializing in West Vancouver, District of North Vancouver and North Vancouver. Background in Building Design from BCIT, hands-on construction management expertise, and MBA in Marketing.
                 </p>
                 <p>
-                  Background in Building Design from BCIT, hands-on construction management expertise, and a Master's degree in Business Administration in Marketing position Maz as more than a traditional real estate agent — he's a strategic advisor who understands both the technical and business aspects of luxury real estate.
+                  Fluent in English and Persian, he serves as a cultural bridge for high-net-worth clients seeking sophisticated representation on Vancouver's North Shore.
                 </p>
                 <p>
-                  Fluent in both English and Persian, Maz serves as a cultural bridge for high-net-worth clients seeking sophisticated representation on Vancouver's North Shore.
-                </p>
-                <p>
-                  Associated with award-recognized custom homes, including projects connected to the Georgie Awards, CHBA National Awards for Housing Excellence, and HAVAN Awards.
+                  Associated with award-recognized custom homes including Georgie Awards, CHBA National Awards for Housing Excellence, and HAVAN Awards, reflecting involvement in high quality residential real estate on the North Shore.
                 </p>
               </div>
             </motion.div>
@@ -512,8 +509,8 @@ export default function Mockup1Page() {
                   </div>
                   <div>
                     <div className="text-sm text-white/50 mb-1">Email</div>
-                    <a href="mailto:maz@example.com" className="text-white hover:text-[#FFC421] transition-colors">
-                      maz@angellhasman.com
+                    <a href="mailto:info@mazmajidi.ca" className="text-white hover:text-[#FFC421] transition-colors">
+                      info@mazmajidi.ca
                     </a>
                   </div>
                 </div>
@@ -524,8 +521,8 @@ export default function Mockup1Page() {
                   </div>
                   <div>
                     <div className="text-sm text-white/50 mb-1">Phone</div>
-                    <a href="tel:+16041234567" className="text-white hover:text-[#FFC421] transition-colors">
-                      +1 (604) 123-4567
+                    <a href="tel:+16047268081" className="text-white hover:text-[#FFC421] transition-colors">
+                      +1 (604) 726-8081
                     </a>
                   </div>
                 </div>
@@ -543,7 +540,7 @@ export default function Mockup1Page() {
 
               <div className="mt-12">
                 <a
-                  href="mailto:maz@angellhasman.com"
+                  href="mailto:info@mazmajidi.ca"
                   className="inline-block px-8 py-4 bg-[#FFC421] text-black font-semibold text-sm tracking-wider uppercase rounded-sm hover:bg-[#FFD152] transition-colors"
                 >
                   Schedule a Consultation

@@ -1501,6 +1501,46 @@ const htmlContent = `<!DOCTYPE html>
                 </li>
             </ol>
 
+            <div class="divider"></div>
+
+            <!-- Section: Project Roadmap -->
+            <div class="section-number">06</div>
+            <h2 class="section-title">Project Roadmap</h2>
+            <p class="section-subtitle">Fast-track 4-week delivery from kickoff to launch — built for speed without sacrificing quality.</p>
+
+            <ol class="steps-list">
+                <li>
+                    <div class="step-content">
+                        <div class="step-title">Phase 1: Discovery & Brand Audit (Days 1-3)</div>
+                        <div class="step-desc">Brand deep-dive session, content audit of existing site, SEO baseline analysis, competitor landscape review, and client preference workshop</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="step-content">
+                        <div class="step-title">Phase 2: Design & Mockup Selection (Days 4-7)</div>
+                        <div class="step-desc">Finalize design direction from mockup previews, first iteration session with live feedback, second iteration with refinements, design approval</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="step-content">
+                        <div class="step-title">Phase 3: Development & Content Migration (Weeks 2-3)</div>
+                        <div class="step-desc">Full site build using approved design, content migration from existing site, schema markup implementation, GEO optimization setup, staging site review with client</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="step-content">
+                        <div class="step-title">Phase 4: SEO Migration, QA & Launch (Week 4)</div>
+                        <div class="step-desc">URL redirect mapping, 301 redirect implementation, final QA testing across devices, Google Search Console setup, DNS cutover and go-live, post-launch monitoring</div>
+                    </div>
+                </li>
+            </ol>
+
+            <div class="highlight-box" style="margin-top: 24px;">
+                <div class="label">Total Timeline</div>
+                <div class="value">4 Weeks</div>
+                <div class="detail">Aggressive fast-track delivery — from contract signing to live website</div>
+            </div>
+
             <div class="divider-accent"></div>
 
             <!-- CTA -->
@@ -1509,11 +1549,11 @@ const htmlContent = `<!DOCTYPE html>
                 <h2>Ready to get started?</h2>
                 <p>We look forward to building something exceptional together.</p>
                 <div class="cta-contact">
-                    <a href="mailto:cso@trixode-studios.com">
+                    <a href="mailto:amir@trixode-studios.com">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
                         </svg>
-                        cso@trixode-studios.com
+                        amir@trixode-studios.com
                     </a>
                     <span class="separator">|</span>
                     <a href="https://www.trixode-studios.com/contact">
