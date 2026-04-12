@@ -12,13 +12,11 @@
 </head>
 <body style="background-color: #030303; margin: 0; padding: 0; width: 100%; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: #ffffff; -webkit-font-smoothing: antialiased;">
     
-    <!-- Outer wrapper table ensures background copies over to Gmail -->
-    <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #030303; width: 100%; min-height: 100vh;">
-        <tr>
-            <td align="center" style="padding: 60px 20px; background-color: #030303;">
-                
-                <!-- Main Card -->
-                <table cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width: 560px; margin: 0 auto; background-color: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 24px;">
+    <!-- We removed the outer 100% width table because Gmail's composer chokes on 100vh and 100% width wrappers when pasting. -->
+    <div style="padding: 20px 0;">
+        
+        <!-- Main Card -->
+        <table cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width: 600px; margin: 0 auto; background-color: #030303; border: 1px solid #1a1a1a; border-radius: 24px;">
                     
                     <!-- Top Logo / Header -->
                     <tr>
@@ -168,8 +166,7 @@
                     </tr>
                 </table>
 
-            </td>
-        </tr>
-    </table>
+        </table>
+    </div>
 </body>
 </html>
