@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
 import {
@@ -82,6 +82,14 @@ export default function AdriftwoodPitchPage() {
     const inputRef = useRef<HTMLInputElement>(null)
 
     const d = (dark: string, light: string) => isDark ? dark : light
+    
+    // Auto-unlock via URL token
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.search)
+        if (params.get("token") === PROPOSAL_PASSWORD) {
+            setIsUnlocked(true)
+        }
+    }, [])
 
     const handleUnlock = () => {
         if (password === PROPOSAL_PASSWORD) {
