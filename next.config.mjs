@@ -27,7 +27,7 @@ const nextConfig = {
     root: process.cwd(),
   },
 
-  // Headers for better caching
+  // Security headers (caching is handled by vercel.json)
   async headers() {
     return [
       {
@@ -44,15 +44,6 @@ const nextConfig = {
           {
             key: 'X-XSS-Protection',
             value: '1; mode=block',
-          },
-        ],
-      },
-      {
-        source: '/api/(.*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=3600, s-maxage=3600',
           },
         ],
       },

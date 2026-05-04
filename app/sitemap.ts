@@ -8,6 +8,9 @@ const baseUrl =
   'https://www.trixode-studios.com'
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  // Last meaningful content update date — update this when site content changes
+  const lastContentUpdate = new Date('2026-05-04')
+
   const staticRoutes: Array<{
     route: string
     priority: number
@@ -16,7 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { route: '', priority: 1.0, changeFrequency: 'weekly' },
     { route: '/about', priority: 0.8, changeFrequency: 'monthly' },
     { route: '/pricing', priority: 0.9, changeFrequency: 'weekly' },
-    { route: '/services', priority: 0.9, changeFrequency: 'weekly' },
+    // Note: /services is intentionally excluded — it 308-redirects to /pricing
     { route: '/projects', priority: 0.8, changeFrequency: 'monthly' },
     { route: '/contact', priority: 0.9, changeFrequency: 'monthly' },
     { route: '/people', priority: 0.7, changeFrequency: 'monthly' },
@@ -30,7 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticEntries = staticRoutes.map((item) => ({
     url: `${baseUrl}${item.route}`,
-    lastModified: new Date(),
+    lastModified: lastContentUpdate,
     changeFrequency: item.changeFrequency,
     priority: item.priority,
   }))

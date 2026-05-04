@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     apple: "/favicon.svg",
   },
   alternates: {
-    canonical: siteUrl,
+    canonical: '/',
   },
   openGraph: {
     title: "Trixode Studios — AI Software Company in Victoria, BC",
