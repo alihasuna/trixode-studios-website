@@ -1,77 +1,20 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect } from "react"
 import dynamic from "next/dynamic"
 import Image from "next/image"
+import Link from "next/link"
 import { motion, useReducedMotion } from "framer-motion"
-import { ArrowRight } from "lucide-react"
-import WelcomeLoader from "@/components/ui/WelcomeLoader"
-import CustomCursor from "@/components/ui/CustomCursor"
-import FloatingNav from "@/components/layout/FloatingNav"
-import Footer from "@/components/footer"
-import { useMagneticEffect } from "@/hooks/useMagneticEffect"
-import ServicesSection from "@/components/home/ServicesSection"
 import { useMediaQuery } from "@/hooks/useMediaQuery"
 
 const NeonBlob = dynamic(() => import("@/components/hero/NeonBlob"), { ssr: false })
 
-export default function HomePage() {
-    const [isLoading, setIsLoading] = useState(true)
-    const [animationProgress, setAnimationProgress] = useState(0)
+export default function StudioPage() {
     const isDesktop = useMediaQuery("(min-width: 1024px) and (hover: hover) and (pointer: fine)")
     const [showHeroBlob, setShowHeroBlob] = useState(false)
     const prefersReducedMotion = useReducedMotion()
     const enableMotion = !prefersReducedMotion
     const enableHeavyEffects = enableMotion && isDesktop
-    const htmlOverflowRef = useRef<string | null>(null)
-    const bodyOverflowRef = useRef<string | null>(null)
-
-    // Form state
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        message: "",
-    })
-    const [isSubmitting, setIsSubmitting] = useState(false)
-    const [isSuccess, setIsSuccess] = useState(false)
-    const [errorMessage, setErrorMessage] = useState<string | null>(null)
-
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { id, value } = e.target
-        setFormData((prev) => ({
-            ...prev,
-            [id]: value,
-        }))
-    }
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault()
-        setIsSubmitting(true)
-        setErrorMessage(null)
-
-        try {
-            const response = await fetch("/api/contact", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(formData),
-            })
-
-            const data = await response.json()
-
-            if (!response.ok) {
-                throw new Error(data.error || "Something went wrong")
-            }
-
-            setIsSuccess(true)
-            setFormData({ name: "", email: "", message: "" })
-        } catch (error) {
-            setErrorMessage(error instanceof Error ? error.message : "Failed to send message")
-        } finally {
-            setIsSubmitting(false)
-        }
-    }
 
     useEffect(() => {
         if (!enableHeavyEffects) {
@@ -88,584 +31,196 @@ export default function HomePage() {
         }
     }, [enableHeavyEffects])
 
-    useEffect(() => {
-        if (typeof window === "undefined") return
-
-        const html = document.documentElement
-        const body = document.body
-
-        if (isLoading) {
-            if (htmlOverflowRef.current === null) htmlOverflowRef.current = html.style.overflow
-            if (bodyOverflowRef.current === null) bodyOverflowRef.current = body.style.overflow
-            html.style.overflow = "hidden"
-            body.style.overflow = "hidden"
-            return
-        }
-
-        html.style.overflow = htmlOverflowRef.current ?? ""
-        body.style.overflow = bodyOverflowRef.current ?? ""
-        window.scrollTo({ top: 0, left: 0, behavior: "auto" })
-
-        return () => {
-            html.style.overflow = htmlOverflowRef.current ?? ""
-            body.style.overflow = bodyOverflowRef.current ?? ""
-        }
-    }, [isLoading])
-
-    // Enable magnetic effect for all .magnetic elements
-    useMagneticEffect()
-
     return (
-        <>
-            {/* Welcome Loader Animation */}
-            <WelcomeLoader
-                onLoadingComplete={() => setIsLoading(false)}
-                onAnimationProgress={(progress) => setAnimationProgress(progress)}
+        <main className="relative min-h-screen bg-[#030303] text-white antialiased overflow-hidden">
+            {/* Background Aurora Effects */}
+            <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+                {enableHeavyEffects ? (
+                    <>
+                        <motion.div
+                            className="absolute w-[500px] h-[500px] -top-20 -left-20 rounded-full blur-[60px] opacity-35"
+                            style={{
+                                background: "radial-gradient(circle, rgba(59, 130, 246, 0.35) 0%, transparent 70%)",
+                                willChange: "transform",
+                            }}
+                            animate={{ x: [0, 30, 0], y: [0, 50, 0] }}
+                            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+                        />
+                        <motion.div
+                            className="absolute w-[400px] h-[400px] top-1/3 -right-10 rounded-full blur-[60px] opacity-35"
+                            style={{
+                                background: "radial-gradient(circle, rgba(139, 92, 246, 0.25) 0%, transparent 70%)",
+                                willChange: "transform",
+                            }}
+                            animate={{ x: [0, -20, 0], y: [0, 30, 0] }}
+                            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+                        />
+                        <motion.div
+                            className="absolute w-[350px] h-[350px] bottom-0 left-1/3 rounded-full blur-[60px] opacity-35"
+                            style={{
+                                background: "radial-gradient(circle, rgba(6, 182, 212, 0.25) 0%, transparent 70%)",
+                                willChange: "transform",
+                            }}
+                            animate={{ x: [0, 40, 0], y: [0, -30, 0] }}
+                            transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+                        />
+                    </>
+                ) : (
+                    <>
+                        <div
+                            className="absolute w-[500px] h-[500px] -top-20 -left-20 rounded-full blur-[60px] opacity-25"
+                            style={{ background: "radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%)" }}
+                        />
+                        <div
+                            className="absolute w-[400px] h-[400px] top-1/3 -right-10 rounded-full blur-[60px] opacity-25"
+                            style={{ background: "radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 70%)" }}
+                        />
+                        <div
+                            className="absolute w-[350px] h-[350px] bottom-0 left-1/3 rounded-full blur-[60px] opacity-25"
+                            style={{ background: "radial-gradient(circle, rgba(6, 182, 212, 0.2) 0%, transparent 70%)" }}
+                        />
+                    </>
+                )}
+            </div>
+
+            {/* Grid Overlay */}
+            <div
+                className="fixed inset-0 pointer-events-none z-0 opacity-20"
+                style={{
+                    backgroundImage:
+                        "linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px)",
+                    backgroundSize: "100px 100px",
+                }}
             />
 
-            {/* Custom Cursor - Only on Desktop */}
-            {enableHeavyEffects && <CustomCursor />}
-
-            {/* Floating Navigation */}
-            <FloatingNav />
-
-            {/* Main Page Content */}
+            {/* Blob floating in background (Right Side) */}
             <motion.div
-                className="min-h-screen bg-transparent text-black dark:text-white overflow-hidden origin-top"
-                initial={enableMotion ? { scale: 1.05, filter: "blur(8px)" } : false}
-                animate={enableMotion ? {
-                    scale: animationProgress > 90 ? 1 : 1.05,
-                    filter: animationProgress > 90 ? "blur(0px)" : "blur(8px)"
-                } : {}}
-                transition={enableMotion ? {
-                    duration: 0.8,
-                    ease: [0.76, 0, 0.24, 1],
-                } : { duration: 0 }}
+                className="absolute inset-0 flex items-center justify-end pointer-events-none z-0 hidden lg:flex"
+                style={{ paddingRight: "8%" }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.95 }}
+                transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
             >
-
-                {/* Background Aurora Effects - Optimized */}
-                <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-                    {enableHeavyEffects ? (
-                        <>
-                            <motion.div
-                                className="absolute w-[500px] h-[500px] -top-20 -left-20 rounded-full blur-[60px] opacity-35"
-                                style={{
-                                    background: "radial-gradient(circle, rgba(59, 130, 246, 0.35) 0%, transparent 70%)",
-                                    willChange: "transform",
-                                }}
-                                animate={{
-                                    x: [0, 30, 0],
-                                    y: [0, 50, 0],
-                                }}
-                                transition={{
-                                    duration: 20,
-                                    repeat: Infinity,
-                                    ease: "easeInOut",
-                                }}
-                            />
-                            <motion.div
-                                className="absolute w-[400px] h-[400px] top-1/3 -right-10 rounded-full blur-[60px] opacity-35"
-                                style={{
-                                    background: "radial-gradient(circle, rgba(139, 92, 246, 0.25) 0%, transparent 70%)",
-                                    willChange: "transform",
-                                }}
-                                animate={{
-                                    x: [0, -20, 0],
-                                    y: [0, 30, 0],
-                                }}
-                                transition={{
-                                    duration: 15,
-                                    repeat: Infinity,
-                                    ease: "easeInOut",
-                                }}
-                            />
-                            <motion.div
-                                className="absolute w-[350px] h-[350px] bottom-0 left-1/3 rounded-full blur-[60px] opacity-35"
-                                style={{
-                                    background: "radial-gradient(circle, rgba(6, 182, 212, 0.25) 0%, transparent 70%)",
-                                    willChange: "transform",
-                                }}
-                                animate={{
-                                    x: [0, 40, 0],
-                                    y: [0, -30, 0],
-                                }}
-                                transition={{
-                                    duration: 18,
-                                    repeat: Infinity,
-                                    ease: "easeInOut",
-                                }}
-                            />
-                        </>
-                    ) : (
-                        <>
-                            <div
-                                className="absolute w-[500px] h-[500px] -top-20 -left-20 rounded-full blur-[60px] opacity-25"
-                                style={{
-                                    background: "radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%)",
-                                }}
-                            />
-                            <div
-                                className="absolute w-[400px] h-[400px] top-1/3 -right-10 rounded-full blur-[60px] opacity-25"
-                                style={{
-                                    background: "radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 70%)",
-                                }}
-                            />
-                            <div
-                                className="absolute w-[350px] h-[350px] bottom-0 left-1/3 rounded-full blur-[60px] opacity-25"
-                                style={{
-                                    background: "radial-gradient(circle, rgba(6, 182, 212, 0.2) 0%, transparent 70%)",
-                                }}
-                            />
-                        </>
-                    )}
+                <div className="w-[600px] h-[600px]">
+                    {showHeroBlob && <NeonBlob />}
                 </div>
+            </motion.div>
 
-                {/* Grid Overlay */}
-                <div
-                    className="fixed inset-0 pointer-events-none z-0"
-                    style={{
-                        backgroundImage:
-                            "linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px)",
-                        backgroundSize: "100px 100px",
-                    }}
-                />
+            {/* Content Layer */}
+            <div className="relative z-10">
+                <header className="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-8 md:px-10">
+                    <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-white/60">
+                    Trixode-Studios
+                    </span>
+                    <Link
+                    href="mailto:ali@trixode-studios.com"
+                    className="text-sm text-white/60 transition-colors hover:text-white"
+                    >
+                    Contact
+                    </Link>
+                </header>
 
-                {/* Hero Section */}
-                <section className="relative min-h-screen flex items-center justify-center px-6 md:px-16 pt-32 pb-20">
-                    <div className="max-w-7xl w-full mx-auto grid lg:grid-cols-2 gap-16 items-center">
-                        {/* Hero Text */}
-                        <div className="relative z-10">
-                            <motion.div
-                                initial={{ opacity: 0, y: 16 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: 3.2 }}
-                                className="flex items-center gap-4 mb-8"
-                            >
-                                <div className="w-10 h-[1px] bg-brand-blue" style={{ boxShadow: "0 0 10px rgba(59, 130, 246, 0.4)" }} />
-                                <span className="text-xs uppercase tracking-[0.2em] text-black/50 dark:text-white/50 font-grotesk">
-                                    Victoria, BC / Full-Service AI Agency
-                                </span>
-                            </motion.div>
+                <section className="mx-auto max-w-[1200px] px-6 pt-28 pb-40 md:px-10 md:pt-44 md:pb-56 relative">
+                    <motion.div
+                        initial={{ opacity: 0, y: 24 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                    >
+                        <span className="mb-10 inline-block font-mono text-[11px] uppercase tracking-[0.22em] text-white/40">
+                        Research lab · Victoria, BC
+                        </span>
 
-                            <motion.h1
-                                className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-light mb-8 leading-none tracking-tight"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 3.3 }}
-                            >
-                                <span className="block overflow-hidden pb-[0.12em]">
-                                    <motion.span
-                                        className="block font-grotesk"
-                                        initial={{ y: "110%" }}
-                                        animate={{ y: 0 }}
-                                        transition={{ duration: 0.7, delay: 3.35, ease: [0.16, 1, 0.3, 1] }}
-                                        style={{ willChange: "transform" }}
-                                    >
-                                        We Build
-                                    </motion.span>
-                                </span>
-                                <span className="block overflow-hidden pb-[0.12em]">
-                                    <motion.span
-                                        className="block bg-gradient-to-r from-slate-800 to-brand-blue dark:from-white dark:to-brand-blue bg-clip-text text-transparent font-grotesk"
-                                        initial={{ y: "110%" }}
-                                        animate={{ y: 0 }}
-                                        transition={{ duration: 0.7, delay: 3.5, ease: [0.16, 1, 0.3, 1] }}
-                                        style={{ willChange: "transform" }}
-                                    >
-                                        AI That Ships
-                                    </motion.span>
-                                </span>
-                            </motion.h1>
+                        <h1 className="font-grotesk text-[44px] font-light leading-[1.04] tracking-[-0.025em] text-white md:text-[80px]">
+                        The mathematics of
+                        <br />
+                        agentic systems.
+                        </h1>
 
-                            <motion.p
-                                initial={{ opacity: 0, y: 16 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: 3.6 }}
-                                className="text-lg text-black/50 dark:text-white/50 mb-12 max-w-[500px] leading-relaxed font-light"
-                            >
-                                AI agents, high-performance websites, and growth engines for businesses that refuse to move slow. We don&apos;t just talk about AI &mdash; we deploy it.
-                            </motion.p>
+                        <p className="mt-10 max-w-[640px] text-[18px] leading-[1.55] text-white/60 md:text-[20px]">
+                        Trixode-Studios is a research lab developing math models that measure
+                        the <span className="text-white">complexity</span> and{" "}
+                        <span className="text-white">security</span> of agentic workflows.
+                        Our live testbed is{" "}
+                        <span className="text-white">Intellcycle</span>, an agentic
+                        marketplace for recycled metals.
+                        </p>
 
-                            <motion.a
-                                href="#contact"
-                                initial={{ opacity: 0, y: 16 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: 3.75 }}
-                                className="magnetic inline-flex items-center gap-4 px-8 py-4 border border-black/10 dark:border-white/10 text-sm uppercase tracking-widest relative overflow-hidden group"
-                            >
-                                <span className="relative z-10">Book a Free Strategy Call</span>
-                                <ArrowRight className="w-4 h-4 relative z-10" />
-                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/5 dark:via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-                            </motion.a>
+                        <div className="mt-14">
+                        <Link
+                            href="mailto:ali@trixode-studios.com"
+                            className="inline-flex items-center gap-2 border-b border-white/30 pb-1 text-[15px] text-white transition-colors hover:border-white"
+                        >
+                            Get in touch
+                            <span aria-hidden className="translate-y-[-1px]">
+                            →
+                            </span>
+                        </Link>
                         </div>
+                    </motion.div>
+                </section>
 
-                        {/* Hero Visual - Floating Cards (Desktop) / Stats Grid (Mobile) */}
-                        <div className="relative lg:h-[620px]">
-                            {/* Blob positioned as orbital center for cards */}
-                            <motion.div
-                                className="absolute inset-0 items-center justify-end pointer-events-none z-0 hidden lg:flex"
-                                style={{ paddingRight: "8%" }}
-                                initial={{ scale: 0.35, opacity: 0 }}
-                                animate={{
-                                    scale: animationProgress > 50 ? 1 : 0.35,
-                                    opacity: animationProgress > 50 ? 0.95 : 0,
-                                }}
-                                transition={{
-                                    duration: 1.6,
-                                    ease: [0.16, 1, 0.3, 1],
-                                }}
-                            >
-                                <div className="w-[520px] h-[520px]">
-                                    {showHeroBlob && <NeonBlob />}
-                                </div>
-                            </motion.div>
-
-                            {/* Mobile Stats Grid */}
-                            <div className="grid grid-cols-3 gap-4 lg:hidden mt-12">
-                                {[
-                                    { value: "3", label: "Services" },
-                                    { value: "$999", label: "Starting" },
-                                    { value: "24h", label: "Response" }
-                                ].map((stat, i) => (
-                                    <motion.div
-                                        key={stat.label}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: 3.7 + i * 0.08 }}
-                                        className="glass p-4 rounded-2xl text-center"
-                                    >
-                                        <div
-                                            className="text-2xl sm:text-3xl font-light text-brand-blue font-grotesk"
-                                            style={{ textShadow: "0 0 15px rgba(59, 130, 246, 0.3)" }}
-                                        >
-                                            {stat.value}
-                                        </div>
-                                        <div className="text-[10px] sm:text-xs uppercase tracking-widest text-black/50 dark:text-white/50 mt-1">
-                                            {stat.label}
-                                        </div>
-                                    </motion.div>
-                                ))}
-                            </div>
-
-                            {/* Desktop Floating Cards - Orbit around the blob on right side */}
-                            <div className="absolute inset-0 flex items-center justify-end pointer-events-none hidden lg:flex" style={{ paddingRight: "8%" }}>
-                                <div className="relative w-[560px] h-[560px] pointer-events-none">
-
-                                    {/* Card 1 - Top orbit position */}
-                                    <motion.div
-                                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] pointer-events-auto cursor-pointer"
-                                        initial={{
-                                            opacity: 0,
-                                            y: 300,
-                                            scale: 0.8,
-                                            rotateX: 45,
-                                        }}
-                                        animate={animationProgress > 60 ? {
-                                            opacity: 1,
-                                            y: -120,
-                                            x: 10,
-                                            scale: 1,
-                                            rotateX: 0,
-                                        } : {
-                                            opacity: 0,
-                                            y: 300,
-                                            scale: 0.8,
-                                            rotateX: 45,
-                                        }}
-                                        transition={{
-                                            opacity: { duration: 1.2 },
-                                            y: { duration: 1.6, ease: [0.16, 1, 0.3, 1] },
-                                            x: { duration: 1.6, ease: [0.16, 1, 0.3, 1] },
-                                            scale: { duration: 1.6, ease: [0.16, 1, 0.3, 1] },
-                                            rotateX: { duration: 1.2 },
-                                        }}
-                                        style={{ perspective: 1000 }}
-                                    >
-                                        {/* Circular orbit around blob */}
-                                        <motion.div
-                                            animate={animationProgress >= 100 && enableMotion ? {
-                                                x: [10, 50, 60, 50, 10, -30, -40, -30],
-                                                y: [-120, -105, -60, -20, 20, 40, -20, -60],
-                                            } : {}}
-                                            transition={{
-                                                duration: 60,
-                                                repeat: Infinity,
-                                                ease: "linear",
-                                            }}
-                                        >
-                                            <motion.div
-                                                whileHover={{ scale: 1.05, y: -10 }}
-                                                className="glass p-8 rounded-3xl w-full h-full"
-                                            >
-                                                <div
-                                                    className="text-5xl font-light text-brand-blue mb-2 font-grotesk"
-                                                    style={{ textShadow: "0 0 20px rgba(59, 130, 246, 0.4)" }}
-                                                >
-                                                    3
-                                                </div>
-                                                <div className="text-xs uppercase tracking-widest text-black/50 dark:text-white/50 mb-1">Service Tiers</div>
-                                                <div className="text-lg text-black dark:text-white">Starting at $999/mo</div>
-                                            </motion.div>
-                                        </motion.div>
-                                    </motion.div>
-
-                                    {/* Card 2 - Left orbit position */}
-                                    <motion.div
-                                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] pointer-events-auto cursor-pointer"
-                                        initial={{
-                                            opacity: 0,
-                                            y: 350,
-                                            scale: 0.8,
-                                            rotateX: 45,
-                                        }}
-                                        animate={animationProgress > 65 ? {
-                                            opacity: 1,
-                                            y: -20,
-                                            x: -140,
-                                            scale: 1,
-                                            rotateX: 0,
-                                        } : {
-                                            opacity: 0,
-                                            y: 350,
-                                            scale: 0.8,
-                                            rotateX: 45,
-                                        }}
-                                        transition={{
-                                            opacity: { duration: 1.2 },
-                                            y: { duration: 1.8, ease: [0.16, 1, 0.3, 1] },
-                                            x: { duration: 1.8, ease: [0.16, 1, 0.3, 1] },
-                                            scale: { duration: 1.8, ease: [0.16, 1, 0.3, 1] },
-                                            rotateX: { duration: 1.2 },
-                                        }}
-                                        style={{ perspective: 1000 }}
-                                    >
-                                        {/* Circular orbit around blob */}
-                                        <motion.div
-                                            animate={animationProgress >= 100 && enableMotion ? {
-                                                x: [-140, -125, -90, -60, -30, -10, 10, -10, -30, -60, -90, -125],
-                                                y: [-20, 15, 45, 60, 60, 45, 15, -20, -45, -55, -50, -35],
-                                            } : {}}
-                                            transition={{
-                                                duration: 65,
-                                                repeat: Infinity,
-                                                ease: "linear",
-                                            }}
-                                        >
-                                            <motion.div
-                                                whileHover={{ scale: 1.05, y: -10 }}
-                                                className="glass p-8 rounded-3xl w-full h-full"
-                                            >
-                                                <div
-                                                    className="text-5xl font-light text-brand-blue mb-2 font-grotesk"
-                                                    style={{ textShadow: "0 0 20px rgba(59, 130, 246, 0.4)" }}
-                                                >
-                                                    10+
-                                                </div>
-                                                <div className="text-xs uppercase tracking-widest text-black/50 dark:text-white/50 mb-1">Projects Shipped</div>
-                                                <div className="text-lg text-black dark:text-white">And Counting</div>
-                                            </motion.div>
-                                        </motion.div>
-                                    </motion.div>
-
-                                    {/* Card 3 - Bottom orbit position */}
-                                    <motion.div
-                                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] pointer-events-auto cursor-pointer"
-                                        initial={{
-                                            opacity: 0,
-                                            y: 320,
-                                            scale: 0.8,
-                                            rotateX: 45,
-                                        }}
-                                        animate={animationProgress > 70 ? {
-                                            opacity: 1,
-                                            y: 120,
-                                            x: -30,
-                                            scale: 1,
-                                            rotateX: 0,
-                                        } : {
-                                            opacity: 0,
-                                            y: 320,
-                                            scale: 0.8,
-                                            rotateX: 45,
-                                        }}
-                                        transition={{
-                                            opacity: { duration: 1.2 },
-                                            y: { duration: 1.7, ease: [0.16, 1, 0.3, 1] },
-                                            x: { duration: 1.7, ease: [0.16, 1, 0.3, 1] },
-                                            scale: { duration: 1.7, ease: [0.16, 1, 0.3, 1] },
-                                            rotateX: { duration: 1.2 },
-                                        }}
-                                        style={{ perspective: 1000 }}
-                                    >
-                                        {/* Circular orbit around blob */}
-                                        <motion.div
-                                            animate={animationProgress >= 100 && enableMotion ? {
-                                                x: [-30, 0, 30, 50, 55, 45, 25, 0, -30, -45, -50, -45, -35],
-                                                y: [120, 130, 125, 110, 85, 65, 50, 45, 50, 65, 80, 95, 110],
-                                            } : {}}
-                                            transition={{
-                                                duration: 70,
-                                                repeat: Infinity,
-                                                ease: "linear",
-                                            }}
-                                        >
-                                            <motion.div
-                                                whileHover={{ scale: 1.05, y: -10 }}
-                                                className="glass p-8 rounded-3xl w-full h-full"
-                                            >
-                                                <div
-                                                    className="text-5xl font-light text-brand-blue mb-2 font-grotesk"
-                                                    style={{ textShadow: "0 0 20px rgba(59, 130, 246, 0.4)" }}
-                                                >
-                                                    24h
-                                                </div>
-                                                <div className="text-xs uppercase tracking-widest text-black/50 dark:text-white/50 mb-1">Response Time</div>
-                                                <div className="text-lg text-black dark:text-white">Guaranteed</div>
-                                            </motion.div>
-                                        </motion.div>
-                                    </motion.div>
-                                </div>
-                            </div>
-                        </div>
+                <section className="border-t border-white/[0.08] relative">
+                    <div className="absolute inset-0 bg-gradient-to-b from-brand-blue/5 to-transparent pointer-events-none" />
+                    <div className="mx-auto max-w-[1200px] px-6 py-24 md:grid md:grid-cols-12 md:gap-12 md:px-10 md:py-32 relative">
+                    <div className="md:col-span-4">
+                        <h2 className="font-mono text-[11px] uppercase tracking-[0.22em] text-white/40">
+                        Direction
+                        </h2>
+                    </div>
+                    <div className="mt-8 md:col-span-8 md:mt-0">
+                        <p className="font-grotesk text-[26px] font-light leading-[1.35] tracking-[-0.015em] text-white md:text-[34px]">
+                        Agentic systems are growing in capability faster than the tools
+                        we have to measure whether they are tractable, safe, or correct.
+                        </p>
+                        <p className="mt-8 max-w-[680px] text-[16px] leading-[1.7] text-white/60 md:text-[17px]">
+                        We study the structural properties of agent behaviour —
+                        branching, information flow, capability boundaries, adversarial
+                        pressure — and translate them into measures operators can act
+                        on. The work is exercised on real workflows, not benchmarks.
+                        </p>
+                    </div>
                     </div>
                 </section>
 
-                <ServicesSection />
-
-                {/* Expertise Section */}
-                <section id="expertise" className="relative px-6 md:px-16 py-40">
-                    <div className="max-w-7xl mx-auto">
-                        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between mb-24 pb-8 border-b border-black/10 dark:border-white/10">
-                            <span className="text-sm text-brand-blue font-medium font-grotesk">02</span>
-                            <h2 className="text-5xl md:text-7xl font-light max-w-[600px] leading-tight font-grotesk">
-                                What We Do
-                            </h2>
-                        </div>
-
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-black/[0.08] dark:bg-white/[0.08]">
-                            {[
-                                {
-                                    num: "01",
-                                    title: "AI Agent Development",
-                                    desc: "Custom autonomous agents that handle complex workflows and integrate with your existing tools.",
-                                },
-                                {
-                                    num: "02",
-                                    title: "AI-Powered Web Development",
-                                    desc: "Next.js and React sites engineered for speed, SEO, and conversion — with AI features built in.",
-                                },
-                                {
-                                    num: "03",
-                                    title: "AI SEO & Content",
-                                    desc: "Predictive keyword strategy, automated content optimization, and reporting tied directly to revenue.",
-                                },
-                                {
-                                    num: "04",
-                                    title: "Business Process Automation",
-                                    desc: "We find the manual work eating your team's time and replace it with AI workflows that run 24/7.",
-                                },
-                                { num: "05", title: "Multi-Agent Orchestration", desc: "Multiple AI agents working together to handle end-to-end business processes." },
-                                {
-                                    num: "06",
-                                    title: "Enterprise Integration",
-                                    desc: "Connect AI systems to your CRM, ERP, and existing tools without disrupting what already works.",
-                                },
-                            ].map((item, index) => (
-                                <motion.div
-                                    key={item.num}
-                                    initial={{ opacity: 0, y: 24 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.06 }}
-                                    className="group bg-[rgba(0,0,0,0.02)] dark:bg-[rgba(255,255,255,0.02)] p-12 relative overflow-hidden cursor-pointer hover:bg-black/[0.06] dark:hover:bg-white/[0.06] transition-all duration-400"
-                                >
-                                    <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
-                                    <div className="relative z-10">
-                                        <div className="text-xs text-brand-blue mb-8 font-medium font-grotesk group-hover:translate-x-2 transition-transform duration-300">
-                                            {item.num}
-                                        </div>
-                                        <h3 className="text-2xl mb-4 font-normal group-hover:translate-x-2 transition-transform duration-300">
-                                            {item.title}
-                                        </h3>
-                                        <p className="text-black/50 dark:text-white/50 leading-relaxed group-hover:translate-x-2 transition-transform duration-300">
-                                            {item.desc}
-                                        </p>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
+                <section className="border-t border-white/[0.08] relative">
+                    <div className="mx-auto max-w-[1200px] px-6 py-24 md:grid md:grid-cols-12 md:gap-12 md:px-10 md:py-32">
+                    <div className="md:col-span-4">
+                        <h2 className="font-mono text-[11px] uppercase tracking-[0.22em] text-white/40">
+                        Live testbed
+                        </h2>
+                    </div>
+                    <div className="mt-8 md:col-span-8 md:mt-0">
+                        <h3 className="font-grotesk text-[30px] font-light leading-[1.15] tracking-[-0.015em] text-white md:text-[40px]">
+                        Intellcycle
+                        </h3>
+                        <p className="mt-6 max-w-[680px] text-[16px] leading-[1.7] text-white/60 md:text-[17px]">
+                        An agentic marketplace for recycled metals. Real counterparties,
+                        real settlement, real adversarial pressure — the surface where
+                        measurements stop being theoretical.
+                        </p>
+                    </div>
                     </div>
                 </section>
 
-                {/* Projects Section */}
-                <section id="projects" className="relative px-6 md:px-16 py-40">
-                    <div className="max-w-7xl mx-auto">
-                        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between mb-24 pb-8 border-b border-black/10 dark:border-white/10">
-                            <span className="text-sm text-brand-blue font-medium font-grotesk">03</span>
-                            <h2 className="text-5xl md:text-7xl font-light max-w-[600px] leading-tight font-grotesk">
-                                Selected Work
-                            </h2>
-                        </div>
-
-                        <div className="flex flex-col gap-4">
-                            {[
-                                { year: "2025", name: "Morphika", category: "AI Product", href: "https://morphika.ai" },
-                                { year: "2025", name: "Client Project #1", category: "AI Automation" },
-                                { year: "2025", name: "Client Project #2", category: "AI Web Development" },
-                                { year: "2025", name: "Trixode Studios", category: "Agency Website" },
-                            ].map((project, index) => (
-                                <motion.a
-                                    key={`${project.name}-${index}`}
-                                    href={project.href || "/projects"}
-                                    initial={{ opacity: 0, y: 24 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.06 }}
-                                    className="magnetic group grid grid-cols-1 md:grid-cols-[100px_1fr_200px_auto] gap-8 p-12 border border-black/[0.08] dark:border-white/[0.08] items-center relative overflow-hidden hover:border-black/20 dark:hover:border-white/20 hover:translate-x-5 transition-all duration-400"
-                                >
-                                    <div className="absolute inset-0 bg-gradient-to-r from-brand-blue/5 to-transparent -translate-x-full group-hover:translate-x-0 transition-transform duration-700" />
-                                    <span className="text-sm text-black/25 dark:text-white/25 font-grotesk group-hover:text-brand-blue transition-colors">
-                                        {project.year}
-                                    </span>
-                                    <span className="text-3xl md:text-4xl font-normal font-grotesk relative">
-                                        {project.name}
-                                        <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-brand-blue group-hover:w-full transition-all duration-400" />
-                                    </span>
-                                    <span className="text-sm uppercase tracking-widest text-black/50 dark:text-white/50 group-hover:text-brand-blue transition-colors">
-                                        {project.category}
-                                    </span>
-                                    <div className="w-12 h-12 border border-black/10 dark:border-white/10 rounded-full flex items-center justify-center group-hover:border-brand-blue group-hover:rotate-45 transition-all duration-400">
-                                        <ArrowRight className="w-5 h-5" />
-                                    </div>
-                                </motion.a>
-                            ))}
-                        </div>
+                <section className="border-t border-white/[0.08] relative">
+                    <div className="mx-auto max-w-[1200px] px-6 py-24 md:grid md:grid-cols-12 md:gap-12 md:px-10 md:py-32">
+                    <div className="md:col-span-4">
+                        <h2 className="font-mono text-[11px] uppercase tracking-[0.22em] text-white/40">
+                        Founders
+                        </h2>
                     </div>
-                </section>
-
-                {/* Team Section */}
-                <section id="team" className="relative px-6 md:px-16 py-40">
-                    <div className="max-w-7xl mx-auto">
-                        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between mb-24 pb-8 border-b border-black/10 dark:border-white/10">
-                            <span className="text-sm text-brand-blue font-medium font-grotesk">04</span>
-                            <h2 className="text-5xl md:text-7xl font-light max-w-[600px] leading-tight font-grotesk">
-                                Leadership
-                            </h2>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <div className="mt-8 md:col-span-8 md:mt-0">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl">
                             {[
                                 {
-                                    name: "Hussien Ballouk",
-                                    role: "Founder & CEO",
+                                    name: "Ali Hasuna",
+                                    role: "Chief Executive Officer",
                                     image: "https://res.cloudinary.com/dmkfxjv0s/image/upload/w_200,h_200,c_fill,g_face,f_auto,q_auto/v1749088385/ceo_photo.png",
-                                    color: "#3b82f6"
                                 },
                                 {
                                     name: "Amir Ahmadian",
-                                    role: "Chief Technology Officer",
+                                    role: "Chief Science Officer",
                                     image: "https://res.cloudinary.com/dnsl6kst1/image/upload/w_200,h_200,c_fill,g_face,f_auto,q_auto/v1770191425/ChatGPT_Image_Feb_3_2026_11_47_46_PM_sasgnj.png",
-                                    color: "#8b5cf6"
                                 },
                             ].map((member, index) => (
                                 <motion.div
@@ -673,10 +228,10 @@ export default function HomePage() {
                                     initial={{ opacity: 0, y: 24 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ delay: index * 0.06 }}
-                                    className="glass p-12 rounded-3xl text-center cursor-pointer group hover:-translate-y-2 transition-all duration-400"
+                                    transition={{ delay: index * 0.1 }}
+                                    className="glass bg-white/[0.03] border border-white/[0.08] p-10 rounded-3xl text-center cursor-pointer group hover:-translate-y-2 hover:bg-white/[0.06] transition-all duration-400"
                                 >
-                                    <div className="w-28 h-28 mx-auto mb-8 rounded-full overflow-hidden border-2 border-black/10 dark:border-white/10 group-hover:border-brand-blue group-hover:scale-110 transition-all duration-400">
+                                    <div className="w-32 h-32 mx-auto mb-8 rounded-full overflow-hidden border-2 border-white/10 group-hover:border-brand-blue group-hover:scale-110 transition-all duration-400">
                                         <Image
                                             src={member.image}
                                             alt={member.name}
@@ -686,164 +241,30 @@ export default function HomePage() {
                                         />
                                     </div>
                                     <h3 className="text-xl mb-2 font-normal uppercase font-grotesk">{member.name}</h3>
-                                    <div className="text-sm uppercase tracking-widest text-black/50 dark:text-white/50 group-hover:text-brand-blue transition-colors">
+                                    <div className="text-sm uppercase tracking-widest text-white/50 group-hover:text-brand-blue transition-colors">
                                         {member.role}
                                     </div>
                                 </motion.div>
                             ))}
                         </div>
                     </div>
-                </section>
-
-                {/* Contact Section */}
-                <section id="contact" className="relative px-6 md:px-16 py-40 bg-gradient-to-b from-transparent via-brand-blue/5 to-transparent">
-                    <div className="max-w-5xl mx-auto">
-                        <div className="grid md:grid-cols-2 gap-16">
-                            {/* Contact Info */}
-                            <motion.div
-                                initial={{ opacity: 0, y: 24 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                            >
-                                <h3 className="text-4xl md:text-5xl font-light mb-8 leading-tight">
-                                    Ready to put AI to work?
-                                </h3>
-                                <p className="text-black/50 dark:text-white/50 mb-12 leading-relaxed text-lg">
-                                    Tell us what you're working on. We'll respond within 24 hours with a clear plan.
-                                </p>
-
-                                <div className="flex flex-col gap-4">
-                                    <a
-                                        href="mailto:hello@trixode.com"
-                                        className="magnetic glass flex items-center justify-between p-6 rounded-2xl group hover:translate-x-2 transition-all duration-400"
-                                    >
-                                        <div>
-                                            <div className="text-xs uppercase tracking-widest text-black/25 dark:text-white/25 mb-1">Email</div>
-                                            <div className="text-lg">hello@trixode.com</div>
-                                        </div>
-                                        <ArrowRight className="w-5 h-5 group-hover:rotate-45 transition-transform duration-400" />
-                                    </a>
-
-                                </div>
-                            </motion.div>
-
-                            {/* Contact Form */}
-                            <motion.div
-                                initial={{ opacity: 0, y: 24 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                className="flex flex-col gap-8"
-                            >
-                                {isSuccess ? (
-                                    <motion.div
-                                        initial={{ opacity: 0, scale: 0.95 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        className="glass p-8 rounded-3xl text-center flex flex-col items-center justify-center h-full min-h-[400px]"
-                                    >
-                                        <div className="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mb-6">
-                                            <svg className="w-8 h-8 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                            </svg>
-                                        </div>
-                                        <h3 className="text-2xl font-light mb-4 text-black dark:text-white">Message Sent!</h3>
-                                        <p className="text-black/50 dark:text-white/50 mb-8 max-w-[300px]">
-                                            Thanks for reaching out. We've received your message and will get back to you within 24 hours.
-                                        </p>
-                                        <button
-                                            onClick={() => setIsSuccess(false)}
-                                            className="text-brand-blue hover:text-brand-blue/80 text-sm uppercase tracking-widest transition-colors"
-                                        >
-                                            Send Another Message
-                                        </button>
-                                    </motion.div>
-                                ) : (
-                                    <form onSubmit={handleSubmit} className="flex flex-col gap-8">
-                                        {errorMessage && (
-                                            <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-xl text-red-500 text-sm">
-                                                {errorMessage}
-                                            </div>
-                                        )}
-
-                                        <div className="relative">
-                                            <input
-                                                type="text"
-                                                placeholder=" "
-                                                id="name"
-                                                autoComplete="name"
-                                                value={formData.name}
-                                                onChange={handleInputChange}
-                                                required
-                                                disabled={isSubmitting}
-                                                className="peer w-full bg-transparent border-b border-black/10 dark:border-white/10 py-4 text-black dark:text-white outline-none focus:border-brand-blue transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                                            />
-                                            <label
-                                                htmlFor="name"
-                                                className="absolute left-0 top-4 text-black/50 dark:text-white/50 transition-all peer-focus:text-brand-blue peer-focus:text-xs peer-focus:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-top-4"
-                                            >
-                                                Your Name
-                                            </label>
-                                        </div>
-
-                                        <div className="relative">
-                                            <input
-                                                type="email"
-                                                placeholder=" "
-                                                id="email"
-                                                autoComplete="email"
-                                                value={formData.email}
-                                                onChange={handleInputChange}
-                                                required
-                                                disabled={isSubmitting}
-                                                className="peer w-full bg-transparent border-b border-black/10 dark:border-white/10 py-4 text-black dark:text-white outline-none focus:border-brand-blue transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                                            />
-                                            <label
-                                                htmlFor="email"
-                                                className="absolute left-0 top-4 text-black/50 dark:text-white/50 transition-all peer-focus:text-brand-blue peer-focus:text-xs peer-focus:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-top-4"
-                                            >
-                                                Email Address
-                                            </label>
-                                        </div>
-
-                                        <div className="relative">
-                                            <textarea
-                                                placeholder=" "
-                                                id="message"
-                                                rows={4}
-                                                value={formData.message}
-                                                onChange={handleInputChange}
-                                                required
-                                                disabled={isSubmitting}
-                                                className="peer w-full bg-transparent border-b border-black/10 dark:border-white/10 py-4 text-black dark:text-white outline-none focus:border-brand-blue transition-colors resize-none disabled:opacity-50 disabled:cursor-not-allowed"
-                                            />
-                                            <label
-                                                htmlFor="message"
-                                                className="absolute left-0 top-4 text-black/50 dark:text-white/50 transition-all peer-focus:text-brand-blue peer-focus:text-xs peer-focus:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-top-4"
-                                            >
-                                                What's the biggest bottleneck in your business right now?
-                                            </label>
-                                        </div>
-
-                                        <button
-                                            type="submit"
-                                            disabled={isSubmitting}
-                                            className="magnetic w-full py-5 border border-black/10 dark:border-white/10 text-sm uppercase tracking-widest relative overflow-hidden group hover:border-brand-blue transition-all duration-400 disabled:opacity-70 disabled:cursor-not-allowed"
-                                        >
-                                            <span className="relative z-10">
-                                                {isSubmitting ? "Sending..." : "Send Message — We'll Reply Within 24 Hours"}
-                                            </span>
-                                            {!isSubmitting && (
-                                                <div className="absolute inset-0 bg-brand-blue scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-400" />
-                                            )}
-                                        </button>
-                                    </form>
-                                )}
-                            </motion.div>
-                        </div>
                     </div>
                 </section>
 
-                <Footer />
-            </motion.div>
-        </>
+                <footer className="border-t border-white/[0.08] relative">
+                    <div className="mx-auto flex max-w-[1200px] flex-col gap-4 px-6 py-10 md:flex-row md:items-center md:justify-between md:px-10">
+                    <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-white/40">
+                        © 2026 Trixode-Studios Inc.
+                    </p>
+                    <Link
+                        href="mailto:ali@trixode-studios.com"
+                        className="text-[12px] text-white/40 transition-colors hover:text-white"
+                    >
+                        ali@trixode-studios.com
+                    </Link>
+                    </div>
+                </footer>
+            </div>
+        </main>
     )
 }
