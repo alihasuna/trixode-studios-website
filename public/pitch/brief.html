@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<title>Trixode Studios — A field brief on agentic AI</title>
+<meta name="description" content="Trixode Studios: we assess and build agentic AI systems. A short field brief on how we think and what we ship." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #fafaf7;
+  --fg: #0a0a0a;
+  --accent: #2563eb;
+  --emerald: #047857;
+  --amber: #b45309;
+  --purple: #6d28d9;
+  --cyan: #0e7490;
+  --border: rgba(10,10,10,0.10);
+  --border-hi: rgba(10,10,10,0.18);
+  --card-bg: #ffffff;
+  --soft: rgba(10,10,10,0.025);
+  --muted: rgba(10,10,10,0.62);
+  --dim: rgba(10,10,10,0.42);
+  --grid: rgba(10,10,10,0.035);
+  --card-shadow: 0 1px 2px rgba(10,10,10,0.04), 0 12px 32px rgba(10,10,10,0.05);
+  --sg: 'Space Grotesk', system-ui, sans-serif;
+  --inter: 'Inter', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+[data-theme="dark"] {
+  --bg: #060606;
+  --fg: #ffffff;
+  --accent: #60a5fa;
+  --emerald: #34d399;
+  --amber: #fbbf24;
+  --purple: #a78bfa;
+  --cyan: #22d3ee;
+  --border: rgba(255,255,255,0.10);
+  --border-hi: rgba(255,255,255,0.20);
+  --card-bg: rgba(255,255,255,0.04);
+  --soft: rgba(255,255,255,0.04);
+  --muted: rgba(255,255,255,0.65);
+  --dim: rgba(255,255,255,0.40);
+  --grid: rgba(255,255,255,0.04);
+  --card-shadow: 0 1px 2px rgba(0,0,0,0.30), 0 12px 36px rgba(0,0,0,0.40), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+@page { size: A4; margin: 20mm; }
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { background: var(--bg); scroll-behavior: smooth; }
+html, body { color: var(--fg); font-family: var(--inter); font-size: 18px; line-height: 1.65; -webkit-font-smoothing: antialiased; transition: background 0.25s ease, color 0.25s ease; }
+body {
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px),
+                    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 120px 120px;
+}
+
+.section {
+  width: 100%;
+  background: transparent;
+  padding: 96px 0;
+  border-bottom: 1px solid var(--border);
+}
+.section:last-of-type { border-bottom: none; padding-bottom: 128px; }
+.section:first-of-type { padding-top: 128px; }
+.inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 56px;
+}
+
+.eyebrow {
+  display:inline-flex; align-items:center; gap:10px;
+  padding:8px 18px; border:1px solid var(--border-hi); border-radius:100px;
+  font-family:var(--inter); font-size:13px; font-weight:500;
+  letter-spacing:0.14em; text-transform:uppercase; color:var(--muted);
+  background: var(--card-bg);
+}
+.dot { width:6px; height:6px; border-radius:50%; background:var(--accent); display:inline-block; }
+
+.d1 { font-family:var(--sg); font-weight:300; font-size:60px; line-height:1.1; letter-spacing:-0.022em; color:var(--fg); }
+.h2 { font-family:var(--sg); font-weight:400; font-size:40px; line-height:1.2; letter-spacing:-0.018em; color:var(--fg); }
+.kicker { font-family:var(--inter); font-size:13px; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent); margin-bottom:18px; }
+.body { font-family:var(--inter); font-weight:400; font-size:19px; line-height:1.7; color:var(--muted); }
+.body strong { color:var(--fg); font-weight:600; }
+.lead { font-family:var(--inter); font-weight:400; font-size:22px; line-height:1.55; color:var(--muted); }
+.lead strong { color:var(--fg); font-weight:500; }
+
+.brand-logo { display: flex; align-items: center; gap: 16px; width: fit-content; }
+.brand-logo svg { width: 44px; height: 44px; flex-shrink: 0; color: var(--accent); display: block; }
+.brand-logo .wordmark { font-family: var(--sg); font-size: 30px; font-weight: 500; color: var(--fg); letter-spacing: -0.01em; line-height: 1; }
+.rule { width:64px; height:2px; background:var(--accent); border-radius:1px; }
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--card-shadow);
+  padding: 36px 38px;
+}
+.callout {
+  background: var(--soft);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 10px;
+  padding: 28px 32px;
+}
+.callout p { font-family:var(--inter); font-size:19px; color:var(--fg); line-height:1.65; font-weight: 400; }
+.callout p .muted { color: var(--muted); font-weight: 400; }
+.callout .src { display:block; margin-top:10px; font-size:14px; color:var(--dim); }
+
+ul.bullets { list-style: none; padding: 0; margin: 32px 0 0; display:flex; flex-direction:column; gap:18px; }
+ul.bullets li { padding-left: 28px; position: relative; font-family:var(--inter); font-size:19px; line-height:1.65; color: var(--muted); }
+ul.bullets li::before { content:''; position:absolute; left:0; top:13px; width:8px; height:8px; border-radius:50%; background: var(--accent); }
+ul.bullets li strong { color: var(--fg); font-weight: 600; }
+
+.formula-card {
+  background: var(--soft);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px 36px;
+  margin-top: 32px;
+}
+.formula-eq {
+  font-family: var(--mono);
+  font-size: 22px;
+  color: var(--fg);
+  letter-spacing: 0.005em;
+  margin: 8px 0 16px;
+}
+.formula-eq .x { color: var(--accent); font-weight: 500; }
+
+.numbered-list {
+  display: flex; flex-direction: column; gap: 36px;
+  margin-top: 40px;
+}
+.numbered-item {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+.numbered-item .n {
+  font-family: var(--sg);
+  font-size: 32px; font-weight: 300;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.numbered-item h3 {
+  font-family: var(--sg);
+  font-size: 24px; font-weight: 500;
+  color: var(--fg);
+  line-height: 1.25;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+.numbered-item p {
+  font-family: var(--inter);
+  font-size: 17px; line-height: 1.65;
+  color: var(--muted);
+  max-width: 720px;
+}
+.numbered-item p strong { color: var(--fg); font-weight: 600; }
+
+.theme-toggle {
+  position: fixed; top: 24px; right: 24px; z-index: 9999;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border-hi);
+  background: var(--card-bg);
+  color: var(--fg);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.2s ease;
+}
+.theme-toggle:hover { transform: scale(1.05); }
+.theme-toggle svg { width: 18px; height: 18px; }
+[data-theme="light"] .icon-moon { display: block; }
+[data-theme="light"] .icon-sun { display: none; }
+[data-theme="dark"] .icon-moon { display: none; }
+[data-theme="dark"] .icon-sun { display: block; }
+@media print { .theme-toggle { display: none !important; } }
+
+a.link { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.15s ease; }
+a.link:hover { border-color: var(--accent); }
+
+.cta-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 28px; border-radius: 12px;
+  background: var(--accent); color: white !important;
+  font-family: var(--inter); font-size: 16px; font-weight: 500;
+  text-decoration: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.cta-primary:hover { opacity: 0.92; transform: translateY(-1px); }
+.cta-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--inter); font-size: 16px; font-weight: 500;
+  color: var(--muted); text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.cta-secondary:hover { color: var(--accent); border-bottom-color: var(--accent); }
+</style>
+</head>
+<body>
+
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle light / dark mode">
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+</button>
+
+<!-- ───────────────────────────────────── 1 · COVER -->
+<section class="section">
+  <div class="inner">
+    <span class="eyebrow"><span class="dot"></span>TRIXODE STUDIOS &middot; A FIELD BRIEF</span>
+    <div style="margin-top:36px;margin-bottom:48px;" class="brand-logo">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Trixode">
+        <polygon points="16,4 24.93,9.5 24.93,22.5 16,28 7.07,22.5 7.07,9.5" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <line x1="16" y1="16" x2="16" y2="4" stroke="currentColor" stroke-width="1" opacity="0.55"/>
+        <line x1="16" y1="16" x2="24.93" y2="9.5" stroke="currentColor" stroke-width="1" opacity="0.55"/>
+        <line x1="16" y1="16" x2="24.93" y2="22.5" stroke="currentColor" stroke-width="1" opacity="0.55"/>
+        <line x1="16" y1="16" x2="16" y2="28" stroke="currentColor" stroke-width="1" opacity="0.55"/>
+        <line x1="16" y1="16" x2="7.07" y2="22.5" stroke="currentColor" stroke-width="1" opacity="0.55"/>
+        <line x1="16" y1="16" x2="7.07" y2="9.5" stroke="currentColor" stroke-width="1" opacity="0.55"/>
+        <circle cx="16" cy="4" r="1.6" fill="currentColor"/>
+        <circle cx="24.93" cy="9.5" r="1.6" fill="currentColor"/>
+        <circle cx="24.93" cy="22.5" r="1.6" fill="currentColor"/>
+        <circle cx="16" cy="28" r="1.6" fill="currentColor"/>
+        <circle cx="7.07" cy="22.5" r="1.6" fill="currentColor"/>
+        <circle cx="7.07" cy="9.5" r="1.6" fill="currentColor"/>
+        <circle cx="16" cy="16" r="2" fill="currentColor"/>
+      </svg>
+      <span class="wordmark">Trixode</span>
+    </div>
+    <h1 class="d1">We assess and build<br>agentic AI systems.</h1>
+    <div class="rule" style="margin:40px 0;"></div>
+    <p class="lead" style="max-width:880px;">Trixode is an AI-native studio for organizations that need <strong>governance-grade answers</strong>, not marketing claims. This is a short read on how we think and what we ship.</p>
+  </div>
+</section>
+
+<!-- ───────────────────────────────────── 2 · THE STATE OF AGENTIC AI -->
+<section class="section">
+  <div class="inner">
+    <div class="kicker">The state of agentic AI</div>
+    <h2 class="h2" style="max-width:880px;">Capability is now table stakes. The operating model is the moat.</h2>
+    <p class="body" style="margin-top:28px;max-width:880px;">Agentic AI is no longer a research curiosity &mdash; it's a procurement category. But the data is sobering. The agentic initiatives funded in 2025 are being cancelled at a rate that suggests the bottleneck has moved.</p>
+    <div class="callout" style="margin-top:28px;max-width:880px;">
+      <p>Over <strong>40%</strong> of agentic AI projects are projected to be cancelled by end-2027 &mdash; cited reasons: escalating costs, unclear business value, inadequate risk controls.</p>
+      <span class="src">Gartner press release, June 25, 2025.</span>
+    </div>
+    <p class="body" style="margin-top:28px;max-width:880px;">None of those reasons are model failures. They are operating-model failures &mdash; the gap between what a system can do in a demo and what it survives in production. The companies that make it through the cancellation wave will be the ones who treated agentic AI as an engineering and governance discipline from the first commit.</p>
+  </div>
+</section>
+
+<!-- ───────────────────────────────────── 3 · WHAT WE DO -->
+<section class="section">
+  <div class="inner">
+    <div class="kicker">What we do</div>
+    <h2 class="h2" style="max-width:880px;">Two simple instruments. A written scorecard at the end of every engagement.</h2>
+    <p class="body" style="margin-top:28px;max-width:880px;">Trixode helps organizations scope, build, and review AI agent systems with two quantitative measures. The output isn't a slide deck &mdash; it's a written, audit-ready report a finance officer can underwrite and a compliance reviewer can sign.</p>
+    <ul class="bullets" style="max-width:880px;">
+      <li><strong>Measure complexity</strong> before committing budget &mdash; so cost, scope, and contingency get priced honestly.</li>
+      <li><strong>Measure security</strong> before shipping &mdash; so the architecture closes the gaps that off-the-shelf agents leave open.</li>
+      <li><strong>Deliver a scorecard</strong> a client can hand to their auditor &mdash; not a marketing claim, not a sales asset.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ───────────────────────────────────── 4 · HOW WE WORK -->
+<section class="section">
+  <div class="inner">
+    <div class="kicker">How we work</div>
+    <h2 class="h2" style="max-width:880px;">Two scores per engagement. One risk equation underneath.</h2>
+
+    <div style="margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+
+      <div class="card" style="border-top:3px solid var(--accent);">
+        <div style="font-family:var(--sg);font-size:24px;font-weight:600;color:var(--fg);margin-bottom:10px;">CSI &mdash; Complexity Score Index</div>
+        <p class="body" style="font-size:17px;">A 0&ndash;100 read on the engineering surface area an agentic system actually carries: context load, agent handoffs, tool count, and how much is delegated to the model.</p>
+        <p class="body" style="font-size:16px;margin-top:18px;padding-top:18px;border-top:1px solid var(--border);"><strong>What it estimates:</strong> the probability of failure under real-world load.</p>
+      </div>
+
+      <div class="card" style="border-top:3px solid var(--emerald);">
+        <div style="font-family:var(--sg);font-size:24px;font-weight:600;color:var(--fg);margin-bottom:10px;">SPS &mdash; Security Posture Score</div>
+        <p class="body" style="font-size:17px;">A 0&ndash;100 rubric covering data separation, capability segregation, action gates, and append-only auditability. Anchored in Simon Willison's <em>Lethal Trifecta</em> framework.</p>
+        <p class="body" style="font-size:16px;margin-top:18px;padding-top:18px;border-top:1px solid var(--border);"><strong>What it contains:</strong> the blast radius when failure happens.</p>
+      </div>
+
+    </div>
+
+    <div class="formula-card">
+      <div class="kicker">The math underneath</div>
+      <p class="formula-eq"><span class="x">Expected loss</span> = Probability of failure &times; Blast radius</p>
+      <p class="body" style="font-size:17px;margin-top:8px;">CSI estimates probability. SPS contains blast radius. Every engagement reduces both, and the report discloses its scoring weights and inputs &mdash; no proprietary black boxes. The reader can fill in their own numbers and check the work.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────────────────────────── 5 · HUMAN-IN-THE-LOOP -->
+<section class="section">
+  <div class="inner">
+    <div class="kicker" style="color:var(--purple);">Human-in-the-loop, by design</div>
+    <h2 class="h2" style="max-width:880px;">HITL isn't a setting. It's the seam between what agents do and what humans decide.</h2>
+    <p class="body" style="margin-top:28px;max-width:880px;">We design every system around an explicit boundary between autonomous action and human decision. Three reasons it matters &mdash; none of them about values, all of them about risk economics.</p>
+
+    <div class="numbered-list">
+      <div class="numbered-item">
+        <div class="n">01</div>
+        <div>
+          <h3>HITL is the audit boundary.</h3>
+          <p>Every agentic decision either has a human checkpoint or it doesn't &mdash; and that boundary is what auditors, regulators, and insurers will ask about. Without HITL, an audit log is recording autonomous decisions nobody approved. With HITL, the log is evidence. The seam is what makes the log <strong>meaningful</strong>.</p>
+        </div>
+      </div>
+
+      <div class="numbered-item">
+        <div class="n">02</div>
+        <div>
+          <h3>HITL is the reversibility budget.</h3>
+          <p>Agents that can't be interrupted or corrected are liabilities, not assets. We design systems for the <strong>cost of being wrong</strong>, not just the upside of being right. The cheaper the rollback path, the higher the autonomy we can responsibly allow. That's not a moral position &mdash; it's hedging.</p>
+        </div>
+      </div>
+
+      <div class="numbered-item">
+        <div class="n">03</div>
+        <div>
+          <h3>HITL is the enterprise trust unlock.</h3>
+          <p>The companies that scale agentic AI inside regulated environments are the ones who built governance in from week one. HITL isn't friction &mdash; it's the precondition for getting near a regulated workflow at all. As cyber and AI liability insurance markets mature, demonstrable human-approval controls are becoming underwriting requirements.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:48px;">
+      <p>HITL isn't slower. <span class="muted">It's the cheapest insurance premium you'll ever pay against an agent decision you can't defend.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────────────────────────── 6 · WHAT AI-NATIVE ACTUALLY MEANS -->
+<section class="section">
+  <div class="inner">
+    <div class="kicker" style="color:var(--cyan);">What AI-native actually means</div>
+    <h2 class="h2" style="max-width:880px;">A different operating model, not a different feature stack.</h2>
+    <p class="body" style="margin-top:28px;max-width:880px;">There's a real difference between AI features bolted onto a legacy operation and a company built around agents from day one. Three observations from the leading AI-native organizations of 2025 &mdash; each one a deliberate operating choice, not a feature flag.</p>
+
+    <div class="numbered-list">
+      <div class="numbered-item">
+        <div class="n">01</div>
+        <div>
+          <h3>Smaller surface, larger leverage.</h3>
+          <p>The companies on the <strong>Forbes AI 50 (2025)</strong> operate at fundamentally smaller headcount-to-revenue ratios than their legacy peers. AI-native isn't a tech stack &mdash; it's an operating model where one person can carry the work of a team, because the agents carry the rest.</p>
+        </div>
+      </div>
+
+      <div class="numbered-item">
+        <div class="n">02</div>
+        <div>
+          <h3>Pilots aren't products.</h3>
+          <p>Research from <strong>MIT's State of AI in Business 2025</strong> reports that roughly <strong>95% of enterprise GenAI pilots</strong> fail to produce measurable P&amp;L impact. The gap isn't model quality &mdash; it's the absence of evals, governance, and operating discipline. The same gap CSI and SPS are designed to close.</p>
+        </div>
+      </div>
+
+      <div class="numbered-item">
+        <div class="n">03</div>
+        <div>
+          <h3>Pricing follows outcomes, not seats.</h3>
+          <p>Analysis from <strong>a16z and Sequoia</strong> points to the same shift: AI-native businesses charge per outcome &mdash; resolved tickets, completed transactions, units of generated work &mdash; not per seat. Seat-based SaaS economics don't survive a system that does the work of a team.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="body" style="margin-top:40px;max-width:880px;">AI-native is a discipline. It's measurable from the outside if you know what to look for &mdash; which is exactly what an assessment does.</p>
+  </div>
+</section>
+
+<!-- ───────────────────────────────────── 7 · WORK IN FLIGHT -->
+<section class="section">
+  <div class="inner">
+    <div class="kicker">Work in flight</div>
+    <h2 class="h2" style="max-width:880px;">Two live engagements anchor the methodology.</h2>
+    <p class="body" style="margin-top:28px;max-width:880px;">CSI and SPS aren't slide-deck constructs. They were forged on real builds and continue to be refined against them &mdash; one client engagement, one applied product of our own.</p>
+
+    <div style="margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+
+      <div class="card" style="border-top:3px solid var(--purple);">
+        <div class="kicker" style="margin-bottom:10px;color:var(--purple);">Client engagement</div>
+        <div style="font-family:var(--sg);font-size:24px;font-weight:600;color:var(--fg);margin-bottom:12px;">Intellcyle</div>
+        <p class="body" style="font-size:17px;">An agentic marketplace for recycled metals. Trixode is developing the AI-native operating system for the platform &mdash; the engagement where CSI and SPS were originally calibrated against production constraints.</p>
+      </div>
+
+      <div class="card" style="border-top:3px solid var(--cyan);">
+        <div class="kicker" style="margin-bottom:10px;color:var(--cyan);">Our applied product</div>
+        <div style="font-family:var(--sg);font-size:24px;font-weight:600;color:var(--fg);margin-bottom:12px;">Morphika</div>
+        <p class="body" style="font-size:17px;">A multi-device agentic operations framework with distributed agent roles, biometric-gated approvals, and an append-only hash-chained audit log. <strong>In active use internally and with a small group of external testers.</strong> iOS pilot, demoable end-to-end.</p>
+      </div>
+
+    </div>
+
+    <p class="body" style="margin-top:32px;font-size:16px;color:var(--dim);max-width:880px;">Both projects build on MCP &mdash; the open protocol introduced by Anthropic and donated to the Agentic AI Foundation under the Linux Foundation in December 2025.</p>
+  </div>
+</section>
+
+<!-- ───────────────────────────────────── 8 · HOW TO ENGAGE + TEAM -->
+<section class="section">
+  <div class="inner">
+    <div class="kicker">How to engage</div>
+    <h2 class="h2" style="max-width:880px;">Three engagement tracks. Scoped per project. Initial conversation is free.</h2>
+
+    <div style="margin-top:48px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+
+      <div class="card" style="border-top:3px solid var(--accent);">
+        <div style="font-family:var(--sg);font-size:22px;font-weight:600;margin-bottom:10px;color:var(--accent);">Assess</div>
+        <p class="body" style="font-size:16px;">Fixed-scope, time-boxed engagement producing a written <strong>CSI / SPS report</strong> on an existing or proposed agent system. The artifact a procurement reviewer can underwrite.</p>
+      </div>
+
+      <div class="card" style="border-top:3px solid var(--purple);">
+        <div style="font-family:var(--sg);font-size:22px;font-weight:600;margin-bottom:10px;color:var(--purple);">Build</div>
+        <p class="body" style="font-size:16px;">Co-delivered build of an agentic system, designed to a target SPS score. Trixode engineering paired with the client's domain context and project cadence.</p>
+      </div>
+
+      <div class="card" style="border-top:3px solid var(--cyan);">
+        <div style="font-family:var(--sg);font-size:22px;font-weight:600;margin-bottom:10px;color:var(--cyan);">Embed</div>
+        <p class="body" style="font-size:16px;">A retained role inside the client's AI governance cadence. Ongoing CSI / SPS reviews as the system evolves. Bills monthly.</p>
+      </div>
+
+    </div>
+
+    <div style="margin-top:80px;">
+      <div class="kicker">Founders</div>
+      <div style="margin-top:32px;display:flex;flex-direction:column;">
+
+        <div style="display:grid;grid-template-columns:280px 1fr;gap:48px;align-items:start;padding:36px 0;border-top:1px solid var(--border);">
+          <div>
+            <div class="kicker" style="margin-bottom:8px;">Founder</div>
+            <div style="font-family:var(--sg);font-size:26px;font-weight:600;color:var(--fg);line-height:1.2;">Hussien Ballouk</div>
+          </div>
+          <p class="body" style="max-width:680px;">Physics, strategy, software engineering. B.Sc. &amp; M.Sc., Southern Federal University. Ph.D. Physics, University of Victoria &mdash; in progress. Background in nanotechnology.</p>
+        </div>
+
+        <div style="display:grid;grid-template-columns:280px 1fr;gap:48px;align-items:start;padding:36px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+          <div>
+            <div class="kicker" style="margin-bottom:8px;">Founder</div>
+            <div style="font-family:var(--sg);font-size:26px;font-weight:600;color:var(--fg);line-height:1.2;">Amir Ahmadian</div>
+          </div>
+          <p class="body" style="max-width:680px;">Ph.D. Materials Science. Background in materials-science startups.</p>
+        </div>
+
+      </div>
+      <p class="body" style="margin-top:24px;font-size:15px;color:var(--dim);max-width:880px;">With formal mathematical collaboration on the scoring methodology.</p>
+    </div>
+
+    <div style="margin-top:72px;display:flex;flex-wrap:wrap;align-items:center;gap:28px;">
+      <a class="cta-primary" href="mailto:hussienb@trixode-studios.com?subject=Assessment%20request">
+        Request an assessment
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="cta-secondary" href="mailto:hussienb@trixode-studios.com?subject=Field%20notes%20subscription">
+        Or subscribe to field notes
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <p class="body" style="margin-top:48px;font-size:15px;color:var(--dim);">Hussien Ballouk &middot; Founder, Trixode Studios &middot; <a class="link" href="mailto:hussienb@trixode-studios.com">hussienb@trixode-studios.com</a></p>
+
+  </div>
+</section>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    try {
+      var saved = localStorage.getItem('trixode-theme');
+      if (saved === 'dark' || saved === 'light') root.setAttribute('data-theme', saved);
+    } catch (e) {}
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function () {
+        var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        try { localStorage.setItem('trixode-theme', next); } catch (e) {}
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>
