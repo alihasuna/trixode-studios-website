@@ -246,7 +246,7 @@ export default function WorkflowPage() {
                 )}
             </div>
 
-            <p className="mt-6 text-center text-xs text-black/40 dark:text-white/40 font-light">
+            <p className="mt-6 text-center text-xs text-black/55 dark:text-white/55 font-light">
                 Your progress is saved on this device until you submit. Nothing leaves your browser until you hit
                 Send.
             </p>

@@ -111,7 +111,7 @@ export default function LabContactPage() {
                 }}
             />
 
-            <div className="pt-32 pb-20 relative z-10">
+            <main className="pt-32 pb-20 relative z-10">
                 <div className="max-w-6xl mx-auto px-6">
                     <motion.div
                         initial={{ opacity: 0, x: -12 }}
@@ -197,6 +197,7 @@ export default function LabContactPage() {
                                     <div>
                                         <div className="relative">
                                             <input
+                                                id="contact-name"
                                                 type="text"
                                                 name="name"
                                                 value={formData.name}
@@ -205,7 +206,7 @@ export default function LabContactPage() {
                                                 className={`peer w-full bg-transparent border-b border-black/10 dark:border-white/10 py-4 text-black dark:text-white outline-none transition-colors ${errors.name ? "border-red-500/50" : "focus:border-brand-blue"}`}
                                                 required
                                             />
-                                            <label className={`absolute left-0 top-4 text-black/50 dark:text-white/50 transition-all peer-focus:text-brand-blue peer-focus:text-xs peer-focus:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-top-4 pointer-events-none ${errors.name ? "text-red-400" : ""}`}>
+                                            <label htmlFor="contact-name" className={`absolute left-0 top-4 text-black/50 dark:text-white/50 transition-all peer-focus:text-brand-blue peer-focus:text-xs peer-focus:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-top-4 pointer-events-none ${errors.name ? "text-red-400" : ""}`}>
                                                 Your name
                                             </label>
                                         </div>
@@ -215,6 +216,7 @@ export default function LabContactPage() {
                                     <div>
                                         <div className="relative">
                                             <input
+                                                id="contact-email"
                                                 type="email"
                                                 name="email"
                                                 value={formData.email}
@@ -223,7 +225,7 @@ export default function LabContactPage() {
                                                 className={`peer w-full bg-transparent border-b border-black/10 dark:border-white/10 py-4 text-black dark:text-white outline-none transition-colors ${errors.email ? "border-red-500/50" : "focus:border-brand-blue"}`}
                                                 required
                                             />
-                                            <label className={`absolute left-0 top-4 text-black/50 dark:text-white/50 transition-all peer-focus:text-brand-blue peer-focus:text-xs peer-focus:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-top-4 pointer-events-none ${errors.email ? "text-red-400" : ""}`}>
+                                            <label htmlFor="contact-email" className={`absolute left-0 top-4 text-black/50 dark:text-white/50 transition-all peer-focus:text-brand-blue peer-focus:text-xs peer-focus:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-top-4 pointer-events-none ${errors.email ? "text-red-400" : ""}`}>
                                                 Email address
                                             </label>
                                         </div>
@@ -233,6 +235,7 @@ export default function LabContactPage() {
                                     <div>
                                         <div className="relative">
                                             <textarea
+                                                id="contact-message"
                                                 name="message"
                                                 value={formData.message}
                                                 onChange={handleChange}
@@ -241,7 +244,7 @@ export default function LabContactPage() {
                                                 className={`peer w-full bg-transparent border-b border-black/10 dark:border-white/10 py-4 text-black dark:text-white outline-none transition-colors resize-none ${errors.message ? "border-red-500/50" : "focus:border-brand-blue"}`}
                                                 required
                                             />
-                                            <label className={`absolute left-0 top-4 text-black/50 dark:text-white/50 transition-all peer-focus:text-brand-blue peer-focus:text-xs peer-focus:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-top-4 pointer-events-none ${errors.message ? "text-red-400" : ""}`}>
+                                            <label htmlFor="contact-message" className={`absolute left-0 top-4 text-black/50 dark:text-white/50 transition-all peer-focus:text-brand-blue peer-focus:text-xs peer-focus:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-top-4 pointer-events-none ${errors.message ? "text-red-400" : ""}`}>
                                                 What workflow are you thinking about?
                                             </label>
                                         </div>
@@ -266,7 +269,7 @@ export default function LabContactPage() {
                                     </h3>
                                     <p className="text-sm text-black/60 dark:text-white/60 font-light leading-relaxed">
                                         If you'd rather walk us through your workflow step by step, the{" "}
-                                        <Link href="/lab/workflow" className="text-brand-blue hover:underline">
+                                        <Link href="/lab/workflow" className="text-brand-blue underline underline-offset-2 decoration-brand-blue/40 hover:decoration-brand-blue">
                                             workflow form
                                         </Link>{" "}
                                         asks about industry, autonomy level, sensitive data, and infrastructure — six
@@ -355,7 +358,7 @@ export default function LabContactPage() {
                         </motion.div>
                     </div>
                 </div>
-            </div>
+            </main>
 
             <LabFooter />
         </div>

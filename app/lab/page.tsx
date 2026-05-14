@@ -271,14 +271,14 @@ export default function LabPage() {
                             </motion.div>
 
                             <motion.h1
-                                className="text-5xl sm:text-6xl md:text-7xl xl:text-[80px] font-light mb-10 leading-[1.04] tracking-[-0.02em]"
+                                className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px] font-light mb-10 leading-[1.08] tracking-[-0.02em]"
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 3.3 }}
                             >
                                 <span className="block overflow-hidden pb-[0.25em]">
                                     <motion.span
-                                        className="block whitespace-nowrap font-grotesk"
+                                        className="block font-grotesk"
                                         initial={{ y: "110%" }}
                                         animate={{ y: 0 }}
                                         transition={{ duration: 0.7, delay: 3.35, ease: [0.16, 1, 0.3, 1] }}
@@ -289,7 +289,7 @@ export default function LabPage() {
                                 </span>
                                 <span className="block overflow-hidden pb-[0.25em]">
                                     <motion.span
-                                        className="block whitespace-nowrap bg-gradient-to-r from-slate-800 to-brand-blue dark:from-white dark:to-brand-blue bg-clip-text text-transparent font-grotesk"
+                                        className="block bg-gradient-to-r from-slate-800 to-brand-blue dark:from-white dark:to-brand-blue bg-clip-text text-transparent font-grotesk"
                                         initial={{ y: "110%" }}
                                         animate={{ y: 0 }}
                                         transition={{ duration: 0.7, delay: 3.5, ease: [0.16, 1, 0.3, 1] }}
@@ -392,7 +392,7 @@ export default function LabPage() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: index * 0.06 }}
-                                    className="group bg-[rgba(0,0,0,0.02)] dark:bg-[rgba(255,255,255,0.02)] p-12 relative overflow-hidden cursor-default hover:bg-black/[0.06] dark:hover:bg-white/[0.06] transition-all duration-400"
+                                    className="group bg-[rgba(0,0,0,0.02)] dark:bg-[rgba(255,255,255,0.02)] p-8 md:p-12 relative overflow-hidden cursor-default hover:bg-black/[0.06] dark:hover:bg-white/[0.06] transition-all duration-400"
                                 >
                                     <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
                                     <div className="relative z-10">

@@ -39,9 +39,9 @@ export default function LabFooter() {
                     </div>
 
                     <div>
-                        <h3 className="text-xs uppercase tracking-[0.3em] text-black/60 dark:text-white/60 mb-5 font-medium">
+                        <p className="text-xs uppercase tracking-[0.3em] text-black/60 dark:text-white/60 mb-5 font-medium">
                             Lab
-                        </h3>
+                        </p>
                         <ul className="space-y-3">
                             {labLinks.map((link) => (
                                 <li key={link.name}>
@@ -57,9 +57,9 @@ export default function LabFooter() {
                     </div>
 
                     <div>
-                        <h3 className="text-xs uppercase tracking-[0.3em] text-black/60 dark:text-white/60 mb-5 font-medium">
+                        <p className="text-xs uppercase tracking-[0.3em] text-black/60 dark:text-white/60 mb-5 font-medium">
                             Legal
-                        </h3>
+                        </p>
                         <ul className="space-y-3">
                             {legalLinks.map((link) => (
                                 <li key={link.name}>

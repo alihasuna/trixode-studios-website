@@ -63,7 +63,7 @@ export default function WorkflowShell({ children }: { children: React.ReactNode 
                 }}
             />
 
-            <div className="flex-1 pt-32 pb-20 relative z-10">
+            <main className="flex-1 pt-32 pb-20 relative z-10">
                 <div className="max-w-3xl mx-auto px-6">
                     <motion.div
                         initial={{ opacity: 0, x: -12 }}
@@ -82,7 +82,7 @@ export default function WorkflowShell({ children }: { children: React.ReactNode 
 
                     {children}
                 </div>
-            </div>
+            </main>
 
             <LabFooter />
             <Toaster richColors position="bottom-right" />
