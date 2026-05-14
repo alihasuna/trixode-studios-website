@@ -17,13 +17,9 @@ export default function Footer() {
             <p className="text-black/60 dark:text-white/60 mb-6 font-light leading-relaxed max-w-md">
               The AI agency that builds intelligent systems to automate your business and accelerate growth.
             </p>
-            <div className="flex items-center space-x-2 text-black/50 dark:text-white/50 mb-2">
-              <MapPin className="h-4 w-4" />
-              <span className="font-light">Victoria, BC, Canada</span>
-            </div>
             <div className="flex items-center space-x-2 text-black/50 dark:text-white/50 mb-4">
               <MapPin className="h-4 w-4" />
-              <span className="font-light">Quito, Ecuador</span>
+              <span className="font-light">Victoria, BC, Canada</span>
             </div>
             <div className="flex space-x-4">
               {[
@@ -94,9 +90,9 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-black/10 dark:border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-black/50 dark:text-white/50 font-light">
-            © {new Date().getFullYear()} Trixode-Studios S.A.S. B.I.C. | All rights reserved.
+            © {new Date().getFullYear()} Trixode-Studios Inc. | All rights reserved.
           </p>
-          <p className="text-black/30 dark:text-white/30 font-light">Built with AI in Victoria, BC & Quito, Ecuador</p>
+          <p className="text-black/30 dark:text-white/30 font-light">Built with AI in Victoria, BC</p>
         </div>
       </div>
     </footer>

@@ -106,7 +106,7 @@ export async function POST(request: NextRequest) {
                         <strong>Trixode Studios</strong>
                       </p>
                       <p style="color: #9ca3af; font-size: 12px; margin: 0;">
-                        Victoria, BC, Canada • Quito, Ecuador
+                        Victoria, BC, Canada
                       </p>
                       <p style="color: #9ca3af; font-size: 12px; margin: 8px 0 0;">
                         This is an automated confirmation email.

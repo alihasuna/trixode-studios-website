@@ -9,7 +9,7 @@ export const defaultOgImage = new URL("/logo.png", siteUrl).toString()
 
 export const COMPANY = {
   name: "Trixode Studios",
-  legalName: "Trixode-Studios S.A.S. B.I.C.",
+  legalName: "Trixode-Studios Inc.",
   email: "hello@trixode.com",
   url: siteUrl,
   location: "Victoria, BC",

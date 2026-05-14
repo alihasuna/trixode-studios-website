@@ -19,7 +19,7 @@ export const professionalServiceSchema = {
   "@type": "ProfessionalService",
   "@id": `${siteUrl}/#organization`,
   name: "Trixode Studios",
-  legalName: "Trixode-Studios S.A.S. B.I.C.",
+  legalName: "Trixode-Studios Inc.",
   url: siteUrl,
   logo: new URL("/logo.png", siteUrl).toString(),
   image: new URL("/logo.png", siteUrl).toString(),

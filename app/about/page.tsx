@@ -128,7 +128,7 @@ export default function AboutPage() {
                   We believe AI should solve real business problems — not create new ones. Every solution we build eliminates manual work, reduces costs, and drives measurable growth.
                 </p>
                 <p>
-                  Based in Victoria, BC and Quito, Ecuador, we serve clients across the Americas. Our flagship product, Morphika, is an AI-powered image generator for eCommerce. And we're just getting started.
+                  Based in Victoria, BC, we serve clients across North America. Our flagship product, Morphika, is an AI-powered image generator for eCommerce. And we're just getting started.
                 </p>
               </div>
             </div>

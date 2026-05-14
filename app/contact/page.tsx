@@ -345,9 +345,8 @@ export default function ContactPage() {
                       <MapPin className="h-5 w-5" />
                     </div>
                     <div>
-                      <h3 className="text-sm font-medium text-black/50 dark:text-white/50 uppercase tracking-widest mb-1 font-grotesk">Locations</h3>
+                      <h3 className="text-sm font-medium text-black/50 dark:text-white/50 uppercase tracking-widest mb-1 font-grotesk">Location</h3>
                       <p className="text-lg text-black dark:text-white font-light">Victoria, BC, Canada</p>
-                      <p className="text-lg text-black dark:text-white font-light">Quito, Ecuador</p>
                     </div>
                   </div>
 

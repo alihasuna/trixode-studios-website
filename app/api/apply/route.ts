@@ -320,7 +320,7 @@ export async function POST(request: NextRequest) {
                         TRIXODE STUDIOS
                       </p>
                       <p style="color: #444; font-size: 11px; margin: 8px 0 0;">
-                        Victoria, BC, Canada • Quito, Ecuador
+                        Victoria, BC, Canada
                       </p>
                     </td>
                   </tr>
