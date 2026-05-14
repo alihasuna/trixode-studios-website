@@ -276,7 +276,7 @@ export default function LabPage() {
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 3.3 }}
                             >
-                                <span className="block overflow-hidden pb-[0.08em]">
+                                <span className="block overflow-hidden pb-[0.25em]">
                                     <motion.span
                                         className="block whitespace-nowrap font-grotesk"
                                         initial={{ y: "110%" }}
@@ -287,7 +287,7 @@ export default function LabPage() {
                                         The mathematics of
                                     </motion.span>
                                 </span>
-                                <span className="block overflow-hidden pb-[0.08em]">
+                                <span className="block overflow-hidden pb-[0.25em]">
                                     <motion.span
                                         className="block whitespace-nowrap bg-gradient-to-r from-slate-800 to-brand-blue dark:from-white dark:to-brand-blue bg-clip-text text-transparent font-grotesk"
                                         initial={{ y: "110%" }}
