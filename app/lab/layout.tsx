@@ -18,12 +18,21 @@ export const metadata: Metadata = {
             "Research lab in Victoria, BC. Academic frameworks for the complexity and security of specific agentic systems.",
         url: baseUrl,
         type: "website",
+        images: [
+            {
+                url: "/og.png",
+                width: 1200,
+                height: 630,
+                alt: "Trixode-Studios — The mathematics of agentic systems",
+            },
+        ],
     },
     twitter: {
         card: "summary_large_image",
         title: "Trixode-Studios Lab",
         description:
             "The mathematics of agentic systems. Research lab in Victoria, BC.",
+        images: ["/og.png"],
     },
 }
 
