@@ -99,9 +99,9 @@ const TEAM: TeamMember[] = [
     },
     {
         name: "Matthew",
-        role: "Founder",
+        role: "Collaborator",
         image: "/mathew.png",
-        blurb: "Pure mathematics by training, software engineer in practice.",
+        blurb: "Adds the mathematical formalism behind the lab's measures — definitions, theorems, proofs.",
         credentials: [
             "M.Sc. Mathematics, UVic 2024",
             "Combined Honours, CS & Mathematics, 2020",
