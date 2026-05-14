@@ -101,7 +101,7 @@ const TEAM: TeamMember[] = [
         name: "Matthew",
         role: "Collaborator",
         image: "/mathew.png",
-        blurb: "Adds the mathematical formalism behind the lab's measures — definitions, theorems, proofs.",
+        blurb: "Adds math formalism to the equation.",
         credentials: [
             "M.Sc. Mathematics, UVic 2024",
             "Combined Honours, CS & Mathematics, 2020",
