@@ -306,10 +306,10 @@ export default function LabPage() {
                                 transition={{ duration: 0.5, delay: 3.6 }}
                                 className="text-lg md:text-xl text-black/60 dark:text-white/60 mb-12 max-w-[600px] leading-relaxed font-light"
                             >
-                                Trixode-Studios is a research lab developing math models that measure the{" "}
+                                We bring academic frameworks to bear on the{" "}
                                 <span className="text-black dark:text-white">complexity</span> and{" "}
-                                <span className="text-black dark:text-white">security</span> of agentic workflows.
-                                Our live testbed is{" "}
+                                <span className="text-black dark:text-white">security</span> of
+                                specific agentic systems. Our live testbed is{" "}
                                 <span className="text-black dark:text-white">Intellcycle</span>, an agentic
                                 marketplace for recycled metals.
                             </motion.p>

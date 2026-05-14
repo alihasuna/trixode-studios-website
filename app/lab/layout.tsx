@@ -8,14 +8,14 @@ const baseUrl =
 export const metadata: Metadata = {
     title: "Trixode-Studios Lab — The mathematics of agentic systems",
     description:
-        "A research lab developing math models that measure the complexity and security of agentic workflows. Live testbed: Intellcycle.",
+        "A research lab bringing academic frameworks to the complexity and security of specific agentic systems. Live testbed: Intellcycle.",
     alternates: {
         canonical: baseUrl,
     },
     openGraph: {
         title: "Trixode-Studios Lab — The mathematics of agentic systems",
         description:
-            "Research lab in Victoria, BC. Math models for the complexity and security of agentic workflows.",
+            "Research lab in Victoria, BC. Academic frameworks for the complexity and security of specific agentic systems.",
         url: baseUrl,
         type: "website",
     },
