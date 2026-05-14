@@ -6,14 +6,14 @@ const baseUrl =
     "https://www.trixode-studios.com"
 
 export const metadata: Metadata = {
-    title: "Trixode-Studios — The mathematics of agentic systems",
+    title: "Trixode-Studios Lab — The mathematics of agentic systems",
     description:
         "A research lab developing math models that measure the complexity and security of agentic workflows. Live testbed: Intellcycle.",
     alternates: {
         canonical: baseUrl,
     },
     openGraph: {
-        title: "Trixode-Studios — The mathematics of agentic systems",
+        title: "Trixode-Studios Lab — The mathematics of agentic systems",
         description:
             "Research lab in Victoria, BC. Math models for the complexity and security of agentic workflows.",
         url: baseUrl,
@@ -21,10 +21,12 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: "summary_large_image",
-        title: "Trixode-Studios — The mathematics of agentic systems",
+        title: "Trixode-Studios Lab",
         description:
             "The mathematics of agentic systems. Research lab in Victoria, BC.",
     },
 }
 
-export { default } from "../lab/page"
+export default function LabLayout({ children }: { children: React.ReactNode }) {
+    return <>{children}</>
+}

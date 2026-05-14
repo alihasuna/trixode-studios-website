@@ -9,16 +9,17 @@ export const HexagonLogo: React.FC<HexagonLogoProps> = ({
     size = 32,
     className = ""
 }) => {
-    const hexagonPoints = []
-    const center = size / 2
+    const round = (n: number) => n.toFixed(3)
+    const center = round(size / 2)
     const radius = size * 0.35
 
-    for (let i = 0; i < 6; i++) {
+    const hexagonPoints = Array.from({ length: 6 }, (_, i) => {
         const angle = (i * Math.PI) / 3
-        const x = center + radius * Math.cos(angle)
-        const y = center + radius * Math.sin(angle)
-        hexagonPoints.push({ x, y })
-    }
+        return {
+            x: round(size / 2 + radius * Math.cos(angle)),
+            y: round(size / 2 + radius * Math.sin(angle)),
+        }
+    })
 
     return (
         <div className={`relative ${className}`} style={{ width: size, height: size }}>
