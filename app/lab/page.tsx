@@ -59,6 +59,7 @@ const PROJECTS: { name: string; status: string; desc: string; href?: string }[] 
         name: "Morphika",
         status: "Live · 2026",
         desc: "An agentic solution for email — autonomous handling of inbox workflows that usually need a human in the loop. Where information-flow and capability-boundary measures get tested daily.",
+        href: "https://morphika.ai",
     },
 ]
 
