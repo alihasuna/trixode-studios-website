@@ -50,7 +50,7 @@ const RESEARCH_AREAS = [
 
 const PROJECTS: { name: string; status: string; desc: string; href?: string }[] = [
     {
-        name: "Intellcycle",
+        name: "Intellicycle",
         status: "Live · 2026",
         desc: "An agentic marketplace for recycled metals. Real counterparties, real settlement, real adversarial pressure — the surface where our measurements stop being theoretical.",
         href: "https://www.intellicycle.net/",
@@ -311,7 +311,7 @@ export default function LabPage() {
                                 <span className="text-black dark:text-white">complexity</span> and{" "}
                                 <span className="text-black dark:text-white">security</span> of
                                 specific agentic systems. Our live testbed is{" "}
-                                <span className="text-black dark:text-white">Intellcycle</span>, an agentic
+                                <span className="text-black dark:text-white">Intellicycle</span>, an agentic
                                 marketplace for recycled metals.
                             </motion.p>
 

@@ -8,7 +8,7 @@ const baseUrl =
 export const metadata: Metadata = {
     title: "Trixode-Studios — The mathematics of agentic systems",
     description:
-        "A research lab bringing academic frameworks to the complexity and security of specific agentic systems. Live testbed: Intellcycle.",
+        "A research lab bringing academic frameworks to the complexity and security of specific agentic systems. Live testbed: Intellicycle.",
     alternates: {
         canonical: baseUrl,
     },
