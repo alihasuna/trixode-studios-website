@@ -1,13 +1,50 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
+import {
+  isHoneypotFilled,
+  isTooFast,
+  checkRateLimit,
+  getClientIp,
+  looksLikeSpam,
+} from '@/lib/anti-spam'
 
 // Initialize Resend with fallback for build time
 const resend = new Resend(process.env.RESEND_API_KEY || 'fallback-key-for-build')
 
+// Generic success used when we silently swallow a spam submission so bots
+// can't tell they were caught (and won't adapt).
+const SILENT_OK = NextResponse.json(
+  { success: true, message: 'Message sent successfully! Check your email for confirmation.' },
+  { status: 200 },
+)
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { name, email, message } = body
+    const { name, email, message, company, elapsedMs } = body
+
+    // --- Anti-spam layer 1: honeypot -------------------------------------
+    // `company` is a hidden field; only bots fill it. Pretend success.
+    if (isHoneypotFilled(company)) {
+      console.warn('[contact] honeypot triggered', { ip: getClientIp(request.headers) })
+      return SILENT_OK
+    }
+
+    // --- Anti-spam layer 2: timing ---------------------------------------
+    // Real users take a few seconds; instant/direct posts are bots.
+    if (isTooFast(elapsedMs)) {
+      console.warn('[contact] too-fast submit blocked', { elapsedMs, ip: getClientIp(request.headers) })
+      return SILENT_OK
+    }
+
+    // --- Anti-spam layer 3: rate limit -----------------------------------
+    const ip = getClientIp(request.headers)
+    if (!checkRateLimit(ip, 5, 10 * 60 * 1000)) {
+      return NextResponse.json(
+        { error: 'Too many messages. Please try again in a few minutes.' },
+        { status: 429 },
+      )
+    }
 
     // Validate input
     if (!name || !email || !message) {
@@ -18,6 +55,13 @@ export async function POST(request: NextRequest) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(email)) {
       return NextResponse.json({ error: 'Invalid email format' }, { status: 400 })
+    }
+
+    // --- Anti-spam layer 4: content heuristics ---------------------------
+    const spamReason = looksLikeSpam({ name, email, message })
+    if (spamReason) {
+      console.warn('[contact] heuristic spam blocked', { spamReason, ip })
+      return SILENT_OK
     }
 
     // Check if API key is properly configured

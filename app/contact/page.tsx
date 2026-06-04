@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { ArrowLeft, Send, Github, Linkedin, Mail, MapPin, Clock, CheckCircle, AlertCircle } from "lucide-react"
-import { useState } from "react"
+import { useRef, useState } from "react"
 import Footer from "@/components/footer"
 import CustomCursor from "@/components/ui/CustomCursor"
 import FloatingNav from "@/components/layout/FloatingNav"
@@ -24,6 +24,10 @@ export default function ContactPage() {
     email: "",
     message: "",
   })
+  // Honeypot: real users leave this empty; bots fill it.
+  const [company, setCompany] = useState("")
+  // When the form mounted — used to measure how long the user took to submit.
+  const formStartTime = useRef<number>(Date.now())
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
   const [errors, setErrors] = useState<{ [key: string]: string }>({})
@@ -67,12 +71,17 @@ export default function ContactPage() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          company, // honeypot
+          elapsedMs: Date.now() - formStartTime.current,
+        }),
       })
 
       if (response.ok) {
         setSubmitStatus("success")
         setFormData({ name: "", email: "", message: "" })
+        setCompany("")
         setErrors({})
       } else {
         setSubmitStatus("error")
@@ -214,6 +223,23 @@ export default function ContactPage() {
                 )}
 
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Honeypot — hidden from humans, irresistible to bots. Do not remove. */}
+                  <div
+                    aria-hidden="true"
+                    style={{ position: "absolute", left: "-9999px", top: 0, width: 1, height: 1, overflow: "hidden" }}
+                  >
+                    <label htmlFor="company">Company (leave this empty)</label>
+                    <input
+                      type="text"
+                      id="company"
+                      name="company"
+                      value={company}
+                      onChange={(e) => setCompany(e.target.value)}
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
+                  </div>
+
                   <div>
                     <div className="relative">
                       <input
