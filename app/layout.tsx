@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
-import { Inter, Space_Grotesk, Montserrat } from "next/font/google"
+import { Inter, Space_Grotesk, Montserrat, Cormorant_Garamond } from "next/font/google"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { ThemeProvider } from "@/components/providers/ThemeProvider"
 import ClientEffects from "@/components/providers/ClientEffects"
@@ -10,6 +10,8 @@ import "../styles/globals.css"
 const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800", "900"], variable: "--font-inter" })
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], weight: ["300", "400", "500", "600", "700"], variable: "--font-space-grotesk" })
 const montserrat = Montserrat({ subsets: ["latin"], weight: ["300", "400", "500", "600", "700", "800", "900"], variable: "--font-montserrat" })
+// Editorial serif — scoped exclusively to the Delprado concept-mock canvas (.delprado-canvas). Never used in Trixode chrome.
+const cormorant = Cormorant_Garamond({ subsets: ["latin"], weight: ["300", "400", "500", "600", "700"], style: ["normal", "italic"], variable: "--font-cormorant" })
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ||
   process.env.NEXT_PUBLIC_BASE_URL ||
@@ -92,7 +94,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${spaceGrotesk.variable} ${montserrat.variable} ${inter.className}`}>
+      <body className={`${inter.variable} ${spaceGrotesk.variable} ${montserrat.variable} ${cormorant.variable} ${inter.className}`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

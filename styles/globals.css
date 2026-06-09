@@ -86,6 +86,48 @@ body {
   font-family: var(--font-space-grotesk), var(--font-inter), sans-serif;
 }
 
+/* ------------------------------------------------------------------ */
+/*  Delprado concept-mock canvas — WARM editorial palette + serif.     */
+/*  Scoped exactly like .home2-root. These tokens, the serif, and the  */
+/*  cream/charcoal/wood colors must NEVER appear outside this class —  */
+/*  the mock lives only inside a Trixode-framed browser mockup.        */
+/* ------------------------------------------------------------------ */
+.delprado-canvas {
+  --dp-char: #1a1512;             /* warm charcoal (dark sections)   */
+  --dp-char-2: #221b16;           /* slightly lifted charcoal        */
+  --dp-paper: #f4ece0;            /* cream paper (light sections)    */
+  --dp-paper-2: #ece2d3;          /* deeper cream                    */
+  --dp-ink: #2b2420;              /* espresso ink (on cream)         */
+  --dp-cream-ink: #f4ece0;        /* cream ink (on charcoal)         */
+  --dp-wood: #b08456;             /* warm wood / tan accent          */
+  --dp-wood-deep: #8a6240;        /* deep wood                       */
+  --dp-muted: rgba(43, 36, 32, 0.62);          /* muted on cream     */
+  --dp-muted-cream: rgba(244, 236, 224, 0.6);  /* muted on charcoal  */
+  --dp-line: rgba(43, 36, 32, 0.14);           /* hairline on cream  */
+  --dp-line-cream: rgba(244, 236, 224, 0.16);  /* hairline on dark   */
+  background-color: var(--dp-paper);
+  color: var(--dp-ink);
+  font-family: var(--font-cormorant), Georgia, "Times New Roman", serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Tiny uppercase labels/eyebrows inside the canvas use a neutral sans
+   for the editorial "modern-classic" tension (serif display + sans meta). */
+.delprado-canvas .dp-sans {
+  font-family: var(--font-inter), sans-serif;
+}
+
+/* Subtle paper grain so cream sections read as material, not flat fill. */
+.delprado-canvas .dp-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
 .home2-surface {
   position: relative;
   min-height: 100vh;
