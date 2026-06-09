@@ -352,8 +352,8 @@ export default function DelpradoProposalPage() {
                                 <div className="w-16 h-16 rounded-2xl bg-emerald-500/10 flex items-center justify-center mx-auto mb-6">
                                     <CheckCircle2 className="w-8 h-8 text-emerald-400" />
                                 </div>
-                                <h3 className="font-grotesk text-2xl font-light mb-3">Thank you — we've got it.</h3>
-                                <p className="text-white/55 max-w-md mx-auto leading-relaxed">Your answers are with us. We'll read every word and come back with a refined direction built around your vision. Keep scrolling — there's a first concept below.</p>
+                                <h3 className="font-grotesk text-2xl font-light mb-3">Thank you — I've got it.</h3>
+                                <p className="text-white/55 max-w-md mx-auto leading-relaxed">Your answers come straight to me. I'll read every word and come back with a direction built around your vision. Keep scrolling — there's a first concept below.</p>
                             </motion.div>
                         ) : (
                             <motion.form key="form" onSubmit={submitDiscovery} initial={{ opacity: 1 }} className="space-y-12">
@@ -810,7 +810,7 @@ export default function DelpradoProposalPage() {
                     <motion.div {...fadeUp} className="flex justify-center mb-8"><HexMark size={34} /></motion.div>
                     <motion.h2 {...fadeUp} className="font-grotesk text-4xl md:text-5xl font-light mb-6">If it resonates, let's talk.</motion.h2>
                     <motion.p {...fadeUp} className="text-lg text-white/55 leading-relaxed mb-12">
-                        Answer the questions whenever you have ten quiet minutes — they come straight to us. If the direction feels right, we'll build it together, here in Victoria.
+                        Answer the questions whenever you have ten quiet minutes — they come straight to me. If the direction feels right, I'd love to build this with you, here in Victoria.
                     </motion.p>
 
                     <motion.div {...fadeUp} className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
@@ -823,7 +823,7 @@ export default function DelpradoProposalPage() {
                     </motion.div>
 
                     <motion.div {...fadeUp} className="pt-10 border-t border-white/10">
-                        <p className="text-white/70">Prepared by <span className="text-white font-medium">Hussien Ballouk</span></p>
+                        <p className="text-white/70">— <span className="text-white font-medium">Hussien Ballouk</span></p>
                         <p className="text-blue-400 text-sm">Founder, Trixode-Studios Inc.</p>
                         <p className="text-white/35 text-xs mt-4 tracking-wide">contact@trixode-studios.com · Victoria, BC</p>
                         <p className="text-white/20 text-[11px] mt-8">© 2026 Trixode-Studios Inc. · Prepared exclusively for Delprado Studio · Please don't share this link publicly.</p>
