@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence, useReducedMotion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion"
+import DelpradoSiteMock from "./DelpradoSiteMock"
 import {
     Lock,
     KeyRound,
@@ -129,45 +130,7 @@ const QUESTION_GROUPS = [
 
 const ALL_QUESTIONS = QUESTION_GROUPS.flatMap((g) => g.questions)
 
-// Pieces shown in the interactive concept-mock viewer (Delprado's real work).
-const MOCK_PIECES = [
-    { img: "/pitch/delprado/dp-furniture.png", t: "Bespoke Furniture", m: "One of a kind · Mixed materials", pos: "center 35%" },
-    { img: "/pitch/delprado/dp-millwork-lynburne.jpg", t: "Lynburne Millwork", m: "Custom millwork · White oak", pos: "center 28%" },
-    { img: "/pitch/delprado/dp-closets.png", t: "Fitted Closets", m: "Cabinetry · Made to measure", pos: "center" },
-]
-
 type FormState = Record<string, string>
-
-// Hero for the concept mock — isolated so useScroll's target ref is always
-// mounted with the component (avoids "ref not hydrated" behind the gate).
-function MockParallaxHero({ reduce }: { reduce: boolean | null }) {
-    const ref = useRef<HTMLDivElement>(null)
-    const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] })
-    const y = useTransform(scrollYProgress, [0, 1], reduce ? ["0%", "0%"] : ["-7%", "7%"])
-    return (
-        <div ref={ref} className="relative" style={{ background: "var(--dp-char)" }}>
-            <div className="relative h-[460px] md:h-[620px] overflow-hidden">
-                <motion.img src="/pitch/delprado/dp-furniture.png" alt="A bespoke Delprado piece" loading="lazy" className="absolute left-0 w-full object-cover will-change-transform" style={{ y, top: "-9%", height: "118%", objectPosition: "center 35%" }} />
-                <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(26,21,18,0.30) 0%, rgba(26,21,18,0.12) 38%, rgba(26,21,18,0.88) 100%)" }} />
-                <div className="absolute inset-0 flex flex-col justify-end p-7 md:p-14">
-                    <motion.span initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="dp-sans text-[11px] uppercase tracking-[0.3em] mb-5" style={{ color: "var(--dp-wood)" }}>
-                        Victoria, British Columbia · Bespoke since day one
-                    </motion.span>
-                    <motion.h2 aria-label="Furniture made for the room it will live in." className="font-light leading-[1.04] text-4xl md:text-6xl lg:text-7xl max-w-3xl" style={{ color: "var(--dp-cream-ink)" }} variants={{ hidden: {}, show: { transition: { staggerChildren: 0.07, delayChildren: 0.1 } } }} initial="hidden" whileInView="show" viewport={{ once: true }}>
-                        {"Furniture made for the room it will live in.".split(" ").map((w, i) => (
-                            <span key={i} className="inline-block overflow-hidden align-bottom" style={{ marginRight: "0.26em", paddingBottom: "0.08em" }}>
-                                <motion.span className="inline-block" variants={{ hidden: { y: "115%" }, show: { y: "0%", transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } } }}>{w}</motion.span>
-                            </span>
-                        ))}
-                    </motion.h2>
-                    <motion.p initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.55 }} className="mt-6 text-lg md:text-xl max-w-xl italic" style={{ color: "var(--dp-muted-cream)" }}>
-                        Local materials. Local hands. One of a kind, every time.
-                    </motion.p>
-                </div>
-            </div>
-        </div>
-    )
-}
 
 export default function DelpradoProposalPage() {
     const reduce = useReducedMotion()
@@ -229,21 +192,6 @@ export default function DelpradoProposalPage() {
             setStatus("error")
         }
     }
-
-    /* ---- interactive concept-mock state (work viewer + cursor tilt) ---- */
-    const [activePiece, setActivePiece] = useState(0)
-    const piece = MOCK_PIECES[activePiece]
-    const tiltX = useMotionValue(0)
-    const tiltY = useMotionValue(0)
-    const tiltRX = useSpring(tiltX, { stiffness: 150, damping: 16 })
-    const tiltRY = useSpring(tiltY, { stiffness: 150, damping: 16 })
-    const handleTilt = (e: React.MouseEvent<HTMLDivElement>) => {
-        if (reduce) return
-        const r = e.currentTarget.getBoundingClientRect()
-        tiltY.set(((e.clientX - r.left) / r.width - 0.5) * 7)
-        tiltX.set(-((e.clientY - r.top) / r.height - 0.5) * 7)
-    }
-    const resetTilt = () => { tiltX.set(0); tiltY.set(0) }
 
     /* ================================================================ */
     /*  GATE                                                            */
@@ -537,124 +485,14 @@ export default function DelpradoProposalPage() {
                             <span className="text-[10px] uppercase tracking-[0.18em] text-blue-400/70 hidden md:inline">Concept</span>
                         </div>
 
-                        {/* ====== WARM CANVAS — everything inside is .delprado-canvas ====== */}
-                        <div className="delprado-canvas rounded-xl overflow-hidden">
-                            {/* canvas nav */}
-                            <div style={{ background: "var(--dp-char)", color: "var(--dp-cream-ink)", borderBottom: "1px solid var(--dp-line-cream)" }} className="flex items-center justify-between px-6 md:px-10 py-5">
-                                <span className="text-xl md:text-2xl tracking-[0.2em]" style={{ fontWeight: 500 }}>DELPRADO</span>
-                                <div className="dp-sans hidden md:flex items-center gap-8 text-[11px] uppercase tracking-[0.18em]" style={{ color: "var(--dp-muted-cream)" }}>
-                                    <span>Collections</span><span>Materials</span><span>Studio</span><span>Contact</span>
-                                </div>
-                                <span className="dp-sans text-[11px] uppercase tracking-[0.18em] px-4 py-2 rounded-full" style={{ border: "1px solid var(--dp-wood)", color: "var(--dp-wood)" }}>Enquire</span>
-                            </div>
-
-                            {/* hero — scroll parallax + kinetic headline (isolated component) */}
-                            <MockParallaxHero reduce={reduce} />
-
-                            {/* chapter 01 — interactive selected-work viewer */}
-                            <div className="dp-grain relative px-6 md:px-14 py-16 md:py-24" style={{ background: "var(--dp-paper)" }}>
-                                <div className="relative flex flex-wrap items-end justify-between gap-4 mb-10">
-                                    <div>
-                                        <span className="dp-sans text-[11px] uppercase tracking-[0.28em]" style={{ color: "var(--dp-wood-deep)" }}>01 — Collections</span>
-                                        <h3 className="font-light text-3xl md:text-5xl mt-3" style={{ color: "var(--dp-ink)" }}>Selected work</h3>
-                                    </div>
-                                    <span className="dp-sans text-[11px] uppercase tracking-[0.18em] inline-flex items-center gap-2" style={{ color: "var(--dp-muted)" }}>Hover to explore <ArrowUpRight className="w-3.5 h-3.5" /></span>
-                                </div>
-                                <div className="relative grid md:grid-cols-[1.25fr_1fr] gap-8 md:gap-12 items-center">
-                                    {/* feature image — crossfade + cursor tilt */}
-                                    <motion.div onMouseMove={handleTilt} onMouseLeave={resetTilt} style={{ rotateX: tiltRX, rotateY: tiltRY, transformPerspective: 1100 }} className="relative overflow-hidden">
-                                        <div className="relative w-full" style={{ aspectRatio: "4 / 5" }}>
-                                            <AnimatePresence mode="wait">
-                                                <motion.img key={piece.img} src={piece.img} alt={piece.t} initial={{ opacity: 0, scale: 1.06 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }} className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: piece.pos }} />
-                                            </AnimatePresence>
-                                            <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(180deg, transparent 50%, rgba(26,21,18,0.6))" }} />
-                                            <div className="absolute bottom-0 left-0 right-0 p-5 flex items-end justify-between">
-                                                <AnimatePresence mode="wait">
-                                                    <motion.div key={piece.t} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
-                                                        <div className="text-2xl" style={{ color: "var(--dp-paper)" }}>{piece.t}</div>
-                                                        <div className="dp-sans text-[10px] uppercase tracking-[0.18em] mt-1" style={{ color: "rgba(244,236,224,0.7)" }}>{piece.m}</div>
-                                                    </motion.div>
-                                                </AnimatePresence>
-                                                <span className="dp-sans text-[11px]" style={{ color: "rgba(244,236,224,0.5)" }}>{String(activePiece + 1).padStart(2, "0")} / {String(MOCK_PIECES.length).padStart(2, "0")}</span>
-                                            </div>
-                                        </div>
-                                    </motion.div>
-                                    {/* selectable list */}
-                                    <div className="flex flex-col">
-                                        {MOCK_PIECES.map((p, i) => {
-                                            const on = i === activePiece
-                                            return (
-                                                <button key={p.t} type="button" onMouseEnter={() => setActivePiece(i)} onFocus={() => setActivePiece(i)} onClick={() => setActivePiece(i)} className="text-left py-5 cursor-pointer" style={{ borderTop: i ? "1px solid var(--dp-line)" : "none" }}>
-                                                    <div className="flex items-center gap-4">
-                                                        <span className="dp-sans text-[11px]" style={{ color: on ? "var(--dp-wood-deep)" : "var(--dp-muted)" }}>{String(i + 1).padStart(2, "0")}</span>
-                                                        <div className="flex-1">
-                                                            <div className="text-2xl md:text-[1.7rem] transition-colors duration-300" style={{ color: on ? "var(--dp-ink)" : "var(--dp-muted)" }}>{p.t}</div>
-                                                            <div className="dp-sans text-[10px] uppercase tracking-[0.18em] overflow-hidden transition-all duration-300" style={{ color: "var(--dp-muted)", maxHeight: on ? "1.4em" : 0, opacity: on ? 1 : 0, marginTop: on ? 6 : 0 }}>{p.m}</div>
-                                                        </div>
-                                                        <ArrowUpRight className="w-5 h-5 transition-all duration-300" style={{ color: "var(--dp-wood)", opacity: on ? 1 : 0, transform: on ? "translate(0,0)" : "translate(-6px,6px)" }} />
-                                                    </div>
-                                                </button>
-                                            )
-                                        })}
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* chapter 02 — materials (split) */}
-                            <div className="grid md:grid-cols-2 group" style={{ background: "var(--dp-paper-2)" }}>
-                                <div className="relative min-h-[320px] md:min-h-[520px] overflow-hidden order-2 md:order-1">
-                                    <img src="/pitch/delprado/dp-closets.png" alt="Delprado craftsmanship" loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105" />
-                                </div>
-                                <div className="dp-grain relative flex flex-col justify-center px-7 md:px-16 py-16 order-1 md:order-2">
-                                    <span className="dp-sans text-[11px] uppercase tracking-[0.28em] mb-4" style={{ color: "var(--dp-wood-deep)" }}>02 — Materials</span>
-                                    <h3 className="font-light text-3xl md:text-5xl leading-tight mb-6" style={{ color: "var(--dp-ink)" }}>Sourced near home, finished by hand.</h3>
-                                    <p className="text-lg md:text-xl leading-relaxed" style={{ color: "var(--dp-muted)" }}>
-                                        We fabricate locally and work with the trades and artists who do the best version of each thing — cabinetry, metal, stone, laminate. The result is a piece with a provenance you can name, made to live in one specific room, for one specific life.
-                                    </p>
-                                    <div className="flex gap-10 mt-10">
-                                        {[{ n: "100%", l: "Made in Victoria" }, { n: "1 of 1", l: "Every commission" }].map((s) => (
-                                            <div key={s.l}>
-                                                <div className="text-3xl md:text-4xl" style={{ color: "var(--dp-wood-deep)" }}>{s.n}</div>
-                                                <div className="dp-sans text-[11px] uppercase tracking-[0.16em] mt-1" style={{ color: "var(--dp-muted)" }}>{s.l}</div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* chapter 03 — the studio (pull quote) */}
-                            <div className="relative px-6 md:px-14 py-20 md:py-28 text-center" style={{ background: "var(--dp-char)" }}>
-                                <span className="dp-sans text-[11px] uppercase tracking-[0.28em]" style={{ color: "var(--dp-wood)" }}>03 — The Studio</span>
-                                <p className="font-light italic text-3xl md:text-5xl lg:text-6xl leading-[1.15] max-w-4xl mx-auto mt-8" style={{ color: "var(--dp-cream-ink)" }}>
-                                    “We listen to your space and your challenges, then expand on the idea — until what we build could only have been built for you.”
-                                </p>
-                                <div className="dp-sans text-[12px] uppercase tracking-[0.2em] mt-10" style={{ color: "var(--dp-muted-cream)" }}>— Delprado Studio</div>
-                            </div>
-
-                            {/* chapter 04 — contact / footer */}
-                            <div className="dp-grain relative px-6 md:px-14 py-16" style={{ background: "var(--dp-paper)" }}>
-                                <div className="relative flex flex-col md:flex-row md:items-end justify-between gap-8">
-                                    <div>
-                                        <span className="dp-sans text-[11px] uppercase tracking-[0.28em]" style={{ color: "var(--dp-wood-deep)" }}>04 — Begin a commission</span>
-                                        <h3 className="font-light text-3xl md:text-5xl mt-3 max-w-xl" style={{ color: "var(--dp-ink)" }}>Have a room in mind?</h3>
-                                    </div>
-                                    <span className="dp-sans inline-flex items-center gap-2 self-start md:self-auto text-[12px] uppercase tracking-[0.18em] px-6 py-3 rounded-full" style={{ background: "var(--dp-ink)", color: "var(--dp-paper)" }}>
-                                        Start a conversation <ArrowUpRight className="w-4 h-4" />
-                                    </span>
-                                </div>
-                                <div className="relative mt-12 pt-6 flex items-center justify-between" style={{ borderTop: "1px solid var(--dp-line)" }}>
-                                    <span className="tracking-[0.2em] text-lg" style={{ color: "var(--dp-ink)", fontWeight: 500 }}>DELPRADO</span>
-                                    <span className="dp-sans text-[11px] uppercase tracking-[0.16em]" style={{ color: "var(--dp-muted)" }}>Victoria, BC</span>
-                                </div>
-                            </div>
-                        </div>
-                        {/* ====== END WARM CANVAS ====== */}
+                        {/* ====== CONCEPT SITE — Ulysses de Santi–inspired, light/dark ====== */}
+                        <DelpradoSiteMock />
                     </motion.div>
 
                     {/* annotation back in Trixode chrome */}
                     <motion.div {...fadeUp} className="grid md:grid-cols-3 gap-5 mt-10">
                         {[
-                            { t: "Restraint reads as value", d: "Space, a serif voice, a quiet palette — the signals of a maker who charges for craft." },
+                            { t: "Restraint reads as value", d: "Oversized type and stark, gallery-style space signal a maker who charges for craft — and a light/dark toggle to feel both moods." },
                             { t: "Your work is the hero", d: "Every image is a real Delprado piece. The design just gets out of the way." },
                             { t: "The story is front-and-centre", d: "Local materials, local hands, Victoria — what competitors can't copy, felt first." },
                         ].map((c, i) => (
