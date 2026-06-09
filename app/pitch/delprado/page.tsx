@@ -89,40 +89,40 @@ const QUESTION_GROUPS = [
         num: "01",
         group: "Vision & the work",
         questions: [
-            { id: "q1", label: "If we could show one piece you've ever made to win a new client, which would it be — and what about it makes you proudest?" },
-            { id: "q2", label: "Five years from now, is Delprado a bigger version of today, or a different thing — a flagship showroom, a name beyond Victoria, a line you sell?" },
+            { id: "q1", label: "Which piece are you proudest of — and why?" },
+            { id: "q2", label: "In five years, is Delprado bigger — or different? A showroom, a name beyond Victoria, a product line?" },
         ],
     },
     {
         num: "02",
         group: "The customer",
         questions: [
-            { id: "q3", label: "Describe the client you wish you had more of. Now the one you'd politely turn away. What's the difference between them?" },
-            { id: "q4", label: "When a great client chooses you over another maker, what do they say is the reason? And when you lose one, what's the usual reason?" },
+            { id: "q3", label: "Describe the client you want more of — and the one you'd politely turn away." },
+            { id: "q4", label: "Why do clients choose you? And when you lose one, why?" },
         ],
     },
     {
         num: "03",
         group: "Brand & perception",
         questions: [
-            { id: "q5", label: "If Delprado walked into a room, how should people describe it — warm and approachable, quietly luxurious, bold and modern, heritage and timeless?" },
-            { id: "q6", label: "What should someone feel in the first five seconds on your site — and what should they never feel?" },
+            { id: "q5", label: "If Delprado were a person, how would you want it described?" },
+            { id: "q6", label: "What should someone feel in the first five seconds on your site — and never feel?" },
         ],
     },
     {
         num: "04",
         group: "Business & goals",
         questions: [
-            { id: "q7", label: "Walk us through a project from first contact to deposit. Where do people hesitate, go quiet, or ask for a discount?" },
-            { id: "q8", label: "Should the website win the job, or prove you're real once you've already met? Those are two very different sites." },
+            { id: "q7", label: "From first contact to deposit — where do people hesitate or go quiet?" },
+            { id: "q8", label: "Should the site win the job, or prove you're real after you've met?" },
         ],
     },
     {
         num: "05",
         group: "Voice & audience",
         questions: [
-            { id: "q9", label: "Who should be the face of Delprado — you, the team, or the work itself? And honestly, how do you feel about being on camera?" },
-            { id: "q10", label: "If people followed Delprado on Instagram, what would keep them watching — the process, the finished rooms, or the story behind each piece?" },
+            { id: "q9", label: "Who's the face of Delprado — you, the team, or the work? And how do you feel on camera?" },
+            { id: "q10", label: "On Instagram, what would keep people watching — the process, the rooms, or the story?" },
         ],
     },
 ]
@@ -281,7 +281,7 @@ export default function DelpradoProposalPage() {
                     </motion.h1>
 
                     <motion.p initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.75 }} className="text-lg md:text-xl max-w-2xl mx-auto mb-14 leading-relaxed font-light text-white/55">
-                        Delprado builds furniture nobody else can build. Yet your current site makes a master maker look like a contractor — and the clients most willing to pay for bespoke decide in about five seconds. This is a private look at how we'd close that gap: a brand worthy of the work, a website that sells it, and an Instagram presence that turns your craft into a name people follow.
+                        You build furniture nobody else can build. Your website should say so. A private look at how we'd give the work a brand, a site, and an Instagram presence worthy of it.
                     </motion.p>
 
                     <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.95 }} className="grid grid-cols-3 gap-3 max-w-lg mx-auto">
@@ -315,14 +315,14 @@ export default function DelpradoProposalPage() {
                     </motion.div>
 
                     <motion.p {...fadeUp} className="text-lg md:text-xl max-w-3xl mb-16 leading-relaxed font-light text-white/55">
-                        A maker's most expensive problem isn't getting customers — it's getting the <span className="text-white">wrong</span> ones: people who want custom quality at big-box prices. A generic website quietly invites exactly those buyers. A site that looks as considered as your furniture does the screening for you, so the people who reach out already expect to pay for bespoke.
+                        Your hardest problem isn't getting customers — it's getting the <span className="text-white">wrong</span> ones, chasing custom quality at big-box prices. A site as considered as your work screens them out. The people who reach out already expect to pay for bespoke.
                     </motion.p>
 
                     <div className="grid md:grid-cols-3 gap-5">
                         {[
-                            { icon: <Hammer className="w-6 h-6" />, t: "Craft recognizes craft", d: "We obsess over pixels, type and detail the way you obsess over joinery, grain and finish. This proposal is itself the proof — read it as a sample of how we'd treat your brand." },
-                            { icon: <MapPin className="w-6 h-6" />, t: "Local materials, local hands", d: "Bespoke furniture, made in Victoria with local materials and handcrafters, is a premium story most of your competitors can't tell. We're a Victoria studio too — made here, for makers here." },
-                            { icon: <Compass className="w-6 h-6" />, t: "Strategy before pixels", d: "The deliverable isn't a prettier website. It's the right clients at higher margins. We decide who Delprado is for before we design a single screen." },
+                            { icon: <Hammer className="w-6 h-6" />, t: "Craft recognizes craft", d: "We sweat pixels and type the way you sweat joinery and finish. This proposal is the proof." },
+                            { icon: <MapPin className="w-6 h-6" />, t: "Local materials, local hands", d: "Bespoke, made in Victoria with local materials — a premium story your competitors can't tell. We're a Victoria studio too." },
+                            { icon: <Compass className="w-6 h-6" />, t: "Strategy before pixels", d: "The goal isn't a prettier website. It's the right clients, at higher margins." },
                         ].map((c, i) => (
                             <motion.div key={c.t} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08, duration: 0.6 }} className="glass rounded-3xl p-9 hover:-translate-y-1 transition-transform duration-300">
                                 <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 mb-6">{c.icon}</div>
@@ -343,7 +343,7 @@ export default function DelpradoProposalPage() {
                     </motion.div>
 
                     <motion.p {...fadeUp} className="text-lg max-w-2xl mb-14 leading-relaxed font-light text-white/55">
-                        The best furniture starts with listening to the space and the person. So does the best brand. Answer what resonates — there are no wrong answers, and these go straight to us. The clearer your vision, the sharper what we build.
+                        The best furniture starts with listening. So does the best brand. Answer what resonates — the clearer your vision, the sharper what we build.
                     </motion.p>
 
                     <AnimatePresence mode="wait">
@@ -426,16 +426,16 @@ export default function DelpradoProposalPage() {
 
                     <motion.div {...fadeUp} className="glass rounded-3xl p-9 md:p-12 mb-12 max-w-4xl">
                         <p className="text-xl md:text-2xl leading-relaxed font-light text-white/75">
-                            You'd never deliver a beautiful piece with a raw, unfinished surface — the finish protects the work and signals its quality. <span className="text-blue-400">Your brand is the finish on your business.</span> The work is already excellent; the brand is what lets a stranger see that before they've touched it.
+                            You'd never deliver a piece with a raw, unfinished surface. <span className="text-blue-400">Your brand is the finish on your business</span> — what lets a stranger see the quality before they've touched it.
                         </p>
                     </motion.div>
 
                     <div className="grid md:grid-cols-2 gap-5">
                         {[
-                            { icon: <Gem className="w-6 h-6" />, t: "It lets you charge what the work is worth", d: "Two makers can build the identical cabinet. The one with the considered brand charges 30–40% more — and the client feels good paying it. The difference isn't the wood. It's the story and the signals around it. Brand is the only lever that raises price without changing what you make." },
-                            { icon: <Filter className="w-6 h-6" />, t: "It attracts the right clients", d: "A generic site draws price-shoppers who negotiate every line. A site that looks as crafted as your work screens them out — by the time someone reaches out, they already expect bespoke. You stop spending quotes on jobs you didn't want." },
-                            { icon: <Sparkles className="w-6 h-6" />, t: "It makes you remembered", d: "After someone leaves your site today, there's nothing for memory to hold. A brand kit is the recognizable set of signals — the mark, the type, the colours, the voice — that lets people describe you to a friend. Referrals only happen when people have the words." },
-                            { icon: <Compass className="w-6 h-6" />, t: "Vision tells us what to build", d: "A local Victoria studio and a regional name with a sellable line are two completely different websites, price points and brands. We settle that first — so we never build you something beautiful that fits the wrong future." },
+                            { icon: <Gem className="w-6 h-6" />, t: "It lets you charge what the work is worth", d: "Same cabinet, two makers. The one with the considered brand charges 30–40% more — and the client feels good paying it. Brand is the only lever that raises price without changing the work." },
+                            { icon: <Filter className="w-6 h-6" />, t: "It attracts the right clients", d: "A generic site draws price-shoppers. A crafted one screens them out — by the time someone calls, they expect bespoke." },
+                            { icon: <Sparkles className="w-6 h-6" />, t: "It makes you remembered", d: "A brand kit gives people the words and the look to describe you to a friend. Referrals need something to hold onto." },
+                            { icon: <Compass className="w-6 h-6" />, t: "Vision tells us what to build", d: "A local studio and a regional name are two different sites. We decide which first — so we don't build for the wrong future." },
                         ].map((c, i) => (
                             <motion.div key={c.t} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07, duration: 0.6 }} className="glass rounded-3xl p-9 hover:-translate-y-1 transition-transform duration-300">
                                 <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 mb-6">{c.icon}</div>
@@ -446,7 +446,7 @@ export default function DelpradoProposalPage() {
                     </div>
 
                     <motion.p {...fadeUp} className="text-center text-white/45 text-sm mt-12 max-w-2xl mx-auto">
-                        Brand kit, strategy and vision aren't three line items — they're the blueprint. The website is the build. You wouldn't build a custom home without drawings; this is the same.
+                        Brand, strategy and vision are the blueprint. The website is the build.
                     </motion.p>
                 </div>
             </section>
@@ -462,7 +462,7 @@ export default function DelpradoProposalPage() {
                     <motion.div {...fadeUp} className="mb-8 max-w-3xl">
                         <Eyebrow>Concept Preview</Eyebrow>
                         <p className="text-white/55 leading-relaxed mt-4">
-                            A first direction, not a final answer — built before we've even spoken, which is exactly why we started with questions. The photographs are <span className="text-white">your own pieces</span>, simply given the room they deserve. The real thing would be co-created with you.
+                            A first direction, not a final answer. The photographs are <span className="text-white">your own pieces</span>, simply given room to breathe — the real thing, we'd build with you.
                         </p>
                     </motion.div>
 
@@ -596,9 +596,9 @@ export default function DelpradoProposalPage() {
                     {/* annotation back in Trixode chrome */}
                     <motion.div {...fadeUp} className="grid md:grid-cols-3 gap-5 mt-10">
                         {[
-                            { t: "Restraint reads as value", d: "Negative space, a serif voice and a quiet palette signal a maker who charges for craft — not a contractor competing on price." },
-                            { t: "Your work is the hero", d: "Every image above is a real Delprado piece. The design's only job is to get out of the way and let the craft land." },
-                            { t: "The story is front-and-centre", d: "Local materials, local hands, Victoria — the things competitors can't copy are the first things a visitor feels." },
+                            { t: "Restraint reads as value", d: "Space, a serif voice, a quiet palette — the signals of a maker who charges for craft." },
+                            { t: "Your work is the hero", d: "Every image is a real Delprado piece. The design just gets out of the way." },
+                            { t: "The story is front-and-centre", d: "Local materials, local hands, Victoria — what competitors can't copy, felt first." },
                         ].map((c, i) => (
                             <motion.div key={c.t} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08, duration: 0.6 }} className="rounded-2xl border border-white/10 bg-white/[0.02] p-7">
                                 <h4 className="font-grotesk text-base mb-2">{c.t}</h4>
@@ -618,10 +618,10 @@ export default function DelpradoProposalPage() {
                     </motion.div>
 
                     <motion.p {...fadeUp} className="text-lg md:text-xl max-w-3xl mb-6 leading-relaxed font-light text-white/55">
-                        A website is where people land. Instagram is how they <span className="text-white">find you in the first place</span> — and woodworking is the rare craft the algorithm loves: the cut, the grain, the finish, the reveal. Furniture and process content routinely out-performs almost every other category because it's satisfying to watch and impossible to fake.
+                        The website is where people land. Instagram is how they <span className="text-white">find you</span> — and woodworking is what the algorithm loves: the cut, the grain, the reveal.
                     </motion.p>
                     <motion.p {...fadeUp} className="text-lg max-w-3xl mb-14 leading-relaxed font-light text-white/55">
-                        The bigger prize is the <span className="text-white">public persona</span>. Right now Delprado is a company. We'd make it a <span className="text-white">name</span> — a maker with a face, a voice and a point of view that people recognize, follow, and recommend. That's what turns a one-time commission into an audience waiting for the next piece.
+                        The real prize is the <span className="text-white">public persona</span>. Today Delprado is a company. We'd make it a <span className="text-white">name</span> — a maker people follow, and an audience that waits for the next piece.
                     </motion.p>
 
                     <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
@@ -726,11 +726,11 @@ export default function DelpradoProposalPage() {
                             <motion.h3 {...fadeUp} className="font-grotesk text-2xl font-light mb-6">Five content pillars, on repeat</motion.h3>
                             <div className="space-y-3">
                                 {[
-                                    { icon: <Film className="w-5 h-5" />, t: "The Process", tag: "Reels", d: "Raw lumber to finished piece — satisfying cuts, joinery close-ups, the first coat of finish. The endlessly-rewatchable content makers go viral on." },
-                                    { icon: <Sparkles className="w-5 h-5" />, t: "The Reveal", tag: "Reels", d: "Cinematic unveils of finished installs — slow pans across grain, the drawer that glides, the door that closes just right." },
-                                    { icon: <UserRound className="w-5 h-5" />, t: "The Maker", tag: "Story · Reels", d: "Your hands, your voice, your why. People follow people, not logos — this is the persona that turns a shop into a name." },
-                                    { icon: <Layers className="w-5 h-5" />, t: "The Material", tag: "Carousel", d: "Local wood, local trades, where each piece comes from. The provenance no big-box competitor can claim." },
-                                    { icon: <Camera className="w-5 h-5" />, t: "In the Home", tag: "Posts", d: "Pieces living in real Victoria homes — aspirational, shareable, and the proof that closes the next client." },
+                                    { icon: <Film className="w-5 h-5" />, t: "The Process", tag: "Reels", d: "Raw lumber to finished piece — the satisfying, rewatchable content makers go viral on." },
+                                    { icon: <Sparkles className="w-5 h-5" />, t: "The Reveal", tag: "Reels", d: "Cinematic unveils — slow pans across grain, the drawer that glides shut." },
+                                    { icon: <UserRound className="w-5 h-5" />, t: "The Maker", tag: "Story · Reels", d: "Your hands, your voice, your why. People follow people, not logos." },
+                                    { icon: <Layers className="w-5 h-5" />, t: "The Material", tag: "Carousel", d: "Local wood, local trades, real provenance. What big-box can't claim." },
+                                    { icon: <Camera className="w-5 h-5" />, t: "In the Home", tag: "Posts", d: "Finished pieces in real Victoria homes. Aspirational, shareable proof." },
                                 ].map((p, i) => (
                                     <motion.div key={p.t} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06, duration: 0.5 }} className="glass rounded-2xl p-5 flex gap-4">
                                         <div className="w-11 h-11 shrink-0 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400">{p.icon}</div>
@@ -748,7 +748,7 @@ export default function DelpradoProposalPage() {
                             <motion.div {...fadeUp} className="mt-6 rounded-2xl border border-blue-500/20 bg-blue-500/[0.04] p-6">
                                 <div className="flex items-center gap-2 mb-2 text-blue-400"><Megaphone className="w-5 h-5" /><span className="font-grotesk text-sm uppercase tracking-[0.15em]">Building the persona</span></div>
                                 <p className="text-sm leading-relaxed text-white/60">
-                                    A logo is recognized; a person is followed. We'd put a face, a voice and a viewpoint behind Delprado so the brand becomes someone people feel they know — and trust enough to commission, and to send their friends.
+                                    A logo is recognized; a person is followed. We'd put a face and a voice behind Delprado — someone people feel they know, and trust enough to commission.
                                 </p>
                             </motion.div>
                         </div>
@@ -759,7 +759,7 @@ export default function DelpradoProposalPage() {
                         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10">
                             <div>
                                 <h3 className="font-grotesk text-2xl font-light mb-2">A content engine — not a guessing game</h3>
-                                <p className="text-sm text-white/50 max-w-xl">A consistent, high-quality system designed to stop the scroll and compound month over month.</p>
+                                <p className="text-sm text-white/50 max-w-xl">A consistent system that compounds month over month.</p>
                             </div>
                             <div className="flex gap-8 shrink-0">
                                 <div>
@@ -775,10 +775,10 @@ export default function DelpradoProposalPage() {
 
                         <div className="grid md:grid-cols-4 gap-4 mb-8">
                             {[
-                                { n: "01", icon: <Camera className="w-5 h-5" />, t: "Capture", d: "We film at the shop — or you send raw clips and a voice note from your phone." },
-                                { n: "02", icon: <Bot className="w-5 h-5" />, t: "Produce", d: "We edit, write captions and design carousels. Our AI-assisted system turns a little raw input into a month of on-brand content — your voice, kept intact." },
-                                { n: "03", icon: <CheckCircle2 className="w-5 h-5" />, t: "Approve", d: "You review the month in one place and sign off in a tap. No surprises." },
-                                { n: "04", icon: <Megaphone className="w-5 h-5" />, t: "Publish & report", d: "We schedule, publish to Instagram & Pinterest, and report what's working each month." },
+                                { n: "01", icon: <Camera className="w-5 h-5" />, t: "Capture", d: "We film at the shop — or you send clips and a voice note." },
+                                { n: "02", icon: <Bot className="w-5 h-5" />, t: "Produce", d: "We edit, write and design. Our AI-assisted system turns a little input into a month of content — in your voice." },
+                                { n: "03", icon: <CheckCircle2 className="w-5 h-5" />, t: "Approve", d: "Review the month and sign off in a tap." },
+                                { n: "04", icon: <Megaphone className="w-5 h-5" />, t: "Publish & report", d: "We publish to Instagram & Pinterest, and report what's working." },
                             ].map((s, i) => (
                                 <motion.div key={s.n} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08, duration: 0.5 }} className="relative rounded-2xl border border-white/10 bg-white/[0.02] p-6">
                                     {i < 3 && <div className="hidden md:block absolute top-1/2 -right-2 w-4 h-px bg-white/10" />}
@@ -810,7 +810,7 @@ export default function DelpradoProposalPage() {
                     <motion.div {...fadeUp} className="flex justify-center mb-8"><HexMark size={34} /></motion.div>
                     <motion.h2 {...fadeUp} className="font-grotesk text-4xl md:text-5xl font-light mb-6">If it resonates, let's talk.</motion.h2>
                     <motion.p {...fadeUp} className="text-lg text-white/55 leading-relaxed mb-12">
-                        Answer the questions above whenever you have ten quiet minutes — they come straight to us. If the direction feels right, we'll build the real thing together, here in Victoria. If it's not for you, keep the questions; they're worth the time on their own.
+                        Answer the questions whenever you have ten quiet minutes — they come straight to us. If the direction feels right, we'll build it together, here in Victoria.
                     </motion.p>
 
                     <motion.div {...fadeUp} className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
