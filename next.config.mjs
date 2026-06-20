@@ -38,8 +38,8 @@ const nextConfig = {
             value: 'nosniff',
           },
           {
-            key: 'X-Frame-Options',
-            value: 'SAMEORIGIN',
+            key: 'Content-Security-Policy',
+            value: "frame-ancestors 'self' https://trixode-studios.com https://www.trixode-studios.com",
           },
           {
             key: 'X-XSS-Protection',
