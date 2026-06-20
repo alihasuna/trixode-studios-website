@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
+import Image from "next/image"
 import { motion, AnimatePresence, useReducedMotion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion"
 import DelpradoSiteMock from "./DelpradoSiteMock"
 import {
@@ -540,7 +541,7 @@ export default function DelpradoProposalPage() {
                                     <div className="px-4 py-4 flex items-center gap-5">
                                         <div className="w-[68px] h-[68px] rounded-full p-[2px]" style={{ background: "linear-gradient(45deg,#b08456,#e7b97a,#8a6240)" }}>
                                             <div className="w-full h-full rounded-full bg-[#f4ece0] flex items-center justify-center overflow-hidden border-2 border-white">
-                                                <img src="/pitch/delprado/dp-logo-black.png" alt="Delprado" className="w-[80%] object-contain" />
+                                                <Image src="/pitch/delprado/dp-logo-black.png" alt="Delprado" width={120} height={120} className="w-[80%] h-auto object-contain" />
                                             </div>
                                         </div>
                                         <div className="flex-1 grid grid-cols-3 text-center">
@@ -589,7 +590,7 @@ export default function DelpradoProposalPage() {
                                         ].map((cell, i) => (
                                             <div key={i} className="relative bg-white" style={{ aspectRatio: "1 / 1" }}>
                                                 {cell.img ? (
-                                                    <img src={cell.img} alt="" loading="lazy" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: cell.pos || "center" }} />
+                                                    <Image src={cell.img} alt="" fill sizes="120px" className="object-cover" style={{ objectPosition: cell.pos || "center" }} />
                                                 ) : (
                                                     <div className="absolute inset-0 flex flex-col justify-between p-2" style={{ background: cell.type === "persona" ? "linear-gradient(150deg,#2b2420,#1a1512)" : "linear-gradient(150deg,#8a6240,#b08456)" }}>
                                                         <div className="flex justify-end">

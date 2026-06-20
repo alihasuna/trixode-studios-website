@@ -11,6 +11,7 @@ const legalLinks = [
 const labLinks = [
     { name: "Lab", href: "/lab" },
     { name: "Workflow", href: "/lab/workflow" },
+    { name: "Writing", href: "/writing" },
     { name: "Contact", href: "/lab/contact" },
 ]
 

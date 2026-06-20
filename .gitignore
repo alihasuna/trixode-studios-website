@@ -25,3 +25,19 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local git worktrees
+/worktrees
+
+# OS junk
+.DS_Store
+
+# local junk drawer — vendored templates / scratch, never part of the deployed site
+/sort/
+
+# python venv for pdf tooling
+/.venv_pdf/
+
+# client-confidential pitch artifacts — must not be committed/deployed
+/app/pitch/adriftwood/Adriftwood_Service_Tracker.xlsx
+/app/pitch/adriftwood/contract.html

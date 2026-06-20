@@ -88,8 +88,8 @@ const services = [
         priceSuffix: "+",
         secondaryPrice: "Based on scope & complexity",
         ctaText: "Book a Free Strategy Call",
-        gradient: "from-[#10b981] to-[#34d399]",
-        accentColor: "rgba(16, 185, 129, 0.15)",
+        gradient: "from-[#06b6d4] to-[#22d3ee]",
+        accentColor: "rgba(6, 182, 212, 0.15)",
     },
 ]
 
@@ -1057,26 +1057,26 @@ export default function ServicesPage() {
                                 data-speed="0.04"
                                 data-tilt
                                 data-glass-light
-                                className="absolute top-[50%] right-[25%] -translate-y-1/2 glass p-6 rounded-3xl w-[200px] z-25 border border-[#10b981]/20 dark:border-[#10b981]/30 hover:border-[#10b981]/40 dark:hover:border-[#10b981]/50 transition-all duration-500 will-change-transform group/card"
+                                className="absolute top-[50%] right-[25%] -translate-y-1/2 glass p-6 rounded-3xl w-[200px] z-25 border border-[#06b6d4]/20 dark:border-[#06b6d4]/30 hover:border-[#06b6d4]/40 dark:hover:border-[#06b6d4]/50 transition-all duration-500 will-change-transform group/card"
                                 style={{
                                     transformStyle: "preserve-3d",
-                                    boxShadow: "0 8px 32px rgba(16, 185, 129, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
+                                    boxShadow: "0 8px 32px rgba(6, 182, 212, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
                                 }}
                             >
                                 {/* Subtle gradient overlay */}
-                                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#10b981]/5 via-transparent to-[#34d399]/5 opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
+                                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#06b6d4]/5 via-transparent to-[#22d3ee]/5 opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
                                 {/* Animated glow ring */}
-                                <div className="absolute -inset-[1px] rounded-3xl bg-gradient-to-r from-[#10b981]/40 via-[#34d399]/40 to-[#10b981]/40 opacity-0 group-hover/card:opacity-100 blur-sm transition-opacity duration-500 -z-10" />
+                                <div className="absolute -inset-[1px] rounded-3xl bg-gradient-to-r from-[#06b6d4]/40 via-[#22d3ee]/40 to-[#06b6d4]/40 opacity-0 group-hover/card:opacity-100 blur-sm transition-opacity duration-500 -z-10" />
 
                                 <div className="relative z-10">
-                                    <div className="text-5xl xl:text-5xl font-light font-grotesk bg-gradient-to-r from-[#10b981] via-[#34d399] to-[#10b981] bg-[length:200%_100%] bg-clip-text text-transparent mb-3 group-hover/card:animate-gradient-x">
+                                    <div className="text-5xl xl:text-5xl font-light font-grotesk bg-gradient-to-r from-[#06b6d4] via-[#22d3ee] to-[#06b6d4] bg-[length:200%_100%] bg-clip-text text-transparent mb-3 group-hover/card:animate-gradient-x">
                                         &lt;24h
                                     </div>
                                     <div className="text-[10px] uppercase tracking-[0.25em] text-black/50 dark:text-white/50 mb-2 font-medium">
                                         Response Time
                                     </div>
                                     <div className="text-base font-medium text-black/80 dark:text-white/80 flex items-center gap-2">
-                                        <span className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse" />
+                                        <span className="w-2 h-2 rounded-full bg-[#06b6d4] animate-pulse" />
                                         Guaranteed
                                     </div>
                                 </div>

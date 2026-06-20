@@ -454,9 +454,9 @@ export default function PricingPage() {
 
                                                 {/* Guarantee */}
                                                 {pkg.guarantee && (
-                                                    <div className="flex items-center gap-2 mb-6 px-3 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
-                                                        <ShieldCheck className="w-4 h-4 text-emerald-500 shrink-0" />
-                                                        <span className="text-xs text-emerald-600 dark:text-emerald-400 font-medium">{pkg.guarantee}</span>
+                                                    <div className="flex items-center gap-2 mb-6 px-3 py-2 rounded-xl bg-cyan-500/10 border border-cyan-500/20">
+                                                        <ShieldCheck className="w-4 h-4 text-cyan-500 shrink-0" />
+                                                        <span className="text-xs text-cyan-600 dark:text-cyan-400 font-medium">{pkg.guarantee}</span>
                                                     </div>
                                                 )}
 
@@ -582,9 +582,9 @@ export default function PricingPage() {
 
                                                 {/* Guarantee */}
                                                 {plan.guarantee && (
-                                                    <div className="flex items-center gap-2 mb-6 px-3 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
-                                                        <ShieldCheck className="w-4 h-4 text-emerald-500 shrink-0" />
-                                                        <span className="text-xs text-emerald-600 dark:text-emerald-400 font-medium">{plan.guarantee}</span>
+                                                    <div className="flex items-center gap-2 mb-6 px-3 py-2 rounded-xl bg-cyan-500/10 border border-cyan-500/20">
+                                                        <ShieldCheck className="w-4 h-4 text-cyan-500 shrink-0" />
+                                                        <span className="text-xs text-cyan-600 dark:text-cyan-400 font-medium">{plan.guarantee}</span>
                                                     </div>
                                                 )}
 
@@ -632,14 +632,14 @@ export default function PricingPage() {
                                         >
                                             {pkg.popular && (
                                                 <div className="absolute top-0 left-0 right-0 z-10">
-                                                    <div className="mx-auto w-fit px-4 py-1.5 bg-gradient-to-r from-emerald-500 to-brand-cyan text-white text-xs font-medium tracking-wider uppercase rounded-b-xl">
+                                                    <div className="mx-auto w-fit px-4 py-1.5 bg-gradient-to-r from-cyan-500 to-brand-cyan text-white text-xs font-medium tracking-wider uppercase rounded-b-xl">
                                                         Most Popular
                                                     </div>
                                                 </div>
                                             )}
 
                                             <div
-                                                className={`glass h-full p-8 md:p-10 rounded-3xl flex flex-col ${pkg.popular ? "border-emerald-500/30 dark:border-emerald-500/20" : ""
+                                                className={`glass h-full p-8 md:p-10 rounded-3xl flex flex-col ${pkg.popular ? "border-cyan-500/30 dark:border-cyan-500/20" : ""
                                                     }`}
                                             >
                                                 <div className="mb-6">
@@ -648,7 +648,7 @@ export default function PricingPage() {
                                                     </div>
                                                     <div className="flex items-baseline gap-1 mb-1">
                                                         <span
-                                                            className="text-3xl md:text-4xl font-light text-emerald-500 font-grotesk"
+                                                            className="text-3xl md:text-4xl font-light text-cyan-500 font-grotesk"
                                                             style={{ textShadow: "0 0 20px rgba(16,185,129,0.3)" }}
                                                         >
                                                             {pkg.price}
@@ -673,15 +673,15 @@ export default function PricingPage() {
 
                                                 {/* Guarantee */}
                                                 {pkg.guarantee && (
-                                                    <div className="flex items-center gap-2 mb-6 px-3 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
-                                                        <ShieldCheck className="w-4 h-4 text-emerald-500 shrink-0" />
-                                                        <span className="text-xs text-emerald-600 dark:text-emerald-400 font-medium">{pkg.guarantee}</span>
+                                                    <div className="flex items-center gap-2 mb-6 px-3 py-2 rounded-xl bg-cyan-500/10 border border-cyan-500/20">
+                                                        <ShieldCheck className="w-4 h-4 text-cyan-500 shrink-0" />
+                                                        <span className="text-xs text-cyan-600 dark:text-cyan-400 font-medium">{pkg.guarantee}</span>
                                                     </div>
                                                 )}
 
                                                 <a
                                                     href="#cta"
-                                                    className="magnetic inline-flex items-center justify-center gap-3 px-6 py-3.5 rounded-2xl text-sm font-medium uppercase tracking-wider transition-all duration-300 border border-black/10 dark:border-white/10 hover:border-emerald-500 hover:text-emerald-500 group/btn"
+                                                    className="magnetic inline-flex items-center justify-center gap-3 px-6 py-3.5 rounded-2xl text-sm font-medium uppercase tracking-wider transition-all duration-300 border border-black/10 dark:border-white/10 hover:border-cyan-500 hover:text-cyan-500 group/btn"
                                                 >
                                                     <span>Book Free Strategy Call</span>
                                                     <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
@@ -782,10 +782,10 @@ export default function PricingPage() {
                                 },
                                 {
                                     icon: Shield,
-                                    color: "emerald-400",
-                                    gradient: "from-emerald-500/20 to-green-500/10",
-                                    borderColor: "border-emerald-400/20",
-                                    glowColor: "rgba(52,211,153,0.4)",
+                                    color: "cyan-400",
+                                    gradient: "from-cyan-500/20 to-cyan-500/10",
+                                    borderColor: "border-cyan-400/20",
+                                    glowColor: "rgba(34,211,238,0.4)",
                                     title: "We Don't Disappear",
                                     desc: "Ongoing support, monthly reporting, and a team that grows your site every month.",
                                 },

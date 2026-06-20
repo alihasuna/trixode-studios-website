@@ -8,6 +8,7 @@
  */
 
 import { useState } from "react"
+import Image from "next/image"
 import { motion, useReducedMotion, useMotionValue, useSpring } from "framer-motion"
 import { Sun, Moon, ArrowUpRight } from "lucide-react"
 
@@ -21,6 +22,14 @@ const WORKS: Work[] = [
 
 const MARQUEE = ["Bespoke", "Local materials", "One of a kind", "Cabinetry", "Millwork", "Victoria, BC"]
 
+function Toggle({ dark, onToggle }: { dark: boolean; onToggle: () => void }) {
+    return (
+        <button onClick={onToggle} aria-label="Toggle light or dark" className="w-9 h-9 rounded-full flex items-center justify-center cursor-pointer shrink-0 transition-colors" style={{ border: "1px solid var(--ds-line)", color: "var(--ds-ink)" }}>
+            {dark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+        </button>
+    )
+}
+
 function Figure({ w }: { w: Work }) {
     const reduce = useReducedMotion()
     return (
@@ -32,7 +41,7 @@ function Figure({ w }: { w: Work }) {
             transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
         >
             <div className="relative overflow-hidden" style={{ aspectRatio: w.ratio }}>
-                <img src={w.img} alt={w.t} loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1300ms] ease-out group-hover:scale-[1.05]" style={{ objectPosition: w.pos }} />
+                <Image src={w.img} alt={w.t} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover transition-transform duration-[1300ms] ease-out group-hover:scale-[1.05]" style={{ objectPosition: w.pos }} />
             </div>
             <figcaption className="flex items-baseline justify-between mt-4 gap-4">
                 <span className="text-base md:text-lg" style={{ color: "var(--ds-ink)" }}>
@@ -79,12 +88,6 @@ export default function DelpradoSiteMock() {
         transition: "background-color 0.6s ease, color 0.6s ease",
     } as React.CSSProperties
 
-    const Toggle = () => (
-        <button onClick={() => setDark((d) => !d)} aria-label="Toggle light or dark" className="w-9 h-9 rounded-full flex items-center justify-center cursor-pointer shrink-0 transition-colors" style={{ border: "1px solid var(--ds-line)", color: "var(--ds-ink)" }}>
-            {dark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-        </button>
-    )
-
     return (
         <div className="relative rounded-xl overflow-hidden" style={rootStyle}>
             {/* NAV */}
@@ -95,7 +98,7 @@ export default function DelpradoSiteMock() {
                 </div>
                 <div className="flex items-center gap-4 md:gap-5">
                     <span className="hidden sm:inline text-[12px]" style={{ color: "var(--ds-muted)" }}>hello@delpradostudio.com</span>
-                    <Toggle />
+                    <Toggle dark={dark} onToggle={() => setDark((d) => !d)} />
                 </div>
             </div>
 
@@ -165,7 +168,7 @@ export default function DelpradoSiteMock() {
                 </div>
                 <div className="flex items-center gap-5 shrink-0">
                     <span className="text-[12px]" style={{ color: "var(--ds-muted)" }}>Victoria, BC</span>
-                    <Toggle />
+                    <Toggle dark={dark} onToggle={() => setDark((d) => !d)} />
                 </div>
             </div>
         </div>

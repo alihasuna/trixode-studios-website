@@ -27,6 +27,7 @@ export default function FloatingNav() {
         { name: "Projects", href: "/projects" },
         { name: "About", href: "/about" },
         { name: "Blog", href: "/blog" },
+        { name: "Writing", href: "/writing" },
     ]
 
     const contactLink = { name: "Contact", href: "/contact" }

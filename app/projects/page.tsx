@@ -144,8 +144,8 @@ export default function ProjectsPage() {
                   whileHover={{ y: -5 }}
                 >
                   {/* Project Preview */}
-                  <div className="h-64 bg-gradient-to-br from-blue-600/20 to-blue-800/20 relative overflow-hidden group-hover:scale-105 transition-transform duration-700">
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-blue-900/10"></div>
+                  <div className="h-64 bg-gradient-to-br from-brand-blue/20 to-brand-blue/10 relative overflow-hidden group-hover:scale-105 transition-transform duration-700">
+                    <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/10 to-brand-blue/5"></div>
                     <div className="relative z-10 h-full flex items-center justify-center">
                       <div className="text-center">
                         <div className="w-20 h-20 glass rounded-2xl flex items-center justify-center mx-auto mb-4">
@@ -355,13 +355,13 @@ export default function ProjectsPage() {
               {/* Hero Section for AI Consulting */}
               <div className="text-center mb-24">
                 <motion.div
-                  className="inline-flex items-center bg-[#10b981]/10 border border-[#10b981]/20 rounded-full px-6 py-2 mb-8"
+                  className="inline-flex items-center bg-[#06b6d4]/10 border border-[#06b6d4]/20 rounded-full px-6 py-2 mb-8"
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.4, delay: 0.1 }}
                 >
-                  <Brain className="h-4 w-4 text-[#10b981] mr-2" />
-                  <span className="text-[#10b981] text-xs font-medium uppercase tracking-widest">AI Transformation Specialists</span>
+                  <Brain className="h-4 w-4 text-[#06b6d4] mr-2" />
+                  <span className="text-[#06b6d4] text-xs font-medium uppercase tracking-widest">AI Transformation Specialists</span>
                 </motion.div>
 
                 <motion.h2
@@ -372,7 +372,7 @@ export default function ProjectsPage() {
                 >
                   AI Adoption
                   <br />
-                  <span className="text-[#10b981]">Consulting</span>
+                  <span className="text-[#06b6d4]">Consulting</span>
                 </motion.h2>
 
                 <motion.p
@@ -409,7 +409,7 @@ export default function ProjectsPage() {
                       icon: Target,
                       title: "Strategy",
                       description: "Develop a comprehensive AI roadmap aligned with business objectives.",
-                      color: "text-emerald-400"
+                      color: "text-cyan-400"
                     },
                     {
                       icon: Lightbulb,
@@ -489,7 +489,7 @@ export default function ProjectsPage() {
                       <ul className="space-y-3">
                         {service.features.map((feature, idx) => (
                           <li key={idx} className="flex items-center text-black/50 dark:text-white/50 text-sm font-light">
-                            <CheckCircle className="h-4 w-4 text-[#10b981] mr-3 flex-shrink-0" />
+                            <CheckCircle className="h-4 w-4 text-[#06b6d4] mr-3 flex-shrink-0" />
                             {feature}
                           </li>
                         ))}
@@ -507,9 +507,9 @@ export default function ProjectsPage() {
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
                 <div className="glass p-16 rounded-3xl border border-black/5 dark:border-white/5 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#10b981]/5 to-[#059669]/5 opacity-30" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#06b6d4]/5 to-[#0891b2]/5 opacity-30" />
                   <div className="flex items-center justify-center mb-6">
-                    <Users className="h-10 w-10 text-[#10b981] mr-4" />
+                    <Users className="h-10 w-10 text-[#06b6d4] mr-4" />
                     <h2 className="text-4xl md:text-5xl font-light text-black dark:text-white font-grotesk">Ready to Transform?</h2>
                   </div>
                   <p className="text-xl text-black/60 dark:text-white/60 mb-10 max-w-2xl mx-auto leading-relaxed font-light">
@@ -517,7 +517,7 @@ export default function ProjectsPage() {
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Link href="/contact">
-                      <button className="magnetic px-10 py-5 bg-[#10b981] text-white text-sm uppercase tracking-widest font-medium rounded-full hover:bg-[#059669] transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)]">
+                      <button className="magnetic px-10 py-5 bg-[#06b6d4] text-white text-sm uppercase tracking-widest font-medium rounded-full hover:bg-[#0891b2] transition-all duration-300 shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]">
                         Schedule Consultation
                       </button>
                     </Link>
