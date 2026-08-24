@@ -79,11 +79,11 @@ export default function Scene() {
                 </div>
 
                 <a
-                    href="mailto:hello@trixode-studios.com"
+                    href="mailto:hussienb@trixode-studios.com"
                     className="uc-in mt-12 text-sm text-white/40 transition-colors duration-300 hover:text-white"
                     style={{ animationDelay: "0.5s" }}
                 >
-                    hello@trixode-studios.com
+                    hussienb@trixode-studios.com
                 </a>
             </div>
 
