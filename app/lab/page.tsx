@@ -98,16 +98,6 @@ const TEAM: TeamMember[] = [
         ],
         linkedin: "https://www.linkedin.com/in/amir-ahmadian12/",
     },
-    {
-        name: "Matthew",
-        role: "Collaborator",
-        image: "/mathew.png",
-        blurb: "Adds math formalism to the equation.",
-        credentials: [
-            "M.Sc. Mathematics, UVic 2024",
-            "Combined Honours, CS & Mathematics, 2020",
-        ],
-    },
 ]
 
 export default function LabPage() {
@@ -492,7 +482,7 @@ export default function LabPage() {
                             A small group of science people working on interesting problems in business.
                         </p>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
                             {TEAM.map((member, index) => (
                                 <motion.div
                                     key={member.name}
