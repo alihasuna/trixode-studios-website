@@ -12,6 +12,7 @@ import LabFloatingNav from "@/components/lab/LabFloatingNav"
 import LabFooter from "@/components/lab/LabFooter"
 import { useMagneticEffect } from "@/hooks/useMagneticEffect"
 import { useMediaQuery } from "@/hooks/useMediaQuery"
+import { HANDOFF_KEY } from "@/components/entry/TwoPaths"
 
 const NeonBlob = dynamic(() => import("@/components/hero/NeonBlob"), { ssr: false })
 
@@ -19,7 +20,7 @@ const RESEARCH_AREAS = [
     {
         num: "01",
         title: "Complexity metrics",
-        desc: "Measures of branching, depth, and decision density in agent execution graphs — turning intuition about 'how complex' into numbers operators can compare.",
+        desc: "Measures of branching, depth, and decision density in agent execution graphs, turning intuition about 'how complex' into numbers operators can compare.",
     },
     {
         num: "02",
@@ -29,7 +30,7 @@ const RESEARCH_AREAS = [
     {
         num: "03",
         title: "Information flow",
-        desc: "Tracking what an agent sees, retains, and emits — the surface where leakage, contamination, and prompt injection live.",
+        desc: "Tracking what an agent sees, retains, and emits: the surface where leakage, contamination, and prompt injection live.",
     },
     {
         num: "04",
@@ -39,7 +40,7 @@ const RESEARCH_AREAS = [
     {
         num: "05",
         title: "Tractability bounds",
-        desc: "Knowing in advance which workflows are even decidable — and which are stochastic surfaces dressed as deterministic systems.",
+        desc: "Knowing in advance which workflows are even decidable, and which are stochastic surfaces dressed as deterministic systems.",
     },
     {
         num: "06",
@@ -52,13 +53,13 @@ const PROJECTS: { name: string; status: string; desc: string; href?: string }[] 
     {
         name: "Intellicycle",
         status: "Live · 2026",
-        desc: "An agentic marketplace for recycled metals. Real counterparties, real settlement, real adversarial pressure — the surface where our measurements stop being theoretical.",
+        desc: "An agentic marketplace for recycled metals. Real counterparties, real settlement, real adversarial pressure. The surface where our measurements stop being theoretical.",
         href: "https://www.intellicycle.net/",
     },
     {
         name: "Morphika",
         status: "Live · 2026",
-        desc: "An agentic solution for email — autonomous handling of inbox workflows that usually need a human in the loop. Where information-flow and capability-boundary measures get tested daily.",
+        desc: "An agentic solution for email: autonomous handling of inbox workflows that usually need a human in the loop. Where information-flow and capability-boundary measures get tested daily.",
         href: "https://morphika.ai",
     },
 ]
@@ -78,10 +79,10 @@ const TEAM: TeamMember[] = [
         role: "Founder",
         image:
             "https://res.cloudinary.com/dmkfxjv0s/image/upload/w_200,h_200,c_fill,g_face,f_auto,q_auto/v1749088385/ceo_photo.png",
-        blurb: "Physics, strategy, and software engineering — with a math backbone.",
+        blurb: "Physics, strategy, and software engineering, with a math backbone.",
         credentials: [
             "B.Sc. & M.Sc., Southern Federal University (Russia)",
-            "Ph.D. Physics, University of Victoria — in progress",
+            "Ph.D. Physics, University of Victoria (in progress)",
             "Background in nanotechnology",
         ],
         linkedin: "https://www.linkedin.com/in/hussien-ballouk-233b3b116/?locale=en",
@@ -91,7 +92,7 @@ const TEAM: TeamMember[] = [
         role: "Founder",
         image:
             "https://res.cloudinary.com/dnsl6kst1/image/upload/w_200,h_200,c_fill,g_face,f_auto,q_auto/v1770191425/ChatGPT_Image_Feb_3_2026_11_47_46_PM_sasgnj.png",
-        blurb: "Materials-science rigor with startup-tested execution — anchoring the lab's theory in real systems.",
+        blurb: "Materials-science rigor with startup-tested execution, anchoring the lab's theory in real systems.",
         credentials: [
             "Ph.D. Materials Science",
             "Background in materials-science startups",
@@ -100,7 +101,24 @@ const TEAM: TeamMember[] = [
     },
 ]
 
+// Hero beats are timed against the welcome intro: 3.2s after the full intro,
+// almost immediately after the brief one (arrival from the entry page).
+const HERO_BASE_FULL = 3.2
+const HERO_BASE_BRIEF = 0.2
+
+function readHandoff() {
+    if (typeof window === "undefined") return false
+    try {
+        return sessionStorage.getItem(HANDOFF_KEY) === "1"
+    } catch {
+        return false
+    }
+}
+
 export default function LabPage() {
+    // Decided before first paint so the loader starts the right timeline.
+    const [briefIntro] = useState(readHandoff)
+    const heroBase = briefIntro ? HERO_BASE_BRIEF : HERO_BASE_FULL
     const [isLoading, setIsLoading] = useState(true)
     const [animationProgress, setAnimationProgress] = useState(0)
     const isDesktop = useMediaQuery("(min-width: 1024px) and (hover: hover) and (pointer: fine)")
@@ -145,11 +163,21 @@ export default function LabPage() {
         }
     }, [isLoading])
 
+    useEffect(() => {
+        // One-shot: a refresh of /lab plays the full intro again.
+        try {
+            sessionStorage.removeItem(HANDOFF_KEY)
+        } catch {
+            /* ignore */
+        }
+    }, [])
+
     useMagneticEffect()
 
     return (
         <>
             <WelcomeLoader
+                variant={briefIntro ? "brief" : "full"}
                 onLoadingComplete={() => setIsLoading(false)}
                 onAnimationProgress={(progress) => setAnimationProgress(progress)}
             />
@@ -252,7 +280,7 @@ export default function LabPage() {
                             <motion.div
                                 initial={{ opacity: 0, y: 16 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: 3.2 }}
+                                transition={{ duration: 0.5, delay: heroBase }}
                                 className="flex items-center gap-4 mb-10"
                             >
                                 <div className="w-10 h-[1px] bg-brand-blue" style={{ boxShadow: "0 0 10px rgba(59, 130, 246, 0.4)" }} />
@@ -265,14 +293,14 @@ export default function LabPage() {
                                 className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px] font-light mb-10 leading-[1.08] tracking-[-0.02em]"
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
-                                transition={{ delay: 3.3 }}
+                                transition={{ delay: heroBase + 0.1 }}
                             >
                                 <span className="block overflow-hidden pb-[0.25em]">
                                     <motion.span
                                         className="block font-grotesk"
                                         initial={{ y: "110%" }}
                                         animate={{ y: 0 }}
-                                        transition={{ duration: 0.7, delay: 3.35, ease: [0.16, 1, 0.3, 1] }}
+                                        transition={{ duration: 0.7, delay: heroBase + 0.15, ease: [0.16, 1, 0.3, 1] }}
                                         style={{ willChange: "transform" }}
                                     >
                                         The mathematics of
@@ -283,7 +311,7 @@ export default function LabPage() {
                                         className="block bg-gradient-to-r from-slate-800 to-brand-blue dark:from-white dark:to-brand-blue bg-clip-text text-transparent font-grotesk"
                                         initial={{ y: "110%" }}
                                         animate={{ y: 0 }}
-                                        transition={{ duration: 0.7, delay: 3.5, ease: [0.16, 1, 0.3, 1] }}
+                                        transition={{ duration: 0.7, delay: heroBase + 0.3, ease: [0.16, 1, 0.3, 1] }}
                                         style={{ willChange: "transform" }}
                                     >
                                         agentic systems.
@@ -294,7 +322,7 @@ export default function LabPage() {
                             <motion.p
                                 initial={{ opacity: 0, y: 16 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: 3.6 }}
+                                transition={{ duration: 0.5, delay: heroBase + 0.4 }}
                                 className="text-lg md:text-xl text-black/60 dark:text-white/60 mb-12 max-w-[600px] leading-relaxed font-light"
                             >
                                 We bring academic frameworks to bear on the{" "}
@@ -308,7 +336,7 @@ export default function LabPage() {
                             <motion.div
                                 initial={{ opacity: 0, y: 16 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: 3.75 }}
+                                transition={{ duration: 0.5, delay: heroBase + 0.55 }}
                                 className="flex flex-col sm:flex-row gap-4"
                             >
                                 <Link
@@ -335,7 +363,7 @@ export default function LabPage() {
                     <div className="max-w-7xl mx-auto md:grid md:grid-cols-12 md:gap-12 relative">
                         <div className="md:col-span-4">
                             <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-black/40 dark:text-white/40">
-                                01 · Direction
+                                Direction
                             </span>
                         </div>
                         <div className="mt-8 md:col-span-8 md:mt-0">
@@ -356,8 +384,8 @@ export default function LabPage() {
                                 transition={{ duration: 0.5, delay: 0.1 }}
                                 className="mt-8 max-w-[680px] text-[16px] md:text-[17px] leading-[1.7] text-black/60 dark:text-white/60 font-light"
                             >
-                                We study the structural properties of agent behaviour — branching, information
-                                flow, capability boundaries, adversarial pressure — and translate them into
+                                We study the structural properties of agent behaviour: branching, information
+                                flow, capability boundaries, adversarial pressure. We translate them into
                                 measures operators can act on. The work is exercised on real workflows, not
                                 benchmarks.
                             </motion.p>
@@ -563,7 +591,7 @@ export default function LabPage() {
                             className="text-lg text-black/60 dark:text-white/60 mb-12 font-light max-w-[560px] mx-auto"
                         >
                             Tell us the shape of the workflow. We'll come back with what's measurable and
-                            what isn't yet — no decks, no boilerplate.
+                            what isn't yet. No decks, no boilerplate.
                         </motion.p>
                         <motion.div
                             initial={{ opacity: 0, y: 16 }}
@@ -584,7 +612,7 @@ export default function LabPage() {
                                 href="/lab/contact"
                                 className="magnetic inline-flex items-center gap-2 px-8 py-4 text-sm uppercase tracking-widest text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors"
                             >
-                                Or just say hi
+                                Get in touch
                             </Link>
                         </motion.div>
                     </div>

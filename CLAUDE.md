@@ -37,6 +37,10 @@ No test framework is configured.
 **Environment variables** (in `.env.local`):
 - `RESEND_API_KEY` — used by all API routes for email delivery
 - `NEXT_PUBLIC_SITE_URL` / `NEXT_PUBLIC_BASE_URL` — base URL for sitemap, metadata, and OG tags (falls back to `https://www.trixode-studios.com`)
+- `NEXT_PUBLIC_CREATIVE_URL` — origin of the Creative site (the `trixode-agency` repo, a separate deployment); defaults to `https://creative.trixode-studios.com`. Set to `http://localhost:3400` for local end-to-end testing.
+- `PUBLIC_SITE_OPEN=1` — retires the `/under-construction` holding page in production (`proxy.ts`). `PREVIEW_BYPASS=1` does the same for `next dev` only.
+
+**Umbrella brand (Lab + Creative)**: Trixode Studios is one brand with two destinations. `/` is the "Two Paths" entry page (`app/(home)/page.tsx` + `components/entry/TwoPaths.tsx`, scene at `public/images/entry/two-paths.jpg`, concept in `docs/entry/`). `/lab/*` is the Lab micro-site; Creative lives in the sibling repo and `/creative/*` forwards there (`lib/destinations.ts`). Launch steps: `docs/entry/LAUNCH.md`.
 
 **App Router structure** (`app/`):
 - Home page is in a route group: `app/(home)/page.tsx`

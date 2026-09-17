@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Inter, Space_Grotesk, Montserrat, Cormorant_Garamond } from "next/font/google"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/providers/ThemeProvider"
 import ClientEffects from "@/components/providers/ClientEffects"
 import { professionalServiceSchema, websiteSchema } from "@/lib/schemas"
@@ -25,11 +26,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Trixode Studios — AI Software Company in Victoria, BC",
+    default: "Trixode Studios — Secure Agentic Systems",
     template: "%s | Trixode Studios",
   },
   description:
-    "Victoria BC's leading AI agency. Custom AI agents, high-performance websites, and AI SEO for businesses in Victoria, Vancouver, and across British Columbia. Starting at $999/mo.",
+    "A Victoria, BC research-led studio building measurable, secure agentic systems with accountable human decisions.",
   keywords:
     "AI agency Victoria BC, software company Victoria, AI agents Vancouver, web development Victoria BC, AI SEO British Columbia, AI automation Vancouver, software development Victoria, Trixode Studios, AI chatbot Victoria, business automation BC",
   authors: [{ name: "Trixode Studios" }],
@@ -44,9 +45,9 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: "Trixode Studios — AI Software Company in Victoria, BC",
+    title: "Trixode Studios — Secure Agentic Systems",
     description:
-      "Victoria's leading AI agency. Custom AI agents, high-performance websites, and AI-powered SEO for businesses across BC.",
+      "A research-led studio building measurable, secure agentic systems with accountable human decisions.",
     type: "website",
     locale: "en_CA",
     url: siteUrl,
@@ -56,15 +57,15 @@ export const metadata: Metadata = {
         url: "/logo.png",
         width: 1200,
         height: 630,
-        alt: "Trixode Studios — AI Agency in Victoria, BC",
+        alt: "Trixode Studios, a research-led agentic software studio in Victoria, BC",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Trixode Studios — AI Software Company in Victoria, BC",
+    title: "Trixode Studios — Secure Agentic Systems",
     description:
-      "Victoria's leading AI agency. Custom AI agents, websites, and AI SEO for businesses across BC.",
+      "A research-led studio building measurable, secure agentic systems with accountable human decisions.",
     images: ["/logo.png"],
   },
   robots: {
@@ -112,6 +113,7 @@ export default function RootLayout({
           {children}
         </ThemeProvider>
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   )

@@ -5,16 +5,21 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useReducedMotion } from "framer-motion"
 import { createPortal } from "react-dom"
+import { ArrowUpRight } from "lucide-react"
 import { HexagonLogo } from "@/components/ui/HexagonLogo"
 import { ThemeToggle } from "@/components/ui/ThemeToggle"
+import { DESTINATIONS, type Destination } from "@/lib/destinations"
 
-const navLinks = [
+// Creative is the sibling destination under the Trixode Studios umbrella —
+// a separate deployment, so it is an absolute, external link.
+const navLinks: Destination[] = [
     { name: "Lab", href: "/lab" },
     { name: "Workflow", href: "/lab/workflow" },
     { name: "Writing", href: "/writing" },
+    ...(DESTINATIONS.creative.live ? [DESTINATIONS.creative] : []),
 ]
 
-const contactLink = { name: "Contact", href: "/lab/contact" }
+const contactLink: Destination = { name: "Contact", href: "/lab/contact" }
 
 export default function LabFloatingNav() {
     const [scrolled, setScrolled] = useState(false)
@@ -76,6 +81,7 @@ export default function LabFloatingNav() {
                                                 }`}
                                         >
                                             {link.name}
+                                            {link.external && <ArrowUpRight className="ml-1 inline h-3 w-3 -translate-y-px opacity-70" aria-hidden />}
                                             <span
                                                 className={`absolute -bottom-1 left-0 h-[1px] bg-blue-500 transition-all duration-300 ${active ? "w-full shadow-[0_0_10px_rgba(59,130,246,0.5)]" : "w-0 group-hover:w-full group-hover:shadow-[0_0_10px_rgba(59,130,246,0.5)]"
                                                     }`}
@@ -164,6 +170,7 @@ export default function LabFloatingNav() {
                                                     style={{ fontFamily: "var(--font-space-grotesk), sans-serif" }}
                                                 >
                                                     {item.name}
+                                                    {item.external && <ArrowUpRight className="ml-2 inline h-5 w-5 -translate-y-1 opacity-60" aria-hidden />}
                                                 </span>
                                             </Link>
                                         </li>

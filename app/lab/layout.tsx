@@ -6,14 +6,14 @@ const baseUrl =
     "https://www.trixode-studios.com"
 
 export const metadata: Metadata = {
-    title: "Trixode-Studios Lab — The mathematics of agentic systems",
+    title: { absolute: "Trixode Lab: The mathematics of agentic systems" },
     description:
         "A research lab bringing academic frameworks to the complexity and security of specific agentic systems. Live testbed: Intellicycle.",
     alternates: {
         canonical: baseUrl,
     },
     openGraph: {
-        title: "Trixode-Studios Lab — The mathematics of agentic systems",
+        title: "Trixode Lab: The mathematics of agentic systems",
         description:
             "Research lab in Victoria, BC. Academic frameworks for the complexity and security of specific agentic systems.",
         url: baseUrl,
