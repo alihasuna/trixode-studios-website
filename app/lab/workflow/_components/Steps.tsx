@@ -164,7 +164,7 @@ export function StepIntent({ state, errors, setField }: StepBaseProps<"intent">)
                 label="What are you trying to figure out?"
                 value={state.goal}
                 onChange={(v) => setField("goal", v)}
-                placeholder="One or two sentences is plenty — what would 'this worked' look like for you?"
+                placeholder="One or two sentences is plenty. What would 'this worked' look like for you?"
                 rows={5}
             />
             <TextField
@@ -191,7 +191,7 @@ export function SuccessScreen({ onReset, name }: { onReset: () => void; name: st
             </h2>
             <p className="text-black/60 dark:text-white/60 text-base md:text-lg font-light leading-relaxed max-w-[520px] mx-auto mb-12">
                 We've got everything we need to give you a useful first answer. Expect a note from us within a
-                day — what we'd measure first, what we wouldn't touch yet, and whether a call makes sense.
+                day: what we'd measure first, what we wouldn't touch yet, and whether a call makes sense.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link

@@ -1,11 +1,20 @@
 import Link from "next/link"
+import { ArrowUpRight } from "lucide-react"
 import { HexagonLogo } from "@/components/ui/HexagonLogo"
+import { DESTINATIONS, type Destination } from "@/lib/destinations"
 
 const legalLinks = [
     { name: "Privacy", href: "/privacy" },
     { name: "Terms", href: "/terms" },
     { name: "Cookies", href: "/cookies" },
     { name: "Accessibility", href: "/accessibility" },
+]
+
+// The umbrella: Trixode Studios is one brand with two doors, Lab and Creative.
+const studioLinks: Destination[] = [
+    { name: "Overview", href: DESTINATIONS.studio.href },
+    DESTINATIONS.lab,
+    ...(DESTINATIONS.creative.live ? [DESTINATIONS.creative] : []),
 ]
 
 const labLinks = [
@@ -20,8 +29,8 @@ export default function LabFooter() {
         <footer className="border-t border-black/10 dark:border-white/[0.08] bg-white dark:bg-[#030303] relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/[0.02] dark:via-white/[0.02] to-transparent pointer-events-none" />
             <div className="mx-auto max-w-[1200px] px-6 py-16 md:px-10 relative">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-                    <div className="md:col-span-1">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                    <div className="sm:col-span-2 lg:col-span-1">
                         <div className="flex items-center gap-3 mb-4">
                             <HexagonLogo size={28} />
                             <span className="text-lg font-medium text-black dark:text-white font-grotesk">
@@ -37,6 +46,25 @@ export default function LabFooter() {
                         >
                             ceo@trixode-studios.com
                         </a>
+                    </div>
+
+                    <div>
+                        <p className="text-xs uppercase tracking-[0.3em] text-black/60 dark:text-white/60 mb-5 font-medium">
+                            Studios
+                        </p>
+                        <ul className="space-y-3">
+                            {studioLinks.map((link) => (
+                                <li key={link.name}>
+                                    <Link
+                                        href={link.href}
+                                        className="inline-flex items-center gap-1 text-sm text-black/50 dark:text-white/50 hover:text-black dark:hover:text-white transition-colors duration-300 font-light"
+                                    >
+                                        {link.name}
+                                        {link.external && <ArrowUpRight className="h-3 w-3 opacity-70" aria-hidden />}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
 
                     <div>

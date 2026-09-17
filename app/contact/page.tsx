@@ -409,7 +409,7 @@ export default function ContactPage() {
                 <div className="flex space-x-4">
                   {[
                     { icon: Github, href: "https://github.com/trixodestudios", label: "GitHub" },
-                    { icon: Linkedin, href: "https://www.linkedin.com/in/trixode-studios-054154311/", label: "LinkedIn" },
+                    { icon: Linkedin, href: "https://www.linkedin.com/in/hussien-ballouk-233b3b116/", label: "Hussien Ballouk on LinkedIn" },
                   ].map((social) => (
                     <motion.a
                       key={social.label}

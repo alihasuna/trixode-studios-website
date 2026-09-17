@@ -7,9 +7,12 @@ import { useTheme } from "next-themes"
 interface WelcomeLoaderProps {
     onLoadingComplete?: () => void
     onAnimationProgress?: (progress: number) => void
+    /** "brief" skips the wordmark beat and only lifts the curtain (used when the
+     *  visitor arrives through the studio entry page, which already played an intro). */
+    variant?: "full" | "brief"
 }
 
-export default function WelcomeLoader({ onLoadingComplete, onAnimationProgress }: WelcomeLoaderProps) {
+export default function WelcomeLoader({ onLoadingComplete, onAnimationProgress, variant = "full" }: WelcomeLoaderProps) {
     const prefersReducedMotion = useReducedMotion()
     const { resolvedTheme } = useTheme()
     const [isVisible, setIsVisible] = useState(true)
@@ -47,6 +50,22 @@ export default function WelcomeLoader({ onLoadingComplete, onAnimationProgress }
 
         // Simple, reliable timeline with direct callback calls
         const timers: ReturnType<typeof setTimeout>[] = []
+
+        if (variant === "brief") {
+            // Curtain only: the entry page's fade already served as the beat.
+            setShowLogoExit(true)
+            onProgressRef.current?.(50)
+            timers.push(setTimeout(() => setShowCurtainAnimation(true), 120))
+            timers.push(setTimeout(() => onProgressRef.current?.(80), 500))
+            timers.push(setTimeout(() => onProgressRef.current?.(100), 950))
+            timers.push(setTimeout(() => {
+                setIsVisible(false)
+                onCompleteRef.current?.()
+            }, 1250))
+            return () => {
+                timers.forEach(clearTimeout)
+            }
+        }
 
         // Start - report initial progress
         onProgressRef.current?.(10)
@@ -88,7 +107,7 @@ export default function WelcomeLoader({ onLoadingComplete, onAnimationProgress }
         return () => {
             timers.forEach(clearTimeout)
         }
-    }, [isMounted, prefersReducedMotion])
+    }, [isMounted, prefersReducedMotion, variant])
 
     // Multi-layer curtain configuration - adapts to current theme
     const curtainLayers = isDark

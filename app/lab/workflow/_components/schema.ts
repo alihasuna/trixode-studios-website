@@ -8,7 +8,7 @@ export const aboutSchema = z.object({
 })
 
 export const companySchema = z.object({
-    industry: z.string().min(1, "Pick the closest fit — you can refine later."),
+    industry: z.string().min(1, "Pick the closest fit. You can refine later."),
     size: z.string().min(1, "Roughly how big is the team?"),
 })
 
@@ -76,7 +76,7 @@ export const STEPS = [
     {
         key: "company",
         title: "What kind of work?",
-        subtitle: "Industry and rough team size — we'll calibrate the rest from here.",
+        subtitle: "Industry and rough team size. We'll calibrate the rest from here.",
     },
     {
         key: "ai",
@@ -96,7 +96,7 @@ export const STEPS = [
     {
         key: "intent",
         title: "Anything else we should know?",
-        subtitle: "Optional — but a sentence here often saves the first call.",
+        subtitle: "Optional, but a sentence here often saves the first call.",
     },
 ] as const
 

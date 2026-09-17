@@ -15,7 +15,7 @@ export default function Footer() {
               <span className="text-xl font-medium text-black dark:text-white font-grotesk">Trixode Studios</span>
             </div>
             <p className="text-black/60 dark:text-white/60 mb-6 font-light leading-relaxed max-w-md">
-              The AI agency that builds intelligent systems to automate your business and accelerate growth.
+              A research-led studio building measurable, secure agentic systems with human control at consequential decisions.
             </p>
             <div className="flex items-center space-x-2 text-black/50 dark:text-white/50 mb-4">
               <MapPin className="h-4 w-4" />
@@ -24,7 +24,7 @@ export default function Footer() {
             <div className="flex space-x-4">
               {[
                 { icon: Github, href: "https://github.com/trixodestudios", label: "GitHub" },
-                { icon: Linkedin, href: "https://www.linkedin.com/in/trixode-studios-054154311/", label: "LinkedIn" },
+                { icon: Linkedin, href: "https://www.linkedin.com/in/hussien-ballouk-233b3b116/", label: "Hussien Ballouk on LinkedIn" },
                 { icon: Mail, href: "mailto:hello@trixode.com", label: "Email" },
               ].map((social) => (
                 <a
@@ -51,6 +51,7 @@ export default function Footer() {
                 { name: "Projects", href: "/projects" },
                 { name: "Blog", href: "/blog" },
                 { name: "Writing", href: "/writing" },
+                { name: "Hussien Ballouk", href: "/hussien" },
                 { name: "Contact", href: "/contact" },
               ].map((link) => (
                 <li key={link.name}>

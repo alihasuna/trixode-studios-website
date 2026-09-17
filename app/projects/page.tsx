@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion"
 import Link from "next/link"
-import { ArrowLeft, ArrowRight, ExternalLink, Sparkles, Brain, Zap, Search, Target, Lightbulb, TrendingUp, Users, CheckCircle } from "lucide-react"
+import { ArrowLeft, ArrowRight, ExternalLink, ShieldCheck, Brain, Zap, Search, Target, Lightbulb, TrendingUp, Users, CheckCircle } from "lucide-react"
 import CustomCursor from "@/components/ui/CustomCursor"
 import FloatingNav from "@/components/layout/FloatingNav"
 import Footer from "@/components/footer"
@@ -149,7 +149,7 @@ export default function ProjectsPage() {
                     <div className="relative z-10 h-full flex items-center justify-center">
                       <div className="text-center">
                         <div className="w-20 h-20 glass rounded-2xl flex items-center justify-center mx-auto mb-4">
-                          <Sparkles className="h-10 w-10 text-brand-blue" />
+                          <ShieldCheck className="h-10 w-10 text-brand-blue" />
                         </div>
                         <h3 className="text-2xl font-light text-black dark:text-white font-grotesk">MORPHIKA</h3>
                       </div>
@@ -161,24 +161,23 @@ export default function ProjectsPage() {
                     <div className="flex items-center justify-between mb-6">
                       <h2 className="text-2xl font-medium text-black dark:text-white font-grotesk">MORPHIKA</h2>
                       <span className="bg-brand-blue/10 text-brand-blue border border-brand-blue/20 px-4 py-1 text-xs font-medium uppercase tracking-widest rounded-full">
-                        LIVE PRODUCT
+                        IN DEVELOPMENT
                       </span>
                     </div>
 
                     <p className="text-lg text-black/60 dark:text-white/60 mb-8 leading-relaxed font-light">
-                      AI-powered image generator for eCommerce. Create hyper-realistic product visuals that elevate your
-                      brand instantly with cutting-edge machine learning technology.
+                      Secure agentic email designed to help people act on their inbox while retaining the human decision for consequential actions.
                     </p>
 
                     {/* Features */}
                     <div className="mb-8">
-                      <h4 className="text-sm font-medium mb-4 text-black dark:text-white uppercase tracking-widest">Key Features</h4>
+                      <h4 className="text-sm font-medium mb-4 text-black dark:text-white uppercase tracking-widest">Product principles</h4>
                       <ul className="space-y-3 text-black/50 dark:text-white/50">
                         {[
-                          "Hyper-realistic product visualization",
-                          "Brand-consistent styling",
-                          "Instant generation & export",
-                          "Multiple format support",
+                          "Human approval for consequential actions",
+                          "Security-led agentic email workflows",
+                          "Governed context and integrations",
+                          "Clear evidence before action",
                         ].map((feature, index) => (
                           <motion.li
                             key={feature}
@@ -194,11 +193,11 @@ export default function ProjectsPage() {
                       </ul>
                     </div>
 
-                    {/* Tech Stack */}
+                    {/* Focus areas */}
                     <div className="mb-8">
-                      <h4 className="text-sm font-medium mb-4 text-black dark:text-white uppercase tracking-widest">Tech Stack</h4>
+                      <h4 className="text-sm font-medium mb-4 text-black dark:text-white uppercase tracking-widest">Focus areas</h4>
                       <div className="flex flex-wrap gap-2">
-                        {["AI/ML", "Python", "React", "API"].map((tech) => (
+                        {["Agentic email", "Security", "Human approval", "MCP"].map((tech) => (
                           <span
                             key={tech}
                             className="bg-black/5 dark:bg-white/5 text-black/70 dark:text-white/70 px-3 py-1 text-xs font-medium rounded border border-black/10 dark:border-white/10"

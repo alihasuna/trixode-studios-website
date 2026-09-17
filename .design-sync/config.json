@@ -1,0 +1,85 @@
+{
+  "projectId": "02bdcb92-470f-41db-bf68-b8d7de8d7e9f",
+  "shape": "package",
+  "pkg": "my-v0-project",
+  "globalName": "TrixodeUI",
+  "srcDir": "components/ui",
+  "tsconfig": "tsconfig.json",
+  "cssEntry": ".design-sync/compiled.css",
+  "docsDir": ".design-sync/docs",
+  "readmeHeader": ".design-sync/conventions.md",
+  "extraFonts": [
+    ".design-sync/fonts/fonts.css"
+  ],
+  "componentSrcMap": {
+    "Calendar": null,
+    "CustomCursor": null,
+    "WelcomeLoader": null,
+    "Toaster": "components/ui/sonner.tsx"
+  },
+  "overrides": {
+    "Dialog": {
+      "cardMode": "single",
+      "viewport": "900x620"
+    },
+    "AlertDialog": {
+      "cardMode": "single",
+      "viewport": "900x620"
+    },
+    "Sheet": {
+      "cardMode": "single",
+      "viewport": "900x620"
+    },
+    "Drawer": {
+      "cardMode": "single",
+      "viewport": "900x620"
+    },
+    "Popover": {
+      "cardMode": "single",
+      "viewport": "760x480"
+    },
+    "HoverCard": {
+      "cardMode": "single",
+      "viewport": "760x480"
+    },
+    "Tooltip": {
+      "cardMode": "single",
+      "viewport": "760x360"
+    },
+    "DropdownMenu": {
+      "cardMode": "single",
+      "viewport": "760x520"
+    },
+    "ContextMenu": {
+      "cardMode": "single",
+      "viewport": "760x520"
+    },
+    "Menubar": {
+      "cardMode": "single",
+      "viewport": "900x480"
+    },
+    "Command": {
+      "cardMode": "single",
+      "viewport": "760x520"
+    },
+    "Sidebar": {
+      "cardMode": "single",
+      "viewport": "1000x620"
+    },
+    "Table": {
+      "cardMode": "column"
+    },
+    "ChartContainer": {
+      "cardMode": "column"
+    },
+    "ResizablePanelGroup": {
+      "cardMode": "column"
+    },
+    "NavigationMenu": {
+      "cardMode": "column"
+    }
+  },
+  "libOverrides": {
+    "source-kit.mjs": "synth-entry mode: honor componentSrcMap nulls (dead-code calendar.tsx), let a pinned path shadow competing files (Toaster ambiguous between sonner.tsx and toaster.tsx), and union src-derived discovery with pins (a pin alone collapsed 246 components to 1)"
+  }
+}

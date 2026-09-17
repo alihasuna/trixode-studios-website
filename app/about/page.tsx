@@ -120,15 +120,14 @@ export default function AboutPage() {
               <h3 className="text-2xl font-medium mb-6 text-black dark:text-white font-grotesk">Origin of the Studio</h3>
               <div className="space-y-6 text-black/70 dark:text-white/70 leading-relaxed text-lg font-light">
                 <p>
-                  Trixode Studios was born from watching businesses struggle with AI adoption. Founded by Hussien Ballouk, our studio
-                  emerged from years of seeing companies miss massive opportunities because AI felt too complex, too risky, or too
-                  expensive. We saw businesses drowning in manual processes while AI solutions sat unused on the shelf.
+                  Trixode Studios was founded by physics researcher and technical founder Hussien Ballouk. The studio applies research
+                  discipline to software: define the evidence, expose uncertainty, and keep accountable people in control.
                 </p>
                 <p>
-                  We believe AI should solve real business problems — not create new ones. Every solution we build eliminates manual work, reduces costs, and drives measurable growth.
+                  We build agentic systems around measurable outcomes, clear operating boundaries, and human review for consequential actions.
                 </p>
                 <p>
-                  Based in Victoria, BC, we serve clients across North America. Our flagship product, Morphika, is an AI-powered image generator for eCommerce. And we're just getting started.
+                  Based in Victoria, BC, Trixode works with teams that need reliable automation. Morphika, our first product, is secure agentic email where the human retains the consequential decision.
                 </p>
               </div>
             </div>

@@ -15,7 +15,7 @@ export const COMPANY = {
   location: "Victoria, BC",
   region: "British Columbia, Canada",
   cities: ["Victoria", "Vancouver"],
-  tagline: "AI Software Company in Victoria, BC",
+  tagline: "Research-led Agentic Software Studio in Victoria, BC",
 } as const
 
 /**

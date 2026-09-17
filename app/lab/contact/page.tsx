@@ -27,7 +27,7 @@ export default function LabContactPage() {
         if (!formData.email.trim()) next.email = "We'll need an email to write back."
         else if (!/\S+@\S+\.\S+/.test(formData.email)) next.email = "That doesn't look like a valid email."
         if (!formData.message.trim()) next.message = "Tell us a little about the workflow."
-        else if (formData.message.trim().length < 10) next.message = "A bit more context, please — at least 10 characters."
+        else if (formData.message.trim().length < 10) next.message = "A bit more context, please (at least 10 characters)."
         setErrors(next)
         return Object.keys(next).length === 0
     }
@@ -179,7 +179,7 @@ export default function LabContactPage() {
                                     <div className="mb-6 p-4 bg-green-500/10 border border-green-500/20 rounded-lg flex items-center gap-3">
                                         <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0" />
                                         <p className="text-green-400 dark:text-green-300 font-medium text-sm">
-                                            Thanks — your note is in. We&apos;ll reply within a day.
+                                            Thanks, your note is in. We&apos;ll reply within a day.
                                         </p>
                                     </div>
                                 )}
@@ -272,7 +272,7 @@ export default function LabContactPage() {
                                         <Link href="/lab/workflow" className="text-brand-blue underline underline-offset-2 decoration-brand-blue/40 hover:decoration-brand-blue">
                                             workflow form
                                         </Link>{" "}
-                                        asks about industry, autonomy level, sensitive data, and infrastructure — six
+                                        asks about industry, autonomy level, sensitive data, and infrastructure. Six
                                         steps, no pressure.
                                     </p>
                                 </div>
@@ -341,7 +341,7 @@ export default function LabContactPage() {
                                 <div className="space-y-4">
                                     {[
                                         { num: "1", text: "Send us the rough shape of your workflow." },
-                                        { num: "2", text: "We respond with what we'd measure first — and what we wouldn't touch yet." },
+                                        { num: "2", text: "We respond with what we'd measure first, and what we wouldn't touch yet." },
                                         { num: "3", text: "If it's a fit, we set up a short call. No deck." },
                                     ].map((step) => (
                                         <div key={step.num} className="flex items-start gap-4">

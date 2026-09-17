@@ -24,7 +24,7 @@ export const professionalServiceSchema = {
   logo: new URL("/logo.png", siteUrl).toString(),
   image: new URL("/logo.png", siteUrl).toString(),
   description:
-    "Victoria BC's leading AI agency. We build custom AI agents, high-performance websites, and AI-powered SEO for businesses in Victoria, Vancouver, and across British Columbia.",
+    "A Victoria, BC research-led studio building measurable, secure agentic systems with human control at consequential decisions.",
   email: "hello@trixode.com",
   priceRange: "$$",
   address: {
@@ -76,19 +76,23 @@ export const professionalServiceSchema = {
   ],
   founder: {
     "@type": "Person",
+    "@id": `${siteUrl}/hussien#person`,
     name: "Hussien Ballouk",
-    jobTitle: "Founder & CEO",
+    jobTitle: "Physics researcher and technical founder",
+    url: new URL("/hussien", siteUrl).toString(),
   },
   employee: [
     {
       "@type": "Person",
+      "@id": `${siteUrl}/hussien#person`,
       name: "Hussien Ballouk",
-      jobTitle: "Founder & CEO",
+      jobTitle: "Physics researcher and technical founder",
+      url: new URL("/hussien", siteUrl).toString(),
     },
     {
       "@type": "Person",
       name: "Amir Ahmadian",
-      jobTitle: "Chief Technology Officer",
+      jobTitle: "Chief Scientific Officer",
     },
   ],
   contactPoint: {
@@ -99,7 +103,8 @@ export const professionalServiceSchema = {
   },
   sameAs: [
     "https://github.com/trixodestudios",
-    "https://linkedin.com/in/trixode-studios-054154311",
+    "https://x.com/trixodestudios",
+    "https://www.instagram.com/trixodestudios.inc/",
   ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",

@@ -4,7 +4,7 @@ import { createMetadata } from "@/lib/metadata"
 export const metadata: Metadata = createMetadata({
   title: "Our Team — Trixode Studios",
   description:
-    "Meet the team behind Victoria's AI agency. Engineers and scientists building AI agents, websites, and automation for businesses across British Columbia.",
+    "Meet the researchers and builders behind Trixode Studios, a Victoria team building measurable, secure agentic systems.",
   keywords: [
     "Trixode Studios team",
     "AI developers Victoria BC",
