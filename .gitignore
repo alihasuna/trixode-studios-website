@@ -41,3 +41,14 @@ next-env.d.ts
 # client-confidential pitch artifacts — must not be committed/deployed
 /app/pitch/adriftwood/Adriftwood_Service_Tracker.xlsx
 /app/pitch/adriftwood/contract.html
+
+# design-sync (claude.ai/design) — staged scripts + generated output + machine state
+/.ds-sync/
+/ds-bundle/
+/.design-sync/.cache/
+/.design-sync/learnings/
+/.design-sync/node_modules
+# regenerated deterministically by .design-sync/build-css.mjs (needs no network).
+# .design-sync/fonts/ IS committed — fetching those needs network, so committing
+# them keeps a fresh clone buildable offline.
+/.design-sync/compiled.css

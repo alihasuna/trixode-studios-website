@@ -1,0 +1,26 @@
+{
+  "_comment": "Components scoped for authored previews (the ~40 families the user picked). Compound sub-parts are composed INSIDE their parent's preview rather than getting their own. The three separator/link entries are here because validate flagged them [RENDER_THIN] and they are standalone-enough that a floor card would be a real gap - see NOTES.md 'Known render warns'.",
+  "scope": [
+    "Button", "Toggle", "ToggleGroup",
+
+    "Input", "Textarea", "Label", "Checkbox", "RadioGroup", "Select",
+    "Switch", "Slider", "Form", "InputOTP", "InputOTPSeparator",
+
+    "Card", "Table", "Badge", "Avatar", "Progress", "Skeleton", "ChartContainer",
+
+    "Alert", "Toast", "Toaster",
+
+    "Dialog", "AlertDialog", "Sheet", "Drawer",
+
+    "DropdownMenu", "ContextMenu", "Menubar", "Command",
+
+    "Popover", "HoverCard", "Tooltip",
+
+    "Accordion", "Collapsible", "Tabs", "Carousel", "ResizablePanelGroup",
+    "ScrollArea", "Separator", "AspectRatio", "Sidebar",
+
+    "Breadcrumb", "BreadcrumbSeparator", "Pagination", "PaginationLink", "NavigationMenu",
+
+    "HexagonLogo", "ThemeToggle"
+  ]
+}

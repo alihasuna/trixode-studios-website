@@ -121,6 +121,30 @@
 ### Focus Management
 - **Missing**: No visible custom focus styles found (relying on browser defaults)
 
+## Recent Fixes (2026-05-13 Audit — Lab Pages Mobile)
+
+### Lab Homepage (`app/lab/page.tsx`)
+- FIXED: Hero h1 `whitespace-nowrap` on `motion.span` caused hard clipping at 375/393/768px. Removed `whitespace-nowrap`; scaled font from `text-5xl` down to `text-[2.5rem]` at mobile base.
+- FIXED: Research grid cards `p-12` on all sizes → `p-8 md:p-12` (48px padding on mobile was excessive)
+- CONFIRMED: NeonBlob correctly NOT rendered on mobile. `showHeroBlob` gated behind `enableHeavyEffects` (requires `isDesktop && !prefersReducedMotion`). The mobile blob `div.lg:hidden` wrapper exists in DOM but is empty — this is correct behavior.
+- CONFIRMED: Aurora static fallback (`div` not `motion.div`) renders on mobile — no heavy animations on mobile. Correct.
+- NOTE: The mobile blob wrapper `w-[360px]` fits within 393px viewport (centered, no overflow) — not an issue despite what was suspected.
+
+### Lab Contact Page (`app/lab/contact/page.tsx`)
+- FIXED: Form inputs missing `id` + labels missing `htmlFor` — Lighthouse a11y 89 → 100
+- FIXED: Wrapped content in `<main>` — resolves `landmark-one-main` failure
+- FIXED: `text-brand-blue` link inside body text now has permanent `underline` — resolves `link-in-text-block` (color-only distinction)
+
+### Lab Workflow Page (`app/lab/workflow/page.tsx` + WorkflowShell.tsx)
+- FIXED: `WorkflowShell` `div.flex-1` → `main.flex-1` — resolves `landmark-one-main`
+- FIXED: Footer disclaimer paragraph `text-black/40 dark:text-white/40` → `/55` — resolves color-contrast failure
+- FIXED: `LabFooter` nav label `h3` elements → `p` elements — resolves `heading-order` failure (h3 without h1/h2 ancestor on short pages)
+- Lighthouse workflow: 93 → 100; contact: 89 → 100; homepage: still 100
+
+### Key h1 Overflow Pattern (for future audits)
+- `whitespace-nowrap` on `motion.span` inside `block overflow-hidden` parents CLIPS silently — the parent `overflow: hidden` hides the overflow without causing horizontal scroll. Always check `scrollWidth > clientWidth` on each span, not just `document.scrollWidth`.
+- Safe h1 font scale for this page: `text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px]`
+
 ## Recent Fixes (2026-02-06 Audit)
 
 ### NeonBlob Component

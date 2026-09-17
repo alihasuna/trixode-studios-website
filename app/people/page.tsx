@@ -113,7 +113,7 @@ export default function PeoplePage() {
                   <div className="relative w-full h-full rounded-2xl overflow-hidden border border-black/10 dark:border-white/10 shadow-2xl group-hover:scale-105 transition-transform duration-500">
                     <Image
                       src="https://res.cloudinary.com/dmkfxjv0s/image/upload/w_400,h_400,c_fill,g_face,f_auto,q_auto/v1749088385/ceo_photo.png"
-                      alt="Hussien Ballouk - CEO of Trixode Studios"
+                      alt="Hussien Ballouk, physics researcher and founder of Trixode Studios"
                       fill
                       sizes="(max-width: 640px) 192px, 224px"
                       className="object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-500"
@@ -126,17 +126,17 @@ export default function PeoplePage() {
                 {/* Content */}
                 <div>
                   <h2 className="text-3xl md:text-4xl font-medium mb-3 text-black dark:text-white font-grotesk">HUSSIEN BALLOUK</h2>
-                  <p className="text-brand-blue mb-6 font-medium text-sm tracking-widest uppercase">FOUNDER & CEO</p>
+                  <p className="text-brand-blue mb-6 font-medium text-sm tracking-widest uppercase">PHYSICS RESEARCHER & FOUNDER</p>
 
                   <blockquote className="text-lg text-black/70 dark:text-white/70 mb-8 leading-relaxed font-light italic">
-                    "I build elegant, high-impact software that empowers researchers, scientists, and creators."
+                    "I study how computation can recover structure from electron measurements, then apply the same care to secure agentic systems."
                   </blockquote>
 
                   {/* Social Links */}
                   <div className="flex space-x-4 justify-center">
                     {[
                       { icon: Github, href: "https://github.com/trixodestudios" },
-                      { icon: Linkedin, href: "https://www.linkedin.com/in/trixode-studios-054154311/" },
+                      { icon: Linkedin, href: "https://www.linkedin.com/in/hussien-ballouk-233b3b116/" },
                       { icon: Mail, href: "mailto:ceo@trixode-studios.com" },
                     ].map((social, index) => (
                       <motion.a
@@ -152,6 +152,12 @@ export default function PeoplePage() {
                       </motion.a>
                     ))}
                   </div>
+                  <Link
+                    href="/hussien"
+                    className="mt-6 inline-flex items-center text-sm font-medium text-brand-blue hover:underline"
+                  >
+                    Research and founder profile
+                  </Link>
                 </div>
               </div>
             </div>
