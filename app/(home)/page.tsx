@@ -1,11 +1,10 @@
 import type { Metadata } from "next"
 import { TwoPaths, type PathOption } from "@/components/entry/TwoPaths"
 import { DESTINATIONS } from "@/lib/destinations"
-// The two-paths scene (docs/entry/two-paths-concept.png is the source concept).
-// Replace this file with a text-free export of the same scene — 3:2, ≥1536px
-// wide, same filename; the interim file is the concept render with its
-// baked-in labels inpainted out. Static import → Next sizes it and builds the
-// blur placeholder shown while the full image streams in.
+// The two-paths scene: the founder's text-free export of the concept in
+// docs/entry/two-paths-concept.png (1672×941). Swap the file, keep the name.
+// Static import → Next sizes it and builds the blur placeholder shown while
+// the full image streams in.
 import scene from "@/public/images/entry/two-paths.jpg"
 
 const baseUrl =

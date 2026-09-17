@@ -15,7 +15,7 @@ Effort is wall-clock, rough.
 |---|---|---|---|
 | 0.1 | Creative host | `creative.trixode-studios.com` (subdomain, separate Vercel project). Path-based `/creative` would need a multi-zone rewrite and a `basePath` in the Creative app; not worth it. | Phases 2, 3 |
 | 0.2 | Launch order | Entry + Lab first, Creative door shows "Opening soon" until its host is live; or hold everything until both are live. Recommend the first. | Phase 2.3 |
-| 0.3 | Scene asset | Export the same concept scene with no text, 3:2, 2400px wide or more. Optional: a 4:5 portrait crop for phones. | Phase 1 |
+| 0.3 | Scene asset | Done: text-free export in place (1672×941). Optional later: 2400px+ export, 4:5 portrait crop for phones. | Phase 1 |
 | 0.4 | Creative provenance | The Creative site still ships models and a handshake flipbook extracted from shader.se (`trixode-agency/TODO.md`, "Licensing / provenance"). License, replace, or accept before the Creative host goes public. | Phase 4 |
 | 0.5 | Creative showcase permissions | FIXR, IntelliCycle, Adriftwood appear in the work strip. Confirm each may be shown. | Phase 4 |
 | 0.6 | Booking + social links | `BOOK_A_CALL` is a mailto placeholder; LinkedIn URL differs between repos. Pick the canonical ones. | Phase 2.4 |
