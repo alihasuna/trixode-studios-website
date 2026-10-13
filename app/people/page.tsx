@@ -98,7 +98,8 @@ export default function PeoplePage() {
 
           {/* People Grid */}
           <motion.div
-            className="grid grid-cols-1 xl:grid-cols-2 gap-12 mb-20"
+            id="team"
+            className="grid grid-cols-1 gap-12 mb-20 max-w-xl mx-auto w-full"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -113,7 +114,7 @@ export default function PeoplePage() {
                   <div className="relative w-full h-full rounded-2xl overflow-hidden border border-black/10 dark:border-white/10 shadow-2xl group-hover:scale-105 transition-transform duration-500">
                     <Image
                       src="https://res.cloudinary.com/dmkfxjv0s/image/upload/w_400,h_400,c_fill,g_face,f_auto,q_auto/v1749088385/ceo_photo.png"
-                      alt="Hussien Ballouk, physics researcher and founder of Trixode Studios"
+                      alt="Hussien Ali Ballouk Hernandez, Founder & Security Lead at Trixode Studios"
                       fill
                       sizes="(max-width: 640px) 192px, 224px"
                       className="object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-500"
@@ -125,19 +126,24 @@ export default function PeoplePage() {
 
                 {/* Content */}
                 <div>
-                  <h2 className="text-3xl md:text-4xl font-medium mb-3 text-black dark:text-white font-grotesk">HUSSIEN BALLOUK</h2>
-                  <p className="text-brand-blue mb-6 font-medium text-sm tracking-widest uppercase">PHYSICS RESEARCHER & FOUNDER</p>
+                  <h2 className="text-3xl md:text-4xl font-medium mb-3 text-black dark:text-white font-grotesk">Hussien Ali Ballouk Hernandez</h2>
+                  <p className="text-brand-blue mb-6 font-medium text-sm tracking-widest">Founder &amp; Security Lead</p>
 
-                  <blockquote className="text-lg text-black/70 dark:text-white/70 mb-8 leading-relaxed font-light italic">
-                    "I study how computation can recover structure from electron measurements, then apply the same care to secure agentic systems."
-                  </blockquote>
+                  <p className="text-lg text-black/70 dark:text-white/70 mb-6 leading-relaxed font-light">
+                    Founder and Security Lead at Trixode Studios. Responsible for the security of Trixode&#39;s agentic systems and infrastructure, including threat modeling, access control, agent tool permissions, and infrastructure hardening across product and client deployments.
+                  </p>
+                  <p className="mb-8 text-sm text-black/60 dark:text-white/60">
+                    <a href="mailto:hussienb@trixode-studios.com" className="hover:text-black dark:hover:text-white transition-colors">
+                      hussienb@trixode-studios.com
+                    </a>
+                  </p>
 
                   {/* Social Links */}
                   <div className="flex space-x-4 justify-center">
                     {[
                       { icon: Github, href: "https://github.com/trixodestudios" },
                       { icon: Linkedin, href: "https://www.linkedin.com/in/hussien-ballouk-233b3b116/" },
-                      { icon: Mail, href: "mailto:ceo@trixode-studios.com" },
+                      { icon: Mail, href: "mailto:hussienb@trixode-studios.com" },
                     ].map((social, index) => (
                       <motion.a
                         key={index}
@@ -158,56 +164,6 @@ export default function PeoplePage() {
                   >
                     Research and founder profile
                   </Link>
-                </div>
-              </div>
-            </div>
-
-            {/* Amir Ahmadian */}
-            <div className="glass rounded-3xl p-10 relative overflow-hidden group hover:bg-black/[0.06] dark:hover:bg-white/[0.06] transition-all duration-500 border border-black/5 dark:border-white/5 hover:border-black/10 dark:hover:border-white/10">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-brand-purple/10 to-transparent rounded-full blur-3xl -z-10 group-hover:opacity-100 transition-opacity duration-500" />
-
-              <div className="flex flex-col items-center text-center gap-8">
-                {/* Avatar */}
-                <div className="relative w-48 h-48 sm:w-56 sm:h-56">
-                  <div className="relative w-full h-full rounded-2xl overflow-hidden border border-black/10 dark:border-white/10 shadow-2xl group-hover:scale-105 transition-transform duration-500">
-                    <Image
-                      src="https://res.cloudinary.com/dnsl6kst1/image/upload/v1770191425/ChatGPT_Image_Feb_3_2026_11_47_46_PM_sasgnj.png"
-                      alt="Amir Ahmadian - Chief Scientific Officer at Trixode Studios"
-                      fill
-                      sizes="(max-width: 640px) 192px, 224px"
-                      className="object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-500"
-                      priority={false}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div>
-                  <h2 className="text-3xl md:text-4xl font-medium mb-3 text-black dark:text-white font-grotesk">AMIR AHMADIAN</h2>
-                  <p className="text-brand-purple mb-6 font-medium text-sm tracking-widest uppercase">CHIEF SCIENTIFIC OFFICER</p>
-
-                  <blockquote className="text-lg text-black/70 dark:text-white/70 mb-8 leading-relaxed font-light italic">
-                    "PhD physicist and CSO focused on applying machine learning and systems thinking to translate complex
-                    research into reliable, real-world software."
-                  </blockquote>
-
-                  {/* Social Links */}
-                  <div className="flex space-x-4 justify-center">
-                    {[{ icon: Linkedin, href: "https://www.linkedin.com/in/amir-ahmadian12/" }].map((social, index) => (
-                      <motion.a
-                        key={index}
-                        href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="magnetic w-12 h-12 border border-black/10 dark:border-white/10 rounded-full flex items-center justify-center hover:bg-black dark:hover:bg-white text-black dark:text-white hover:text-white dark:hover:text-black transition-all duration-300"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <social.icon className="h-5 w-5" />
-                      </motion.a>
-                    ))}
-                  </div>
                 </div>
               </div>
             </div>

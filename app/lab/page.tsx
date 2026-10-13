@@ -87,18 +87,6 @@ const TEAM: TeamMember[] = [
         ],
         linkedin: "https://www.linkedin.com/in/hussien-ballouk-233b3b116/?locale=en",
     },
-    {
-        name: "Amir Ahmadian",
-        role: "Founder",
-        image:
-            "https://res.cloudinary.com/dnsl6kst1/image/upload/w_200,h_200,c_fill,g_face,f_auto,q_auto/v1770191425/ChatGPT_Image_Feb_3_2026_11_47_46_PM_sasgnj.png",
-        blurb: "Materials-science rigor with startup-tested execution, anchoring the lab's theory in real systems.",
-        credentials: [
-            "Ph.D. Materials Science",
-            "Background in materials-science startups",
-        ],
-        linkedin: "https://www.linkedin.com/in/amir-ahmadian12/",
-    },
 ]
 
 // Hero beats are timed against the welcome intro: 3.2s after the full intro,
@@ -510,7 +498,7 @@ export default function LabPage() {
                             A small group of science people working on interesting problems in business.
                         </p>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+                        <div className="grid grid-cols-1 gap-8 max-w-sm mx-auto">
                             {TEAM.map((member, index) => (
                                 <motion.div
                                     key={member.name}

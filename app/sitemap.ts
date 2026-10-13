@@ -9,7 +9,7 @@ const baseUrl =
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // Last meaningful content update date — update this when site content changes
-  const lastContentUpdate = new Date('2026-08-23')
+  const lastContentUpdate = new Date('2026-10-12')
 
   const staticRoutes: Array<{
     route: string
