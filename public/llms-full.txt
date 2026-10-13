@@ -93,9 +93,6 @@ Trixode Studios builds on modern, proven technologies:
 ### Hussien Ballouk — Founder & CEO
 Background in physics and materials science research. Founded Trixode Studios to make AI accessible to businesses that need practical automation solutions.
 
-### Amir Ahmadian — Chief Technology Officer
-Engineering expertise spanning AI systems, web architecture, and cloud infrastructure.
-
 ---
 
 ## Key Differentiators

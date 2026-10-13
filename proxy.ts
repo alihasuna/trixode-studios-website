@@ -3,7 +3,7 @@ import type { NextRequest } from "next/server"
 import { PREVIEW_AUTH_HASH, PREVIEW_COOKIE, sha256Hex } from "@/lib/preview-auth"
 
 // Temporary: serve the under-construction page on every route except the
-// canonical Hussien identity hub. Delete this file to bring the full site back.
+// canonical Hussien identity hub and the public team page (/people). Delete this file to bring the full site back.
 //
 // A valid preview cookie (set via /preview) bypasses the holding page and
 // serves the full site — see lib/preview-auth.ts.
@@ -33,8 +33,8 @@ export default async function proxy(request: NextRequest) {
 }
 
 export const config = {
-    // Everything except the holding page, the public identity hub, the preview
-    // gate, API routes, Next internals, and static files (anything with a file
+    // Everything except the holding page, the public identity hub, the public
+    // team page, the preview gate, API routes, Next internals, and static files (anything with a file
     // extension).
-    matcher: ["/((?!under-construction|hussien(?:/.*)?|preview(?:/.*)?|api|_next|.*\\..*).*)"],
+    matcher: ["/((?!under-construction|hussien(?:/.*)?|people(?:/.*)?|preview(?:/.*)?|api|_next|.*\\..*).*)"],
 }

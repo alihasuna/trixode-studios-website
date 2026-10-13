@@ -89,11 +89,6 @@ export const professionalServiceSchema = {
       jobTitle: "Physics researcher and technical founder",
       url: new URL("/hussien", siteUrl).toString(),
     },
-    {
-      "@type": "Person",
-      name: "Amir Ahmadian",
-      jobTitle: "Chief Scientific Officer",
-    },
   ],
   contactPoint: {
     "@type": "ContactPoint",
