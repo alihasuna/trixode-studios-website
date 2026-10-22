@@ -11,10 +11,10 @@ export const LAB_SHORT_DESCRIPTION =
     "The research and engineering arm of Trixode Studios (Victoria, BC): complexity and security of agentic systems, agent harnesses and agentic features."
 
 // A child segment's `openGraph` replaces the parent's entirely, so every Lab
-// layout re-declares this image. TODO: swap for a dedicated 1200x630 Lab card.
+// layout re-declares this image.
 export const LAB_OG_IMAGE = {
-    url: "/images/entry/two-paths.jpg",
-    width: 1672,
-    height: 941,
-    alt: "Trixode Studios: the Lab and Creative paths",
+    url: "/og/lab.png",
+    width: 1200,
+    height: 630,
+    alt: "Trixode Lab: the mathematics of agentic systems",
 }
