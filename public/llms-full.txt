@@ -57,7 +57,7 @@ Connecting AI systems to existing CRM, ERP, and business tools without disruptin
 ## Products
 
 ### Morphika
-An AI-powered image generator designed specifically for eCommerce businesses. Morphika helps online stores create product images, marketing materials, and visual content using artificial intelligence. Website: https://morphika.ai
+Trixode Studios' own agentic email product: secure, multi-account email where every send is gated, signed, and written to an append-only ledger. Website: https://morphika.ai
 
 ---
 
