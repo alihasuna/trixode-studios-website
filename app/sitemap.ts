@@ -38,9 +38,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { route: '/accessibility', priority: 0.3, changeFrequency: 'yearly' },
   ]
 
+  // Lab micro-site content was rewritten separately from the rest of the site.
+  const labContentUpdate = new Date('2026-10-22')
+
   const staticEntries = staticRoutes.map((item) => ({
     url: `${baseUrl}${item.route}`,
-    lastModified: lastContentUpdate,
+    lastModified: item.route.startsWith('/lab') ? labContentUpdate : lastContentUpdate,
     changeFrequency: item.changeFrequency,
     priority: item.priority,
   }))

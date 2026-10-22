@@ -1,12 +1,33 @@
 # Trixode Studios
 
-> AI Software Company based in Victoria, BC, Canada
+> A research-led studio in Victoria, BC, Canada, building measurable, secure agentic systems. One brand, two destinations: Trixode Lab (research and engineering, https://www.trixode-studios.com/lab) and Trixode Creative.
 
 ## About
 
 Trixode Studios is an AI agency based in Victoria, British Columbia, Canada. We build custom AI agents, high-performance websites, and AI-powered SEO systems for businesses in Victoria, Vancouver, and across British Columbia.
 
 Founded by Hussien Ballouk, Trixode Studios combines AI engineering with applied business strategy to help companies automate workflows, capture more leads, and grow revenue using artificial intelligence.
+
+## Trixode Lab
+
+URL: https://www.trixode-studios.com/lab
+
+Trixode Lab is the research and engineering arm of Trixode Studios (Victoria, BC). It studies the complexity and security of agentic systems and builds agent harnesses and agentic features on real products and research platforms.
+
+Work shown on the Lab page:
+
+- **Morphika** (https://morphika.ai): Trixode Studios' own agentic email product.
+- **Intellicycle** (https://www.intellicycle.net/): Collaboration. An agentic marketplace for recycled metals; Trixode Lab helps build its agent harness and agentic features. Intellicycle is not a Trixode product.
+- **Fixr**: Collaboration on a property and asset-operations platform.
+- **Trixode OS**: the studio's in-house design system and tooling.
+- **gemicro**: Claude Code skills and a command-line tool for the Electron Microscopy Research Group at the University of Victoria. It is the agent layer that runs on the group's ElectroSim computing platform. Microscope sessions, simulations, processing and compute jobs are recorded in a hash-chained ledger anchored to Morphika.
+- **Physics simulations**: fusor-sim (ion dynamics in a Farnsworth fusor, https://www.trixode-studios.com/fusor-sim/fusor_sim.html) and donut-sim (tokamak magnetic confinement, https://www.trixode-studios.com/donut-sim/donut_sim.html), written in C++ with raylib and compiled to WebAssembly. Write-ups: https://www.trixode-studios.com/writing/star-in-a-jar and https://www.trixode-studios.com/writing/energy-donut
+
+Lab pages:
+
+- https://www.trixode-studios.com/lab (overview, research areas, work)
+- https://www.trixode-studios.com/lab/workflow (six-step intake to describe an agentic workflow)
+- https://www.trixode-studios.com/lab/contact (contact the Lab)
 
 ## Services
 
@@ -18,7 +39,7 @@ Founded by Hussien Ballouk, Trixode Studios combines AI engineering with applied
 
 ## Products
 
-- **Morphika**: AI-powered image generator for eCommerce businesses.
+- **Morphika** (https://morphika.ai): Trixode Studios' own agentic email product.
 
 ## Location
 
@@ -28,14 +49,14 @@ Founded by Hussien Ballouk, Trixode Studios combines AI engineering with applied
 
 ## Leadership
 
-- Hussien Ballouk — Founder & CEO
+- Hussien Ballouk — Founder & CEO; Physics PhD candidate, University of Victoria (https://www.trixode-studios.com/hussien)
 
 ## Key Pages
 
 - https://www.trixode-studios.com/ (homepage)
+- https://www.trixode-studios.com/lab (Trixode Lab)
 - https://www.trixode-studios.com/about
 - https://www.trixode-studios.com/pricing
-- https://www.trixode-studios.com/services
 - https://www.trixode-studios.com/projects
 - https://www.trixode-studios.com/blog
 - https://www.trixode-studios.com/contact

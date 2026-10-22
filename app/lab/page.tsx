@@ -35,7 +35,7 @@ const RESEARCH_AREAS = [
     {
         num: "04",
         title: "Adversarial pressure",
-        desc: "Quantifying robustness under real counterparties pushing back. Benchmarks lie; live markets don't.",
+        desc: "Quantifying robustness under prompt injection, hostile inputs, and counterparties that push back, not just benchmark scores.",
     },
     {
         num: "05",
@@ -49,18 +49,56 @@ const RESEARCH_AREAS = [
     },
 ]
 
-const PROJECTS: { name: string; status: string; desc: string; href?: string }[] = [
+type Project = { name: string; status: string; desc: string; href?: string }
+
+const PROJECT_GROUPS: { label: string; projects: Project[] }[] = [
     {
-        name: "Intellicycle",
-        status: "Live · 2026",
-        desc: "An agentic marketplace for recycled metals. Real counterparties, real settlement, real adversarial pressure. The surface where our measurements stop being theoretical.",
-        href: "https://www.intellicycle.net/",
+        label: "Agentic systems",
+        projects: [
+            {
+                name: "Intellicycle",
+                status: "Collaboration",
+                desc: "An agentic marketplace for recycled metals. We help build the agent harness and agentic features behind it.",
+                href: "https://www.intellicycle.net/",
+            },
+            {
+                name: "Morphika",
+                status: "Product",
+                desc: "Our agentic email product. Every action is gated, signed, and written to an append-only ledger.",
+                href: "https://morphika.ai",
+            },
+            {
+                name: "Fixr",
+                status: "Collaboration",
+                desc: "A collaboration with the Fixr team on product design and agentic workflows for property and asset operations.",
+            },
+            {
+                name: "Trixode OS",
+                status: "In-house",
+                desc: "Our own design system: one set of tokens and templates behind every deck, document, and interface we ship.",
+            },
+        ],
     },
     {
-        name: "Morphika",
-        status: "Live · 2026",
-        desc: "An agentic solution for email: autonomous handling of inbox workflows that usually need a human in the loop. Where information-flow and capability-boundary measures get tested daily.",
-        href: "https://morphika.ai",
+        label: "Scientific computing",
+        projects: [
+            {
+                name: "gemicro",
+                status: "Research tooling",
+                desc: "Agent skills and a CLI for an electron microscopy research group at UVic. Every session, simulation, and HPC job lands in a hash-chained ledger anchored to Morphika.",
+            },
+            {
+                name: "ElectroSim",
+                status: "Research platform",
+                desc: "The group's shared GPU computing hub. gemicro is the agent layer on top, so simulation and analysis run with a full audit trail.",
+            },
+            {
+                name: "Physics simulations",
+                status: "Open science",
+                desc: "Real-time fusion confinement: ion dynamics in a Farnsworth fusor and charged particles in a tokamak, compiled to WebAssembly to run in a browser tab.",
+                href: "/writing/star-in-a-jar",
+            },
+        ],
     },
 ]
 
@@ -279,9 +317,7 @@ export default function LabPage() {
 
                             <motion.h1
                                 className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px] font-light mb-10 leading-[1.08] tracking-[-0.02em]"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: heroBase + 0.1 }}
+                                initial={false}
                             >
                                 <span className="block overflow-hidden pb-[0.25em]">
                                     <motion.span
@@ -313,12 +349,14 @@ export default function LabPage() {
                                 transition={{ duration: 0.5, delay: heroBase + 0.4 }}
                                 className="text-lg md:text-xl text-black/60 dark:text-white/60 mb-12 max-w-[600px] leading-relaxed font-light"
                             >
-                                We bring academic frameworks to bear on the{" "}
+                                We bring academic frameworks to the{" "}
                                 <span className="text-black dark:text-white">complexity</span> and{" "}
                                 <span className="text-black dark:text-white">security</span> of
-                                specific agentic systems. Our live testbed is{" "}
-                                <span className="text-black dark:text-white">Intellicycle</span>, an agentic
-                                marketplace for recycled metals.
+                                agentic systems, and we build the harnesses that make them work. Today
+                                that means helping{" "}
+                                <span className="text-black dark:text-white">Intellicycle</span> develop its
+                                agentic marketplace for recycled metals, shipping Morphika, and building
+                                research tooling for science labs.
                             </motion.p>
 
                             <motion.div
@@ -373,9 +411,10 @@ export default function LabPage() {
                                 className="mt-8 max-w-[680px] text-[16px] md:text-[17px] leading-[1.7] text-black/60 dark:text-white/60 font-light"
                             >
                                 We study the structural properties of agent behaviour: branching, information
-                                flow, capability boundaries, adversarial pressure. We translate them into
-                                measures operators can act on. The work is exercised on real workflows, not
-                                benchmarks.
+                                flow, capability boundaries, adversarial pressure. Then we build the harness
+                                around the model (tools, permissions, memory, audit) so those measures turn
+                                into systems operators can trust. The work runs on real products and
+                                research platforms, not benchmarks.
                             </motion.p>
                         </div>
                     </div>
@@ -425,12 +464,17 @@ export default function LabPage() {
                         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between mb-24 pb-8 border-b border-black/10 dark:border-white/10">
                             <span className="text-sm text-brand-blue font-medium font-grotesk">03</span>
                             <h2 className="text-5xl md:text-7xl font-light max-w-[600px] leading-tight font-grotesk">
-                                Live work
+                                Work
                             </h2>
                         </div>
 
+                        {PROJECT_GROUPS.map((group) => (
+                        <div key={group.label} className="mb-20 last:mb-0">
+                        <h3 className="font-mono text-[11px] uppercase tracking-[0.22em] text-black/40 dark:text-white/40 mb-8">
+                            {group.label}
+                        </h3>
                         <div className="flex flex-col gap-4">
-                            {PROJECTS.map((project, index) => {
+                            {group.projects.map((project, index) => {
                                 const Content = (
                                     <>
                                         <div className="absolute inset-0 bg-gradient-to-r from-brand-blue/5 to-transparent -translate-x-full group-hover:translate-x-0 transition-transform duration-700" />
@@ -438,28 +482,30 @@ export default function LabPage() {
                                             {project.status}
                                         </span>
                                         <div className="relative">
-                                            <h3 className="text-3xl md:text-4xl font-normal font-grotesk mb-3">
+                                            <h4 className="text-3xl md:text-4xl font-normal font-grotesk mb-3">
                                                 {project.name}
-                                            </h3>
+                                            </h4>
                                             <p className="text-black/60 dark:text-white/60 leading-relaxed font-light max-w-[640px]">
                                                 {project.desc}
                                             </p>
                                         </div>
-                                        <div className="w-12 h-12 border border-black/10 dark:border-white/10 rounded-full flex items-center justify-center group-hover:border-brand-blue group-hover:rotate-45 transition-all duration-400 flex-shrink-0">
-                                            <ArrowRight className="w-5 h-5" />
-                                        </div>
+                                        {project.href ? (
+                                            <div className="w-12 h-12 border border-black/10 dark:border-white/10 rounded-full flex items-center justify-center group-hover:border-brand-blue group-hover:rotate-45 transition-all duration-400 flex-shrink-0">
+                                                <ArrowRight className="w-5 h-5" />
+                                            </div>
+                                        ) : (
+                                            <div className="hidden md:block w-12" aria-hidden />
+                                        )}
                                     </>
                                 )
 
-                                const wrapperClass =
-                                    "magnetic grid grid-cols-1 md:grid-cols-[160px_1fr_auto] gap-6 md:gap-8 p-10 md:p-12 border border-black/[0.08] dark:border-white/[0.08] items-start md:items-center relative overflow-hidden hover:border-black/20 dark:hover:border-white/20 hover:translate-x-2 transition-all duration-400 group"
+                                const wrapperClass = `${project.href ? "magnetic hover:translate-x-2 " : ""}grid grid-cols-1 md:grid-cols-[160px_1fr_auto] gap-6 md:gap-8 p-10 md:p-12 border border-black/[0.08] dark:border-white/[0.08] items-start md:items-center relative overflow-hidden hover:border-black/20 dark:hover:border-white/20 transition-all duration-400 group`
 
                                 return project.href ? (
                                     <motion.a
                                         key={project.name}
                                         href={project.href}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
+                                        {...(project.href.startsWith("http") && { target: "_blank", rel: "noopener noreferrer" })}
                                         initial={{ opacity: 0, y: 24 }}
                                         whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true }}
@@ -482,6 +528,8 @@ export default function LabPage() {
                                 )
                             })}
                         </div>
+                        </div>
+                        ))}
                     </div>
                 </section>
 
