@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     siteName: "Trixode Studios",
     images: [
       {
-        url: "/logo.png",
+        url: "/og/studio.png",
         width: 1200,
         height: 630,
         alt: "Trixode Studios, a research-led agentic software studio in Victoria, BC",
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     title: "Trixode Studios — Secure Agentic Systems",
     description:
       "A research-led studio building measurable, secure agentic systems with accountable human decisions.",
-    images: ["/logo.png"],
+    images: ["/og/studio.png"],
   },
   robots: {
     index: true,
