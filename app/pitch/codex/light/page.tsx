@@ -404,7 +404,7 @@ export default function CodexPitchPageLight() {
                 <p className="text-sm text-slate-700">Book the 90-minute Luxury Growth Blueprint and lock implementation timeline.</p>
               </div>
               <a
-                href="mailto:hello@trixode.com?subject=Maz%20Majidi%20-%20Luxury%20Growth%20Blueprint"
+                href="mailto:hello@trixode-studios.com?subject=Maz%20Majidi%20-%20Luxury%20Growth%20Blueprint"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
               >
                 Book Blueprint

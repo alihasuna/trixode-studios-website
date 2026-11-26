@@ -12,6 +12,7 @@ import CustomCursor from "@/components/ui/CustomCursor"
 import FloatingNav from "@/components/layout/FloatingNav"
 import { useMagneticEffect } from "@/hooks/useMagneticEffect"
 import { useMediaQuery } from "@/hooks/useMediaQuery"
+import { COMPANY } from "@/lib/metadata"
 
 export default function ContactPage() {
   useMagneticEffect()
@@ -358,10 +359,10 @@ export default function ContactPage() {
                     <div>
                       <h3 className="text-sm font-medium text-black/50 dark:text-white/50 uppercase tracking-widest mb-1 font-grotesk">Email</h3>
                       <a
-                        href="mailto:hello@trixode.com"
+                        href={`mailto:${COMPANY.email}`}
                         className="text-lg text-black dark:text-white hover:text-brand-blue transition-colors font-light"
                       >
-                        hello@trixode.com
+                        {COMPANY.email}
                       </a>
                     </div>
                   </div>

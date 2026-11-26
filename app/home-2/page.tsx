@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react"
 import { animate, createTimeline, remove, stagger } from "animejs"
 import MobileMenu from "@/components/mobile-menu"
+import { COMPANY } from "@/lib/metadata"
 
 const capabilities = [
   {
@@ -348,7 +349,7 @@ export default function HomeOptionTwo() {
                 <div className="mt-8 grid gap-4">
                   <div className="border border-[color:var(--h2-border)] rounded-2xl p-5">
                     <div className="text-xs uppercase tracking-[0.3em] text-[color:var(--h2-muted)]">Email</div>
-                    <div className="text-lg mt-2">hello@trixode.com</div>
+                    <div className="text-lg mt-2">{COMPANY.email}</div>
                   </div>
                   <div className="border border-[color:var(--h2-border)] rounded-2xl p-5">
                     <div className="text-xs uppercase tracking-[0.3em] text-[color:var(--h2-muted)]">Phone</div>

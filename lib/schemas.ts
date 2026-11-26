@@ -5,6 +5,8 @@
  * `<script type="application/ld+json">` tag.
  */
 
+import { COMPANY } from "@/lib/metadata"
+
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ||
   process.env.NEXT_PUBLIC_BASE_URL ||
@@ -25,7 +27,7 @@ export const professionalServiceSchema = {
   image: new URL("/logo.png", siteUrl).toString(),
   description:
     "A Victoria, BC research-led studio building measurable, secure agentic systems with human control at consequential decisions.",
-  email: "hello@trixode.com",
+  email: COMPANY.email,
   priceRange: "$$",
   address: {
     "@type": "PostalAddress",
@@ -93,7 +95,7 @@ export const professionalServiceSchema = {
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "sales",
-    email: "hello@trixode.com",
+    email: COMPANY.email,
     availableLanguage: ["English", "Spanish", "French"],
   },
   sameAs: [
