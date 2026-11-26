@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { Github, Linkedin, Mail, MapPin } from "lucide-react"
 import { HexagonLogo } from "@/components/ui/HexagonLogo"
+import { COMPANY } from "@/lib/metadata"
 
 export default function Footer() {
   return (
@@ -25,7 +26,7 @@ export default function Footer() {
               {[
                 { icon: Github, href: "https://github.com/trixodestudios", label: "GitHub" },
                 { icon: Linkedin, href: "https://www.linkedin.com/in/hussien-ballouk-233b3b116/", label: "Hussien Ballouk on LinkedIn" },
-                { icon: Mail, href: "mailto:hello@trixode.com", label: "Email" },
+                { icon: Mail, href: `mailto:${COMPANY.email}`, label: "Email" },
               ].map((social) => (
                 <a
                   key={social.label}

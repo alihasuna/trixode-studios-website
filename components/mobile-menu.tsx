@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react"
 import Link from "next/link"
 import { createPortal } from "react-dom"
 import { HexagonLogo } from "@/components/ui/HexagonLogo"
+import { COMPANY } from "@/lib/metadata"
 
 interface MobileMenuProps {
   currentPath?: string
@@ -191,7 +192,7 @@ export default function MobileMenu({ currentPath = "/" }: MobileMenuProps) {
           {/* Social Links */}
           <div className="flex items-center gap-6">
             <a
-              href="mailto:hello@trixode.com"
+              href={`mailto:${COMPANY.email}`}
               className="text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white transition-colors duration-300"
               aria-label="Email"
             >

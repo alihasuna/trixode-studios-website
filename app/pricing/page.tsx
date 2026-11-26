@@ -21,6 +21,7 @@ import Footer from "@/components/footer"
 import CustomCursor from "@/components/ui/CustomCursor"
 import { useMagneticEffect } from "@/hooks/useMagneticEffect"
 import { useMediaQuery } from "@/hooks/useMediaQuery"
+import { COMPANY } from "@/lib/metadata"
 
 /* ------------------------------------------------------------------ */
 /*  Data                                                               */
@@ -841,17 +842,17 @@ export default function PricingPage() {
 
                                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                     <a
-                                        href="mailto:hello@trixode.com"
+                                        href={`mailto:${COMPANY.email}`}
                                         className="magnetic inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-brand-blue to-brand-purple text-white rounded-2xl text-sm font-medium uppercase tracking-wider hover:opacity-90 transition-opacity"
                                     >
                                         <span>Book Free Strategy Call</span>
                                         <ArrowRight className="w-4 h-4" />
                                     </a>
                                     <a
-                                        href="mailto:hello@trixode.com"
+                                        href={`mailto:${COMPANY.email}`}
                                         className="magnetic inline-flex items-center justify-center gap-3 px-8 py-4 border border-black/10 dark:border-white/10 rounded-2xl text-sm font-medium uppercase tracking-wider hover:border-brand-blue hover:text-brand-blue transition-all"
                                     >
-                                        <span>hello@trixode.com</span>
+                                        <span>{COMPANY.email}</span>
                                     </a>
                                 </div>
 

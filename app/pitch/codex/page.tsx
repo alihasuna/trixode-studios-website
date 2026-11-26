@@ -800,7 +800,7 @@ export default function CodexPitchPage() {
                 </p>
               </div>
               <a
-                href="mailto:hello@trixode.com?subject=Maz%20Majidi%20-%20Luxury%20Growth%20Blueprint"
+                href="mailto:hello@trixode-studios.com?subject=Maz%20Majidi%20-%20Luxury%20Growth%20Blueprint"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-neutral-50 px-6 py-3 text-sm font-semibold text-neutral-900 transition hover:bg-white"
               >
                 Book the 90-minute Blueprint

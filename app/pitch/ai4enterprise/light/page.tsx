@@ -650,14 +650,14 @@ export default function AI4EnterprisePitchPageLight() {
                             This proposal is valid for 30 days. We&apos;d love to discuss how we can bring this vision to life.
                         </p>
                         <a
-                            href="mailto:hello@trixode.com?subject=AI4Enterprise%20Website%20Renovation"
+                            href="mailto:hello@trixode-studios.com?subject=AI4Enterprise%20Website%20Renovation"
                             className="inline-flex items-center gap-4 px-10 py-5 bg-brand-blue text-white text-sm uppercase tracking-widest rounded-full hover:bg-brand-blue/90 hover:shadow-lg hover:shadow-brand-blue/20 transition-all duration-300 group"
                         >
                             <span>Let&apos;s Get Started</span>
                             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </a>
                         <div className="mt-6 flex items-center justify-center gap-4 text-slate-400 text-xs">
-                            <span>hello@trixode.com</span>
+                            <span>hello@trixode-studios.com</span>
                             <span>•</span>
                             <span>Victoria, BC</span>
                             <span>•</span>

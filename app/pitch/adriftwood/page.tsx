@@ -1208,14 +1208,14 @@ export default function AdriftwoodPitchPage() {
                             handcrafted furniture brand in Canada.
                         </p>
                         <a
-                            href="mailto:hello@trixode.com?subject=Adriftwood%20Digital%20Marketing%20Proposal"
+                            href="mailto:hello@trixode-studios.com?subject=Adriftwood%20Digital%20Marketing%20Proposal"
                             className="inline-flex items-center gap-4 px-10 py-5 bg-blue-500 text-black text-sm uppercase tracking-widest rounded-full hover:bg-blue-500 transition-all duration-300 group font-medium"
                         >
                             <span>Let&apos;s Get Started</span>
                             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </a>
                         <div className={`mt-6 flex items-center justify-center gap-4 text-xs transition-colors duration-700 ${d("text-white/20", "text-slate-400")}`}>
-                            <span>hello@trixode.com</span>
+                            <span>hello@trixode-studios.com</span>
                             <span>•</span>
                             <span>BC, Canada</span>
                             <span>•</span>
